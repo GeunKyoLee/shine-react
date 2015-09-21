@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if [ "$1" != "front" ] && [ "$1" != "admin" ]; then
+  echo "input argument as the app directory: 'front' or 'admin'."
+  exit 1
+fi
+
+METEOR="meteor --release METEOR@1.2-rc.14"
+
+PROJECT_HOME="path-to-the-project-root"
+OPTION_MOBILE_SERVER="--mobile-server http://localhost:3000"
+APP_PATH="$PROJECT_HOME/apps/$1"
+
+
+# the argument $1 is passed into the env.sh
+echo "Loading Environment Variables"
+source $PROJECT_HOME/bin/env.sh
+
+
+echo "Starting Meteor"
+cd $APP_PATH
+$METEOR
+# $METEOR run android
+# $METEOR run android-device --verbose $OPTION_MOBILE_SERVER
+# $METEOR run ios
+# $METEOR run ios-device $OPTION_MOBILE_SERVER
