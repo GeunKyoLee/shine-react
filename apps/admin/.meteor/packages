@@ -9,13 +9,12 @@ autopublish
 insecure
 react
 reactrouter:react-router
+reactrouter:react-router-ssr
 meteorhacks:npm
 cosmos:browserify
-
+npm-container
 
 accounts-ui
 accounts-password
-reactrouter:react-router-ssr
 
 
-npm-container
