@@ -1,5 +1,7 @@
+Shine = {};
+
 // App component - represents the whole app
-App = React.createClass({
+Shine.App = React.createClass({
   // This mixin makes the getMeteorData method work
   mixins: [ReactMeteorData],
 
@@ -53,6 +55,7 @@ App = React.createClass({
   },
 
   render() {
+    const { Link } = ReactRouter;
     return (
       <div className="container">
         <header>
@@ -80,6 +83,15 @@ App = React.createClass({
         <ul>
           {this.renderTasks()}
         </ul>
+
+        <ul>
+          <li><Link to="/accounts">accounts</Link></li>
+          <li><Link to="/about">about</Link></li>
+        </ul>
+
+        <div>
+          {this.props.children}
+        </div>
       </div>
     );
   }
