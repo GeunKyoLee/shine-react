@@ -14,6 +14,8 @@ meteorhacks:npm
 cosmos:browserify
 npm-container
 
+shinejs:i18n
+
 accounts-ui
 accounts-password
 
