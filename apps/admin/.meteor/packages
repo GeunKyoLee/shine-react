@@ -4,19 +4,40 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-platform
 autopublish
 insecure
 react
 reactrouter:react-router
 reactrouter:react-router-ssr
-meteorhacks:npm
 cosmos:browserify
-npm-container
 
 shinejs:i18n
 
 accounts-ui
 accounts-password
 
+less
+semantic:ui-css
+shinejs:shine-theme-light-admin
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+logging
+reload
+random
+ejson
+spacebars
+check
+localstorage
+fortawesome:fontawesome
 
+
+meteorhacks:npm
+
+
+npm-container
