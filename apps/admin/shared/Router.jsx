@@ -2,20 +2,18 @@
 // client routing
 const clientRouter = [
   { path: '/',
-    component: Shine.App,
-    childRoutes: [
-      { path: '/accounts', component: Shine.Account }
-    ]
-  },
-  { path: '/about',
-    component: Shine.About,
+    component: Shine.DefaultLayout,
+	  childRoutes: [
+				{ path: '/about', component: Shine.About },
+				{ path: '/account', component: Shine.Account }
+		]
   }
 ];
 
 // server routing
 const serverRouter = [
   { path: '/',
-    component: Shine.App,
+    component: Shine.DefaultLayout,
     childRoutes: [
       { path: '/accounts', component: Shine.Account }
     ]
@@ -35,7 +33,8 @@ Meteor.startup(function() {
   } else {
     const { IndexRoute, Route } = ReactRouter;
 
-
     ReactRouterSSR.Run(serverRouter);
   }
 });
+
+//https://github.com/rackt/react-router/blob/master/docs/guides/basics/RouteConfiguration.md
