@@ -30,7 +30,13 @@ ecmascript-collections@0.1.6
 ejson@1.0.7
 email@1.0.7
 fastclick@1.0.7
+<<<<<<< HEAD
 geojson-utils@1.0.4
+=======
+fortawesome:fontawesome@4.4.0
+geojson-utils@1.0.4
+hot-code-push@1.0.0
+>>>>>>> 9ab5404b41b8d7ee4a1ca6fa3d7cf965dccca84b
 html-tools@1.0.5
 htmljs@1.0.5
 http@1.1.1
@@ -44,7 +50,11 @@ livedata@1.0.14
 localstorage@1.0.4
 logging@1.0.8
 meteor@1.1.7
+<<<<<<< HEAD
 meteor-platform@1.2.3
+=======
+meteor-base@1.0.1
+>>>>>>> 9ab5404b41b8d7ee4a1ca6fa3d7cf965dccca84b
 meteorhacks:async@1.0.0
 meteorhacks:fast-render@2.9.0
 meteorhacks:inject-data@1.4.1
@@ -52,6 +62,10 @@ meteorhacks:npm@1.5.0
 meteorhacks:picker@1.0.3
 minifiers@1.1.6
 minimongo@1.0.9
+<<<<<<< HEAD
+=======
+mobile-experience@1.0.1
+>>>>>>> 9ab5404b41b8d7ee4a1ca6fa3d7cf965dccca84b
 mobile-status-bar@1.0.6
 mongo@1.1.1
 mongo-id@1.0.1
@@ -71,6 +85,7 @@ react-runtime-prod@0.13.3_4
 reactive-dict@1.1.1
 reactive-var@1.0.6
 reactrouter:react-router@0.1.7
+<<<<<<< HEAD
 reactrouter:react-router-ssr@0.1.12
 reload@1.1.4
 retry@1.0.4
@@ -81,6 +96,21 @@ sha@1.0.4
 spacebars@1.0.7
 spacebars-compiler@1.0.7
 srp@1.0.4
+=======
+reactrouter:react-router-ssr@0.1.11
+reload@1.1.4
+retry@1.0.4
+routepolicy@1.0.6
+semantic:ui-css@2.1.2
+service-configuration@1.0.5
+session@1.1.1
+sha@1.0.4
+shinejs:shine-theme-light-admin@0.1.0
+spacebars@1.0.7
+spacebars-compiler@1.0.7
+srp@1.0.4
+standard-minifiers@1.0.0
+>>>>>>> 9ab5404b41b8d7ee4a1ca6fa3d7cf965dccca84b
 templating@1.1.2
 templating-tools@1.0.0
 tracker@1.0.8
