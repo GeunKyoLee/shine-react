@@ -1,10 +1,10 @@
 
-Shine.About = React.createClass({
-	displayName: 'About',
+Shine.Home = React.createClass({
+	displayName: 'Home',
 	render() {
 		return (
 			<div>
-				This is About route.<br/>
+				This is home route.<br/>
 				<button className="ui secondary button">
 					Okay
 				</button>

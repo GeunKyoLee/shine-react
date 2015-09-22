@@ -1,10 +1,10 @@
 Shine.DefaultBody = React.createClass({
-	displayName: "Body",
+	displayName: "MainBody",
 	render() {
 		return (
-			<div className="body">
+			<main id="content">
 				{this.props.children}
-			</div>
+			</main>
 		)
 	}
 });

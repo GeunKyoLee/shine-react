@@ -4,7 +4,7 @@ const clientRouter = [
   { path: '/',
     component: Shine.DefaultLayout,
 	  childRoutes: [
-				{ path: '/about', component: Shine.About },
+				{ path: '/home', component: Shine.Home },
 				{ path: '/account', component: Shine.Account }
 		]
   }

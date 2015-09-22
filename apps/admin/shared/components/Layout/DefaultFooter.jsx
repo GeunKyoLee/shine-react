@@ -1,11 +1,11 @@
 
 Shine.DefaultFooter = React.createClass({
-	displayName: 'Footer',
+	displayName: 'MainFooter',
 	render() {
 		return (
-			<div className="footer">
+			<footer id="footer">
 				Footer
-			</div>
+			</footer>
 		)
 	}
 });

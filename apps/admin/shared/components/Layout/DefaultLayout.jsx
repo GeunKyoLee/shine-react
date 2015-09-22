@@ -1,11 +1,12 @@
 
 Shine.DefaultLayout = React.createClass({
-	displayName: 'Layout',
+	displayName: 'MainLayout',
   render() {
     return (
-	    <div className="container">
+	    <div id="container">
 		    <Shine.DefaultHeader />
 		    <Shine.DefaultBody children={this.props.children}/>
+		    <Shine.DefaultAsideLeft />
 		    <Shine.DefaultFooter />
 	    </div>
     )

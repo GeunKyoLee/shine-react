@@ -9,9 +9,7 @@ insecure
 react
 reactrouter:react-router
 reactrouter:react-router-ssr
-meteorhacks:npm
 cosmos:browserify
-npm-container
 
 accounts-ui
 accounts-password
@@ -33,3 +31,11 @@ random
 ejson
 spacebars
 check
+localstorage
+fortawesome:fontawesome
+
+
+meteorhacks:npm
+
+
+npm-container
