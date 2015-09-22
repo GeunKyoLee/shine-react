@@ -1,8 +1,8 @@
 
 Package.describe({
   summary: 'Shine Theme Base',
-  version: '0.0.1',
-  name: 'keycode:shine-theme-light',
+  version: '1.2.0',
+  name: 'shinejs:shine-theme-light',
   git: '',
   documentation: 'README.md'
 });
@@ -10,10 +10,10 @@ Package.describe({
 Package.onUse(function (api) {
 
   // ---------------------------------- 1. Core dependency -----------------------------------
-  api.versionsFrom('1.2-rc.7');
+  api.versionsFrom('1.2');
   api.use([
-    'less@2.5.0-rc.2_1',
-    'leesangwon:bootstrap-less'
+    'less',
+    'shinejs:bootstrap-less'
   ]);
 
   // ---------------------------------- 2. Files to include ----------------------------------

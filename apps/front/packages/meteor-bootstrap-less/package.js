@@ -1,17 +1,17 @@
 Package.describe({
-  name: 'leesangwon:bootstrap-less',
-  version: '0.9.4',
+  name: 'shinejs:bootstrap-less',
+  version: '1.2.0',
   summary: 'Bootstrap wrapper with less files',
   git: '',
   documentation: 'README.md'
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('1.0.3.1');
+  api.versionsFrom('1.2');
 
   api.use([
     'jquery',
-    'less@2.5.0-rc.2_1'
+    'less'
   ], 'client');
 
 
@@ -116,6 +116,6 @@ Package.onUse(function(api) {
 
 Package.onTest(function(api) {
   api.use('tinytest');
-  api.use('leesangwon:bootstrap-less');
+  api.use('shinejs:bootstrap-less');
   api.addFiles('bootstrap-less-tests.js');
 });

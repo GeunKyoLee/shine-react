@@ -9,7 +9,6 @@ reactrouter:react-router
 meteorhacks:npm
 cosmos:browserify
 
-
 npm-container
 accounts-ui
 accounts-password
@@ -30,4 +29,4 @@ spacebars
 check
 fortawesome:fontawesome
 less
-keycode:shine-theme-light
+shinejs:shine-theme-light
