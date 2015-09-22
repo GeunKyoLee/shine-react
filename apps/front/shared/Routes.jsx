@@ -1,7 +1,7 @@
 // client routing
 const clientRouter = [
   { path: '/',
-    component: Shine.App,
+    component: Shine.DefaultLayout,
     childRoutes: [
       { path: '/accounts', component: Shine.Account }
     ]
@@ -14,7 +14,7 @@ const clientRouter = [
 // server routing
 const serverRouter = [
   { path: '/',
-    component: Shine.App,
+    component: Shine.DefaultLayout,
     childRoutes: [
       { path: '/accounts', component: Shine.Account }
     ]

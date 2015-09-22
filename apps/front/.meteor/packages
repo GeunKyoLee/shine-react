@@ -30,3 +30,6 @@ check
 fortawesome:fontawesome
 less
 shinejs:shine-theme-light
+shinejs:accounts-ui
+shinejs:alerts
+shinejs:i18n

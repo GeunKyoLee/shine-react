@@ -21,8 +21,6 @@ Shine.DefaultHeader = React.createClass({
 	toggleAside() {
 		if (Meteor.isClient){
 			this.toggle('left');
-
-			
 		}
 	},
 
