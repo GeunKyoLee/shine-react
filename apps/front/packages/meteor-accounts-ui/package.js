@@ -20,7 +20,8 @@ Package.onUse(function(api) {
     'sacha:spin',
     'less',
     'shinejs:bootstrap-less',
-    'shinejs:alerts'
+    'shinejs:alerts',
+
   ], 'client');
 
   // Export Accounts (etc) to packages using this one.
@@ -54,6 +55,10 @@ Package.onUse(function(api) {
     'enroll_account.js',
     'configurations.html',
     'configurations.js',
+
+	  'terms_of_use.html',
+	  'privacy_policy.html',
+	  'loading.html',
 
     'style/style.less',
 

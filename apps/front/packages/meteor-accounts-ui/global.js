@@ -32,7 +32,6 @@ loginOtherServices = function(serviceName) {
 
     if (! error) {
       Accounts.ui.dialog.hide();
-      Router.go('home');
     } else if (error instanceof Accounts.LoginCancelledError) {
       // do nothing
     } else if (error instanceof ServiceConfiguration.ConfigError) {

@@ -2,15 +2,14 @@ Shine.DefaultAsideLeft = React.createClass({
 	displayName: "MainAside",
 
 	propTypes: {
-		// This component gets the task to display through a React prop.
-		// We can use propTypes to indicate it is required
+
 	},
 
 	showLogin(e) {
 		e.preventDefault();
 		e.stopPropagation();
 		console.log('e: ', e);
-		//Accounts.ui.dialog.show('signIn');
+		Accounts.ui.dialog.show('signIn');
 	},
 	render() {
 		return (
@@ -23,7 +22,9 @@ Shine.DefaultAsideLeft = React.createClass({
 				</header>
 				<div className="body">
 					<div id="nav-main">
-						<Shine.AsideAccount showLogin={this.showLogin}/>
+						<Shine.AsideAccount
+							currentUser={this.props.currentUser}
+							showLogin={this.showLogin}/>
 					</div>
 				</div>
 			</aside>
