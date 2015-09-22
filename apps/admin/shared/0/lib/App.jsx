@@ -54,6 +54,10 @@ Shine.App = React.createClass({
     });
   },
 
+  t(key, args, lang) {
+    return I18n.get(key, args, lang);
+  },
+
   render() {
     const { Link } = ReactRouter;
     return (
@@ -85,7 +89,7 @@ Shine.App = React.createClass({
         </ul>
 
         <ul>
-          <li><Link to="/accounts">accounts</Link></li>
+          <li><Link to="/accounts">{this.t('title_account')}</Link></li>
           <li><Link to="/about">about</Link></li>
         </ul>
 

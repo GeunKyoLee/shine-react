@@ -1,6 +1,6 @@
 Package.describe({
   name: 'shinejs:i18n',
-  version: '0.9.1',
+  version: '0.9.2',
   summary: 'Internationalization package',
   // URL to the Git repository containing the source code for this package.
   git: '',

@@ -24,7 +24,7 @@ I18n = {
   _currentLanguage: DEFAULT_LANGUAGE,
 
   // I18n object
-  init: function(options = {}) {
+  init(options = {}) {
     options = _.defaults(options, {
       rootNamespace: ROOT_NAMESPACE,
       defaultLanguage: DEFAULT_LANGUAGE,
@@ -43,7 +43,7 @@ I18n = {
    * @param dataName
    * @param namespace
    */
-  loadLanguage: function(lang, dataName, namespace = ROOT_NAMESPACE) {
+  loadLanguage(lang, dataName, namespace = ROOT_NAMESPACE) {
     let data;
 
     if (typeof dataName === 'string') {
@@ -68,14 +68,14 @@ I18n = {
   },
 
   // read the current language
-  getLanguage: function() {
+  getLanguage() {
     langDeps.depend();
 
     return this._currentLanguage;
   },
 
   // set the current language
-  setLanguage: function(lang) {
+  setLanguage(lang) {
     this._currentLanguage = lang;
 
     langDeps.changed();
@@ -88,7 +88,7 @@ I18n = {
    * @param lang
    * @returns {string}
    */
-  get: function(key, args, lang) {
+  get(key, args, lang) {
     let value = '';
 
     if (lang === undefined && typeof args === 'string') {
@@ -97,10 +97,10 @@ I18n = {
       lang = (lang) ? lang : this._currentLanguage;
     }
 
-    let namespace;
     try {
       value = key.split(NAMESPACE_SEPARATOR);
 
+      let namespace;
       if (value.length > 1) {
         namespace = value[0];
         key = value[1];
@@ -110,8 +110,7 @@ I18n = {
       }
 
       value = key.split(VARIATION_SEPARATOR)
-        .reduce(function(o, i) { return o[i] },
-          this._languages[lang][namespace]);
+        .reduce((o, i) => o[i], this._languages[lang][namespace]);
 
       if (args) {
         value = this.sprintf(value, args);
@@ -127,18 +126,17 @@ I18n = {
   },
 
   // return the formatted string with the parameters
-  sprintf: function(format, args) {
-    return format.replace(/{(\d+)}/g, function(match, number) {
+  sprintf(format, args) {
+    return format.replace(/{(\d+)}/g, (match, number) => {
       return typeof args[number] != 'undefined' ? args[number] : match;
     });
   }
-
 };
 
 
 // register i18n helper function
 if (Meteor.isClient) {
-  Template.registerHelper(LANGUAGE_HELPER_NAME, function(key, options) {
+  Template.registerHelper(LANGUAGE_HELPER_NAME, (key, options) => {
     if (options.hash) {
       let map = options.hash;
       let keys = Object.keys(map);

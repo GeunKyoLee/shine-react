@@ -25,6 +25,13 @@ const serverRouter = [
 
 Meteor.startup(function() {
 
+  // language setup
+  I18n.init();
+  I18n.loadLanguage("en", 'I18n_data_en');
+  I18n.loadLanguage("ko", 'I18n_data_ko');
+  I18n.setLanguage("ko");
+
+  // router setup
   if (Meteor.isClient) {
     const { Router, Route } = ReactRouter;
     const history = ReactRouter.history.useQueries(ReactRouter.history.createHistory)();
@@ -34,7 +41,6 @@ Meteor.startup(function() {
     ), document.body);
   } else {
     const { IndexRoute, Route } = ReactRouter;
-
 
     ReactRouterSSR.Run(serverRouter);
   }
