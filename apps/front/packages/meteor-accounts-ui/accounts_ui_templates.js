@@ -23,6 +23,5 @@ Template.accountsUIHeader.events({
   'click, tab a.close': function(e) {
     e.preventDefault();
     Accounts.ui.dialog.hide();
-    Router.go('home');
   }
 });

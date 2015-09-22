@@ -126,10 +126,13 @@ Template.signUpPasswordService.events({
 
     var matchPasswordAgainIfPresent = function() {
       var passwordAgain = instance.$('#login-password-again').val();
-      if (passwordAgain) {
-        return (password !== passwordAgain);
+	    console.log('passwordAgain: ', passwordAgain);
+	    console.log('password: ', password);
+			console.log(password === passwordAgain);
+      if (passwordAgain && (password === passwordAgain)) {
+        return true
       }
-      return true;
+      return false;
     };
 
     if (! matchPasswordAgainIfPresent()) {
@@ -145,8 +148,8 @@ Template.signUpPasswordService.events({
         return;
       }
     }
-
-    if (email !== null) {
+	  console.log('email: ', email);
+    if (email !== undefined) {
       options.email = email.trim();
 
       if (! Accounts.ui.validator.email(options.email)) {
