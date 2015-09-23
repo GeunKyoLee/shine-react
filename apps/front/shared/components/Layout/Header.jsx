@@ -3,31 +3,11 @@
  */
 
 Shine.DefaultHeader = React.createClass({
-	mixins: [ReactMeteorData, Shine.Aside],
+	mixins: [Mixins.aside],
 
 	getInitialState() {
 		return {
-			currentUser: this.props.currentUser
-		}
-	},
-
-	getMeteorData() {
-
-		if (Meteor.isClient) {
-			const sub = [Meteor.subscribe('systemView')];
-
-			const subsReady = _.all(sub, function (handle) {
-				return handle.ready();
-			});
-
-			return {
-				subsReady: subsReady,
-				siteName: Systems.find({_id: 'siteName'}).fetch()
-			}
-		}
-
-		if (Meteor.isServer){
-			return {};
+			siteName : 'Loading..',
 		}
 	},
 
@@ -38,19 +18,26 @@ Shine.DefaultHeader = React.createClass({
 	},
 
 	render() {
+		const { Link } = ReactRouter;
 		let IsNotification;
-		if (this.state.currentUser) {
-			IsNotification = Shine.createClazz(<button type="button" id="btnNotification" className="btn .btn-info-custom btn-header" data-toggle="notifications"><i className="fa fa-2x fa-bell"></i></button>);
+
+		if (this.props.currentUser) {
+			IsNotification = Shine.createClazz(
+				<button type="button" 
+				        id="btnNotification" 
+				        className="btn .btn-info-custom btn-header" 
+				        data-toggle="notifications">
+					<i className="fa fa-2x fa-bell"></i>
+				</button>);
 		} else {
 			IsNotification = Shine.createClazz(<div></div>);
 		}
 
-		const { Link } = ReactRouter;
 
 		return (
 			<header>
 				<div className="logo back-bg">
-					<Link to="/home">{ this.data.subsReady ? this.data.siteName[0].value : "아직" }</Link>
+					<Link to="/home">{ this.props.systemReady ? this.props.siteName[0].value : this.state.siteName }</Link>
 				</div>
 
 				<div className="header-left">

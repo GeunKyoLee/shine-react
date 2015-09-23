@@ -1,22 +1,35 @@
 Shine.DefaultAsideLeft = React.createClass({
 	displayName: "MainAside",
 
-	propTypes: {
+	mixins: [Mixins.aside],
 
+	getInitialState() {
+		return {
+			active: ' '
+		}
 	},
 
-	showLogin(e) {
-		e.preventDefault();
-		e.stopPropagation();
-		console.log('e: ', e);
-		Accounts.ui.dialog.show('signIn');
+	logout(e) {
+		Meteor.logout();
 	},
+
+	onPinToggle(e) {
+		this.togglePin('left');
+		this.setState({
+			active: 'active'
+		})
+	},
+
 	render() {
 		return (
 			<aside className="left">
 				<header>
-					<button className="btn btn-link btn-xs aside-pin active"
-					        data-toggle="button" aria-pressed="false" autoComplete="off">
+					<button
+						onClick={this.onPinToggle}
+						className={`btn btn-link btn-xs aside-pin ${this.state.active}`}
+						data-toggle="button"
+						aria-pressed="false"
+						autoComplete="off">
 						<i className="fa fa-thumb-tack"></i>
 					</button>
 				</header>
@@ -24,7 +37,12 @@ Shine.DefaultAsideLeft = React.createClass({
 					<div id="nav-main">
 						<Shine.AsideAccount
 							currentUser={this.props.currentUser}
-							showLogin={this.showLogin}/>
+							showLogin={this.showLogin}
+							logout={this.logout}/>
+						<Shine.AsideMenu
+							currentUser={this.props.currentUser}
+							categoryReady={this.props.categoryReady}
+							categoryList={this.props.categoryList}/>
 					</div>
 				</div>
 			</aside>

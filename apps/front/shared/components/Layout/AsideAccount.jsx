@@ -1,29 +1,43 @@
 Shine.AsideAccount = React.createClass({
+	mixins: [Mixins.accounts],
+
 	propTypes: {
-		showLogin: React.PropTypes.func.isRequired
+		showLogin: React.PropTypes.func
+	},
+
+	showLogin(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		Accounts.ui.dialog.show('signIn');
 	},
 
   render() {
 	  let IsCurrentUser;
-	  if (this.props.currentUser) {
+	  let currentUser = this.props.currentUser;
+
+	  if (currentUser) {
 		  IsCurrentUser = Shine.createClazz(
 			  <div id="user-status" className="well well-sm">
 				  <a href="{{pathFor 'profileView'}}" className="avatar-sm">
-					  getPicture currentUser
-					  <span className="user-name">userDisplayName currentUser</span>
+					  {this.getPicture(currentUser)}
+					  <span className="user-name">
+						  {this.userDisplayName(currentUser)}</span>
 				  </a>
-				  <button className="btn btn-app btn-link pull-right" data-action="signOut">
-					  <i className="fa fa-sign-out" title="로그아웃"></i>
+				  <button
+					  onClick={this.props.logout}
+					  className="btn btn-app btn-link pull-right"
+					  data-action="signOut">
+					  <i className="fa fa-sign-out" title={L('command_sign_out')}></i>
 				  </button>
 			  </div>
 		  )
 	  } else {
 		  IsCurrentUser = Shine.createClazz(
 			  <button
-				  onClick={this.props.showLogin}
+				  onClick={this.showLogin}
 				  id="sign-in"
 				  className="btn btn-app btn-block"
-				  data-action="signIn">로그인</button>
+				  data-action="signIn">{L('command_sign_in')}</button>
 		  )
 	  }
 
