@@ -5,6 +5,12 @@
 Shine.DefaultHeader = React.createClass({
 	mixins: [Shine.Aside],
 
+	getInitialState() {
+		return {
+			siteName : 'Loading..',
+		}
+	},
+
 	toggleAside() {
 		if (Meteor.isClient){
 			this.toggle('left');
@@ -16,15 +22,22 @@ Shine.DefaultHeader = React.createClass({
 		let IsNotification;
 
 		if (this.props.currentUser) {
-			IsNotification = Shine.createClazz(<button type="button" id="btnNotification" className="btn .btn-info-custom btn-header" data-toggle="notifications"><i className="fa fa-2x fa-bell"></i></button>);
+			IsNotification = Shine.createClazz(
+				<button type="button" 
+				        id="btnNotification" 
+				        className="btn .btn-info-custom btn-header" 
+				        data-toggle="notifications">
+					<i className="fa fa-2x fa-bell"></i>
+				</button>);
 		} else {
 			IsNotification = Shine.createClazz(<div></div>);
 		}
 
+
 		return (
 			<header>
 				<div className="logo back-bg">
-					<Link to="/home">{ this.props.subsReady ? this.props.siteName[0].value : "아직" }</Link>
+					<Link to="/home">{ this.props.systemReady ? this.props.siteName[0].value : this.state.siteName }</Link>
 				</div>
 
 				<div className="header-left">

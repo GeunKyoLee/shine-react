@@ -3,6 +3,12 @@ Shine.AsideAccount = React.createClass({
 		showLogin: React.PropTypes.func
 	},
 
+	showLogin(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		Accounts.ui.dialog.show('signIn');
+	},
+
   render() {
 	  let IsCurrentUser;
 	  if (this.props.currentUser) {
@@ -23,7 +29,7 @@ Shine.AsideAccount = React.createClass({
 	  } else {
 		  IsCurrentUser = Shine.createClazz(
 			  <button
-				  onClick={this.props.showLogin}
+				  onClick={this.showLogin}
 				  id="sign-in"
 				  className="btn btn-app btn-block"
 				  data-action="signIn">로그인</button>
