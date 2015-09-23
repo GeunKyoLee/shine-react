@@ -1,6 +1,6 @@
 Shine.AsideAccount = React.createClass({
 	propTypes: {
-		showLogin: React.PropTypes.func.isRequired
+		showLogin: React.PropTypes.func
 	},
 
   render() {
@@ -12,7 +12,10 @@ Shine.AsideAccount = React.createClass({
 					  getPicture currentUser
 					  <span className="user-name">userDisplayName currentUser</span>
 				  </a>
-				  <button className="btn btn-app btn-link pull-right" data-action="signOut">
+				  <button
+					  onClick={this.props.logout}
+					  className="btn btn-app btn-link pull-right"
+					  data-action="signOut">
 					  <i className="fa fa-sign-out" title="로그아웃"></i>
 				  </button>
 			  </div>

@@ -8,8 +8,10 @@ Shine.DefaultAsideLeft = React.createClass({
 	showLogin(e) {
 		e.preventDefault();
 		e.stopPropagation();
-		console.log('e: ', e);
 		Accounts.ui.dialog.show('signIn');
+	},
+	logout(e) {
+		Meteor.logout();
 	},
 	render() {
 		return (
@@ -24,7 +26,10 @@ Shine.DefaultAsideLeft = React.createClass({
 					<div id="nav-main">
 						<Shine.AsideAccount
 							currentUser={this.props.currentUser}
-							showLogin={this.showLogin}/>
+							showLogin={this.showLogin}
+							logout={this.logout}/>
+						<Shine.AsideMenu
+							currentUser={this.props.currentUser}/>
 					</div>
 				</div>
 			</aside>

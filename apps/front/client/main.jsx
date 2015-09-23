@@ -4,5 +4,8 @@ Meteor.startup(function () {
     passwordSignupFields: "USERNAME_ONLY"
   });
 
+	localStorage.setItem('left', '0');
+	localStorage.setItem('aside-pin-left', '0');
+
 //  React.render(<App />, document.getElementById("render-target"));
 });
