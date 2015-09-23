@@ -46,6 +46,7 @@ Package.onUse(function (api) {
     'lib/client/less/specific/modules.less',
     'lib/client/less/specific/page.less',
     'lib/client/less/specific/post.less',
+    'lib/client/less/specific/profile-avatar.less',
     'lib/client/less/specific/user-modal.less'
 
   ],'client', { isImport: true });

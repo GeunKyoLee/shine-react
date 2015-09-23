@@ -1,4 +1,6 @@
 Shine.AsideAccount = React.createClass({
+	mixins: [Mixins.accounts],
+
 	propTypes: {
 		showLogin: React.PropTypes.func
 	},
@@ -9,18 +11,17 @@ Shine.AsideAccount = React.createClass({
 		Accounts.ui.dialog.show('signIn');
 	},
 
-	getI18n() {
-
-		return "";
-	},
   render() {
 	  let IsCurrentUser;
-	  if (this.props.currentUser) {
+	  let currentUser = this.props.currentUser;
+
+	  if (currentUser) {
 		  IsCurrentUser = Shine.createClazz(
 			  <div id="user-status" className="well well-sm">
 				  <a href="{{pathFor 'profileView'}}" className="avatar-sm">
-					  getPicture currentUser
-					  <span className="user-name">userDisplayName currentUser</span>
+					  {this.getPicture(currentUser)}
+					  <span className="user-name">
+						  {this.userDisplayName(currentUser)}</span>
 				  </a>
 				  <button
 					  onClick={this.props.logout}

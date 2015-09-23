@@ -23,6 +23,14 @@ Meteor.startup(function() {
 		})
 	};
 
+	if (Meteor.isClient) {
+		Accounts.ui.config({
+			passwordSignupFields: "USERNAME_ONLY"
+		});
+
+		localStorage.setItem('left', '0');
+		localStorage.setItem('aside-pin-left', '0');
+	}
 });
 
 
