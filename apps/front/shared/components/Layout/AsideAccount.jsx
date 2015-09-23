@@ -9,6 +9,10 @@ Shine.AsideAccount = React.createClass({
 		Accounts.ui.dialog.show('signIn');
 	},
 
+	getI18n() {
+
+		return "";
+	},
   render() {
 	  let IsCurrentUser;
 	  if (this.props.currentUser) {
@@ -22,7 +26,7 @@ Shine.AsideAccount = React.createClass({
 					  onClick={this.props.logout}
 					  className="btn btn-app btn-link pull-right"
 					  data-action="signOut">
-					  <i className="fa fa-sign-out" title="로그아웃"></i>
+					  <i className="fa fa-sign-out" title={L('command_sign_out')}></i>
 				  </button>
 			  </div>
 		  )
@@ -32,7 +36,7 @@ Shine.AsideAccount = React.createClass({
 				  onClick={this.showLogin}
 				  id="sign-in"
 				  className="btn btn-app btn-block"
-				  data-action="signIn">로그인</button>
+				  data-action="signIn">{L('command_sign_in')}</button>
 		  )
 	  }
 

@@ -1,7 +1,7 @@
 Shine.DefaultAsideLeft = React.createClass({
 	displayName: "MainAside",
 
-	mixins: [Shine.Aside],
+	mixins: [Mixins.aside],
 
 	getInitialState() {
 		return {

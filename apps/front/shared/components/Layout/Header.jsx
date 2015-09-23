@@ -3,7 +3,7 @@
  */
 
 Shine.DefaultHeader = React.createClass({
-	mixins: [Shine.Aside],
+	mixins: [Mixins.aside],
 
 	getInitialState() {
 		return {

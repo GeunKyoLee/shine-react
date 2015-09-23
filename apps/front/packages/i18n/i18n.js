@@ -131,7 +131,11 @@ I18n = {
     return format.replace(/{(\d+)}/g, function(match, number) {
       return typeof args[number] != 'undefined' ? args[number] : match;
     });
-  }
+  },
+
+	getI18n : function(text) {
+		return I18n.get(text);
+	}
 
 };
 
