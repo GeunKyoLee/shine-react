@@ -27,7 +27,7 @@ Shine.Home = React.createClass({
 				    <ul className="block-list">
 					    { this.props.postReady ?
 						    this.props.postList.map( (post) =>
-							    <Shine.PostItem {...post} />)
+							    <Shine.PostItem key={post._id} {...post} />)
 						    : "없다" }
 				    </ul>
 			    </div>
