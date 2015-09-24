@@ -37,7 +37,6 @@ Shine.DefaultAsideLeft = React.createClass({
 					<div id="nav-main">
 						<Shine.AsideAccount
 							currentUser={this.props.currentUser}
-							showLogin={this.showLogin}
 							logout={this.logout}/>
 						<Shine.AsideMenu
 							currentUser={this.props.currentUser}

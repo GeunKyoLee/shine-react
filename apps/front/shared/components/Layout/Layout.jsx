@@ -14,8 +14,6 @@ Shine.DefaultLayout = React.createClass({
 		const categoryReady = _.all([Meteor.subscribe('releasedCategoriesList')], (handle) =>
 			handle.ready());
 
-		console.log('systemReady: ', systemReady);
-
 		return {
 			systemReady,
 			categoryReady,
