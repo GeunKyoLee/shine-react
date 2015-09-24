@@ -30,7 +30,7 @@ Shine.AsideMenu = React.createClass({
 		    </Link>
 				<IsCurrentUser />
 		    {this.props.categoryReady ? this.props.categoryList.map((category) =>
-			    <Shine.CategoryListItem
+			    <Shine.CategoryItem
 				    key={category._id}
 				    _id={category._id}
 				    title={category.title} />) : ''}

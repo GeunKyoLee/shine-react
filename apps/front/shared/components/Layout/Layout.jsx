@@ -14,16 +14,25 @@ Shine.DefaultLayout = React.createClass({
 		const categoryReady = _.all([Meteor.subscribe('releasedCategoriesList')], (handle) =>
 			handle.ready());
 
+		var limit = 10;
+
+		const postReady = _.all([Meteor.subscribe('releasedPostsList')], (handle) =>
+			handle.ready());
+
 		return {
 			systemReady,
 			categoryReady,
+			postReady,
 			currentUser: Meteor.user(),
 			siteName: Systems.find({_id: 'siteName'}).fetch(),
 			categoryList: Categories.find({state: 'ON'}, {sort: {seq: 1}}).fetch(),
+			postList: Posts.find().fetch(),
 		}
 	},
 
 	render() {
+		console.log('layout params: ', this.props.params);
+
 		return (
 			<div id="container">
 				<Shine.DefaultHeader
@@ -31,7 +40,11 @@ Shine.DefaultLayout = React.createClass({
 					systemReady={this.data.systemReady}
 					siteName={this.data.siteName}
 					/>
-				<Shine.DefaultBody children={this.props.children}/>
+				<Shine.DefaultBody
+					children={this.props.children}
+					postReady={this.data.postReady}
+				  postList={this.data.postList}
+					/>
 				<Shine.DefaultAsideLeft
 					categoryReady={this.data.categoryReady}
 					categoryList={this.data.categoryList}

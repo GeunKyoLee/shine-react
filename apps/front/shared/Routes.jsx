@@ -12,6 +12,9 @@ Meteor.startup(function () {
 			    <Route path="home" component={Shine.Home}>
 				    <Route path=":order" component={Shine.Home}/>
 			    </Route>
+			    <Route path="category" component={Shine.Home}>
+				    <Route path=":categories" component={Shine.Home}/>
+			    </Route>
 		    </Route>
 		    <Redirect from="/" to="/home" />
 	    </Router>

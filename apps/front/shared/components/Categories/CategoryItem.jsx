@@ -1,6 +1,6 @@
 
-Shine.CategoryListItem = React.createClass({
-
+Shine.CategoryItem = React.createClass({
+	displayName: 'CategoryItem',
   render() {
 		const { Link } = ReactRouter;
 

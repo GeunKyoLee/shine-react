@@ -76,9 +76,7 @@ Mixins.aside = {
 	},
 
 	toggle(position) {
-		console.log('this.isPined(): ', this.isPined('left'));
 		if (position === 'left' && ! this.isPined('left')) {
-			console.log('1: ', 1);
 			$('#container').toggleClass('aside-left-on');
 		} else if (position === 'right' && ! this.isPined('right')) {
 			$('#container').toggleClass('aside-right-on');

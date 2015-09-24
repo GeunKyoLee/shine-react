@@ -23,15 +23,16 @@ Shine.Home = React.createClass({
 			    </nav>
 		    </div>
 		    <div className="row-fluid">
-			    포스트가 없습니다.
-		    </div>
-		    <div className="row-fluid">
 			    <div className="block-group">
 				    <ul className="block-list">
-					    리스트 나오는 곳
+					    { this.props.postReady ?
+						    this.props.postList.map( (post) =>
+							    <Shine.PostItem {...post} />)
+						    : "없다" }
 				    </ul>
 			    </div>
 		    </div>
+
 
 		    <div className="row-fluid">
 			    <a className="btn btn-deep-app btn-block load-more">더보기</a>
