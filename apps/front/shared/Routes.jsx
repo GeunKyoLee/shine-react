@@ -1,5 +1,4 @@
 Meteor.startup(function () {
-
   if (Meteor.isClient) {
     const {Router, Route, IndexRoute} = ReactRouter;
 
