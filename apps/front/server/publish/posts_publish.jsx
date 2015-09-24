@@ -9,9 +9,12 @@
 
 Meteor.publish('releasedPostsList', function(query, options) {
 	let limit = options.limit;
-	console.log('releasedPostsList publis');
+	console.log('releasedPostsList publish');
 
-	Meteor._sleepForMs(2000);
+	Meteor._sleepForMs(1000);
+
+	Counts.publish(this, 'releasedPostsListCount', Posts.find(query),
+		{ noReady: true });
 
 	return Posts.find(query, { limit });
 	//check(query, Match.ObjectIncluding({
@@ -27,9 +30,6 @@ Meteor.publish('releasedPostsList', function(query, options) {
 	//}));
 
 	//query = _.extend(query, { state: 'PUBLISHED' });
-
-	//Counts.publish(this, 'releasedPostsListCount', Posts.find(query),
-	//	{ noReady: true });
 
 	//return Posts.find(query, options);
 });

@@ -34,21 +34,23 @@ Shine.Home = React.createClass({
               { (() => {
                 if (Config.limit.get() == 10) {
                   if (this.props.postReady) {
-                    return this.props.postList.map((post) => <Shine.PostItem key={post._id} {...post} />)
+                    return this.props.postList.map((post) =>
+	                    <Shine.PostItem key={post._id} {...post} />)
                   } else {
-                    return (<div class="list-spinner-wrapper">
+                    return (<div className="spinner-wrapper">
                               <SpinnerView />
                             </div>)
                   }
                 } else {
-                  return this.props.postList.map((post) => <Shine.PostItem key={post._id} {...post} />)
+                  return this.props.postList.map((post) =>
+	                  <Shine.PostItem key={post._id} {...post} />)
                 }
               })() }
 
               { (() => {
                 if (Config.limit.get() > 10) {
                   if (!this.props.postReady) {
-                    return (<div class="list-spinner-wrapper">
+                    return (<div className="list-spinner-wrapper">
                               <SpinnerView />
                             </div>)
                   }
@@ -58,11 +60,17 @@ Shine.Home = React.createClass({
             </ul>
           </div>
         </div>
-        <div className="row-fluid">
-          <button className="btn btn-deep-app btn-block load-more"
-                  onClick={this.addLimit}>더보기
-          </button>
-        </div>
+
+	      { this.props.postAllCount > Config.limit.get() ?
+		      <div className="row-fluid">
+			      <button className="btn btn-deep-app btn-block load-more"
+			              onClick={this.addLimit}>더보기
+			      </button>
+		      </div>
+		      :
+		      ""
+	      }
+
       </article>
     )
   }

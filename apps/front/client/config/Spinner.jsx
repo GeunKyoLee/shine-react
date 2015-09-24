@@ -9,7 +9,7 @@ Meteor.Spinner.options = {
 	color: '#5cc900', // #rgb or #rrggbb
 	speed: 1, // Rounds per second
 	trail: 64, // Afterglow percentage
-	shadow: true, // Whether to render a shadow
+	shadow: false, // Whether to render a shadow
 	hwaccel: false, // Whether to use hardware acceleration
 	className: 'spinner', // The CSS class to assign to the spinner
 	zIndex: 2e9, // The z-index (defaults to 2000000000)
