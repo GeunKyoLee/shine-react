@@ -1,3 +1,4 @@
+
 Shine.DefaultLayout = React.createClass({
 	displayName: 'MainLayout',
 
@@ -6,26 +7,56 @@ Shine.DefaultLayout = React.createClass({
 	getMeteorData() {
 		if (Meteor.isServer) return {};
 
+
 		// Systems subscribe
-		const systemReady = _.all([Meteor.subscribe('systemView')], (handle) =>
+		let systemReady = _.all([Meteor.subscribe('systemView')], (handle) =>
 			handle.ready());
 
 		// Category subscribe
-		const categoryReady = _.all([Meteor.subscribe('releasedCategoriesList')], (handle) =>
+		let categoryReady = _.all([Meteor.subscribe('releasedCategoriesList')], (handle) =>
 			handle.ready());
 
+		
+		// Post subscribe
+		let query = { };
+		
+		let options =
+		{
+			limit: Config.limit.get()
+		};
+
+
+		console.log('Layout globalLimit: ', Config.limit.get());
+
+		let postReady = _.all([Meteor.subscribe('releasedPostsList',
+			query, { limit: Config.limit.get()})], (handle) =>
+			handle.ready());
+
+		let postAllCount;
+
+		if (postReady) {
+			postAllCount = Counts.get('releasedPostsListCount');
+		}
+
 		console.log('systemReady: ', systemReady);
+		console.log('categoryReady: ', categoryReady);
+		console.log('postReady: ', postReady);
 
 		return {
 			systemReady,
 			categoryReady,
+			postReady,
+			postAllCount,
 			currentUser: Meteor.user(),
 			siteName: Systems.find({_id: 'siteName'}).fetch(),
 			categoryList: Categories.find({state: 'ON'}, {sort: {seq: 1}}).fetch(),
+			postList: Posts.find().fetch(),
 		}
 	},
 
 	render() {
+		console.log('layout params: ', this.props.params);
+
 		return (
 			<div id="container">
 				<Shine.DefaultHeader
@@ -33,7 +64,12 @@ Shine.DefaultLayout = React.createClass({
 					systemReady={this.data.systemReady}
 					siteName={this.data.siteName}
 					/>
-				<Shine.DefaultBody children={this.props.children}/>
+				<Shine.DefaultBody
+					children={this.props.children}
+					postReady={this.data.postReady}
+					postList={this.data.postList}
+					postAllCount={this.data.postAllCount}
+					/>
 				<Shine.DefaultAsideLeft
 					categoryReady={this.data.categoryReady}
 					categoryList={this.data.categoryList}

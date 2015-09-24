@@ -1,38 +1,51 @@
+//// client routing
+//const clientRouter = [
+//  { path: '/',
+//    component: Shine.DefaultLayout,
+//	  childRoutes: [
+//				{ path: '/home', component: Shine.Home },
+//				{ path: '/account', component: Shine.Account }
+//		]
+//  }
+//];
+//
+//// server routing
+//const serverRouter = [
+//  { path: '/',
+//    component: Shine.DefaultLayout,
+//    childRoutes: [
+//      { path: '/accounts', component: Shine.Account }
+//    ]
+//  }
+//];
 
-// client routing
-const clientRouter = [
-  { path: '/',
-    component: Shine.DefaultLayout,
-	  childRoutes: [
-				{ path: '/home', component: Shine.Home },
-				{ path: '/account', component: Shine.Account }
-		]/*,
-    onEnter: function() {
-      if (! Meteor.userId()) {
-        Accounts.ui.dialog.show('signIn');
-      }
-    }*/
-  }
-];
+//
+//Meteor.startup(function() {
+//
+//  // setup Router
+//  if (Meteor.isClient) {
+//    const { Router, Route } = ReactRouter;
+//    const history = ReactRouter.history.useQueries(ReactRouter.history.createHistory)();
+//
+//    React.render((
+//      <Router history={history} routes={clientRouter} />
+//    ), document.body);
+//  } else {
+//    const { IndexRoute, Route } = ReactRouter;
+//
+//    ReactRouterSSR.Run(serverRouter);
+//  }
+//});
 
-// server routing
-const serverRouter = [
-  { path: '/',
-    component: Shine.DefaultLayout,
-    childRoutes: [
-      { path: '/accounts', component: Shine.Account }
-    ]
-  }
-];
+//https://github.com/rackt/react-router/blob/master/docs/guides/basics/RouteConfiguration.md
 
+const {Router, Route, IndexRoute} = ReactRouter;
 
-Meteor.startup(function() {
+const history = ReactRouter.history.useQueries(ReactRouter.history.createHistory)()
 
-  // setup Router
+Meteor.startup(function () {
+
   if (Meteor.isClient) {
-    const { Router, Route } = ReactRouter;
-    const history = ReactRouter.history.useQueries(ReactRouter.history.createHistory)();
-
     React.render((
       <Router history={history}>
         <Route path='/' component={Shine.DefaultLayout} >
@@ -46,5 +59,3 @@ Meteor.startup(function() {
     ReactRouterSSR.Run(serverRouter);
   }
 });
-
-//https://github.com/rackt/react-router/blob/master/docs/guides/basics/RouteConfiguration.md

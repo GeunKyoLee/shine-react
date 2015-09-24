@@ -3,5 +3,6 @@
  */
 
 Meteor.publish('systemView', function() {
+	console.log('systemView publis');
   return Systems.find({});
 });

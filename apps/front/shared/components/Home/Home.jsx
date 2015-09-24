@@ -1,36 +1,77 @@
 Shine.Home = React.createClass({
+
+  addLimit() {
+    Config.limit.set(Config.limit.get() + Config.increment);
+  },
+
   render() {
-	  const { Link } = ReactRouter;
+    const { Link } = ReactRouter;
 
     return (
-	    <article className="page container-fluid shine-wrapper">
-		    <div className="row-fluid">
-			    <nav className="navtabs">
-				    <ul className="navtabs-list">
-					    <li className="navtabs-item {{isActive ''}}">
-						    <a className="navtabs-anchor" href="{{pathFor 'home'}}">최신순</a>
-					    </li>
-					    <li className="navtabs-item {{isActive 'like'}}">
-						    <a className="navtabs-anchor" href="{{pathFor 'home' query='sortBy=like'}}">인기순</a>
-					    </li>
-				    </ul>
-			    </nav>
-		    </div>
-		    <div className="row-fluid">
-			    포스트가 없습니다.
-		    </div>
-		    <div className="row-fluid">
-			    <div className="block-group">
-				    <ul className="block-list">
-					    리스트 나오는 곳
-				    </ul>
-			    </div>
-		    </div>
+      <article className="page container-fluid shine-wrapper">
+        <div className="row-fluid">
+          <nav className="navtabs">
+            <ul className="navtabs-list">
+              <li className="navtabs-item">
+                <Link
+                  className="navtabs-anchor"
+                  to="/home/newest"
+                  activeClassName="active">최신순</Link>
+              </li>
+              <li className="navtabs-item">
+                <Link
+                  className="navtabs-anchor"
+                  to="/home/like"
+                  activeClassName="active">인기순</Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div className="row-fluid">
+          <div className="block-group">
+            <ul className="block-list">
 
-		    <div className="row-fluid">
-			    <a className="btn btn-deep-app btn-block load-more">더보기</a>
-		    </div>
-	    </article>
+              { (() => {
+                if (Config.limit.get() == 10) {
+                  if (this.props.postReady) {
+                    return this.props.postList.map((post) =>
+	                    <Shine.PostItem key={post._id} {...post} />)
+                  } else {
+                    return (<div className="spinner-wrapper">
+                              <SpinnerView />
+                            </div>)
+                  }
+                } else {
+                  return this.props.postList.map((post) =>
+	                  <Shine.PostItem key={post._id} {...post} />)
+                }
+              })() }
+
+              { (() => {
+                if (Config.limit.get() > 10) {
+                  if (!this.props.postReady) {
+                    return (<div className="list-spinner-wrapper">
+                              <SpinnerView />
+                            </div>)
+                  }
+                }
+              })()}
+
+            </ul>
+          </div>
+        </div>
+
+	      { this.props.postAllCount > Config.limit.get() ?
+		      <div className="row-fluid">
+			      <button className="btn btn-deep-app btn-block load-more"
+			              onClick={this.addLimit}>더보기
+			      </button>
+		      </div>
+		      :
+		      ""
+	      }
+
+      </article>
     )
   }
 });

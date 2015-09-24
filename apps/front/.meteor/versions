@@ -15,7 +15,7 @@ callback-hook@1.0.4
 check@1.0.6
 chuangbo:cookie@1.1.0
 coffeescript@1.0.9
-cosmos:browserify@0.5.1
+cosmos:browserify@0.7.0
 ddp@1.2.2
 ddp-client@1.2.1
 ddp-common@1.2.1
@@ -23,6 +23,7 @@ ddp-rate-limiter@1.0.0
 ddp-server@1.2.1
 deps@1.0.9
 diff-sequence@1.0.1
+dpraburaj:react-spin@2.3.1
 ecmascript@0.1.4
 ecmascript-collections@0.1.6
 ejson@1.0.7
@@ -53,6 +54,7 @@ minifiers@1.1.7
 minimongo@1.0.9
 mobile-experience@1.0.1
 mobile-status-bar@1.0.6
+momentjs:moment@2.10.6
 mongo@1.1.1
 mongo-id@1.0.1
 mongo-livedata@1.0.9
@@ -79,7 +81,7 @@ reload@1.1.4
 retry@1.0.4
 reywood:publish-composite@1.4.2
 routepolicy@1.0.6
-sacha:spin@0.1.6
+sacha:spin@0.2.4
 service-configuration@1.0.5
 session@1.1.1
 sha@1.0.4
