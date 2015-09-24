@@ -48,10 +48,14 @@ Meteor.startup(function () {
   if (Meteor.isClient) {
     React.render((
       <Router history={history}>
-        <Route path="/" component={Shine.Home}>
-          <IndexRoute component={Shine.Home} />
+        <Route path='/' component={Shine.DefaultLayout} >
+          <Route path='home' component={Shine.Home} />
         </Route>
       </Router>
-    ), document.body);
+    ), document.body); //document.getElementById('#container'));
+  } else {
+    const { IndexRoute, Route } = ReactRouter;
+
+    ReactRouterSSR.Run(serverRouter);
   }
 });

@@ -1,6 +1,6 @@
 Package.describe({
   name: 'shinejs:bootstrap-less',
-  version: '1.2.0',
+  version: '1.2.1',
   summary: 'Bootstrap wrapper with less files',
   git: '',
   documentation: 'README.md'

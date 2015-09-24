@@ -1,6 +1,6 @@
 Shine.DefaultHeader = React.createClass({
 	displayName: "MainHeader",
-	mixins: [Shine.Aside],
+//	mixins: [Shine.Aside],
 
 	// 최초 렌더링이 일어나기 직전에 클라이언트 or 서버에서 한번 호출
 	componentWillMount() {
@@ -20,7 +20,7 @@ Shine.DefaultHeader = React.createClass({
 
 	toggleAside() {
 		if (Meteor.isClient){
-			this.toggle('left');
+			Shine.DefaultAside.toggle('left');
 		}
 	},
 
@@ -33,12 +33,10 @@ Shine.DefaultHeader = React.createClass({
 				</div>
 				<div className="header-left">
 					<button
-						onClick={this.toggleAside}
 						type="button"
 						className="btn btn-header"
-						data-toggle="navigations"><i className="fa fa-2x fa-bars"></i></button>
+						onClick={this.toggleAside}><i className="fa fa-2x fa-bars"></i></button>
 				</div>
-				<Shine.Navigation />
 			</header>
 		)
 	}
