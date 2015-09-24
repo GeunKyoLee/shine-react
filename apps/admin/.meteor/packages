@@ -4,8 +4,6 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-autopublish
-insecure
 react
 reactrouter:react-router
 reactrouter:react-router-ssr
@@ -13,14 +11,17 @@ cosmos:browserify
 
 shinejs:i18n
 
-accounts-ui
+shinejs:accounts-ui
 accounts-password
+shinejs:connections
 
 less
-semantic:ui-css
+shinejs:bootstrap-less
 shinejs:shine-theme-light-admin
+
 standard-minifiers
 meteor-base
+ecmascript
 mobile-experience
 mongo
 blaze-html-templates
@@ -35,3 +36,8 @@ spacebars
 check
 localstorage
 fortawesome:fontawesome
+momentjs:moment
+shinejs:logger
+shinejs:alerts
+percolate:momentum
+alanning:roles

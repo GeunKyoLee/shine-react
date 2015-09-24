@@ -6,7 +6,12 @@ const clientRouter = [
 	  childRoutes: [
 				{ path: '/home', component: Shine.Home },
 				{ path: '/account', component: Shine.Account }
-		]
+		]/*,
+    onEnter: function() {
+      if (! Meteor.userId()) {
+        Accounts.ui.dialog.show('signIn');
+      }
+    }*/
   }
 ];
 
@@ -29,8 +34,12 @@ Meteor.startup(function() {
     const history = ReactRouter.history.useQueries(ReactRouter.history.createHistory)();
 
     React.render((
-      <Router history={history} routes={clientRouter} />
-    ), document.body);
+      <Router history={history}>
+        <Route path='/' component={Shine.DefaultLayout} >
+          <Route path='home' component={Shine.Home} />
+        </Route>
+      </Router>
+    ), document.body); //document.getElementById('#container'));
   } else {
     const { IndexRoute, Route } = ReactRouter;
 
