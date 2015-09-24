@@ -81,7 +81,7 @@ service-configuration@1.0.5
 session@1.1.1
 sha@1.0.4
 shinejs:i18n@0.9.1
-shinejs:shine-theme-light-admin@0.1.0
+shinejs:shine-theme-light-admin@1.2.0
 spacebars@1.0.7
 spacebars-compiler@1.0.7
 srp@1.0.4

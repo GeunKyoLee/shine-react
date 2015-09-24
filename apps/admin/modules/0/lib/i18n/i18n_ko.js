@@ -1,5 +1,5 @@
 I18n_data_ko = {
-  "brand"                         : "METEOR SHINE ADMIN",
+  "brand"                         : "SHINE ADMIN",
 
 
   "title_dashboard"               : "대시보드",

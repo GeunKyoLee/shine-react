@@ -1,5 +1,5 @@
 I18n_data_en = {
-  "brand"                         : "METEOR SHINE ADMIN",
+  "brand"                         : "SHINE ADMIN",
 
 
   "title_dashboard"               : "Dashboard",

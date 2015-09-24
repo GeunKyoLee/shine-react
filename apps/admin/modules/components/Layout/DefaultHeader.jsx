@@ -29,7 +29,7 @@ Shine.DefaultHeader = React.createClass({
 		return (
 			<header id="header">
 				<div className="logo">
-					<Link to="/home">Shine</Link>
+					<Link to="/home">{L('brand')}</Link>
 				</div>
 				<div className="header-left">
 					<button

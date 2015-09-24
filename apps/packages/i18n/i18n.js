@@ -24,7 +24,7 @@ I18n = {
   _currentLanguage: DEFAULT_LANGUAGE,
 
   // I18n object
-  init: function(options = {}) {
+  init(options = {}) {
     options = _.defaults(options, {
       rootNamespace: ROOT_NAMESPACE,
       defaultLanguage: DEFAULT_LANGUAGE,
@@ -43,7 +43,7 @@ I18n = {
    * @param dataName
    * @param namespace
    */
-  loadLanguage: function(lang, dataName, namespace = ROOT_NAMESPACE) {
+  loadLanguage(lang, dataName, namespace = ROOT_NAMESPACE) {
     let data;
 
     if (typeof dataName === 'string') {
@@ -68,14 +68,14 @@ I18n = {
   },
 
   // read the current language
-  getLanguage: function() {
+  getLanguage() {
     langDeps.depend();
 
     return this._currentLanguage;
   },
 
   // set the current language
-  setLanguage: function(lang) {
+  setLanguage(lang) {
     this._currentLanguage = lang;
 
     langDeps.changed();
