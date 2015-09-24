@@ -33,9 +33,9 @@ Shine.DefaultHeader = React.createClass({
 				</div>
 				<div className="header-left">
 					<button
-						onClick={this.toggleAside}
 						type="button"
-						className="btn btn-header"
+						class="ui button"
+						onClick={this.toggleAside}
 						data-toggle="navigations"><i className="fa fa-2x fa-bars"></i></button>
 				</div>
 				<Shine.Navigation />

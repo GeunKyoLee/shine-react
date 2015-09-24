@@ -16,9 +16,9 @@ shinejs:i18n
 accounts-ui
 accounts-password
 
-less
-semantic:ui-css
-shinejs:shine-theme-light-admin
+semantic:ui
+flemay:less-autoprefixer
+
 standard-minifiers
 meteor-base
 mobile-experience
