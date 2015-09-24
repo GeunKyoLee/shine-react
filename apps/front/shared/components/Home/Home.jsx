@@ -7,11 +7,17 @@ Shine.Home = React.createClass({
 		    <div className="row-fluid">
 			    <nav className="navtabs">
 				    <ul className="navtabs-list">
-					    <li className="navtabs-item {{isActive ''}}">
-						    <a className="navtabs-anchor" href="{{pathFor 'home'}}">최신순</a>
+					    <li className="navtabs-item">
+						    <Link
+									className="navtabs-anchor"
+									to="/home/newest"
+									activeClassName="active">최신순</Link>
 					    </li>
-					    <li className="navtabs-item {{isActive 'like'}}">
-						    <a className="navtabs-anchor" href="{{pathFor 'home' query='sortBy=like'}}">인기순</a>
+					    <li className="navtabs-item">
+						    <Link
+									className="navtabs-anchor"
+									to="/home/like"
+									activeClassName="active">인기순</Link>
 					    </li>
 				    </ul>
 			    </nav>

@@ -9,7 +9,7 @@ Shine.AsideMenu = React.createClass({
 				<Link
 					id="myworks"
 					activeClassName="active"
-					to="myworks">
+					to="/myworks">
 					<i className="fa fa-inbox"></i> {L('title_myworks')}
 				</Link>
 			)
@@ -25,7 +25,7 @@ Shine.AsideMenu = React.createClass({
 		    <Link
 					id="home"
 					activeClassName="active"
-					to="home" >
+					to="/home" >
 			    <i className="fa fa-home"> </i> {L('title_home')}
 		    </Link>
 				<IsCurrentUser />

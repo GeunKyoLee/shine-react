@@ -1,39 +1,19 @@
-// client routing
-const clientRouter = [
-  { path: '/',
-    component: Shine.DefaultLayout,
-    childRoutes: [
-      { path: '/accounts', component: Shine.Account }
-    ]
-  },
-  { path: '/about',
-    component: Shine.About,
-  }
-];
+Meteor.startup(function () {
 
-// server routing
-const serverRouter = [
-  { path: '/',
-    component: Shine.DefaultLayout,
-    childRoutes: [
-      { path: '/accounts', component: Shine.Account }
-    ]
-  }
-];
-
-Meteor.startup(function() {
   if (Meteor.isClient) {
-    const {Router, Route} = ReactRouter;
+    const {Router, Route, IndexRoute} = ReactRouter;
+
     const history = ReactRouter.history.useQueries(ReactRouter.history.createHistory)()
 
     React.render((
-      <Router history={history} routes={clientRouter} />
+      <Router history={history}>
+        <Route path="/" component={Shine.DefaultLayout}>
+          <IndexRoute component={Shine.Home}/>
+          <Route path="/home" component={Shine.Home}>
+            <Route path="/home/:order" component={Shine.Home}/>
+          </Route>
+        </Route>
+      </Router>
     ), document.body);
   }
-
-  if (Meteor.isServer) {
-
-    ReactRouterSSR.Run(serverRouter);
-  }
 });
-
