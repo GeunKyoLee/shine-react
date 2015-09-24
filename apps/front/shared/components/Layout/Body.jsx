@@ -1,7 +1,7 @@
 Shine.DefaultBody = React.createClass({
 	displayName: "MainBody",
-	render() {
 
+	render() {
 		const { postReady, postList } = this.props;
 		let Home = React.cloneElement(this.props.children, { postReady, postList });
 

@@ -1,3 +1,4 @@
+
 Shine.DefaultLayout = React.createClass({
 	displayName: 'MainLayout',
 
@@ -6,18 +7,32 @@ Shine.DefaultLayout = React.createClass({
 	getMeteorData() {
 		if (Meteor.isServer) return {};
 
+
 		// Systems subscribe
-		const systemReady = _.all([Meteor.subscribe('systemView')], (handle) =>
+		let systemReady = _.all([Meteor.subscribe('systemView')], (handle) =>
 			handle.ready());
 
 		// Category subscribe
-		const categoryReady = _.all([Meteor.subscribe('releasedCategoriesList')], (handle) =>
+		let categoryReady = _.all([Meteor.subscribe('releasedCategoriesList')], (handle) =>
 			handle.ready());
 
-		var limit = 10;
+		
+		// Post subscribe
+		let query = { };
+		
+		let options =
+		{
+			limit: Config.limit.get()
+		};
 
-		const postReady = _.all([Meteor.subscribe('releasedPostsList')], (handle) =>
+		console.log('Layout globalLimit: ', Config.limit.get());
+
+		let postReady = _.all([Meteor.subscribe('releasedPostsList', query, { limit: Config.limit.get()})], (handle) =>
 			handle.ready());
+
+		console.log('systemReady: ', systemReady);
+		console.log('categoryReady: ', categoryReady);
+		console.log('postReady: ', postReady);
 
 		return {
 			systemReady,

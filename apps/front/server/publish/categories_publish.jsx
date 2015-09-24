@@ -8,6 +8,8 @@ Meteor.publish('releasedCategoriesList', function() {
 
 	var categories = Categories.find({ state: 'ON' }, { sort: { seq: 1 }});
 
+	console.log('releasedCategoriesList publis');
+
 	return categories;
 });
 

@@ -8,7 +8,12 @@
 */
 
 Meteor.publish('releasedPostsList', function(query, options) {
-	return Posts.find();
+	let limit = options.limit;
+	console.log('releasedPostsList publis');
+
+	Meteor._sleepForMs(2000);
+
+	return Posts.find(query, { limit });
 	//check(query, Match.ObjectIncluding({
 	//	"categoryId": Match.Optional(String)
 	//}));

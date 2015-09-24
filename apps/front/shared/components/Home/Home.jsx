@@ -1,4 +1,9 @@
 Shine.Home = React.createClass({
+
+	addLimit() {
+		Config.limit.set(Config.limit.get() + Config.increment);
+	},
+
   render() {
 	  const { Link } = ReactRouter;
 
@@ -25,18 +30,20 @@ Shine.Home = React.createClass({
 		    <div className="row-fluid">
 			    <div className="block-group">
 				    <ul className="block-list">
-					    { this.props.postReady ?
-						    this.props.postList.map( (post) =>
-							    <Shine.PostItem key={post._id} {...post} />)
-						    : "없다" }
+					    {this.props.postList.map( (post) =>
+					    <Shine.PostItem key={post._id} {...post} />)}
 				    </ul>
 			    </div>
 		    </div>
-
-
-		    <div className="row-fluid">
-			    <a className="btn btn-deep-app btn-block load-more">더보기</a>
-		    </div>
+		    { this.props.postReady ?
+			    <div className="row-fluid">
+			      <button className="btn btn-deep-app btn-block load-more"
+			              onClick={this.addLimit}>더보기</button>
+		      </div>
+			    :
+			    <div class="list-spinner-wrapper">
+			      <SpinnerView />
+		      </div> }
 	    </article>
     )
   }

@@ -34,8 +34,9 @@ shinejs:accounts-ui
 shinejs:alerts
 shinejs:i18n
 percolate:momentum
-sacha:spin
 
 reywood:publish-composite
 tmeasday:publish-counts
 momentjs:moment
+reactive-var
+dpraburaj:react-spin

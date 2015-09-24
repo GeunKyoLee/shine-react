@@ -3,7 +3,11 @@
 // Global namespaces
 Shine = {};
 Mixins = {};
+Config = {};
 
+// Set default value for Post list pagination
+Config.limit = new ReactiveVar(10);
+Config.increment = 10;
 
 Meteor.startup(function () {
 
@@ -35,72 +39,35 @@ Meteor.startup(function () {
 	
 	if (Posts.find().count() === 0) {
 		const now = new Date();
-		const posts = [
-			{
-				"categoryId": "qna",
-				"title": "#1. React 따라하기",
-				"content": {
-					"version": "0.0.1",
-					"type": "markdown",
-					"data": "반갑습니다."
-				},
-				"count": {
-					"hits": 0,
-					"likes": 0,
-					"comments": 0
-				},
-				"author": {
-					"username": "DavidSunny",
-					"name": null
-				},
-				"state": "PUBLISHED",
-				"createdAt": now,
-				"updatedAt": now
-			},
+		const posts = [];
 
-			{
-				"categoryId": "qna",
-				"title": "#2. React 컴포넌트",
+		const category = ['techtips', 'news', 'lectures'];
+
+
+		for (let i=1; i<=100; i++) {
+			let random = parseInt(Math.random() * category.length);
+			posts.push({
+				"categoryId": `${category[random]}`,
+				"title": `${i}. Test ${i}`,
 				"content": {
-					"version": "0.0.1",
+				"version": "0.0.1",
 					"type": "markdown",
 					"data": "반갑습니다."
-				},
-				"count": {
-					"hits": 0,
-					"likes": 0,
-					"comments": 0
-				},
-				"author": {
-					"username": "DavidSunny",
-					"name": null
-				},
-				"state": "PUBLISHED",
-				"createdAt": now,
-				"updatedAt": now
 			},
-			{
-				"categoryId": "qna",
-				"title": "#3. React 따라하기",
-				"content": {
-					"version": "0.0.1",
-					"type": "markdown",
-					"data": "반갑습니다."
-				},
 				"count": {
-					"hits": 0,
+				"hits": 0,
 					"likes": 0,
 					"comments": 0
-				},
+			},
 				"author": {
-					"username": "DavidSunny",
+				"username": "DavidSunny",
 					"name": null
-				},
+			},
 				"state": "PUBLISHED",
 				"createdAt": now,
 				"updatedAt": now
-			}
-		]
+			});
+		}
 
 		posts.forEach(function (post) {
 			Posts.insert(post);
