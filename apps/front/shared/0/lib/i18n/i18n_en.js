@@ -4,6 +4,7 @@ I18n_data_en = {
 
   "title_home"                    : "Home",
   "title_blogs"                   : "Blogs",
+  "title_myworks"                 : "My Works",
   "title_my_blogs"                : "My Blogs",
   "title_blog_new"                : "New Blog",
   "title_blog_edit"               : "Edit Blog",
