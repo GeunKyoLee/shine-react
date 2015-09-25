@@ -1,25 +1,63 @@
 Shine.PostItem = React.createClass({
 
   mixins: [ReactMeteorData, Mixins.accounts, Mixins.utils],
+  getInitialState() {
+    return {
+      canLike: !! this.props.likes,
+    }
+  },
 
   getMeteorData() {
-    let access = false;
 
+    /* Reactive 데이터가 아닌데 MeteorData를 써야하나? */
+    let canEdit = false;
     let currentUser = Meteor.user();
+
 
     if (currentUser) {
       try {
-        access = postAccess('update', currentUser, this.props.post._id);
+        canEdit = postAccess('update', currentUser, this.props.post._id);
       } catch (ex) {
 
       }
     }
 
     return {
-      access,
+      canEdit,
       currentUser
     }
   },
+
+  onLikeInsert(e) {
+    e.preventDefault();
+
+    if (!this.data.currentUser) {
+      console.log('로그인 화면으로 이동 시켜줘');
+      return;
+    }
+
+    Meteor.call('postLikeInsert', this.props.post._id, (error) => {
+      if (error) {
+        Alerts.notify('error', error.reason);
+      }
+
+      this.setState({ canLike : false })
+    });
+  },
+
+  onLikeRemove(e) {
+    e.preventDefault();
+
+    Meteor.call('postLikeRemove', this.props.post._id, (error) => {
+      if (error) {
+        Alerts.notify('error', error.reason);
+      }
+
+      this.setState({ canLike : true })
+    });
+  },
+
+
 
   render() {
     console.log('this.props.post: ', this.props.post);
@@ -30,12 +68,12 @@ Shine.PostItem = React.createClass({
       )
     }
 
+    const { Link } = ReactRouter;
+
     let Editable;
 
     let { title, categoryId, author, createdAt } = this.props.post;
     let { likes, comments } = this.props.post.count;
-
-    let canLike = this.props.likes;
 
     let categoryName = Categories.findOne(this.props.post.categoryId).title;
 
@@ -43,11 +81,11 @@ Shine.PostItem = React.createClass({
     let content = this.props.post.content.data;
 
 
-    if (this.data.access) {
+    if (this.data.canEdit) {
       Editable = Shine.createClazz(
         <header>
           <div className="btn-toolbar pull-right">
-            <a className="btn btn-primary" href="/postEdit">Edit</a>
+            <Link className="btn btn-primary" to="/postEdit">Edit</Link>
             <button type="button" id="remove" className="btn btn-danger">Delete</button>
           </div>
         </header>
@@ -55,6 +93,25 @@ Shine.PostItem = React.createClass({
     } else {
       Editable = Shine.createClazz(
         <header></header>
+      )
+    }
+
+    let Likable;
+    if (this.state.canLike) {
+      Likable = Shine.createClazz(
+        <button
+          onClick={this.onLikeInsert}
+          type="button"
+          id="like"
+          className="btn btn-danger">Like</button>
+      )
+    } else {
+      Likable = Shine.createClazz(
+        <button
+          onClick={this.onLikeRemove}
+          type="button"
+          id="unlike"
+          className="btn btn-default">Unlike</button>
       )
     }
 
@@ -70,10 +127,10 @@ Shine.PostItem = React.createClass({
           </h3>
           <div className="info">
             <span className="category">
-              <a href={`/category/${categoryId}`}>{categoryName}</a></span>
+              <Link to={`/category/${categoryId}`}>{categoryName}</Link></span>
 		      <span className="author">
 		        <i>by </i>
-            <a href="/accountView">{ this.userDisplayName(author) }</a>
+            <Link to="/accountView">{ this.userDisplayName(author) }</Link>
 		      </span>
             <span className="date"> { this.momentFromNow(createdAt) } </span>
           </div>
@@ -84,11 +141,7 @@ Shine.PostItem = React.createClass({
 
         <div id="snswWrap">
           <div className="sns">
-              #if like  
-            <button type="button" id="unlike" className="btn btn-default">Unlike</button>
-              else  
-            <button type="button" id="like" className="btn btn-danger">Like</button>
-              /if  
+            <Likable />
           </div>
         </div>
 
