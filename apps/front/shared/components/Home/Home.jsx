@@ -34,25 +34,29 @@ Shine.Home = React.createClass({
               { (() => {
                 if (Config.limit.get() == 10) {
                   if (this.props.postReady) {
-                    return this.props.postList.map((post) =>
-	                    <Shine.PostList key={post._id} {...post} />)
+                    return (
+                      this.props.postList.map((post) =>
+                      <Shine.PostList key={post._id} {...post} />)
+                    )
                   } else {
-                    return (<div className="spinner-wrapper">
-                              <SpinnerView />
-                            </div>)
+                    return (
+                      <Shine.Spinner />
+                    )
                   }
                 } else {
-                  return this.props.postList.map((post) =>
-	                  <Shine.PostList key={post._id} {...post} />)
+                  return (
+                    this.props.postList.map((post) =>
+	                    <Shine.PostList key={post._id} {...post} />)
+                  )
                 }
               })() }
 
               { (() => {
                 if (Config.limit.get() > 10) {
                   if (!this.props.postReady) {
-                    return (<div className="list-spinner-wrapper">
-                              <SpinnerView />
-                            </div>)
+                    return (
+                      <Shine.LoadMoreSpinner />
+                    )
                   }
                 }
               })()}

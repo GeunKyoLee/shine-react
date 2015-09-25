@@ -14,9 +14,9 @@ Meteor.startup(function () {
 			    </Route>
 			    <Route path="category" component={Shine.Home}>
 				    <Route path=":categories">
-              <Route path=":postId" />
             </Route>
 			    </Route>
+          <Route path="category/:categories/:postId" component={Shine.PostItemLoader}/>
 		    </Route>
 		    <Redirect from="/" to="/home" />
 	    </Router>
