@@ -44,11 +44,6 @@ Meteor.publishComposite('releasedPostView', function(postId) {
     children: [
       {
         find: function(post) {
-          return Categories.find({ _id: post.categoryId });
-        }
-      },
-      {
-        find: function(post) {
           return PostLikes.find({ 'user._id': this.userId, postId: post._id });
         }
       }

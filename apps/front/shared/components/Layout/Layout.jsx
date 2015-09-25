@@ -16,41 +16,12 @@ Shine.DefaultLayout = React.createClass({
 		let categoryReady = _.all([Meteor.subscribe('releasedCategoriesList')], (handle) =>
 			handle.ready());
 
-		
-		// Post subscribe
-		let query = { };
-		
-		let options =
-		{
-			limit: Config.limit.get()
-		};
-
-
-		console.log('Layout globalLimit: ', Config.limit.get());
-
-		let postReady = _.all([Meteor.subscribe('releasedPostsList',
-			query, { limit: Config.limit.get()})], (handle) =>
-			handle.ready());
-
-		let postAllCount;
-
-		if (postReady) {
-			postAllCount = Counts.get('releasedPostsListCount');
-		}
-
-		console.log('systemReady: ', systemReady);
-		console.log('categoryReady: ', categoryReady);
-		console.log('postReady: ', postReady);
-
 		return {
 			systemReady,
 			categoryReady,
-			postReady,
-			postAllCount,
 			currentUser: Meteor.user(),
 			siteName: Systems.find({_id: 'siteName'}).fetch(),
 			categoryList: Categories.find({state: 'ON'}, {sort: {seq: 1}}).fetch(),
-			postList: Posts.find().fetch(),
 		}
 	},
 
@@ -66,9 +37,6 @@ Shine.DefaultLayout = React.createClass({
 					/>
 				<Shine.DefaultBody
 					children={this.props.children}
-					postReady={this.data.postReady}
-					postList={this.data.postList}
-					postAllCount={this.data.postAllCount}
 					/>
 				<Shine.DefaultAsideLeft
 					categoryReady={this.data.categoryReady}

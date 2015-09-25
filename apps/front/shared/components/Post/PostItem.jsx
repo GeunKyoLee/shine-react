@@ -37,14 +37,7 @@ Shine.PostItem = React.createClass({
 
     let canLike = this.props.likes;
 
-    let categoryName;
-
-    if (this.props.category) {
-      categoryName = this.props.category.title;
-    } else {
-      categoryName = categoryId;
-    }
-
+    let categoryName = Categories.findOne(this.props.post.categoryId).title;
 
     let postId = this.props.post._id;
     let content = this.props.post.content.data;

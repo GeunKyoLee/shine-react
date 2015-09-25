@@ -1,7 +1,38 @@
 Shine.Home = React.createClass({
+  mixins: [ReactMeteorData],
+
+  getMeteorData() {
+    // Post subscribe
+    let query = { };
+
+    let options =
+    {
+      limit: Config.limit.get()
+    };
+
+    let postHandle = Meteor.subscribe('releasedPostsList', query, options);
+    let postReady = postHandle.ready();
+
+    let postAllCount;
+
+    if (postReady) {
+      postAllCount = Counts.get('releasedPostsListCount');
+    }
+
+    return {
+      postHandle,
+      postReady,
+      postAllCount,
+      postList: Posts.find().fetch(),
+    }
+  },
 
   addLimit() {
     Config.limit.set(Config.limit.get() + Config.increment);
+  },
+
+  componentWillUnmount() {
+    //this.data.postHandle.stop();
   },
 
   render() {
@@ -33,9 +64,9 @@ Shine.Home = React.createClass({
 
               { (() => {
                 if (Config.limit.get() == 10) {
-                  if (this.props.postReady) {
+                  if (this.data.postReady) {
                     return (
-                      this.props.postList.map((post) =>
+                      this.data.postList.map((post) =>
                       <Shine.PostList key={post._id} {...post} />)
                     )
                   } else {
@@ -45,7 +76,7 @@ Shine.Home = React.createClass({
                   }
                 } else {
                   return (
-                    this.props.postList.map((post) =>
+                    this.data.postList.map((post) =>
 	                    <Shine.PostList key={post._id} {...post} />)
                   )
                 }
@@ -53,7 +84,7 @@ Shine.Home = React.createClass({
 
               { (() => {
                 if (Config.limit.get() > 10) {
-                  if (!this.props.postReady) {
+                  if (!this.data.postReady) {
                     return (
                       <Shine.LoadMoreSpinner />
                     )

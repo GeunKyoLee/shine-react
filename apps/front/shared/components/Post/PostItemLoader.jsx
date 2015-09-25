@@ -8,7 +8,6 @@ Shine.PostItemLoader = React.createClass({
     return {
       postLoading: ! postHandle.ready(),
       post: Posts.findOne(this.props.params.postId),
-      category: Categories.findOne(),
       likes: PostLikes.findOne(),
     }
   },
