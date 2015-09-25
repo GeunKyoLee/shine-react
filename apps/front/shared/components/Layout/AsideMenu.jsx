@@ -33,7 +33,7 @@ Shine.AsideMenu = React.createClass({
 			    <Shine.CategoryItem
 				    key={category._id}
 				    _id={category._id}
-				    title={category.title} />) : ''}
+				    title={category.title} />) : null}
 
 
 	    </div>

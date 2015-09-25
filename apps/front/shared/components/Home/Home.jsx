@@ -127,7 +127,7 @@ Shine.Home = React.createClass({
 			      </button>
 		      </div>
 		      :
-		      ""
+		      null
 	      }
 
       </article>
