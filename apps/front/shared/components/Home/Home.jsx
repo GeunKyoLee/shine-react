@@ -35,7 +35,7 @@ Shine.Home = React.createClass({
                 if (Config.limit.get() == 10) {
                   if (this.props.postReady) {
                     return this.props.postList.map((post) =>
-	                    <Shine.PostItem key={post._id} {...post} />)
+	                    <Shine.PostList key={post._id} {...post} />)
                   } else {
                     return (<div className="spinner-wrapper">
                               <SpinnerView />
@@ -43,7 +43,7 @@ Shine.Home = React.createClass({
                   }
                 } else {
                   return this.props.postList.map((post) =>
-	                  <Shine.PostItem key={post._id} {...post} />)
+	                  <Shine.PostList key={post._id} {...post} />)
                 }
               })() }
 

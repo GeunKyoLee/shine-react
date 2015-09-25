@@ -9,15 +9,15 @@
 //  }
 //];
 //
-//// server routing
-//const serverRouter = [
-//  { path: '/',
-//    component: Shine.DefaultLayout,
-//    childRoutes: [
-//      { path: '/accounts', component: Shine.Account }
-//    ]
-//  }
-//];
+// server routing
+const serverRouter = [
+  { path: '/',
+    component: Shine.DefaultLayout,
+    childRoutes: [
+      { path: '/accounts', component: Shine.Account }
+    ]
+  }
+];
 
 //
 //Meteor.startup(function() {
@@ -39,13 +39,13 @@
 
 //https://github.com/rackt/react-router/blob/master/docs/guides/basics/RouteConfiguration.md
 
-const {Router, Route, IndexRoute} = ReactRouter;
-
-const history = ReactRouter.history.useQueries(ReactRouter.history.createHistory)()
-
 Meteor.startup(function () {
 
+  const {Router, Route, IndexRoute} = ReactRouter;
+
   if (Meteor.isClient) {
+    const history = ReactRouter.history.useQueries(ReactRouter.history.createHistory)();
+
     React.render((
       <Router history={history}>
         <Route path='/' component={Shine.DefaultLayout} >
@@ -54,8 +54,6 @@ Meteor.startup(function () {
       </Router>
     ), document.body); //document.getElementById('#container'));
   } else {
-    const { IndexRoute, Route } = ReactRouter;
-
     ReactRouterSSR.Run(serverRouter);
   }
 });
