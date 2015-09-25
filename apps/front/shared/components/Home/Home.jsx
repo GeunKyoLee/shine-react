@@ -1,6 +1,31 @@
 Shine.Home = React.createClass({
   mixins: [ReactMeteorData],
 
+  /**
+   * 발생시점 : 최초 렌더링 직전에 called
+   * 발생장소 : client or server
+   */
+  componentWillMount() {
+    console.log('Home Component onCreated');
+  },
+
+  /**
+   * 발생시점 : 최초 렌더링 직후 called
+   * 발생장소 : only client
+   * React.findDOMNode(this)로 접근 가능
+   */
+  componentDidMount() {
+    console.log('Home Component onRendered');
+  },
+
+  /**
+   * 발생시점 : 컴포넌트가 DOM에서 마운트 해제 되기 직전에 called
+   */
+  componentWillUnmount() {
+    console.log('Home Component onDestroyed');
+    //this.data.postHandle.stop();
+  },
+
   getMeteorData() {
     // Post subscribe
     let query = { };
@@ -23,7 +48,7 @@ Shine.Home = React.createClass({
       postHandle,
       postReady,
       postAllCount,
-      postList: Posts.find().fetch(),
+      postList: Posts.find({}, { sort: { createdAt: -1 } }).fetch(),
     }
   },
 
@@ -31,14 +56,10 @@ Shine.Home = React.createClass({
     Config.limit.set(Config.limit.get() + Config.increment);
   },
 
-  componentWillUnmount() {
-    //this.data.postHandle.stop();
-  },
-
   render() {
     const { Link } = ReactRouter;
     
-    console.log('this.props.postAllCount: ', this.data.postAllCount);
+    console.log('post count: ', this.data.postAllCount);
     console.log('Config.limit.get(): ', Config.limit.get());
 
     return (
