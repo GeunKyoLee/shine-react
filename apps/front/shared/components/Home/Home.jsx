@@ -37,6 +37,9 @@ Shine.Home = React.createClass({
 
   render() {
     const { Link } = ReactRouter;
+    
+    console.log('this.props.postAllCount: ', this.data.postAllCount);
+    console.log('Config.limit.get(): ', Config.limit.get());
 
     return (
       <article className="page container-fluid shine-wrapper">
@@ -96,7 +99,7 @@ Shine.Home = React.createClass({
           </div>
         </div>
 
-	      { this.props.postAllCount > Config.limit.get() ?
+	      { this.data.postAllCount > Config.limit.get() ?
 		      <div className="row-fluid">
 			      <button className="btn btn-deep-app btn-block load-more"
 			              onClick={this.addLimit}>더보기
