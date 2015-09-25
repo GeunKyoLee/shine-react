@@ -18,12 +18,6 @@ Shine.DefaultHeader = React.createClass({
 		console.log('onDestroyed');
 	},
 
-	toggleAside() {
-		if (Meteor.isClient){
-			Shine.DefaultAside.toggle('left');
-		}
-	},
-
 	render() {
 		const { Link } = ReactRouter;
 		return (
@@ -35,7 +29,7 @@ Shine.DefaultHeader = React.createClass({
 					<button
 						type="button"
 						className="btn btn-header"
-						onClick={this.toggleAside}><i className="fa fa-2x fa-bars"></i></button>
+						onClick={this.props.toggleAside}><i className="fa fa-2x fa-bars"></i></button>
 				</div>
 			</header>
 		)
