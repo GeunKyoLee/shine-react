@@ -9,10 +9,10 @@ Meteor.startup(function () {
 	    <Router history={browserHistory}>
 		    <Route component={Shine.DefaultLayout}>
 			    <Redirect from="home" to="/home/newest" />
-			    <Route path="home" component={Shine.Home}>
+			    <Route path="home" component={Shine.HomeLoader}>
 				    <Route path=":order"/>
 			    </Route>
-			    <Route path="category" component={Shine.Home}>
+			    <Route path="category" component={Shine.HomeLoader}>
 				    <Route path=":categories">
             </Route>
 			    </Route>
