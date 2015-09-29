@@ -85,5 +85,64 @@ Mixins.accounts = {
 				return React.DOM.span({className: "avatar-initials"}, initial);
 			}
 		}
-	}
+	},
+
+  /**
+   * check access permission
+   *
+   * @param action
+   * @param user
+   * @param ticket
+   */
+  postAccess(action, user, ticket) {
+    var categoryPermission = function(user, categoryId) {
+      var category = Categories.findOne(categoryId);
+
+      if (! category) {
+        throw new Meteor.Error(ERROR_CODE_SECURITY, 'error_invalid_input');
+      }
+      if (! categoryPermitted(category, user, 'write')) {
+        throw new Meteor.Error(ERROR_CODE_SECURITY, 'error_access_denied');
+      }
+      return true;
+    };
+
+    var postPermission = function(user, postId) {
+      var post = Posts.findOne({ _id: postId });
+
+      if (! post) {
+        throw new Meteor.Error(ERROR_CODE_SECURITY, 'error_invalid_input');
+      }
+
+      var category = Categories.findOne(post.categoryId);
+
+      if (! category) {
+        throw new Meteor.Error(ERROR_CODE_SECURITY, 'error_invalid_input');
+      }
+      if (! categoryPermitted(category, user, 'write')) {
+        throw new Meteor.Error(ERROR_CODE_SECURITY, 'error_access_denied');
+      }
+      if (post.author._id !== user._id) {
+        throw new Meteor.Error(ERROR_CODE_SECURITY, "error_access_denied");
+      }
+      return true;
+    };
+
+    // check 'admin' role
+    if (user && Roles.userIsInRole(user._id, [ 'ROLE_ADMIN' ]))
+      return true;
+
+    switch (action) {
+      case 'insert':
+        return categoryPermission(user, ticket);
+
+      case 'update':
+        return postPermission(user, ticket);
+
+      case 'remove':
+        return postPermission(user, ticket);
+    }
+
+    return false;
+  }
 }
