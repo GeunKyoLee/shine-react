@@ -1,5 +1,5 @@
 Shine.AsideAccount = React.createClass({
-	mixins: [Mixins.accounts],
+	mixins: [Mixins.Accounts],
 
 	propTypes: {
 		showLogin: React.PropTypes.func

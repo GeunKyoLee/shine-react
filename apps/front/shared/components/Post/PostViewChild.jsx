@@ -1,8 +1,9 @@
+const { Link } = ReactRouter;
+const { Accounts, Utils } = Mixins;
+
 Shine.PostViewChild = React.createClass({
-  mixins: [Mixins.accounts, Mixins.utils],
 
   render() {
-    const { Link } = ReactRouter;
 
     let { title, categoryId, author, createdAt } = this.props.posts;
     let { likes, comments } = this.props.posts.count;
@@ -21,9 +22,9 @@ Shine.PostViewChild = React.createClass({
               <Link to={`/category/${categoryId}`}>{categoryName}</Link></span>
 		      <span className="author">
 		        <i>by </i>
-            <Link to="/accountView">{ this.userDisplayName(author) }</Link>
+            <Link to="/accountView">{ Accounts.userDisplayName(author) }</Link>
 		      </span>
-          <span className="date"> { this.momentFromNow(createdAt) } </span>
+          <span className="date"> { Utils.momentFromNow(createdAt) } </span>
         </div>
         <section id="contentWrapper" className="markdown block-wrapper">
           <div> {content} </div>

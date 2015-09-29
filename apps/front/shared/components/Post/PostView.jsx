@@ -1,5 +1,7 @@
+const { Link, History } = ReactRouter;
+
 Shine.PostView = React.createClass({
-  
+  mixins: [ History ],
   render() {
 
     return (
@@ -18,13 +20,15 @@ Shine.PostView = React.createClass({
 
   _editable() {
     if (this.props.canEdit()) {
-      const { Link } = ReactRouter;
 
       return (
         <header>
           <div className="btn-toolbar pull-right">
             <Link className="btn btn-primary" to="/postEdit">Edit</Link>
-            <button type="button" id="remove" className="btn btn-danger">Delete</button>
+            <button
+              onClick={this._deletePost}
+              type="button"
+              className="btn btn-danger">Delete</button>
           </div>
         </header>
       )
@@ -72,6 +76,35 @@ Shine.PostView = React.createClass({
     Meteor.call('postLikeRemove', this.props.posts._id, (error) => {
       if (error) Alerts.notify('error', error.reason);
     });
+  },
+
+  _deletePost(e) {
+    e.preventDefault();
+
+    Alerts.dialog('confirm', `정말 ${this.props.posts.title}을 삭제하시겠습니까?`, (confirm) => {
+      if (confirm) {
+        Meteor.call('/posts/delete', this.props.posts._id, function(error) {
+          if (error) {
+            Alerts.notify('error', error.message);
+          } else {
+            Alerts.notify('success', 'post_remove_success');
+            history.go(-1);
+          }
+        });
+      } else {
+        // https://github.com/rackt/react-router/blob/master/docs/API.md
+
+        // this.history.go(-1)
+        // this.history.goBack()
+        // this.history.goForward()
+        // this.history.pushState(null, '/category/lectures')
+
+        // Go to bar without creating a new history entry
+        // /category/lectures/edit 이런식...
+        // this.history.replaceState(null, 'edit')
+      }
+    });
+
   }
 
 });

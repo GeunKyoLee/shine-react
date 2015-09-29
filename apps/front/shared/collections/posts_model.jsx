@@ -159,18 +159,20 @@ Meteor.methods({
 		return Posts.update({ _id: postId }, { $set: data });
 	},
 
-	postRemove: function(postId) {
-		check(postId, String);
+  '/posts/delete': function (postId) {
+    check(postId, String);
 
-		// check permission
-		postAccess('remove', Meteor.user(), postId);
+    // check permission
+    // todo : Resolve role undefined error
+    //Mixins.Accounts.postAccess('remove', Meteor.user(), postId);
 
-		var post = Posts.findOne({ _id: postId });
-		if ( post.author._id !== this.userId ) {
-			throw new Meteor.Error(403, "error_access_denied");
-		}
+    var post = Posts.findOne({ _id: postId });
+    if ( post.author._id !== this.userId ) {
+      throw new Meteor.Error(403, "error_access_denied");
+    }
 
-		// remove the blog
-		return Posts.remove({ _id: postId });
-	}
+    // remove the post
+    return Posts.remove({ _id: postId });
+  }
+
 });

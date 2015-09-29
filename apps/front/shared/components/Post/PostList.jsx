@@ -1,5 +1,5 @@
 Shine.PostList = React.createClass({
-	mixins: [Mixins.accounts, Mixins.utils],
+	mixins: [Mixins.Accounts, Mixins.Utils],
 
 	render() {
 

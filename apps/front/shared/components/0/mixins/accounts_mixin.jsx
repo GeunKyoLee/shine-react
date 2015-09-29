@@ -1,5 +1,5 @@
 
-Mixins.accounts = {
+Mixins.Accounts = {
 	userDisplayName(user) {
 		if (! user) return '';
 
