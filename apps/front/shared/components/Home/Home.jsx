@@ -42,7 +42,7 @@ Shine.Home = React.createClass({
   render() {
     let LoadMoreLoading;
 
-    console.log('this.state.loadMoreReady', this.state.loadMoreReady);
+
     if (this.state.loadMoreReady) {
       if (this.props.postAllCount > Config.limit.get()) {
         LoadMoreLoading = Shine.createClazz(

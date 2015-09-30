@@ -28,6 +28,7 @@ Shine.HomeLoader = React.createClass({
   },
 
   render() {
+    
     if (this.data.homeLoading) {
       return (
         <Shine.Spinner />
