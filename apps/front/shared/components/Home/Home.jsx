@@ -1,67 +1,67 @@
 Shine.Home = React.createClass({
   mixins: [ReactMeteorData],
 
-  /**
-   * 발생시점 : 최초 렌더링 직전에 called
-   * 발생장소 : client or server
-   */
-  componentWillMount() {
-    console.log('Home Component onCreated');
-  },
-
-  /**
-   * 발생시점 : 최초 렌더링 직후 called
-   * 발생장소 : only client
-   * React.findDOMNode(this)로 접근 가능
-   */
-  componentDidMount() {
-    console.log('Home Component onRendered');
-  },
-
-  /**
-   * 발생시점 : 컴포넌트가 DOM에서 마운트 해제 되기 직전에 called
-   */
-  componentWillUnmount() {
-    console.log('Home Component onDestroyed');
-    //this.data.postHandle.stop();
+  getInitialState() {
+    return {
+      loadMoreReady: true,
+    }
   },
 
   getMeteorData() {
     // Post subscribe
-    let query = { };
+    if (Config.limit.get() > Config.increment) {
+      let query = {};
 
-    let options =
-    {
-      limit: Config.limit.get()
-    };
+      let options = {
+        limit: Config.limit.get()
+      };
 
-    let postHandle = Meteor.subscribe('releasedPostsList', query, options);
-    let postReady = postHandle.ready();
+      let loadMoreHandle = Meteor.subscribe('releasedPostsList', query, options);
 
-    let postAllCount;
+      //this.setState({ loadMoreReady: loadMoreHandle.ready() });
 
-    if (postReady) {
-      postAllCount = Counts.get('releasedPostsListCount');
+      return {
+        loadMoreHandle,
+      }
     }
 
-    return {
-      postHandle,
-      postReady,
-      postAllCount,
-      postList: Posts.find({}, { sort: { createdAt: -1 } }).fetch(),
-    }
+    return {}
+
+  },
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ loadMoreReady: this.data.loadMoreHandle.ready()});
   },
 
   addLimit() {
+    this.setState({ loadMoreReady: false });
     Config.limit.set(Config.limit.get() + Config.increment);
+
   },
 
   render() {
-    const { Link } = ReactRouter;
-    
-    console.log('post count: ', this.data.postAllCount);
-    console.log('Config.limit.get(): ', Config.limit.get());
+    let LoadMoreLoading;
 
+    console.log('this.state.loadMoreReady', this.state.loadMoreReady);
+    if (this.state.loadMoreReady) {
+      if (this.props.postAllCount > Config.limit.get()) {
+        LoadMoreLoading = Shine.createClazz(
+          <div className="row-fluid">
+            <button className="btn btn-deep-app btn-block load-more"
+                    onClick={ this.addLimit }>더보기
+            </button>
+          </div>
+        )
+      } else {
+        LoadMoreLoading = Shine.createClazz(
+          <span></span>
+        )
+      }
+    } else {
+      LoadMoreLoading = Shine.LoadMoreSpinner;
+    }
+
+    const { Link } = ReactRouter;
     return (
       <article className="page container-fluid shine-wrapper">
         <div className="row-fluid">
@@ -85,51 +85,15 @@ Shine.Home = React.createClass({
         <div className="row-fluid">
           <div className="block-group">
             <ul className="block-list">
-
-              { (() => {
-                if (Config.limit.get() == 10) {
-                  if (this.data.postReady) {
-                    return (
-                      this.data.postList.map((post) =>
-                      <Shine.PostList key={post._id} {...post} />)
-                    )
-                  } else {
-                    return (
-                      <Shine.Spinner />
-                    )
-                  }
-                } else {
-                  return (
-                    this.data.postList.map((post) =>
-	                    <Shine.PostList key={post._id} {...post} />)
-                  )
-                }
-              })() }
-
-              { (() => {
-                if (Config.limit.get() > 10) {
-                  if (!this.data.postReady) {
-                    return (
-                      <Shine.LoadMoreSpinner />
-                    )
-                  }
-                }
-              })()}
-
+              {
+                this.props.post.map((post) =>
+                  <Shine.PostList key={post._id} {...post} />)
+              }
             </ul>
           </div>
         </div>
 
-	      { this.data.postAllCount > Config.limit.get() ?
-		      <div className="row-fluid">
-			      <button className="btn btn-deep-app btn-block load-more"
-			              onClick={this.addLimit}>더보기
-			      </button>
-		      </div>
-		      :
-		      null
-	      }
-
+        <LoadMoreLoading />
       </article>
     )
   }
