@@ -3,11 +3,11 @@
  */
 
 Shine.DefaultHeader = React.createClass({
-	mixins: [Mixins.aside],
+	mixins: [Mixins.Aside],
 
 	getInitialState() {
 		return {
-			siteName : 'Loading..',
+			siteName : 'S H I N E..loading',
 		}
 	},
 
@@ -30,7 +30,7 @@ Shine.DefaultHeader = React.createClass({
 					<i className="fa fa-2x fa-bell"></i>
 				</button>);
 		} else {
-			IsNotification = Shine.createClazz(<div></div>);
+			IsNotification = Shine.createClazz(null);
 		}
 
 

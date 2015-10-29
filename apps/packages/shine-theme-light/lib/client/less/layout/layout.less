@@ -107,16 +107,25 @@ body {
   background: @main-bg;
 }
 
-#container > main#content {
-  position: absolute;
-  top: @header-height;
-  bottom: @footer-height;
-  left: 0;
-  right: 0;
+//#container > main#content {
+//  position: absolute;
+//  top: @header-height;
+//  bottom: @footer-height;
+//  left: 0;
+//  right: 0;
+//  background: @main-bg;
+//  .mobile({
+//    top: @header-height-mobile;
+//  });
+//}
+
+#container > footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: @footer-height;
+  z-index: @zindex-navbar-fixed;
   background: @main-bg;
-  .mobile({
-    top: @header-height-mobile;
-  });
 }
 
 /*====================================================
@@ -143,9 +152,12 @@ body {
 #container > aside.left {
   left: -@aside-left-width;
   width: @aside-left-width;
-  padding: 5px;
   background: @aside-left-bg;
-  height: 100%;
+  padding: 5px;
+  .mobile({
+    left: -100%;
+    width: 100%;
+  });
 }
 
 #container > aside.right {
@@ -164,8 +176,7 @@ body {
 
 #container.aside-left-on {
   > main#content {
-    left: @aside-left-width;
-    right: -@aside-left-width;
+    margin-left: @aside-left-width;
   }
 
   > aside.left {
@@ -176,8 +187,7 @@ body {
 
 #container.aside-left-fixed {
   > main#content {
-    left: @aside-left-width;
-    right: 0;
+    margin-left: @aside-left-width;
   }
 
   > aside.left {
@@ -240,7 +250,7 @@ body {
       .fa-chevron-right {
         display: none;
       }
-      &:hover {
+      &:hover, &.active {
         color:@white;
         background: @app-color;
         .fa-chevron-right {

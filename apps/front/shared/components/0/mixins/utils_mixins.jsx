@@ -1,4 +1,4 @@
-Mixins.utils = {
+Mixins.Utils = {
 	momentFormat(time, format) {
 		return (time) ? moment(time).format(format) : "";
 	},

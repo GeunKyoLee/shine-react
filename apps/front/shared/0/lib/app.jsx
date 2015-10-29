@@ -7,7 +7,7 @@ Config = {};
 
 // Set default value for Post list pagination
 Config.limit = new ReactiveVar(10);
-Config.increment = 10;
+Config.increment = 20;
 
 Meteor.startup(function () {
 

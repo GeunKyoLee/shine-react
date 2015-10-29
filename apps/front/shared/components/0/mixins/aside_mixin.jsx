@@ -3,7 +3,7 @@
  * Created by ProgrammingPearls on 15. 8. 7..
  */
 
-Mixins.aside = {
+Mixins.Aside = {
 	_pinKey(position) {
 		return (position && position.toLowerCase() === 'right') ?
 			'aside-pin-right' : 'aside-pin-left';

@@ -8,10 +8,9 @@
 */
 
 Meteor.publish('releasedPostsList', function(query, options) {
-	let limit = options.limit;
-	console.log('releasedPostsList publish');
+  console.log('releasedPostsList publish');
 
-	Meteor._sleepForMs(1000);
+	let limit = options.limit;
 
 	Counts.publish(this, 'releasedPostsListCount', Posts.find(query),
 		{ noReady: true });

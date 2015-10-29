@@ -7,7 +7,6 @@ Shine.DefaultLayout = React.createClass({
 	getMeteorData() {
 		if (Meteor.isServer) return {};
 
-
 		// Systems subscribe
 		let systemReady = _.all([Meteor.subscribe('systemView')], (handle) =>
 			handle.ready());
@@ -27,6 +26,12 @@ Shine.DefaultLayout = React.createClass({
 
 	render() {
 		console.log('layout params: ', this.props.params);
+
+    if (! this.data.systemReady || ! this.data.categoryReady) {
+      return (
+        <Shine.Spinner />
+      )
+    }
 
 		return (
 			<div id="container">

@@ -1,43 +1,67 @@
 Shine.Home = React.createClass({
   mixins: [ReactMeteorData],
 
+  getInitialState() {
+    return {
+      loadMoreReady: true,
+    }
+  },
+
   getMeteorData() {
     // Post subscribe
-    let query = { };
+    if (Config.limit.get() > Config.increment) {
+      let query = {};
 
-    let options =
-    {
-      limit: Config.limit.get()
-    };
+      let options = {
+        limit: Config.limit.get()
+      };
 
-    let postHandle = Meteor.subscribe('releasedPostsList', query, options);
-    let postReady = postHandle.ready();
+      let loadMoreHandle = Meteor.subscribe('releasedPostsList', query, options);
 
-    let postAllCount;
+      //this.setState({ loadMoreReady: loadMoreHandle.ready() });
 
-    if (postReady) {
-      postAllCount = Counts.get('releasedPostsListCount');
+      return {
+        loadMoreHandle,
+      }
     }
 
-    return {
-      postHandle,
-      postReady,
-      postAllCount,
-      postList: Posts.find().fetch(),
-    }
+    return {}
+
+  },
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ loadMoreReady: this.data.loadMoreHandle.ready()});
   },
 
   addLimit() {
+    this.setState({ loadMoreReady: false });
     Config.limit.set(Config.limit.get() + Config.increment);
-  },
 
-  componentWillUnmount() {
-    //this.data.postHandle.stop();
   },
 
   render() {
-    const { Link } = ReactRouter;
+    let LoadMoreLoading;
 
+
+    if (this.state.loadMoreReady) {
+      if (this.props.postAllCount > Config.limit.get()) {
+        LoadMoreLoading = Shine.createClazz(
+          <div className="row-fluid">
+            <button className="btn btn-deep-app btn-block load-more"
+                    onClick={ this.addLimit }>더보기
+            </button>
+          </div>
+        )
+      } else {
+        LoadMoreLoading = Shine.createClazz(
+          <span></span>
+        )
+      }
+    } else {
+      LoadMoreLoading = Shine.LoadMoreSpinner;
+    }
+
+    const { Link } = ReactRouter;
     return (
       <article className="page container-fluid shine-wrapper">
         <div className="row-fluid">
@@ -61,51 +85,15 @@ Shine.Home = React.createClass({
         <div className="row-fluid">
           <div className="block-group">
             <ul className="block-list">
-
-              { (() => {
-                if (Config.limit.get() == 10) {
-                  if (this.data.postReady) {
-                    return (
-                      this.data.postList.map((post) =>
-                      <Shine.PostList key={post._id} {...post} />)
-                    )
-                  } else {
-                    return (
-                      <Shine.Spinner />
-                    )
-                  }
-                } else {
-                  return (
-                    this.data.postList.map((post) =>
-	                    <Shine.PostList key={post._id} {...post} />)
-                  )
-                }
-              })() }
-
-              { (() => {
-                if (Config.limit.get() > 10) {
-                  if (!this.data.postReady) {
-                    return (
-                      <Shine.LoadMoreSpinner />
-                    )
-                  }
-                }
-              })()}
-
+              {
+                this.props.post.map((post) =>
+                  <Shine.PostList key={post._id} {...post} />)
+              }
             </ul>
           </div>
         </div>
 
-	      { this.props.postAllCount > Config.limit.get() ?
-		      <div className="row-fluid">
-			      <button className="btn btn-deep-app btn-block load-more"
-			              onClick={this.addLimit}>더보기
-			      </button>
-		      </div>
-		      :
-		      ""
-	      }
-
+        <LoadMoreLoading />
       </article>
     )
   }

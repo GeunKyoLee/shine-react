@@ -1,14 +1,14 @@
+const { Link } = ReactRouter;
 
 Shine.AsideMenu = React.createClass({
   render() {
-	  const { Link } = ReactRouter;
 	  let IsCurrentUser;
 
 	  if (this.props.currentUser) {
 		  IsCurrentUser = Shine.createClazz(
 				<Link
 					id="myworks"
-					activeClassName="active"
+          activeClassName="active"
 					to="/myworks">
 					<i className="fa fa-inbox"></i> {L('title_myworks')}
 				</Link>
@@ -33,9 +33,7 @@ Shine.AsideMenu = React.createClass({
 			    <Shine.CategoryItem
 				    key={category._id}
 				    _id={category._id}
-				    title={category.title} />) : ''}
-
-
+				    title={category.title} />) : null}
 	    </div>
     )
   }
