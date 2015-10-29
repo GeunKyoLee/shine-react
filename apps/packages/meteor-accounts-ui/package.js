@@ -1,6 +1,6 @@
 Package.describe({
   name: 'shinejs:accounts-ui',
-  version: '0.7.1',
+  version: '0.8.0',
   summary: 'Accounts-ui for Meteor application',
   git: '',
   documentation: 'README.md'
@@ -20,8 +20,7 @@ Package.onUse(function(api) {
     'sacha:spin',
     'less',
     'shinejs:bootstrap-less',
-    'shinejs:alerts',
-
+    'shinejs:alerts'
   ], 'client');
 
   // Export Accounts (etc) to packages using this one.

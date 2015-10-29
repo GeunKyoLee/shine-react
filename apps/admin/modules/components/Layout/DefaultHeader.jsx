@@ -29,7 +29,7 @@ Shine.DefaultHeader = React.createClass({
 					<button
 						type="button"
 						className="btn btn-header"
-						onClick={this.props.toggleAside}><i className="fa fa-2x fa-bars"></i></button>
+						onClick={this.props.onAsideToggle}><i className="fa fa-2x fa-bars"></i></button>
 				</div>
 			</header>
 		)

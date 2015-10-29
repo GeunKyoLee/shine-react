@@ -1,0 +1,145 @@
+//
+// Layout
+//------------------------------------------------------------------------------
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+
+  background: #ccc;
+}
+
+#container > main {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#container > aside {
+  position: absolute;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  top: 0;
+  bottom: 0;
+  z-index: @zindex-navbar-fixed - 1;
+
+  background: #ff0;
+}
+
+#container > aside.left {
+  left: -@aside-left-width;
+  width: @aside-left-width;
+}
+
+#container > aside.right {
+  right: -@aside-right-width;
+  width: @aside-right-width;
+}
+
+
+//
+// Layout Animations
+//------------------------------------------------------------------------------
+
+#container > main, #container > aside {
+  .transition(all @slide-transition-time ease-out);
+  .transition-transform(all @slide-transition-time ease-out);
+  //.backface-visibility(~'hidden');
+}
+
+#container.aside-left-on {
+  > main {
+    left: @aside-left-width;
+    right: -@aside-left-width;
+  }
+
+  > aside.left {
+    left: 0;
+  }
+}
+
+#container.aside-left-fixed {
+  > main {
+    left: @aside-left-width;
+    right: 0;
+  }
+
+  > aside.left {
+    left: 0;
+  }
+}
+
+#container.aside-right-on {
+  > main {
+    left: -@aside-right-width;
+    right: @aside-right-width;
+  }
+
+  > aside.right {
+    right: 0;
+  }
+}
+
+#container.aside-right-fixed {
+  > main {
+    left: 0;
+    right: @aside-right-width;
+  }
+
+  > aside.right {
+    right: 0;
+  }
+}
+
+
+page {
+  > header {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    height: @header-height;
+    width: 100%;
+    z-index: @zindex-navbar-fixed;
+  }
+
+  > main.content {
+    position: absolute;
+    overflow: auto;
+    top: @header-height;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  > footer {
+    position: absolute;
+    overflow: hidden;
+    bottom: 0;
+    height: @footer-height;
+    width: 100%;
+    z-index: @zindex-navbar-fixed;
+
+    display: none;
+  }
+
+  &.footer-on {
+    > main.content {
+      bottom: @footer-height;
+    }
+
+    > footer {
+      display: block;
+    }
+  }
+}
