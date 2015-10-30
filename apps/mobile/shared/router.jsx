@@ -14,6 +14,9 @@ if (Meteor.isClient) {
           <IndexRoute component={App.HomeContainer} />
           <Route path="home" component={App.HomeContainer} />
           <Route path="about" component={App.AboutContainer} />
+
+          <Route path="sign-in" component={Accounts.SignIn} />
+
           <Route path="*" component={App.NotFound} />
         </Route>
       </Router>

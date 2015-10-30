@@ -25,53 +25,6 @@
 */
 
 
-//
-//  Navigation module
-//--------------------------------------------------------------
-#nav-main {
-  min-height: 100%;
-  background: @nav-main-bg;
-
-  header {
-    position: relative;
-
-    padding-right: 30px;
-
-    .clearfix();
-
-
-  }
-
-  .links {
-    margin-bottom: 5px;
-
-    a {
-      display: block;
-      padding: 10px 0;
-      background: @nav-link-bg;
-      color: @nav-link-color;
-
-      text-decoration: none;
-
-      i {
-        padding: 0 15px;
-        color: @nav-link-color;
-      }
-
-      &.active {
-        background: lighten(@nav-link-bg, 5%);
-        color: lighten(@nav-link-color, 20%);
-        i {
-          color: lighten(@nav-link-color, 20%);
-        }
-      }
-
-      &:hover {
-        background: lighten(@nav-link-bg, 10%);
-      }
-    }
-  }
-}
 
 //
 //  Account info box in the left aside

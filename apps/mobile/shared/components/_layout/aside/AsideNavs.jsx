@@ -18,7 +18,9 @@ App.AsideNavs = React.createClass({
   render() {
     return (
       <div id="nav-main">
-        {this.navList()}
+        <nav className="links">
+          {this.navList()}
+        </nav>
       </div>
     )
   }

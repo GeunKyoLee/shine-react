@@ -13,7 +13,7 @@ App.AsideLeft = React.createClass({
   render() {
     return (
       <aside className="left">
-        <h1>Aside</h1>
+        <App.AsideAccounts />
 
         <App.AsideNavs />
       </aside>
