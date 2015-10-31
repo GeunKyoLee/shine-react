@@ -15,7 +15,12 @@ if (Meteor.isClient) {
           <Route path="home" component={App.HomeContainer} />
           <Route path="about" component={App.AboutContainer} />
 
-          <Route path="sign-in" component={Accounts.SignIn} />
+          <Route path="sign-in" component={Accounts.SignInContainer} />
+          <Route path="sign-up" component={Accounts.SignUpContainer} />
+          <Route path="forgot-password"
+                 component={Accounts.ForgotPasswordContainer} />
+          <Route path="reset-password"
+                 component={Accounts.ResetPasswordContainer} />
 
           <Route path="*" component={App.NotFound} />
         </Route>
@@ -23,7 +28,6 @@ if (Meteor.isClient) {
     ), document.body);
   });
 } else {
-
   ReactRouterSSR.Run(
     <Route path="/" component={App.Layout}>
       <IndexRoute component={App.HomeContainer} />

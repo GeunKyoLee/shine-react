@@ -1,7 +1,7 @@
 
 const { Link } = ReactRouter;
 
-Accounts.SignIn = React.createClass({
+Accounts.SignUp = React.createClass({
   componentDidMount() {
     $('#username').focus();
   },
@@ -9,10 +9,10 @@ Accounts.SignIn = React.createClass({
   render() {
     return (
       <App.Page>
-        <App.Header title={L('title_sign_in')} />
+        <App.Header title={L('title_sign_up')} />
 
-        <div id="sign-in">
-          <Form.Form id="form-sign-in" onSubmit={this.props.onSubmit}>
+        <div id="sign-up">
+          <Form.Form id="form-sign-up" onSubmit={this.props.onSubmit}>
             <Form.InputText id="username"
                             name="username"
                             placeholder={L('text_placeholder_username')} />
@@ -21,12 +21,11 @@ Accounts.SignIn = React.createClass({
                             placeholder={L('text_placeholder_password')} />
 
             <Form.Button className="btn btn-primary btn-block">
-              {L('command_sign_in')}
+              {L('command_sign_up')}
             </Form.Button>
           </Form.Form>
 
-          <Link to="/forgot-password">{L('label_forgot_password')}</Link>
-          <Link to="/sign-up">{L('command_sign_up')}</Link>
+          <Link to="/sign-in">{L('command_sign_in')}</Link>
         </div>
       </App.Page>
     )
