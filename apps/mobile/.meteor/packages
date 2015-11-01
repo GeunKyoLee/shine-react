@@ -30,4 +30,6 @@ shinejs:shine-theme-mobile
 fortawesome:fontawesome
 
 shinejs:i18n
+shinejs:react-overlays
 
+accounts-password

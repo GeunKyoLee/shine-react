@@ -1,2 +1,0 @@
-# shinejs:react-alerts
-

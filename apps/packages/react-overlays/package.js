@@ -1,7 +1,8 @@
 Package.describe({
-  name: 'shinejs:react-alerts',
+  name: 'shinejs:react-overlays',
   version: '0.0.1',
-  summary: 'Display alert message boxes for Meteor-React JS',
+  // Brief, one-line summary of the package.
+  summary: '',
   // URL to the Git repository containing the source code for this package.
   git: '',
   // By default, Meteor will default to using README.md for documentation.
@@ -10,21 +11,34 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('1.2.0.1');
+  api.versionsFrom('1.2.1');
   api.use([
     'ecmascript',
     'underscore',
+    'promise',
+    'react',
+    'minimongo',
+    'mongo-livedata',
     'shinejs:i18n',
     'less',
     'shinejs:bootstrap-less'
-  ], 'client');
+  ]);
+  api.addFiles([
+    'react-overlays.js',
+    'lib/0.jsx',
+    'lib/Alert.jsx',
+    'lib/Confirm.jsx',
+    'lib/Modal.jsx',
+    'lib/Notifications.jsx',
+    'lib/Page.jsx'
+  ]);
 
-  api.addFiles('react-alerts.js');
+  api.export('Overlay');
 });
 
 Package.onTest(function(api) {
   api.use('ecmascript');
   api.use('tinytest');
-  api.use('shinejs:react-alerts');
-  api.addFiles('react-alerts-tests.js');
+  api.use('shinejs:react-overlays');
+  api.addFiles('react-overlays-tests.js');
 });
