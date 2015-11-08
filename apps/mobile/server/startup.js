@@ -1,0 +1,4 @@
+
+Meteor.startup(() => {
+  insertInitData();
+});

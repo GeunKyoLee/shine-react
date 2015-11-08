@@ -32,4 +32,5 @@ fortawesome:fontawesome
 shinejs:i18n
 shinejs:react-overlays
 
+shinejs:react-accounts-ui
 accounts-password

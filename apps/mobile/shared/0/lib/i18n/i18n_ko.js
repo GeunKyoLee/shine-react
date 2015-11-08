@@ -110,26 +110,5 @@ I18n_data_ko = {
   "error_input_required"          : "값을 입력하여야 합니다.",
   "error_input_out_of_range"      : "입력값이 유효한 범위 밖에 있습니다.",
 
-
-  "theme"                         : {
-    "default"                       : "Default",
-    "cerulean"                      : "Cerulean",
-    "cosmo"                         : "Cosmo",
-    "cyborg"                        : "Cyborg",
-    "darkly"                        : "Darkly",
-    "flatly"                        : "Flatly",
-    "journal"                       : "Journal",
-    "lumen"                         : "Lumen",
-    "paper"                         : "Paper",
-    "readable"                      : "Readable",
-    "sandstone"                     : "Sandstone",
-    "simplex"                       : "Simplex",
-    "slate"                         : "Slate",
-    "spacelab"                      : "Spacelab",
-    "superhero"                     : "Superhero",
-    "united"                        : "United",
-    "yeti"                          : "Yeti"
-  }
-
 };
 

@@ -10,6 +10,7 @@ Accounts.SignIn = React.createClass({
     return [
       {
         name: 'username-or-email',
+        ref: 'username-or-email',
         label: I18n.get('accounts-ui:label_username_or_email'),
         visible() {
           return _.contains(
@@ -19,6 +20,7 @@ Accounts.SignIn = React.createClass({
       },
       {
         name: 'username',
+        ref: 'username',
         label: I18n.get('accounts-ui:label_username'),
         visible() {
           return Accounts.ui.passwordSignupFields() === "USERNAME_ONLY";
@@ -26,6 +28,7 @@ Accounts.SignIn = React.createClass({
       },
       {
         name: 'email',
+        ref: 'email',
         label: I18n.get('accounts-ui:label_email'),
         type: 'email',
         visible() {
@@ -34,6 +37,7 @@ Accounts.SignIn = React.createClass({
       },
       {
         name: 'password',
+        ref: 'password',
         label: I18n.get('accounts-ui:label_password'),
         type: 'password',
         visible() {
@@ -51,6 +55,12 @@ Accounts.SignIn = React.createClass({
     return (! _.isEmpty(errors)) ? <Form.Alert>{errors}</Form.Alert> : null;
   },
 
+  handleSubmit(e) {
+    e.preventDefault();
+
+    return this.props.handleSubmit(e.target.email.value, e.target.password.value);
+  },
+
   renderInputs() {
     return this.fields().map((item, i) => {
       return (item.visible()) ? <Accounts.Input key={i} {...item} /> : null;
@@ -60,22 +70,22 @@ Accounts.SignIn = React.createClass({
   render() {
     return (
       <App.Page>
-        <App.Header title={L('title_sign_in')} />
+        <App.Header title={L('accounts-ui:label_sign_in')} />
 
         <div id="sign-in">
-          <Form.Form id="form-sign-in" onSubmit={this.props.onSubmit}>
+          <Form.Form id="form-sign-in" onSubmit={this.handleSubmit}>
 
             {this.errors()}
 
             {this.renderInputs()}
 
             <Form.Button className="btn btn-primary btn-block">
-              {L('command_sign_in')}
+              {L('accounts-ui:label_sign_in')}
             </Form.Button>
           </Form.Form>
 
-          <Link to="/forgot-password">{L('label_forgot_password')}</Link>
-          <Link to="/sign-up">{L('command_sign_up')}</Link>
+          <Link to="/forgot-password">{L('accounts-ui:label_forgot_password')}</Link>
+          <Link to="/sign-up">{L('accounts-ui:label_sign_up')}</Link>
         </div>
       </App.Page>
     )

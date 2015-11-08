@@ -6,26 +6,22 @@ Accounts.SignInContainer = React.createClass({
     }
   },
 
-  handleSubmit(e) {
-    e.preventDefault();
-    e.stopPropagation();
+  handleSubmit(username, password) {
 
-    // get input data
-    const username = e.target.username.value;
-    const password = e.target.password.value;
+    console.log(`sign-up-submit: username=${username}, password=${password}`);
 
     Meteor.loginWithPassword(username, password, (error) => {
       if (error) {
         this.setState({ errors: [error] });
+        Overlay.notify(error);
       } else {
-        console.log('sign in success');
-        alert('sign in success');
+        Overlay.notify('sign in success');
       }
     });
   },
 
   render() {
-    return <Accounts.SignIn onSubmit={this.handleSubmit}
+    return <Accounts.SignIn handleSubmit={this.handleSubmit}
                               errors={this.state.errors} />
   }
 });

@@ -81,7 +81,7 @@ Accounts.SignUp = React.createClass({
   render() {
     return (
       <App.Page>
-        <App.Header title={L('title_sign_up')} />
+        <App.Header title={L('accounts-ui:label_sign_up')} />
 
         <div id="sign-up">
           <Form.Form id="form-sign-up" onSubmit={this.props.onSubmit}>

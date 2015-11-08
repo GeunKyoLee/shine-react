@@ -17,11 +17,9 @@ const AccountInfo = React.createClass({
   },
 
   render() {
-    const user = Meteor.user();
-
     return (
       <div className="account-info">
-        <p>{user && user.username}</p>
+        <p>{this.props.username}</p>
 
         <button className="btn btn-default" onClick={this.signOut}>
           {L('command_sign_out')}
@@ -32,13 +30,17 @@ const AccountInfo = React.createClass({
 });
 
 App.AsideAccounts = React.createClass({
-  getInitialState() {
+  mixins: [ReactMeteorData],
+
+  getMeteorData() {
     return {
-      user: () => Meteor.user()
+      user: Meteor.user()
     }
   },
 
   render() {
-    return (this.state.user()) ? <AccountInfo /> : <SignInButton />;
+    const username = userDisplayName(this.data && this.data.user);
+
+    return username ? <AccountInfo username={username} /> : <SignInButton />;
   }
 });

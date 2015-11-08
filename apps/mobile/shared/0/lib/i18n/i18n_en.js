@@ -109,23 +109,4 @@ I18n_data_en = {
   "error_input_required"          : "Input value is required",
   "error_input_out_of_range"      : "Input value is out of range",
 
-  "theme"                         : {
-    "default"                       : "Default",
-    "cerulean"                      : "Cerulean",
-    "cosmo"                         : "Cosmo",
-    "cyborg"                        : "Cyborg",
-    "darkly"                        : "Darkly",
-    "flatly"                        : "Flatly",
-    "journal"                       : "Journal",
-    "lumen"                         : "Lumen",
-    "paper"                         : "Paper",
-    "readable"                      : "Readable",
-    "sandstone"                     : "Sandstone",
-    "simplex"                       : "Simplex",
-    "slate"                         : "Slate",
-    "spacelab"                      : "Spacelab",
-    "superhero"                     : "Superhero",
-    "united"                        : "United",
-    "yeti"                          : "Yeti"
-  }
 };

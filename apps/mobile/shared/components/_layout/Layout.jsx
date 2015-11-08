@@ -1,7 +1,11 @@
 
 App.Layout = React.createClass({
+
   render() {
     const path = this.props.location.pathname;
+
+    const notificationsContainer = Meteor.isClient ?
+      <Overlay.NotificationsContainer /> : null;
 
     return (
       <div id="container">
@@ -10,6 +14,7 @@ App.Layout = React.createClass({
         </RouteTransition>
 
         <App.AsideLeft />
+        {notificationsContainer}
       </div>
     )
   }

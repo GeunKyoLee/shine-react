@@ -20,3 +20,13 @@ if (typeof String.prototype.capitalize !== 'function') {
 capitalizedFirstLetter = function(word) {
   return word.charAt(0).toUpperCase();
 };
+
+numberWithCommas = function(x) {
+  if (Number.isInteger(x)) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  } else {
+    const parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join(".");
+  }
+};
