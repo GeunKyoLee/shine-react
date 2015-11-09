@@ -2,37 +2,46 @@
 const { Router, Route, IndexRoute } = ReactRouter;
 
 if (Meteor.isClient) {
-  const history = ReactRouter.history
-    .useQueries(ReactRouter.history.createHistory)();
+  const createHistory = ReactRouter.history.createHistory;
+  const onRouterUpdate = App.AsideLeft.hide;
 
-  const onRouterUpdate = () => App.AsideLeft.hide();
+  // client-side routes
+  const routes = (
+    <Route path="/" component={App.Layout} >
+      <Route path="home" component={App.HomeContainer} />
+      <Route path="about" component={App.AboutContainer} />
+
+      <Route path="sign-in" component={Accounts.SignInContainer} />
+      <Route path="sign-up" component={Accounts.SignUpContainer} />
+      <Route path="forgot-password"
+             component={Accounts.ForgotPasswordContainer} />
+      <Route path="reset-password"
+             component={Accounts.ResetPasswordContainer} />
+
+      <IndexRoute component={App.HomeContainer} />
+
+      <Route path="*" component={App.NotFound} />
+    </Route>
+  );
+
+  const router = (
+    <Router history={createHistory()} onUpdate={onRouterUpdate}>
+      {routes}
+    </Router>
+  );
 
   Meteor.startup(function() {
-    React.render((
-      <Router history={history} onUpdate={onRouterUpdate}>
-        <Route path="/" component={App.Layout} >
-          <IndexRoute component={App.HomeContainer} />
-          <Route path="home" component={App.HomeContainer} />
-          <Route path="about" component={App.AboutContainer} />
-
-          <Route path="sign-in" component={Accounts.SignInContainer} />
-          <Route path="sign-up" component={Accounts.SignUpContainer} />
-          <Route path="forgot-password"
-                 component={Accounts.ForgotPasswordContainer} />
-          <Route path="reset-password"
-                 component={Accounts.ResetPasswordContainer} />
-
-          <Route path="*" component={App.NotFound} />
-        </Route>
-      </Router>
-    ), document.body);
+    ReactDOM.render(router, document.getElementById('app-container'));
   });
 } else {
-  ReactRouterSSR.Run(
+  // server-side routes
+  const routes = (
     <Route path="/" component={App.Layout}>
       <IndexRoute component={App.HomeContainer} />
       <Route path="home" component={App.HomeContainer} />
       <Route path="*" component={App.NotFound} />
     </Route>
   );
+
+  ReactRouterSSR.Run(routes);
 }
