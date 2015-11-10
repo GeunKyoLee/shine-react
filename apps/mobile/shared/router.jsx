@@ -10,7 +10,10 @@ if (Meteor.isClient) {
     <Route path="/" component={App.Layout} >
       <Route path="home" component={App.HomeContainer} />
       <Route path="about" component={App.AboutContainer} />
+
       <Route path="posts" component={App.PostsContainer} />
+      <Route path="post/view/:id" component={App.PostViewContainer} />
+      <Route path="post/new" component={App.PostFormContainer} />
 
       <Route path="sign-in" component={Accounts.SignInContainer} />
       <Route path="sign-up" component={Accounts.SignUpContainer} />

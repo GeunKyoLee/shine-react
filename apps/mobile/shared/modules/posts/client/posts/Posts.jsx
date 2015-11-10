@@ -6,7 +6,7 @@ App.Posts = React.createClass({
     if (this.props.posts.length === 0) return  (<div>no list</div>);
 
     return this.props.posts.map((post) => (
-      <Link to={`/posts/view/${post._id}`} className="post-item">
+      <Link to={`/post/view/${post._id}`} className="post-item">
         {post.title}
       </Link>
     ));
@@ -22,6 +22,10 @@ App.Posts = React.createClass({
         <article className="page">
           {this.posts()}
         </article>
+
+        <App.Footer>
+          <Link to="/post/new">new post</Link>
+        </App.Footer>
       </App.Page>
     )
   }
