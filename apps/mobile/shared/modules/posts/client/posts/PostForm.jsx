@@ -11,28 +11,24 @@ App.PostForm = React.createClass({
 
   render() {
     return (
-      <App.Page>
-        <App.Header title={L('title_post_input')} />
+      <article className="overlay-page">
+        <Form.Form onSubmit={this.handleSubmit}>
+          <Form.InputText id="title"
+                          name="title"
+                          label={L('label_title')} />
 
-        <article className="page">
-          <Form.Form onSubmit={this.handleSubmit}>
-            <Form.InputText id="title"
-                            name="title"
-                            label={L('label_title')} />
+          <Form.TextArea id="content"
+                         name="content"
+                         label={L('label_content')} />
 
-            <Form.TextArea id="content"
-                           name="content"
-                           label={L('label_content')} />
-
-            <Form.Button className="btn btn-primary">
-              {L('command_submit')}
-            </Form.Button>
-            <Form.Button type="reset" className="btn btn-default">
-              {L('command_cancel')}
-            </Form.Button>
-          </Form.Form>
-        </article>
-      </App.Page>
+          <Form.Button className="btn btn-primary">
+            {L('command_submit')}
+          </Form.Button>
+          <Form.Button type="reset" className="btn btn-default">
+            {L('command_cancel')}
+          </Form.Button>
+        </Form.Form>
+      </article>
     )
   }
 });

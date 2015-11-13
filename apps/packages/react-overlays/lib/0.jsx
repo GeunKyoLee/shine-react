@@ -1,79 +1,98 @@
-
+/**
+ * Overlay
+ *
+ *
+ */
 Overlay = {
   containerId: 'overlay-container',
 
-  notificationsCollection: new Mongo.Collection(null),
-
-  notify(message) {
-    this.notificationsCollection.insert({
-      message: message,
-      createdAt: new Date()
-    });
+  /**
+   * show notification message on the top right corner of the screen
+   * @param message
+   *    text or html message
+   *
+   * @param options
+   *    format: the format of the message, { 'text' : 'html' }
+   *      default value: 'text'
+   *
+   *    style: UI style,
+   *      { 'default', 'primary', 'info', 'warning', 'success', 'danger' }
+   *      default value: 'warning'
+   *
+   *    duration: duration time in millisecond
+   *      if 0, it lasts forever.
+   *      default value: 5000
+   */
+  notify(message, options) {
+    Overlay.NotificationsContainer.push(message, options);
   },
 
-  alert(message, options = {}) {
-    const props = _.extend({ message: message }, options);
-
+  /**
+   * show overlay page
+   *
+   * @param element
+   *   React element to show in the overlay
+   *
+   * @param options
+   *
+   * @returns {*|Promise}
+   */
+  page(element, options = {}) {
     const node = document.body.appendChild(document.createElement('div'));
-    node.className = 'alert-container';
+    node.className = 'overlay-container';
 
     const cleanup = (value) => {
-      React.unmountComponentAtNode(node);
-      Meteor.setTimeout(() => node.remove());
+      if (page) page.onMount(false);
+      Meteor.setTimeout(() => {
+        ReactDOM.unmountComponentAtNode(node);
+        Meteor.setTimeout(() => node.remove());
+      }, 400);
       return value;
     };
 
+    let page;
+
     const promise = new Promise((fulfill, reject) => {
-      React.render((
-        <Overlay.Alert {...props} fulfill={fulfill} reject={reject} />
+      const renderElement = React.cloneElement(element, { fulfill, reject });
+      const props = _.extend(options, { reject });
+      page = ReactDOM.render((
+        <Overlay.Page {...props}>
+          {renderElement}
+        </Overlay.Page>
       ), node);
     });
 
-    return promise.then(() => cleanup(true), () => cleanup(false));
+    return promise.then((value) => cleanup(value), (value) => cleanup(value));
   },
 
-  confirm(message, options = {}) {
-    const props = _.extend({ message: message }, options);
-
-    const node = document.body.appendChild(document.createElement('div'));
-    node.className = 'confirm-container';
-
-    const cleanup = (value) => {
-      React.unmountComponentAtNode(node);
-      Meteor.setTimeout(() => node.remove());
-      return value;
-    };
-
-    const promise = new Promise((fulfill, reject) => {
-      React.render((
-        <Overlay.Confirm {...props} fulfill={fulfill} reject={reject} />
-      ), node);
-    });
-
-    return promise.then(() => cleanup(true), () => cleanup(false));
+  /**
+   * show overlay dialog box with 'ok' button with message
+   *
+   * @param message
+   *   text message
+   * @param options
+   *
+   * @returns {*|Promise}
+   */
+  alert(message, options = { className: 'slide-up' }) {
+    return this.page((
+      <Overlay.Alert message={message} />
+    ), options);
   },
 
-  modal(element, options = {}) {
-    const props = options;
-
-    const node = document.body.appendChild(document.createElement('div'));
-    node.className = 'modal-container';
-
-    const cleanup = (value) => {
-      React.unmountComponentAtNode(node);
-      Meteor.setTimeout(() => node.remove());
-      return value;
-    };
-
-    const promise = new Promise((fulfill, reject) => {
-      React.render((
-        <Overlay.Modal {...props} fulfill={fulfill} reject={reject} >
-          {element}
-        </Overlay.Modal>
-      ), node);
-    });
-
-    return promise.then(() => cleanup(true), () => cleanup(false));
+  /**
+   * show overlay dialog box with 'yes', 'no' button with message
+   *
+   * @param message
+   *
+   * @param options
+   *
+   * @returns {*|Promise}
+   */
+  confirm(message, options = { className: 'slide-up' }) {
+    return this.page((
+      <Overlay.Confirm message={message} />
+    ), options);
   },
 
 };

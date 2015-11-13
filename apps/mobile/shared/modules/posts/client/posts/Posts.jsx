@@ -12,6 +12,10 @@ App.Posts = React.createClass({
     ));
   },
 
+  handleNewPost() {
+    Overlay.page(<App.PostFormContainer />, { className: 'slide-up' });
+  },
+
   render() {
     if (this.props.loading) return <App.Spinner />;
 
@@ -24,7 +28,7 @@ App.Posts = React.createClass({
         </article>
 
         <App.Footer>
-          <Link to="/post/new">new post</Link>
+          <button className="btn btn-primary" onClick={this.handleNewPost}>new post</button>
         </App.Footer>
       </App.Page>
     )

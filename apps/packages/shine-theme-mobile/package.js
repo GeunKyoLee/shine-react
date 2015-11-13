@@ -35,7 +35,6 @@ Package.onUse(function (api) {
     'lib/client/less/global/buttons.less',
     'lib/client/less/global/form.less',
     'lib/client/less/global/markdown.less',
-    'lib/client/less/global/alerts.less',
 
     // layout
     'lib/client/less/layout/layout.less',

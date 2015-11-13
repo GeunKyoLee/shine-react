@@ -28,7 +28,6 @@ Package.onUse(function(api) {
     'lib/0.jsx',
     'lib/Alert.jsx',
     'lib/Confirm.jsx',
-    'lib/Modal.jsx',
     'lib/Notifications.jsx',
     'lib/Page.jsx'
   ]);

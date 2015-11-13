@@ -1,38 +1,23 @@
 
 Overlay.Confirm = React.createClass({
-
-  componentDidMount() {
-    $('.modal').modal('show');
-  },
-
-  onReject(e) {
-    e.preventDefault();
-
-    $('.modal').modal('hide');
-    this.props.reject();
-  },
-
-  onConfirm(e) {
-    e.preventDefault();
-
-    $('.modal').modal('hide');
-    this.props.fulfill();
+  handleClick(value) {
+    this.props.fulfill(value);
   },
 
   render() {
     return (
-      <div className="modal fade">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-body">
-              <p>{this.props.message}</p>
-            </div>
-            <div className="modal-footer">
-              <Button className="btn btn-default" onClick={this.onReject}>{L('command_no')}</Button>
-              <Button className="btn btn-primary" onClick={this.onConfirm}>{L('command_yes')}</Button>
-            </div>
-          </div>
-        </div>
+      <div className="overlay-page">
+        <div className="overlay-message">{this.props.message}</div>
+        <button type="button"
+                className="btn btn-primary btn-block overlay-btn"
+                onClick={this.handleClick.bind(this, true)} >
+          {L('command_yes')}
+        </button>
+        <button type="button"
+                className="btn btn-default btn-block overlay-btn"
+                onClick={this.handleClick.bind(this, false)} >
+          {L('command_no')}
+        </button>
       </div>
     )
   }

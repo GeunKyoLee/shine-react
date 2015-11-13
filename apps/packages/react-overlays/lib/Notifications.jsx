@@ -1,27 +1,55 @@
 
 const { CSSTransitionGroup } = React.addons;
 
+const notificationsCollection = new Mongo.Collection(null);
+
 const Notification = React.createClass({
   componentDidMount() {
-    Meteor.setTimeout(() => {
-      console.log('remove _id: ' + this.props.id);
-      Overlay.notificationsCollection.remove(this.props.id);
-    }, 5000);
+    if (this.props.item.options.duration > 0) {
+      Meteor.setTimeout(() => {
+        notificationsCollection.remove(this.props.item._id);
+      }, this.props.item.options.duration);
+    }
   },
 
   render() {
+    const className = `alert alert-${this.props.item.options.style}`;
+    const message = (this.props.item.options.format === 'text') ?
+      this.props.item.message : (
+      <span dangerouslySetInnerHTML={{__html: this.props.item.message}} />
+    );
+
     return (
-      <div className="alert alert-info">{this.props.children}</div>
+      <div className={className}>
+        <button type="button"
+                className="close"
+                data-dismiss="alert"
+                aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        {message}
+      </div>
     )
   }
 });
 
 Overlay.NotificationsContainer = React.createClass({
+  statics: {
+    push(message, {format = 'text', style = 'warning', duration = 5000} = {}) {
+
+      return notificationsCollection.insert({
+        message: message,
+        options: { format, style, duration },
+        createdAt: new Date()
+      });
+    }
+  },
+
   mixins: [ReactMeteorData],
 
   getMeteorData() {
     return {
-      list:  Overlay.notificationsCollection.find({}, { sort: { createdAt: -1 }}).fetch()
+      list:  notificationsCollection.find({}, { sort: { createdAt: -1 }}).fetch()
     }
   },
 
@@ -33,9 +61,8 @@ Overlay.NotificationsContainer = React.createClass({
 
   notificationsList() {
     return this.data.list.map((item, i) => {
-      console.log('render _id: ' + item._id);
       return (
-        <Notification key={i} id={item._id}>{item.message}</Notification>
+        <Notification key={i} item={item} />
       )
     });
   },
