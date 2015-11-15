@@ -9,6 +9,12 @@ App.PostForm = React.createClass({
     this.props.onSubmit(title, content);
   },
 
+  handleCancel(e) {
+    e.preventDefault();
+
+    this.props.onCancel();
+  },
+
   render() {
     return (
       <article className="overlay-page">
@@ -24,7 +30,8 @@ App.PostForm = React.createClass({
           <Form.Button className="btn btn-primary">
             {L('command_submit')}
           </Form.Button>
-          <Form.Button type="reset" className="btn btn-default">
+          <Form.Button className="btn btn-default"
+                       onClick={this.handleCancel} >
             {L('command_cancel')}
           </Form.Button>
         </Form.Form>

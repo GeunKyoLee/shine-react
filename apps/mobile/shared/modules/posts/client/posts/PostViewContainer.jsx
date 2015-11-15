@@ -3,7 +3,7 @@ App.PostViewContainer = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData() {
-    const postId = this.params.id;
+    const postId = this.props.params.id;
     const handle = Meteor.subscribe('postView', postId);
 
     return {

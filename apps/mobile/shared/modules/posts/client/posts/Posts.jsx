@@ -6,14 +6,17 @@ App.Posts = React.createClass({
     if (this.props.posts.length === 0) return  (<div>no list</div>);
 
     return this.props.posts.map((post) => (
-      <Link to={`/post/view/${post._id}`} className="post-item">
+      <Link key={post._id} to={`/post/view/${post._id}`} className="post-item">
         {post.title}
       </Link>
     ));
   },
 
   handleNewPost() {
-    Overlay.page(<App.PostFormContainer />, { className: 'slide-up' });
+    Overlay.page(<App.PostFormContainer />, { className: 'slide-up' })
+      .then((value) => {
+        console.log('value = ' + value);
+      });
   },
 
   render() {

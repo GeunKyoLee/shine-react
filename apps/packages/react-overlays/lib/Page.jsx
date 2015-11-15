@@ -2,17 +2,14 @@ const { CSSTransitionGroup } = React.addons;
 
 const CSSTransitionGroupAppear = React.createClass({
   componentDidMount() {
-    console.log('transition did mount');
     this.props.onMount(true);
   },
 
   componentWillUnmount() {
-    console.log('transition will unmount');
     this.props.onMount(false);
   },
 
   render() {
-    console.log('transition render: mounted=' + this.props.mounted);
     const children = (this.props.mounted) ? this.props.children : null;
 
     return (
@@ -32,9 +29,10 @@ Overlay.Page = React.createClass({
     return this.setState({ mounted });
   },
 
-  handleClose() {
-    this.setState({ mounted: false });
+  handleClose(e) {
+    if (this.refs.wrapper !== e.target) return;
 
+    this.setState({ mounted: false });
     this.props.reject();
   },
 
@@ -46,10 +44,12 @@ Overlay.Page = React.createClass({
     };
 
     return (
-      <div className="overlay-backdrop" onClick={this.handleClose}>
+      <div className="overlay-backdrop">
         <CSSTransitionGroupAppear {...props} mounted={this.state.mounted}
                                              onMount={this.onMount} >
-          <div className="overlay-wrapper">{this.props.children}</div>
+          <div className="overlay-wrapper"
+               ref="wrapper"
+               onClick={this.handleClose}>{this.props.children}</div>
         </CSSTransitionGroupAppear>
       </div>
     )
