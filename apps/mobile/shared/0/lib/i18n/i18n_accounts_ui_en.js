@@ -5,7 +5,12 @@ I18n_accounts_ui_en = {
   "label_username_or_email"       : "Username or email",
   "label_username"                : "Username",
   "label_email"                   : "Email",
+  "label_email_optional"          : "Email(optional)",
   "label_password"                : "Password",
+  "label_password_again"          : "Password again",
+  "label_reset_password"          : "Reset password",
+
+  "text_placeholder_email"        : "Input email address",
 
   "Incorrect password"            : "Incorrect password",
 };

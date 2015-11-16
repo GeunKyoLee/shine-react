@@ -12,7 +12,8 @@ Accounts.ForgotPassword = React.createClass({
 
   errors() {
     const errors = this.props.errors.map((item, i) => {
-      return <p key={i}>{item.reason}</p>;
+      const message = (typeof item === 'string') ? item : item.reason;
+      return <p key={i}>{L(`accounts-ui:${message}`)}</p>;
     });
 
     return (! _.isEmpty(errors)) ? <Form.Alert>{errors}</Form.Alert> : null;
@@ -25,24 +26,26 @@ Accounts.ForgotPassword = React.createClass({
   render() {
     return (
       <App.Page>
-        <App.Header title={L('title_forgot_password')} />
+        <App.Header title={L('accounts-ui:label_forgot_password')} />
 
-        <div id="forgot-password">
-          <Form.Form id="form-forgot-password" onSubmit={this.handleSubmit}>
+        <main className="content">
+          <div className="accounts-ui-frame">
+            <Form.Form id="form-forgot-password" onSubmit={this.handleSubmit}>
 
-            {this.errors()}
+              {this.errors()}
 
-            <Form.InputText id="email"
-                            name="email"
-                            placeholder={L('text_placeholder_email')} />
+              <Form.InputText id="email"
+                              name="email"
+                              placeholder={L('accounts-ui:text_placeholder_email')} />
 
-            <Form.Button className="btn btn-primary btn-block">
-              {L('command_submit')}
-            </Form.Button>
-          </Form.Form>
+              <Form.Button className="btn btn-primary btn-block">
+                {L('accounts-ui:label_reset_password')}
+              </Form.Button>
+            </Form.Form>
 
-          <Link to="/sign-in">{L('command_sign_in')}</Link>
-        </div>
+            <Link to="/sign-in">{L('command_sign_in')}</Link>
+          </div>
+        </main>
       </App.Page>
     )
   }

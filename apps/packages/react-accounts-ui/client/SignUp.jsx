@@ -94,20 +94,23 @@ Accounts.SignUp = React.createClass({
       <App.Page>
         <App.Header title={L('accounts-ui:label_sign_up')} />
 
-        <div id="sign-up">
-          <Form.Form id="form-sign-up" onSubmit={this.handleSubmit}>
+        <main className="content">
+          <div className="accounts-ui-frame">
+            <Form.Form id="form-sign-up" onSubmit={this.handleSubmit}>
 
-            {this.errors()}
+              {this.errors()}
 
-            {this.renderInputs()}
+              {this.renderInputs()}
 
-            <Form.Button className="btn btn-primary btn-block">
-              {L('command_sign_up')}
-            </Form.Button>
-          </Form.Form>
+              <Form.Button className="btn btn-primary btn-block">
+                {L('command_sign_up')}
+              </Form.Button>
+            </Form.Form>
 
-          <Link to="/sign-in">{L('command_sign_in')}</Link>
-        </div>
+            <Link to="/sign-in">{L('command_sign_in')}</Link>
+          </div>
+
+        </main>
       </App.Page>
     )
   }

@@ -22,23 +22,25 @@ Accounts.ResetPassword = React.createClass({
   render() {
     return (
       <App.Page>
-        <App.Header title={L('title_reset_password')} />
+        <App.Header title={L('accounts-ui:label_reset_password')} />
 
-        <div id="reset-password">
-          <Form.Form id="form-reset-password" onSubmit={this.handleSubmit}>
-            <Form.InputText id="password"
-                            name="password"
-                            placeholder={L('text_placeholder_password')} />
+        <main className="content">
+          <div className="accounts-ui-frame">
+            <Form.Form id="form-reset-password" onSubmit={this.handleSubmit}>
+              <Form.InputText id="password"
+                              name="password"
+                              placeholder={L('accounts-ui:label_password')} />
 
-            <Form.InputText id="password-confirm"
-                            name="password-confirm"
-                            placeholder={L('text_placeholder_password_confirm')} />
+              <Form.InputText id="password-confirm"
+                              name="password-confirm"
+                              placeholder={L('accounts-ui:label_password_again')} />
 
-            <Form.Button className="btn btn-primary btn-block">
-              {L('command_submit')}
-            </Form.Button>
-          </Form.Form>
-        </div>
+              <Form.Button className="btn btn-primary btn-block">
+                {L('accounts-ui:label_reset_password')}
+              </Form.Button>
+            </Form.Form>
+          </div>
+        </main>
       </App.Page>
     )
   }
