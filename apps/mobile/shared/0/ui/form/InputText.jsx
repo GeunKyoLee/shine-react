@@ -16,7 +16,8 @@ Form.InputText = React.createClass({
                className="form-control"
                name={this.props.name}
                value={this.props.value}
-               placeholder={this.props.placeholder} />
+               placeholder={this.props.placeholder}
+               ref={this.props.ref} />
       </div>
     )
   }

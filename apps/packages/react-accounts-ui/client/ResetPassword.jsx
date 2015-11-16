@@ -2,6 +2,19 @@
 const { Link } = ReactRouter;
 
 Accounts.ResetPassword = React.createClass({
+  handleSubmit(e) {
+    e.preventDefault();
+
+    const password = e.target.password.value;
+    const passwordConfirm = e.target['password-confirm'].value;
+
+    if (password !== passwordConfirm) {
+      return Overlay.notify('password confirm fail');
+    }
+
+    this.props.onSubmit(password);
+  },
+
   componentDidMount() {
     $('#password').focus();
   },
@@ -12,7 +25,7 @@ Accounts.ResetPassword = React.createClass({
         <App.Header title={L('title_reset_password')} />
 
         <div id="reset-password">
-          <Form.Form id="form-reset-password" onSubmit={this.props.onSubmit}>
+          <Form.Form id="form-reset-password" onSubmit={this.handleSubmit}>
             <Form.InputText id="password"
                             name="password"
                             placeholder={L('text_placeholder_password')} />

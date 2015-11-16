@@ -1,13 +1,28 @@
 
 Accounts.ResetPasswordContainer = React.createClass({
-  onSubmit(e) {
-    e.preventDefault();
-    e.stopPropagation();
+  getInitialState() {
+    return {
+      errors: []
+    }
+  },
 
-    alert('reset-password');
+  handleSubmit(password) {
+    const token = this.props.params.token;
+
+    Accounts.resetPassword(token, password, (error) => {
+      if (error) {
+        this.setState({ errors: [error.reason] });
+        return Overlay.notify(error.reason);
+      }
+
+      Overlay.notify('new password set successfully.');
+    });
   },
 
   render() {
-    return <Accounts.ResetPassword onSubmit={this.onSubmit}/>
+    console.log(this.props.params.token);
+
+    return <Accounts.ResetPassword onSubmit={this.handleSubmit}
+                                   errors={this.state.errors} />
   }
 });

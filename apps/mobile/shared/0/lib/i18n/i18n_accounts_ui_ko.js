@@ -7,4 +7,6 @@ I18n_accounts_ui_ko = {
   "label_email"                   : "이메일",
   "label_password"                : "비밀번호",
 
+  "Incorrect password"            : "비밀번호가 일치하지 않습니다.",
+
 };

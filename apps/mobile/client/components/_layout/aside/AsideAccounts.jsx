@@ -5,7 +5,9 @@ const SignInButton = React.createClass({
   render() {
     return (
       <div className="account-info">
-        <Link to="/sign-in">{L('label_sign_in')}</Link>
+        <Link to="/sign-in">
+          <p>{L('accounts-ui:label_sign_in')}</p>
+        </Link>
       </div>
     )
   }

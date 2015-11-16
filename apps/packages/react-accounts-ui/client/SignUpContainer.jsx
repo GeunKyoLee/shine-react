@@ -6,21 +6,18 @@ Accounts.SignUpContainer = React.createClass({
     }
   },
 
-  handleSubmit(e) {
-    e.preventDefault();
-    e.stopPropagation();
-
-    const user = {
-      username: e.target.username.value,
-      password: e.target.password.value
-    };
+  handleSubmit(username, email, password) {
+    const user = { username, email, password };
 
     Accounts.createUser(user, (error) => {
       if (error) {
+        console.log('user created error');
+        console.log(error);
         this.setState({ errors: [error] });
+      } else {
+        Overlay.notify('user created');
+        console.log('user created');
       }
-      Overlay.notify('user created');
-      console.log('user created');
     });
   },
 

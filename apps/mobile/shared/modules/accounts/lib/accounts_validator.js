@@ -31,7 +31,7 @@ AccountValidator = {
   schema: {
     username: {
       type: 'string',
-      required: true,
+      required: false,
       minLength: 3,
       maxLength: 18,
       custom: checkUsername
@@ -41,13 +41,29 @@ AccountValidator = {
       type: 'string',
       required: true,
       custom: checkEmail
+    },
+
+    password: {
+      type: 'string',
+      required: true,
+      minLength: 3,
+      maxLength: 18,
+      custom: checkPassword
     }
   },
 
   validateInsert: function(object) {
     var validator = new Validator(this.schema);
 
-    validator.validate(object, ['username', 'email']);
+    validator.validate(object, ['email', 'password']);
+
+    return validator;
+  },
+
+  validateInsertServer: function(object) {
+    var validator = new Validator(this.schema);
+
+    validator.validate(object, ['email']);
 
     return validator;
   },

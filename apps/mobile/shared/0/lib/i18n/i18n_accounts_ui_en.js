@@ -6,4 +6,6 @@ I18n_accounts_ui_en = {
   "label_username"                : "Username",
   "label_email"                   : "Email",
   "label_password"                : "Password",
+
+  "Incorrect password"            : "Incorrect password",
 };

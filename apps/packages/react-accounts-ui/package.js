@@ -19,6 +19,7 @@ Package.onUse(function(api) {
     'reactrouter:react-router',
     'accounts-base',
     'accounts-password',
+    'shinejs:react-overlays'
   ],'client');
 
   api.addFiles([

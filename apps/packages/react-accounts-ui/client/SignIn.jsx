@@ -10,7 +10,6 @@ Accounts.SignIn = React.createClass({
     return [
       {
         name: 'username-or-email',
-        ref: 'username-or-email',
         label: I18n.get('accounts-ui:label_username_or_email'),
         visible() {
           return _.contains(
@@ -20,7 +19,6 @@ Accounts.SignIn = React.createClass({
       },
       {
         name: 'username',
-        ref: 'username',
         label: I18n.get('accounts-ui:label_username'),
         visible() {
           return Accounts.ui.passwordSignupFields() === "USERNAME_ONLY";
@@ -28,7 +26,6 @@ Accounts.SignIn = React.createClass({
       },
       {
         name: 'email',
-        ref: 'email',
         label: I18n.get('accounts-ui:label_email'),
         type: 'email',
         visible() {
@@ -37,7 +34,6 @@ Accounts.SignIn = React.createClass({
       },
       {
         name: 'password',
-        ref: 'password',
         label: I18n.get('accounts-ui:label_password'),
         type: 'password',
         visible() {
@@ -49,7 +45,8 @@ Accounts.SignIn = React.createClass({
 
   errors() {
     const errors = this.props.errors.map((item, i) => {
-      return <p key={i}>{item.reason}</p>;
+      const message = (typeof item === 'string') ? item : item.reason;
+      return <p key={i}>{L(`accounts-ui:${message}`)}</p>;
     });
 
     return (! _.isEmpty(errors)) ? <Form.Alert>{errors}</Form.Alert> : null;
@@ -58,7 +55,12 @@ Accounts.SignIn = React.createClass({
   handleSubmit(e) {
     e.preventDefault();
 
-    return this.props.handleSubmit(e.target.email.value, e.target.password.value);
+    const user = (e.target['username-or-email'] &&
+      e.target['username-or-email'].value) ||
+      (e.target.username && e.target.username.value) ||
+      (e.target.email && e.target.email.value);
+
+    return this.props.handleSubmit(user, e.target.password.value);
   },
 
   renderInputs() {
@@ -80,12 +82,13 @@ Accounts.SignIn = React.createClass({
 
               {this.renderInputs()}
 
+              <Link to="/forgot-password">{L('accounts-ui:label_forgot_password')}</Link>
+
               <Form.Button className="btn btn-primary btn-block">
                 {L('accounts-ui:label_sign_in')}
               </Form.Button>
             </Form.Form>
 
-            <Link to="/forgot-password">{L('accounts-ui:label_forgot_password')}</Link>
             <Link to="/sign-up">{L('accounts-ui:label_sign_up')}</Link>
           </div>
         </article>

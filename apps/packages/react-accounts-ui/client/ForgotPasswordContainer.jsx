@@ -1,13 +1,24 @@
 
 Accounts.ForgotPasswordContainer = React.createClass({
-  onSubmit(e) {
-    e.preventDefault();
-    e.stopPropagation();
+  getInitialState() {
+    return {
+      errors: []
+    }
+  },
 
-    alert('forgot-password');
+  handleSubmit(email) {
+    Accounts.forgotPassword({ email }, (error) => {
+      if (error) {
+        this.setState({ errors: [error.reason] });
+        return Overlay.notify(error.reason);
+      }
+
+      Overlay.notify('email for reset password sent');
+    });
   },
 
   render() {
-    return <Accounts.ForgotPassword onSubmit={this.onSubmit}/>
+    return <Accounts.ForgotPassword onSubmit={this.handleSubmit}
+                                    errors={this.state.errors} />
   }
 });

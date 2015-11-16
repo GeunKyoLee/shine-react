@@ -45,7 +45,7 @@ Accounts.SignUp = React.createClass({
           return true;
         }},
       {
-        panme: 'password-again',
+        name: 'password-again',
         label: I18n.get('accounts-ui:label_password_again'),
         type: 'password',
         visible() {
@@ -68,6 +68,17 @@ Accounts.SignUp = React.createClass({
     return (! _.isEmpty(errors)) ? <Form.Alert>{errors}</Form.Alert> : null;
   },
 
+  handleSubmit(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const username = e.target.username && e.target.username.value;
+    const email = e.target.email && e.target.email.value;
+    const password = e.target.password && e.target.password.value;
+
+    this.props.onSubmit(username, email, password);
+  },
+
   componentDidMount() {
     $('#username').focus();
   },
@@ -84,7 +95,7 @@ Accounts.SignUp = React.createClass({
         <App.Header title={L('accounts-ui:label_sign_up')} />
 
         <div id="sign-up">
-          <Form.Form id="form-sign-up" onSubmit={this.props.onSubmit}>
+          <Form.Form id="form-sign-up" onSubmit={this.handleSubmit}>
 
             {this.errors()}
 

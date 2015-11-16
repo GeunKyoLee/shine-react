@@ -7,8 +7,6 @@ Accounts.Input = React.createClass({
   },
 
   render() {
-    const label = this.props.label ? <label>{this.props.label}</label> : null;
-
     return (
       <div className="form-group">
         <input type={this.props.type}
