@@ -16,8 +16,6 @@ body {
   bottom: 0;
   left: 0;
   overflow: hidden;
-
-  background: #ccc;
 }
 
 #container > main {
@@ -35,9 +33,8 @@ body {
   overflow-y: scroll;
   top: 0;
   bottom: 0;
-  z-index: @zindex-navbar-fixed - 1;
-
-  background: #ff0;
+  z-index: 1;
+  //  z-index: @zindex-navbar-fixed + 1;
 }
 
 #container > aside.left {
@@ -56,18 +53,17 @@ body {
 //------------------------------------------------------------------------------
 
 #container > main, #container > aside {
-  .transition(all @slide-transition-time ease-out);
-  .transition-transform(all @slide-transition-time ease-out);
+  transform: translate3d(0, 0, 0);
+  transition: transform 250ms linear;
 }
 
 #container.aside-left-on {
   > main {
-    left: @aside-left-width;
-    right: -@aside-left-width;
+    transform: translate3d(@aside-left-width, 0, 0);
   }
 
   > aside.left {
-    left: 0;
+    transform: translate3d(@aside-left-width, 0, 0);
   }
 }
 
@@ -105,7 +101,7 @@ body {
 }
 
 
-.page {
+main#content {
   > header {
     position: absolute;
     overflow: hidden;
@@ -115,7 +111,7 @@ body {
     z-index: @zindex-navbar-fixed;
   }
 
-  > main.content {
+  > article.page {
     position: absolute;
     overflow: auto;
     top: @header-height;
@@ -136,7 +132,7 @@ body {
   }
 
   &.footer-on {
-    > main.content {
+    > article.page {
       bottom: @footer-height;
     }
 

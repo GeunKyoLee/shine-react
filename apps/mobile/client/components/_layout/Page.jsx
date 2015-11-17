@@ -1,12 +1,16 @@
 
-
 App.Page = React.createClass({
+  getDefaultProps() {
+    return {
+      className: ''
+    }
+  },
 
   render() {
     return (
-      <div className="page">
+      <main id="content" className={this.props.className}>
         {this.props.children}
-      </div>
+      </main>
     )
   }
 });

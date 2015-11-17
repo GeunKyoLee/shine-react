@@ -7,11 +7,11 @@ App.About = React.createClass({
       <App.Page>
         <App.Header title={this.props.title} />
 
-        <main className="content">
+        <article className="page">
           <h1>About</h1>
 
           <Link to="/home">Home</Link>
-        </main>
+        </article>
       </App.Page>
     )
   }

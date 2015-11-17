@@ -23,7 +23,7 @@ App.Posts = React.createClass({
     if (this.props.loading) return <App.Spinner />;
 
     return (
-      <App.Page>
+      <App.Page className="footer-on">
         <App.Header title={L('title_post_list')} />
 
         <article className="page">
@@ -31,7 +31,7 @@ App.Posts = React.createClass({
         </article>
 
         <App.Footer>
-          <button className="btn btn-primary" onClick={this.handleNewPost}>new post</button>
+          <button className="btn btn-primary btn-block" onClick={this.handleNewPost}>new post</button>
         </App.Footer>
       </App.Page>
     )

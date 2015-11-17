@@ -1,4 +1,14 @@
 
+const ConnectionAlert = React.createClass({
+  render() {
+    return (
+      <div className="emergency-alert">
+        disconnected
+      </div>
+    )
+  }
+});
+
 App.Layout = React.createClass({
 
   render() {
@@ -9,12 +19,16 @@ App.Layout = React.createClass({
 
     return (
       <div id="container">
-        <RouteTransition name="slide" path={path} component="main" >
-          <div key={path} className="page-wrapper">{this.props.children}</div>
+        <App.AsideLeft />
+        <RouteTransition name="slide"
+                         path={path}
+                         component="main"
+                         className="route-views">
+          <div key={path} className="route-view">{this.props.children}</div>
         </RouteTransition>
 
-        <App.AsideLeft />
         {notificationsContainer}
+        <ConnectionAlarm />
       </div>
     )
   }
