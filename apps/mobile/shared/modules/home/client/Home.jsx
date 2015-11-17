@@ -4,7 +4,7 @@ const { Link } = ReactRouter;
 App.Home = React.createClass({
   render() {
     return (
-      <App.Page {...this.props}>
+      <App.Page>
         <App.HomeHeader />
 
         <article className="page">

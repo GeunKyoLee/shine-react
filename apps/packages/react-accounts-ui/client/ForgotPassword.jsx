@@ -28,7 +28,7 @@ Accounts.ForgotPassword = React.createClass({
       <App.Page>
         <App.Header title={L('accounts-ui:label_forgot_password')} />
 
-        <main className="content">
+        <article className="page">
           <div className="accounts-ui-frame">
             <Form.Form id="form-forgot-password" onSubmit={this.handleSubmit}>
 
@@ -45,7 +45,7 @@ Accounts.ForgotPassword = React.createClass({
 
             <Link to="/sign-in">{L('command_sign_in')}</Link>
           </div>
-        </main>
+        </article>
       </App.Page>
     )
   }

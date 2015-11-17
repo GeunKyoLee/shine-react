@@ -24,7 +24,7 @@ Accounts.ResetPassword = React.createClass({
       <App.Page>
         <App.Header title={L('accounts-ui:label_reset_password')} />
 
-        <main className="content">
+        <article className="page">
           <div className="accounts-ui-frame">
             <Form.Form id="form-reset-password" onSubmit={this.handleSubmit}>
               <Form.InputText id="password"
@@ -40,7 +40,7 @@ Accounts.ResetPassword = React.createClass({
               </Form.Button>
             </Form.Form>
           </div>
-        </main>
+        </article>
       </App.Page>
     )
   }

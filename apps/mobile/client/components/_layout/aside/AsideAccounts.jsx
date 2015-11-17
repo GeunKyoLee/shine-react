@@ -14,18 +14,12 @@ const SignInButton = React.createClass({
 });
 
 const AccountInfo = React.createClass({
-  signOut() {
-    Meteor.logout();
-  },
-
   render() {
     return (
       <div className="account-info">
-        <p>{this.props.username}</p>
-
-        <button className="btn btn-default" onClick={this.signOut}>
-          {L('command_sign_out')}
-        </button>
+        <Link to="/profile">
+          <p>{this.props.username}</p>
+        </Link>
       </div>
     )
   }

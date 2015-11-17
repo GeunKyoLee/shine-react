@@ -74,7 +74,7 @@ Accounts.SignIn = React.createClass({
       <App.Page>
         <App.Header title={L('accounts-ui:label_sign_in')} />
 
-        <main className="content">
+        <article className="page">
           <div className="accounts-ui-frame">
             <Form.Form id="form-sign-in" onSubmit={this.handleSubmit}>
 
@@ -91,7 +91,7 @@ Accounts.SignIn = React.createClass({
 
             <Link to="/sign-up">{L('accounts-ui:label_sign_up')}</Link>
           </div>
-        </main>
+        </article>
       </App.Page>
     )
   }

@@ -23,6 +23,8 @@ if (Meteor.isClient) {
       <Route path="reset-password/:token"
              component={Accounts.ResetPasswordContainer} />
 
+      <Route path="profile" component={App.ProfileContainer} />
+
       <IndexRoute component={App.HomeContainer} />
 
       <Route path="*" component={App.NotFound} />
