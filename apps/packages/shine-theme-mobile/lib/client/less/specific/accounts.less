@@ -1,10 +1,12 @@
 
-
 .account-info {
   background: @account-info-bg-color;
 
   p {
     padding: 10px;
+    color: @account-info-color;
+  }
+  span {
     color: @account-info-color;
   }
 
@@ -14,6 +16,28 @@
     padding: 15px;
     text-align: center;
   }
+  .ctn-profile {
+    padding: 10px;
+    padding-top:15px;
+    width: auto;
+    height: 200px;
+    background-color: darkred;
+    text-align: center;
+
+
+    .ctn-profile-image {
+      line-height: 100px;
+      //text-align: center;
+
+      img {
+        vertical-align: middle;
+        height:100px;
+        width:100px;
+      }
+    }
+
+  }
+  position: relative;
 }
 
 .accounts-ui-frame {

@@ -1,4 +1,3 @@
-
 const { Link } = ReactRouter;
 
 const SignInButton = React.createClass({
@@ -18,7 +17,13 @@ const AccountInfo = React.createClass({
     return (
       <div className="account-info">
         <Link to="/profile">
-          <p>{this.props.username}</p>
+          <div className="ctn-profile">
+            <div className="ctn-profile-image">
+              <img className="img-circle" src="http://dummyimage.com/100x100/000/fff"/>
+            </div>
+            <p className="profile-username"> {this.props.username}</p>
+
+          </div>
         </Link>
       </div>
     )
@@ -37,6 +42,6 @@ App.AsideAccounts = React.createClass({
   render() {
     const username = userDisplayName(this.data && this.data.user);
 
-    return username ? <AccountInfo username={username} /> : <SignInButton />;
+    return username ? <AccountInfo username={username}/> : <SignInButton />;
   }
 });
