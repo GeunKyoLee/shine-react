@@ -6,7 +6,7 @@ Accounts.SignUp = React.createClass({
     return [
       {
         name: 'username',
-        label: I18n.get('accounts-ui:label_username'),
+        placeholder: L('accounts-ui:text_input_username'),
         visible() {
           return _.contains(
             [
@@ -18,9 +18,9 @@ Accounts.SignUp = React.createClass({
         }
       },
       {
-        name: 'email',
-        label: I18n.get('accounts-ui:label_email'),
         type: 'email',
+        name: 'email',
+        placeholder: L('accounts-ui:text_input_email'),
         visible() {
           return _.contains(
             [
@@ -31,23 +31,24 @@ Accounts.SignUp = React.createClass({
         }
       },
       {
-        name: 'email',
-        label: I18n.get('accounts-ui:label_email_optional'),
         type: 'email',
+        name: 'email',
+        placeholder: L('accounts-ui:text_input_email_optional'),
         visible() {
-          return Accounts.ui.passwordSignupFields() === "USERNAME_AND_OPTIONAL_EMAIL";
+          return Accounts.ui.passwordSignupFields() ===
+            "USERNAME_AND_OPTIONAL_EMAIL";
         }},
       {
-        name: 'password',
-        label: I18n.get('accounts-ui:label_password'),
         type: 'password',
+        name: 'password',
+        placeholder: L('accounts-ui:text_input_password'),
         visible() {
           return true;
         }},
       {
-        name: 'password-again',
-        label: I18n.get('accounts-ui:label_password_again'),
         type: 'password',
+        name: 'password-again',
+        placeholder: I18n.get('accounts-ui:text_input_password_again'),
         visible() {
           // No need to make users double-enter their password if
           // they'll necessarily have an email set, since they can use
@@ -102,7 +103,8 @@ Accounts.SignUp = React.createClass({
 
               {this.renderInputs()}
 
-              <Form.Button className="btn btn-primary btn-block">
+              <Form.Button type="submit"
+                           className="btn btn-primary btn-block">
                 {L('command_sign_up')}
               </Form.Button>
             </Form.Form>

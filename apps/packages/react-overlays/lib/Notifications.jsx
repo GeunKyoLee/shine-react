@@ -4,12 +4,9 @@ const { CSSTransitionGroup } = React.addons;
 const notificationsCollection = new Mongo.Collection(null);
 
 const Notification = React.createClass({
-  componentDidMount() {
-    if (this.props.item.options.duration > 0) {
-      Meteor.setTimeout(() => {
-        notificationsCollection.remove(this.props.item._id);
-      }, this.props.item.options.duration);
-    }
+  handleClose() {
+    Meteor.setTimeout(() =>
+      notificationsCollection.remove(this.props.item._id), 0);
   },
 
   render() {
@@ -23,11 +20,10 @@ const Notification = React.createClass({
       <div className={className}>
         <button type="button"
                 className="close"
-                data-dismiss="alert"
-                aria-label="Close">
+                onClick={this.handleClose} >
           <span aria-hidden="true">&times;</span>
         </button>
-        {message}
+        {message} - {this.props.item._id}
       </div>
     )
   }
@@ -36,12 +32,17 @@ const Notification = React.createClass({
 Overlay.NotificationsContainer = React.createClass({
   statics: {
     push(message, {format = 'text', style = 'warning', duration = 5000} = {}) {
-
-      return notificationsCollection.insert({
+      const id = notificationsCollection.insert({
         message: message,
         options: { format, style, duration },
         createdAt: new Date()
       });
+
+      if (duration >= 0) {
+        Meteor.setTimeout(() => notificationsCollection.remove(id), duration);
+      }
+
+      return id;
     }
   },
 

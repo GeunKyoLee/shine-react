@@ -98,17 +98,23 @@ I18n_data_ko = {
   "text_input_email"              : "이메일주소를 입력해 주세요",
   "text_input_password"           : "비밀번호를 입력해 주세요",
   "text_notification_new_comment" : "{0}님의 블로그에 새로운 댓글이 등록되었습니다.",
-  "text_no_blogs"                 : "등록된 블로그 글이 없습니다.",
   "text_company_phone"            : "회사 전화번호",
   "text_company_address"          : "회사 주소",
   "text_reset_password"           : "비밀번호 초기화",
   "text_verify_email"             : "에 회원가입하신 것을 환영합니다. 입력하신 메일주소가 유효한지 확인하기 위해 이 링크를 클릭해 주세요 : ",
+  "text_connection_alarm"         : "접속이 끊어졌습니다. 연결중입니다...",
 
 
   "error_access_denied"           : "접근 권한이 없습니다.",
   "error_invalid_type"            : "입력값이 유효한 자료형이 아닙니다.",
   "error_input_required"          : "값을 입력하여야 합니다.",
   "error_input_out_of_range"      : "입력값이 유효한 범위 밖에 있습니다.",
+
+  // post
+  "label_posts_list"              : "글 목록",
+  "label_new_post"                : "글쓰기",
+
+  "text_no_posts"                 : "등록된 글이 없습니다.",
 
 };
 

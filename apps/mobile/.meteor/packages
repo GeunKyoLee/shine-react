@@ -24,6 +24,8 @@ react
 reactrouter:react-router
 reactrouter:react-router-ssr
 
+check
+
 less
 shinejs:bootstrap-less
 shinejs:shine-theme-mobile

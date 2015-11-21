@@ -1,5 +1,24 @@
 
 App.PostForm = React.createClass({
+  getDefaultProps() {
+    return {
+      errors: []
+    }
+  },
+
+  errorMessage(attribute) {
+    if (this.props.errors && this.props.errors.length > 0) {
+      const error = _.find(this.props.errors,
+        (error) => (error.attribute === attribute));
+
+      if (error) {
+        return _.reduce(error.messages, (value, msg) => value + msg, "");
+      }
+    }
+
+    return "";
+  },
+
   handleSubmit(e) {
     e.preventDefault();
 
@@ -10,6 +29,7 @@ App.PostForm = React.createClass({
   },
 
   handleCancel(e) {
+    console.log('cancel button');
     e.preventDefault();
 
     this.props.onCancel();
@@ -17,25 +37,28 @@ App.PostForm = React.createClass({
 
   render() {
     return (
-      <article className="overlay-page">
-        <Form.Form onSubmit={this.handleSubmit}>
-          <Form.InputText id="title"
-                          name="title"
-                          label={L('label_title')} />
+      <Form.Form onSubmit={this.handleSubmit}>
+        <Form.InputText id="title"
+                        name="title"
+                        label={L('label_title')}
+                        error={this.errorMessage('title')} />
 
-          <Form.TextArea id="content"
-                         name="content"
-                         label={L('label_content')} />
+        <Form.TextArea id="content"
+                       name="content"
+                       label={L('label_content')}
+                       error={this.errorMessage('content')}
+                       rows="10" />
 
-          <Form.Button className="btn btn-primary">
-            {L('command_submit')}
+        <Form.Actions>
+          <Form.Button type="submit" className="btn btn-primary">
+            {L('command_register')}
           </Form.Button>
           <Form.Button className="btn btn-default"
                        onClick={this.handleCancel} >
             {L('command_cancel')}
           </Form.Button>
-        </Form.Form>
-      </article>
+        </Form.Actions>
+      </Form.Form>
     )
   }
 });

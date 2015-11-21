@@ -36,9 +36,10 @@ Accounts.ForgotPassword = React.createClass({
 
               <Form.InputText id="email"
                               name="email"
-                              placeholder={L('accounts-ui:text_placeholder_email')} />
+                              placeholder={L('accounts-ui:text_input_email')} />
 
-              <Form.Button className="btn btn-primary btn-block">
+              <Form.Button type="submit"
+                           className="btn btn-primary btn-block">
                 {L('accounts-ui:label_reset_password')}
               </Form.Button>
             </Form.Form>

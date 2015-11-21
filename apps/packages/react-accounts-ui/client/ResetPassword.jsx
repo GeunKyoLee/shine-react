@@ -35,7 +35,8 @@ Accounts.ResetPassword = React.createClass({
                               name="password-confirm"
                               placeholder={L('accounts-ui:label_password_again')} />
 
-              <Form.Button className="btn btn-primary btn-block">
+              <Form.Button type="submit"
+                           className="btn btn-primary btn-block">
                 {L('accounts-ui:label_reset_password')}
               </Form.Button>
             </Form.Form>

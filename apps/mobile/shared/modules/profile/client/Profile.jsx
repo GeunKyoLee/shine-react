@@ -15,11 +15,21 @@ App.Profile = React.createClass({
         <App.Header title={L('title_profile')} />
 
         <article className="page">
-          profile
+          <div className="list">
+            <div className="list-item">
+              <p className="title">
+
+              </p>
+              <p className="value">
+
+              </p>
+            </div>
+          </div>
         </article>
 
         <App.Footer >
-          <button className="btn btn-primary btn-lg btn-block" onClick={this.signOut}>
+          <button className="btn btn-primary btn-lg btn-block"
+                  onClick={this.signOut}>
             {L('command_sign_out')}
           </button>
         </App.Footer>

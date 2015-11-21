@@ -2,7 +2,7 @@
 const navs = [
   { path: '/home', name: 'title_home' },
   { path: '/about', name: 'title_about' },
-  { path: '/posts', name: 'title_posts' },
+  { path: '/posts', name: 'label_posts_list' },
 ];
 
 const { Link } = ReactRouter;

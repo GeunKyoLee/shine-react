@@ -22,6 +22,26 @@ article.page > header {
 @list-item-main-color:        @text-color;
 @list-item-sub-color:         lighten(@list-item-main-color, 30%);
 
+.list {
+  .list-item {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+
+    i {
+      position: absolute;
+      right: 10px;
+      top: 50%; transform: translateY(-50%); // vertical center
+      color: @list-item-sub-color;
+      font-size: 2em;
+    }
+  }
+
+  .list-item + .list-item {
+    border-top: solid 1px @input-border;
+  }
+}
+
 .post-list {
   width: 100%;
   border: solid 1px @list-item-border-color;

@@ -97,16 +97,20 @@ I18n_data_en = {
   "text_input_email"              : "Input Email address",
   "text_input_password"           : "Input password",
   "text_notification_new_comment" : "A new comment registered for {0}'s blog",
-  "text_no_blogs"                 : "There is no blog registered.",
   "text_company_phone"            : "Company Phone Number",
   "text_company_address"          : "Company Address",
   "text_reset_password"           : "Password Reset",
   "text_verify_email"             : "You just signed up. Click this link to validate your email address : ",
-
+  "text_connection_alarm"         : "Disconnected. Waiting connection...",
 
   "error_access_denied"           : "Access denied",
   "error_invalid_type"            : "Input data type is invalid",
   "error_input_required"          : "Input value is required",
   "error_input_out_of_range"      : "Input value is out of range",
 
+  // post
+  "label_posts_list"              : "Posts",
+  "label_new_post"                : "New Post",
+
+  "text_no_posts"                 : "There is no post registered.",
 };

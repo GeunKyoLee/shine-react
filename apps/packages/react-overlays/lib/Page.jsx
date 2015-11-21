@@ -49,7 +49,9 @@ Overlay.Page = React.createClass({
                                              onMount={this.onMount} >
           <div className="overlay-wrapper"
                ref="wrapper"
-               onClick={this.handleClose}>{this.props.children}</div>
+               onClick={this.handleClose}>
+            <div className="overlay-page">{this.props.children}</div>
+          </div>
         </CSSTransitionGroupAppear>
       </div>
     )

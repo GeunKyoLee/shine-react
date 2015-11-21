@@ -10,7 +10,7 @@ Accounts.SignIn = React.createClass({
     return [
       {
         name: 'username-or-email',
-        label: I18n.get('accounts-ui:label_username_or_email'),
+        placeholder: L('accounts-ui:text_input_username_or_email'),
         visible() {
           return _.contains(
             ["USERNAME_AND_EMAIL", "USERNAME_AND_OPTIONAL_EMAIL"],
@@ -19,27 +19,19 @@ Accounts.SignIn = React.createClass({
       },
       {
         name: 'username',
-        label: I18n.get('accounts-ui:label_username'),
+        placeholder: L('accounts-ui:text_input_username'),
         visible() {
           return Accounts.ui.passwordSignupFields() === "USERNAME_ONLY";
         }
       },
       {
         name: 'email',
-        label: I18n.get('accounts-ui:label_email'),
+        placeholder: L('accounts-ui:text_input_email'),
         type: 'email',
         visible() {
           return Accounts.ui.passwordSignupFields() === "EMAIL_ONLY";
         }
       },
-      {
-        name: 'password',
-        label: I18n.get('accounts-ui:label_password'),
-        type: 'password',
-        visible() {
-          return true;
-        }
-      }
     ];
   },
 
@@ -82,9 +74,10 @@ Accounts.SignIn = React.createClass({
 
               {this.renderInputs()}
 
-              <Link to="/forgot-password">{L('accounts-ui:label_forgot_password')}</Link>
+              <Accounts.InputPassword />
 
-              <Form.Button className="btn btn-primary btn-block">
+              <Form.Button type="submit"
+                           className="btn btn-primary btn-block">
                 {L('accounts-ui:label_sign_in')}
               </Form.Button>
             </Form.Form>

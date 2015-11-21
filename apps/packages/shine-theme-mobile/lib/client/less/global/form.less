@@ -1,3 +1,4 @@
+/*
 .ss-form-frame {
   margin-top: 10px;
 }
@@ -34,7 +35,7 @@
 .ss-form .static-link:hover {
   color: @link-hover-color;
 }
-
+*/
 @post-title-font-size:                  24px;
 
 .post-title {
@@ -43,4 +44,18 @@
   border: none;
   font-size: @post-title-font-size;
   font-weight: bold;
+}
+
+form {
+  .actions {
+    .clearfix();
+
+    .btn {
+      float: right;
+    }
+
+    .btn + .btn {
+      margin-right: 5px;
+    }
+  }
 }

@@ -7,5 +7,5 @@ Accounts.config({
 });
 
 Accounts.ui.config({
-  passwordSignupFields: 'USERNAME_ONLY', //'EMAIL_ONLY',
+  passwordSignupFields: 'EMAIL_ONLY',
 });

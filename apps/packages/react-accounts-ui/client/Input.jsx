@@ -13,8 +13,9 @@ Accounts.Input = React.createClass({
                id={this.props.id}
                className="form-control"
                name={this.props.name}
-               placeholder={this.props.label} />
+               placeholder={this.props.placeholder} />
       </div>
     )
   }
 });
+

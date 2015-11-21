@@ -26,6 +26,7 @@ Package.onUse(function(api) {
     'react-accounts-ui.js',
     'client/0.jsx',
     'client/Input.jsx',
+    'client/InputPassword.jsx',
     'client/SignIn.jsx',
     'client/SignInContainer.jsx',
     'client/SignUp.jsx',

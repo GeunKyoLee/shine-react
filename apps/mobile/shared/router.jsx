@@ -1,6 +1,12 @@
 
 const { Router, Route, IndexRoute } = ReactRouter;
 
+const requireAuth = function(nextState, replaceState) {
+  if (! Meteor.user()) {
+    replaceState({ nextPathname: nextState.location.pathname }, '/sign-in');
+  }
+};
+
 if (Meteor.isClient) {
   const createHistory = ReactRouter.history.createHistory;
   const onRouterUpdate = App.AsideLeft.hide;
@@ -9,12 +15,6 @@ if (Meteor.isClient) {
   const routes = (
     <Route path="/" component={App.Layout} >
       <Route path="home" component={App.HomeContainer} />
-      <Route path="about" component={App.AboutContainer} />
-
-      <Route path="posts" component={App.PostsContainer} />
-      <Route path="post/view/:id" component={App.PostViewContainer} />
-      <Route path="post/edit/:id" component={App.PostEditContainer} />
-      <Route path="post/new" component={App.PostNewContainer} />
 
       <Route path="sign-in" component={Accounts.SignInContainer} />
       <Route path="sign-up" component={Accounts.SignUpContainer} />
@@ -23,7 +23,14 @@ if (Meteor.isClient) {
       <Route path="reset-password/:token"
              component={Accounts.ResetPasswordContainer} />
 
-      <Route path="profile" component={App.ProfileContainer} />
+      <Route path="profile" component={App.ProfileContainer} onEnter={requireAuth} />
+
+      <Route path="about" component={App.AboutContainer} />
+
+      <Route path="posts" component={App.PostsContainer} />
+      <Route path="post/view/:id" component={App.PostViewContainer} />
+      <Route path="post/edit/:id" component={App.PostEditContainer} />
+      <Route path="post/new" component={App.PostNewContainer} />
 
       <IndexRoute component={App.HomeContainer} />
 

@@ -1,14 +1,24 @@
 
 const { Link } = ReactRouter;
 
+const PostItem = React.createClass({
+  render() {
+    return (
+      <div className="post-item">
+        <Link to={`/post/view/${this.props.post._id}`} >
+          {this.props.post.title}
+        </Link>
+      </div>
+    )
+  }
+});
+
 App.Posts = React.createClass({
   posts() {
-    if (this.props.posts.length === 0) return  (<div>no list</div>);
+    if (this.props.posts.length === 0) return  (<div>{L('text_no_posts')}</div>);
 
     return this.props.posts.map((post) => (
-      <Link key={post._id} to={`/post/view/${post._id}`} className="post-item">
-        {post.title}
-      </Link>
+      <PostItem key={post._id} post={post} />
     ));
   },
 
@@ -24,14 +34,14 @@ App.Posts = React.createClass({
 
     return (
       <App.Page className="footer-on">
-        <App.Header title={L('title_post_list')} />
+        <App.Header title={L('label_posts_list')} />
 
         <article className="page">
           {this.posts()}
         </article>
 
         <App.Footer>
-          <button className="btn btn-primary btn-block" onClick={this.handleNewPost}>new post</button>
+          <button className="btn btn-primary btn-block" onClick={this.handleNewPost}>{L('label_new_post')}</button>
         </App.Footer>
       </App.Page>
     )
