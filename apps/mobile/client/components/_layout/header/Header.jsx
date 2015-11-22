@@ -13,6 +13,9 @@ App.Header = React.createClass({
         <div className="header-left">
           {RouteTransition.canGoBack() ? <BackButton />: <NavButton />}
         </div>
+        <div className="header-right">
+          {RouteTransition.canGoBack() ? <HomeButton />: null }
+        </div>
       </header>
     )
   }

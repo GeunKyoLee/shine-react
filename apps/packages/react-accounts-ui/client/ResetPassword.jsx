@@ -1,7 +1,7 @@
 
 const { Link } = ReactRouter;
 
-Accounts.ResetPassword = React.createClass({
+Accounts.ui.ResetPassword = React.createClass({
   handleSubmit(e) {
     e.preventDefault();
 

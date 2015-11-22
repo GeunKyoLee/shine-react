@@ -110,8 +110,15 @@ I18n_data_ko = {
   "error_input_required"          : "값을 입력하여야 합니다.",
   "error_input_out_of_range"      : "입력값이 유효한 범위 밖에 있습니다.",
 
+  // profile
+  "label_profile"                 : "프로필",
+
+  // about
+  "label_about"                   : "앱 정보",
+
   // post
   "label_posts_list"              : "글 목록",
+  "label_post_view"               : "글 열람",
   "label_new_post"                : "글쓰기",
 
   "text_no_posts"                 : "등록된 글이 없습니다.",

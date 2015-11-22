@@ -1,5 +1,5 @@
 
-Accounts.SignInContainer = React.createClass({
+Accounts.ui.SignInContainer = React.createClass({
   getInitialState() {
     return {
       errors: []
@@ -17,13 +17,15 @@ Accounts.SignInContainer = React.createClass({
       if (error) {
         this.setState({ errors: [error] });
       } else {
-        Overlay.notify('sign in success');
+        console.log('sign-in success');
+        this.props.fulfill(1);
       }
     });
   },
 
   render() {
-    return <Accounts.SignIn handleSubmit={this.handleSubmit}
-                            errors={this.state.errors} />
+    return <Accounts.ui.SignIn errors={this.state.errors}
+                               handleSubmit={this.handleSubmit}
+                               moveTo={this.props.moveTo} />
   }
 });

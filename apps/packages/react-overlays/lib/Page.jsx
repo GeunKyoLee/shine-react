@@ -25,6 +25,12 @@ Overlay.Page = React.createClass({
     return { mounted: false }
   },
 
+  getDefaultProps() {
+    return {
+      className: 'page'
+    }
+  },
+
   onMount(mounted) {
     return this.setState({ mounted });
   },

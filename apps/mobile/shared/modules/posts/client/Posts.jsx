@@ -15,7 +15,9 @@ const PostItem = React.createClass({
 
 App.Posts = React.createClass({
   posts() {
-    if (this.props.posts.length === 0) return  (<div>{L('text_no_posts')}</div>);
+    if (this.props.posts.length === 0) {
+      return  (<div key={'_'}className="post-item">{L('text_no_posts')}</div>);
+    }
 
     return this.props.posts.map((post) => (
       <PostItem key={post._id} post={post} />
@@ -37,7 +39,9 @@ App.Posts = React.createClass({
         <App.Header title={L('label_posts_list')} />
 
         <article className="page">
-          {this.posts()}
+          <div className="post-list">
+            {this.posts()}
+          </div>
         </article>
 
         <App.Footer>

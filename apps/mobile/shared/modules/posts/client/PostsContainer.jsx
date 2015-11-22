@@ -7,7 +7,7 @@ App.PostsContainer = React.createClass({
 
     return {
       loading: (! handle.ready()),
-      posts: Posts.find({}).fetch(),
+      posts: Posts.find({}, { sort: { createdAt: -1 }}).fetch(),
     }
   },
 

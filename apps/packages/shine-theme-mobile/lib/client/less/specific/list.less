@@ -28,6 +28,20 @@ article.page > header {
     width: 100%;
     padding: 10px;
 
+    .clearfix();
+
+    .key {
+      float: left;
+      margin: 0;
+      padding: 0;
+    }
+
+    .value {
+      float: right;
+      margin: 0;
+      padding: 0;
+    }
+
     i {
       position: absolute;
       right: 10px;
@@ -39,54 +53,6 @@ article.page > header {
 
   .list-item + .list-item {
     border-top: solid 1px @input-border;
-  }
-}
-
-.post-list {
-  width: 100%;
-  border: solid 1px @list-item-border-color;
-
-  .post-item {
-    position: relative;
-    padding: 10px;
-    cursor: pointer;
-
-    .title {
-      margin: 0;
-      color: @list-item-main-color;
-      font-size: 1.5em;
-    }
-
-    .datetime {
-      margin: 0;
-      color: @list-item-sub-color;
-      font-size: 1em;
-    }
-
-    i {
-      position: absolute;
-      right: 10px;
-      top: 50%; transform: translateY(-50%); // vertical center
-      color: @list-item-sub-color;
-      font-size: 2em;
-    }
-  }
-
-  .post-item + .post-item {
-    border-top: solid 1px @list-item-border-color;
-  }
-}
-
-.post-list-footer {
-  padding: 10px;
-}
-
-.post-view {
-  width: 100%;
-  padding: 10px;
-
-  .datetime {
-    text-align: right;
   }
 }
 

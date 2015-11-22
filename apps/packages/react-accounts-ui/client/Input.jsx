@@ -1,5 +1,5 @@
 
-Accounts.Input = React.createClass({
+Accounts.ui.Input = React.createClass({
   getDefaultProps() {
     return {
       type: 'text'

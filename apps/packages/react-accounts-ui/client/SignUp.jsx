@@ -1,7 +1,7 @@
 
 const { Link } = ReactRouter;
 
-Accounts.SignUp = React.createClass({
+Accounts.ui.SignUp = React.createClass({
   fields() {
     return [
       {
@@ -80,40 +80,42 @@ Accounts.SignUp = React.createClass({
     this.props.onSubmit(username, email, password);
   },
 
+  moveToSignIn() {
+    this.props.moveTo('sign-in');
+  },
+
   componentDidMount() {
     $('#username').focus();
   },
 
   renderInputs() {
     return this.fields().map((item, i) => {
-      return (item.visible()) ? <Accounts.Input key={i} {...item} /> : null;
+      return (item.visible()) ? <Accounts.ui.Input key={i} {...item} /> : null;
     })
   },
 
   render() {
     return (
-      <App.Page>
-        <App.Header title={L('accounts-ui:label_sign_up')} />
+      <div className="accounts-ui-page">
+        <div className="accounts-ui-frame">
+          <Form.Form id="form-sign-up" onSubmit={this.handleSubmit}>
 
-        <article className="page">
-          <div className="accounts-ui-frame">
-            <Form.Form id="form-sign-up" onSubmit={this.handleSubmit}>
+            {this.errors()}
 
-              {this.errors()}
+            {this.renderInputs()}
 
-              {this.renderInputs()}
+            <Form.Button type="submit"
+                         className="btn btn-primary btn-block">
+              {L('command_sign_up')}
+            </Form.Button>
+          </Form.Form>
 
-              <Form.Button type="submit"
-                           className="btn btn-primary btn-block">
-                {L('command_sign_up')}
-              </Form.Button>
-            </Form.Form>
-
-            <Link to="/sign-in">{L('command_sign_in')}</Link>
-          </div>
-
-        </article>
-      </App.Page>
+          <Form.Button className="btn btn-link"
+                       onClick={this.moveToSignIn}>
+            {L('accounts-ui:label_sign_in')}
+          </Form.Button>
+        </div>
+      </div>
     )
   }
 });

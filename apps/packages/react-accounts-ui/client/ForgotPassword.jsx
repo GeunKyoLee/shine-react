@@ -1,7 +1,11 @@
 
 const { Link } = ReactRouter;
 
-Accounts.ForgotPassword = React.createClass({
+Accounts.ui.ForgotPassword = React.createClass({
+  moveToSignIn() {
+    this.props.moveTo('sign-in');
+  },
+
   handleSubmit(e) {
     e.preventDefault();
 
@@ -25,29 +29,28 @@ Accounts.ForgotPassword = React.createClass({
 
   render() {
     return (
-      <App.Page>
-        <App.Header title={L('accounts-ui:label_forgot_password')} />
+      <div className="accounts-ui-page">
+        <div className="accounts-ui-frame">
+          <Form.Form id="form-forgot-password" onSubmit={this.handleSubmit}>
 
-        <article className="page">
-          <div className="accounts-ui-frame">
-            <Form.Form id="form-forgot-password" onSubmit={this.handleSubmit}>
+            {this.errors()}
 
-              {this.errors()}
+            <Form.InputText id="email"
+                            name="email"
+                            placeholder={L('accounts-ui:text_input_email')} />
 
-              <Form.InputText id="email"
-                              name="email"
-                              placeholder={L('accounts-ui:text_input_email')} />
+            <Form.Button type="submit"
+                         className="btn btn-primary btn-block">
+              {L('accounts-ui:label_reset_password')}
+            </Form.Button>
+          </Form.Form>
 
-              <Form.Button type="submit"
-                           className="btn btn-primary btn-block">
-                {L('accounts-ui:label_reset_password')}
-              </Form.Button>
-            </Form.Form>
-
-            <Link to="/sign-in">{L('command_sign_in')}</Link>
-          </div>
-        </article>
-      </App.Page>
+          <Form.Button className="btn btn-link"
+                       onClick={this.moveToSignIn}>
+            {L('accounts-ui:label_sign_in')}
+          </Form.Button>
+        </div>
+      </div>
     )
   }
 });

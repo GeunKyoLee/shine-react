@@ -108,8 +108,15 @@ I18n_data_en = {
   "error_input_required"          : "Input value is required",
   "error_input_out_of_range"      : "Input value is out of range",
 
+  // profile
+  "label_profile"                 : "Profile",
+
+  // about
+  "label_about"                   : "About",
+
   // post
   "label_posts_list"              : "Posts",
+  "label_post_view"               : "Post view",
   "label_new_post"                : "New Post",
 
   "text_no_posts"                 : "There is no post registered.",

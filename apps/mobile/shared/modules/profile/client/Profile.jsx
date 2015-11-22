@@ -12,7 +12,7 @@ App.Profile = React.createClass({
   render() {
     return (
       <App.Page className="footer-on">
-        <App.Header title={L('title_profile')} />
+        <App.Header title={L('label_profile')} />
 
         <article className="page">
           <div className="list">

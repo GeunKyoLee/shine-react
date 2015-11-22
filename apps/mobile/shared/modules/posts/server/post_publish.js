@@ -1,5 +1,5 @@
 Meteor.publish('postsList', () => {
-  return Posts.find();
+  return Posts.find({}, { sort: { createdAt: -1 }});
 });
 
 Meteor.publish('postView', (postId) => {

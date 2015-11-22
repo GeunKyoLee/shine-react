@@ -1,5 +1,5 @@
 const { Link } = ReactRouter;
-
+/*
 const SignInButton = React.createClass({
   render() {
     return (
@@ -7,6 +7,23 @@ const SignInButton = React.createClass({
         <Link to="/sign-in">
           <p>{L('accounts-ui:label_sign_in')}</p>
         </Link>
+      </div>
+    )
+  }
+});
+*/
+
+const SignInButton = React.createClass({
+  handleClick() {
+    Accounts.ui.page(<Accounts.ui.Popup />).then((value) => {
+      console.log('sign-in result: ' + value);
+    });
+  },
+
+  render() {
+    return (
+      <div className="account-info" onClick={this.handleClick} >
+        <p>{L('accounts-ui:label_sign_in')}</p>
       </div>
     )
   }

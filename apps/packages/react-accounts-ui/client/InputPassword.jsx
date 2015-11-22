@@ -1,7 +1,11 @@
 
 const { Link } = ReactRouter;
 
-Accounts.InputPassword = React.createClass({
+Accounts.ui.InputPassword = React.createClass({
+  moveToForgotPassword() {
+    this.props.moveTo('forgot-password');
+  },
+
   render() {
     return (
       <div className="form-group">
@@ -11,9 +15,10 @@ Accounts.InputPassword = React.createClass({
                name="password"
                placeholder={L('accounts-ui:text_input_password')} />
 
-        <Link to="/forgot-password" className="right">
+        <Form.Button className="btn btn-link right"
+                     onClick={this.moveToForgotPassword} >
           {L('accounts-ui:text_forgot_password')}
-        </Link>
+        </Form.Button>
       </div>
     )
   }

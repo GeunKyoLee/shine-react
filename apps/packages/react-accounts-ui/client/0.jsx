@@ -83,4 +83,7 @@ Accounts.ui = {
     return Accounts.ui._options.passwordSignupFields || "EMAIL_ONLY";
   },
 
+  page(element) {
+    return Overlay.page(element);
+  }
 };

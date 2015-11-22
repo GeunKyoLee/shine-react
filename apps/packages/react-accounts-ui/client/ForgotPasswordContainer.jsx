@@ -1,5 +1,5 @@
 
-Accounts.ForgotPasswordContainer = React.createClass({
+Accounts.ui.ForgotPasswordContainer = React.createClass({
   getInitialState() {
     return {
       errors: []
@@ -22,7 +22,8 @@ Accounts.ForgotPasswordContainer = React.createClass({
   },
 
   render() {
-    return <Accounts.ForgotPassword onSubmit={this.handleSubmit}
-                                    errors={this.state.errors} />
+    return <Accounts.ui.ForgotPassword onSubmit={this.handleSubmit}
+                                       errors={this.state.errors}
+                                       moveTo={this.props.moveTo} />
   }
 });

@@ -1,5 +1,5 @@
 
-Accounts.SignUpContainer = React.createClass({
+Accounts.ui.SignUpContainer = React.createClass({
   getInitialState() {
     return {
       errors: []
@@ -22,7 +22,8 @@ Accounts.SignUpContainer = React.createClass({
   },
 
   render() {
-    return <Accounts.SignUp onSubmit={this.handleSubmit}
-                              errors={this.state.errors} />
+    return <Accounts.ui.SignUp onSubmit={this.handleSubmit}
+                               errors={this.state.errors}
+                               moveTo={this.props.moveTo} />
   }
 });

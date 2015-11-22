@@ -50,7 +50,7 @@ Package.onUse(function (api) {
     //'lib/client/less/specific/balloon.less',
     'lib/client/less/specific/chat.less',
     'lib/client/less/specific/modules.less',
-    //'lib/client/less/specific/post.less',
+    'lib/client/less/specific/post.less',
     'lib/client/less/specific/user-modal.less',
     'lib/client/less/specific/accounts.less',
     'lib/client/less/specific/connection.less',

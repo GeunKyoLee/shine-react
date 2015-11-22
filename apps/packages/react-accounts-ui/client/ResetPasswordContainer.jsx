@@ -1,5 +1,5 @@
 
-Accounts.ResetPasswordContainer = React.createClass({
+Accounts.ui.ResetPasswordContainer = React.createClass({
   getInitialState() {
     return {
       errors: []
@@ -22,7 +22,7 @@ Accounts.ResetPasswordContainer = React.createClass({
   render() {
     console.log(this.props.params.token);
 
-    return <Accounts.ResetPassword onSubmit={this.handleSubmit}
-                                   errors={this.state.errors} />
+    return <Accounts.ui.ResetPassword onSubmit={this.handleSubmit}
+                                      errors={this.state.errors} />
   }
 });
