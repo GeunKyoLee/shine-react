@@ -35,6 +35,8 @@ Package.onUse(function(api) {
     'client/ForgotPasswordContainer.jsx',
     'client/ResetPassword.jsx',
     'client/ResetPasswordContainer.jsx',
+    'client/ChangePassword.jsx',
+    'client/ChangePasswordContainer.jsx',
     'client/Popup.jsx'
   ], 'client');
 

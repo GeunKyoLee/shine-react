@@ -24,7 +24,12 @@ if (Meteor.isClient) {
       <Route path="reset-password/:token"
              component={Accounts.ui.ResetPasswordContainer} />
 
-      <Route path="profile" component={App.ProfileContainer} onEnter={requireAuth} />
+      <Route path="profile"
+             component={App.ProfileContainer}
+             onEnter={requireAuth} />
+      <Route path="profile/edit/:name"
+             component={App.ProfileEditContainer}
+             onEnter={requireAuth} />
 
       <Route path="about" component={App.AboutContainer} />
 

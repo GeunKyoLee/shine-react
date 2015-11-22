@@ -1,8 +1,11 @@
 
+const { Link } = ReactRouter;
+
 App.Profile = React.createClass({
 
   render() {
     const user = this.props.user;
+    const profileName = (user.profile && user.profile.name) || ' ';
 
     return (
       <App.Page className="footer-on">
@@ -10,30 +13,35 @@ App.Profile = React.createClass({
 
         <article className="page">
           <div className="list">
-            <div className="list-item">
-              <p className="key">
+            <Link to="/profile/edit/email" className="list-item">
+              <div className="key">
                 {L('label_email')}
-              </p>
-              <p className="value">
-                {user.emails[0].address}
-              </p>
-            </div>
+              </div>
+              <div className="value">
+                <p>{user.emails[0].address}</p>
+                <i className="fa fa-angle-right"></i>
+              </div>
+            </Link>
 
-            <div className="list-item">
-              <p className="key">
+            <Link to="/profile/edit/password" className="list-item">
+              <div className="key">
                 {L('label_password')}
-              </p>
-              <p className="value"></p>
-            </div>
+              </div>
+              <div className="value">
+                <p>&nbsp;</p>
+                <i className="fa fa-angle-right"></i>
+              </div>
+            </Link>
 
-            <div className="list-item">
-              <p className="key">
+            <Link to="/profile/edit/name" className="list-item">
+              <div className="key">
                 {L('label_name')}
-              </p>
-              <p className="value">
-                {user.profile && user.profile.name}
-              </p>
-            </div>
+              </div>
+              <div className="value">
+                <p>{profileName}</p>
+                <i className="fa fa-angle-right"></i>
+              </div>
+            </Link>
 
           </div>
         </article>
