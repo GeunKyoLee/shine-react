@@ -115,6 +115,7 @@ I18n_data_ko = {
 
   // about
   "label_about"                   : "앱 정보",
+  "label_about_version"           : "버전",
 
   // post
   "label_posts_list"              : "글 목록",

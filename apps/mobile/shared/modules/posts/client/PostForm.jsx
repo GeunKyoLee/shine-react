@@ -36,22 +36,28 @@ App.PostForm = React.createClass({
   },
 
   render() {
+    const title = this.props.post && this.props.post.title;
+    const content = this.props.post && this.props.post.content;
+    const contentText = content && content.data;
+
     return (
       <Form.Form onSubmit={this.handleSubmit}>
         <Form.InputText id="title"
                         name="title"
+                        value={title}
                         label={L('label_title')}
                         error={this.errorMessage('title')} />
 
         <Form.TextArea id="content"
                        name="content"
+                       value={contentText}
                        label={L('label_content')}
                        error={this.errorMessage('content')}
                        rows="10" />
 
         <Form.Actions>
           <Form.Button type="submit" className="btn btn-primary">
-            {L('command_register')}
+            {L('command_ok')}
           </Form.Button>
           <Form.Button className="btn btn-default"
                        onClick={this.handleCancel} >

@@ -5,7 +5,7 @@ const contentView = function(content) {
   let value = "";
   switch (content.type) {
     case 'text':
-      value = content.data;
+      value = `<p>${content.data && content.data.replace(/\r?\n/g, '<br />')}</p>`;
       break;
 
     case 'html':
@@ -20,13 +20,24 @@ const contentView = function(content) {
   return value;
 };
 
+const { Link } = ReactRouter;
+
 App.PostView = React.createClass({
+  handleEditPost() {
+    Overlay.page(<App.PostEditContainer post={this.props.post} />,
+      { className: 'slide-up' }).then((value) => {
+        console.log('value = ' + value);
+      });
+  },
+
   render() {
-    const title = this.props.post && this.props.post.title;
-    const content = this.props.post && this.props.post.content;
+    const post = this.props.post;
+
+    const title = post && post.title;
+    const content = post && post.content;
 
     return (
-      <App.Page>
+      <App.Page className="footer-on">
         <App.Header title={L('label_post_view')} />
 
         <article className="page">
@@ -34,10 +45,14 @@ App.PostView = React.createClass({
             <h3>{title}</h3>
           </header>
 
-          <div className="post-view">
-            {contentView(content)}
-          </div>
+          <div className="post-view"
+               dangerouslySetInnerHTML={{__html: contentView(content)}} />
         </article>
+
+        <App.Footer>
+          <button className="btn btn-warning btn-lg btn-block"
+                  onClick={this.handleEditPost}>{L('command_edit')}</button>
+        </App.Footer>
       </App.Page>
     )
   }

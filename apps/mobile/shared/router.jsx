@@ -4,6 +4,7 @@ const { Router, Route, IndexRoute } = ReactRouter;
 const requireAuth = function(nextState, replaceState) {
   if (! Meteor.user()) {
     replaceState({ nextPathname: nextState.location.pathname }, '/sign-in');
+  //  Accounts.ui.Popup('sign-in').then((value) => {});
   }
 };
 

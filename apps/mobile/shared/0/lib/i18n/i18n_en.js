@@ -113,6 +113,7 @@ I18n_data_en = {
 
   // about
   "label_about"                   : "About",
+  "label_about_version"           : "Version",
 
   // post
   "label_posts_list"              : "Posts",

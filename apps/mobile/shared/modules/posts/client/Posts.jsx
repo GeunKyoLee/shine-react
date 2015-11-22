@@ -45,7 +45,8 @@ App.Posts = React.createClass({
         </article>
 
         <App.Footer>
-          <button className="btn btn-primary btn-block" onClick={this.handleNewPost}>{L('label_new_post')}</button>
+          <button className="btn btn-primary btn-block"
+                  onClick={this.handleNewPost}>{L('label_new_post')}</button>
         </App.Footer>
       </App.Page>
     )

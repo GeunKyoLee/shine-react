@@ -4,6 +4,7 @@ Form.InputText = React.createClass({
     return {
       type: 'text',
       error: "",
+      onChange: () => {}
     }
   },
 
@@ -23,7 +24,8 @@ Form.InputText = React.createClass({
                name={this.props.name}
                value={this.props.value}
                placeholder={this.props.placeholder}
-               ref={this.props.ref} />
+               ref={this.props.ref}
+               onChange={this.props.onChange} />
         <p className="help-block">{this.props.error}</p>
       </div>
     )

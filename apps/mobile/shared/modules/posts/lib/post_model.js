@@ -2,17 +2,32 @@
 Posts = new Mongo.Collection('posts');
 
 Meteor.methods({
-  postInsert(post) {
-    const result = check(post, Match.Where(matchPostInsert));
+  postInsert(object) {
+    check(object, Match.Where(matchPostInsert));
 
-    console.log(result);
-
-    post = _.extend(post, {
-      createdAt: new Date()
-    });
+    const now = new Date();
+    const post = {
+      title: object.title,
+      content: object.content,
+      createdAt: now,
+      updatedAt: now
+    };
 
     const postId = Posts.insert(post);
 
     return postId;
   },
+
+  postUpdate(postId, object) {
+    check(postId, String);
+    check(object, Match.Where(matchPostUpdate));
+
+    const post = {
+      title: object.title,
+      content: object.content,
+      updatedAt: new Date()
+    };
+
+    return Posts.update({ _id: postId }, { $set: post });
+  }
 });

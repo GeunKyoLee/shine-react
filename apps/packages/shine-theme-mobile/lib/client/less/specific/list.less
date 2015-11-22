@@ -23,6 +23,12 @@ article.page > header {
 @list-item-sub-color:         lighten(@list-item-main-color, 30%);
 
 .list {
+
+  &.bordered {
+    border-top: solid 1px darken(@input-border, 20%);
+    border-bottom: solid 1px darken(@input-border, 20%);
+  }
+
   .list-item {
     position: relative;
     width: 100%;
