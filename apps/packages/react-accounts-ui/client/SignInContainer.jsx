@@ -18,7 +18,6 @@ Accounts.ui.SignInContainer = React.createClass({
         this.setState({ errors: [error] });
       } else {
         console.log('sign-in success');
-        this.props.fulfill(1);
       }
     });
   },
