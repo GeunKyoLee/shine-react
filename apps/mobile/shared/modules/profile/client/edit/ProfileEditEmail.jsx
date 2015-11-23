@@ -14,11 +14,14 @@ App.ProfileEditEmail = React.createClass({
   },
 
   render() {
+    const email = this.props.emails && this.props.emails[0].address;
+
     return (
       <div className="accounts-ui-frame">
         <Form.Form id="form-change-email" onSubmit={this.handleSubmit}>
           <Form.InputText id="email"
                           name="email"
+                          value={email}
                           placeholder={L('label_email')} />
 
           <Form.Button type="submit"

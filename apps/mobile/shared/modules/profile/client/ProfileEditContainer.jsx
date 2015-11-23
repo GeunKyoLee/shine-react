@@ -8,10 +8,24 @@ App.ProfileEditContainer = React.createClass({
     }
   },
 
-  components: {
-    email: <App.ProfileEditEmail onSubmit={this.handleEditEmail} />,
-    password: <Accounts.ui.ChangePasswordContainer onChanged={this.handleChangePassword} />,
-    name: <App.ProfileEditName onSubmit={this.handleEditName} />
+  getComponent(key) {
+    switch (key) {
+      case 'email':
+        const emails = this.data.user && this.data.user.emails;
+        return <App.ProfileEditEmail emails={emails}
+                                     onSubmit={this.handleEditEmail} />
+      case 'password':
+        return <Accounts.ui.ChangePasswordContainer
+          onChanged={this.handleChangePassword} />
+
+      case 'name':
+        const name = this.data.user &&
+          this.data.user.profile && this.data.user.profile.name;
+        return <App.ProfileEditName name={name}
+          onSubmit={this.handleEditName} />
+    }
+
+    return null;
   },
 
   handleEditEmail(email) {
@@ -28,9 +42,8 @@ App.ProfileEditContainer = React.createClass({
 
   render() {
     const value = this.props.params.name;
-
     const title = L(`label_profile_edit_${value}`);
-    const component = this.components[value];
+    const component = this.getComponent(value);
 
     return (
       <App.Page>

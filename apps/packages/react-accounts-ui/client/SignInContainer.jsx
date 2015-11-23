@@ -1,5 +1,9 @@
 
+const { History } = ReactRouter;
+
 Accounts.ui.SignInContainer = React.createClass({
+  mixins: [History],
+
   getInitialState() {
     return {
       errors: []
@@ -18,6 +22,14 @@ Accounts.ui.SignInContainer = React.createClass({
         this.setState({ errors: [error] });
       } else {
         console.log('sign-in success');
+
+        const { location } = this.props
+
+        if (location.state && location.state.nextPathname) {
+          this.history.replaceState(null, location.state.nextPathname)
+        } else {
+          this.history.replaceState(null, '/')
+        }
       }
     });
   },
