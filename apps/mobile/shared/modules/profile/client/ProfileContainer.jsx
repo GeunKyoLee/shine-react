@@ -5,8 +5,12 @@ App.ProfileContainer = React.createClass({
   mixins: [History, ReactMeteorData],
 
   getMeteorData() {
+    const handle = Meteor.subscribe('system', 'cloudinary');
+
     return {
-      user: Meteor.user()
+      loading: (! handle.ready()),
+      user: Meteor.user(),
+      cloudinary: System.findOne({ _id: 'cloudinary' }),
     }
   },
 
@@ -14,14 +18,9 @@ App.ProfileContainer = React.createClass({
     Meteor.logout();
     this.history.pushState(null, '/');
   },
-/*
-  componetWillMount() {
-    if (! this.data.user) {
-      return Accounts.ui.Popup('sign-in').then((value) => {});
-    }
-  },
-*/
+
   render() {
+    if (this.data.loading) return <App.Spinner />;
 
     return (
       <App.Profile {...this.data} onSignOut={this.handleSignOut} />

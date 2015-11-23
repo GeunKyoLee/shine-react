@@ -12,3 +12,11 @@ userDisplayName = function(user) {
 
   return '';
 };
+
+
+userPictureURL = function(user) {
+  const url = user && user.profile &&
+    user.profile.picture && user.profile.picture.url;
+
+  return url ? url : DEFAULT_PICTURE_URL;
+};

@@ -5,14 +5,19 @@ App.Profile = React.createClass({
 
   render() {
     const user = this.props.user;
-    const profileName = (user.profile && user.profile.name) || ' ';
+    const profileName = (user.profile && user.profile.name) || L('text_no_name');
 
     return (
       <App.Page className="footer-on">
         <App.Header title={L('label_profile')} />
 
         <article className="page">
-          <div className="list">
+
+          <div className="picture">
+            <App.ProfilePictureContainer cloudinary={this.props.cloudinary} />
+          </div>
+
+          <div className="list bordered">
             <Link to="/profile/edit/email" className="list-item">
               <div className="key">
                 {L('label_email')}

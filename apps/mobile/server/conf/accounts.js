@@ -17,7 +17,10 @@ Accounts.onCreateUser(function(options, user) {
     console.log(validator.errors);
     throw new Meteor.Error('validation error: new user');
   }
-
   console.log('new user validation success');
+
+  if (options.profile)
+    user.profile = options.profile;
+
   return user;
 });
