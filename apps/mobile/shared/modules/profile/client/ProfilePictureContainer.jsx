@@ -29,26 +29,10 @@ App.ProfilePictureContainer = React.createClass({
   },
 
   render() {
-    const options = {
-      config: {
-        cloud_name: this.props.cloudinary.cloudName,
-        api_key: this.props.cloudinary.apiKey
-      },
-      options: {
-        upload_preset: this.props.cloudinary.presets.accounts
-      },
-      ui: {
-        buttonHTML: this.props.buttonHTML,
-        showProgress: true
-      }
-    };
-
     return (
-      <div className="picture">
-        <Cloudinary.DirectUploader options={options}
-                                   onUpload={this.handleUpload} />
-        <Cloudinary.ProgressBar />
-      </div>
+      <App.ProfilePicture user={this.props.user}
+                          cloudinary={this.props.cloudinary}
+                          onUpload={this.handleUpload} />
     )
   }
 })

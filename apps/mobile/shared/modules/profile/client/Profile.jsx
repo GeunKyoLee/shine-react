@@ -14,7 +14,8 @@ App.Profile = React.createClass({
         <article className="page">
 
           <div className="picture">
-            <App.ProfilePictureContainer cloudinary={this.props.cloudinary} />
+            <App.ProfilePictureContainer user={user}
+                                         cloudinary={this.props.cloudinary} />
           </div>
 
           <div className="list bordered">

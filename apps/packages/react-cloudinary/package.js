@@ -33,6 +33,7 @@ Package.onUse(function(api) {
     'lib/jquery.iframe-transport.js',
     'lib/jquery.fileupload.js',
     'lib/jquery.cloudinary.js',
+    'client/style.css',
     'client/cloudinary.js',
     'client/components/DirectUploader.jsx',
     'client/components/ProgressBar.jsx',
