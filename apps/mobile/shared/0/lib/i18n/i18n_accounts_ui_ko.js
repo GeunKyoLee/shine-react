@@ -8,7 +8,11 @@ I18n_accounts_ui_ko = {
   "label_email_optional"          : "이메일주소(선택)",
   "label_password"                : "비밀번호",
   "label_password_again"          : "비밀번호 재입력",
+  "label_old_password"            : "현재 비밀번호",
+  "label_new_password"            : "새 비밀번호",
   "label_reset_password"          : "비밀번호 초기화",
+
+  "command_save"                  : "저장",
 
   "text_input_username_or_email"  : "아이디 또는 이메일주소를 입력하십시오.",
   "text_input_username"           : "아이디를 입력하십시오.",

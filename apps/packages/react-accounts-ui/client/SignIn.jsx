@@ -2,10 +2,6 @@
 const { Link } = ReactRouter;
 
 Accounts.ui.SignIn = React.createClass({
-  componentDidMount() {
-    $('form input:first').focus();
-  },
-
   fields() {
     return [
       {
@@ -59,8 +55,8 @@ Accounts.ui.SignIn = React.createClass({
     this.props.moveTo('forgot-password');
   },
 
-  moveToSignUp() {
-    this.props.moveTo('sign-up');
+  componentDidMount() {
+    $('form input:first').focus();
   },
 
   renderInputs() {
@@ -71,28 +67,31 @@ Accounts.ui.SignIn = React.createClass({
 
   render() {
     return (
-      <div className="accounts-ui-page">
-        <div className="accounts-ui-frame">
-          <Form.Form id="form-sign-in" onSubmit={this.handleSubmit}>
+      <App.Page>
+        <App.Header title={L('accounts-ui:label_sign_in')} />
 
-            {this.errors()}
+        <article className="page">
+          <div className="accounts-ui-frame">
+            <Form.Form id="form-sign-in" onSubmit={this.handleSubmit}>
 
-            {this.renderInputs()}
+              {this.errors()}
 
-            <Accounts.ui.InputPassword moveTo={this.moveToForgotPassword} />
+              {this.renderInputs()}
 
-            <Form.Button type="submit"
-                         className="btn btn-primary btn-block">
-              {L('accounts-ui:label_sign_in')}
-            </Form.Button>
-          </Form.Form>
+              <Accounts.ui.InputPassword moveTo={this.moveToForgotPassword} />
 
-          <Form.Button className="btn btn-link"
-                       onClick={this.moveToSignUp}>
-            {L('accounts-ui:label_sign_up')}
-          </Form.Button>
-        </div>
-      </div>
+              <Form.Button type="submit"
+                           className="btn btn-primary btn-block">
+                {L('accounts-ui:label_sign_in')}
+              </Form.Button>
+            </Form.Form>
+
+            <Link to="/sign-up" className="btn btn-link" >
+              {L('accounts-ui:label_sign_up')}
+            </Link>
+          </div>
+        </article>
+      </App.Page>
     )
   }
 });

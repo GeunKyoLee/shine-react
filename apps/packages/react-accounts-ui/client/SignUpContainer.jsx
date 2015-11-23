@@ -23,7 +23,6 @@ Accounts.ui.SignUpContainer = React.createClass({
 
   render() {
     return <Accounts.ui.SignUp onSubmit={this.handleSubmit}
-                               errors={this.state.errors}
-                               moveTo={this.props.moveTo} />
+                               errors={this.state.errors} />
   }
 });

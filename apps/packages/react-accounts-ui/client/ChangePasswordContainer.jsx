@@ -1,5 +1,9 @@
 
+const { History } = ReactRouter;
+
 Accounts.ui.ChangePasswordContainer = React.createClass({
+  mixins: [History],
+
   getInitialState() {
     return {
       errors: []
@@ -13,7 +17,7 @@ Accounts.ui.ChangePasswordContainer = React.createClass({
         return Overlay.notify(error.reason);
       }
 
-      Overlay.notify('password changed successfully.');
+      this.props.onChanged();
     });
   },
 

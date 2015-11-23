@@ -112,6 +112,9 @@ I18n_data_ko = {
 
   // profile
   "label_profile"                 : "프로필",
+  "label_profile_edit_email"      : "이메일주소 변경",
+  "label_profile_edit_password"   : "비밀번호 변경",
+  "label_profile_edit_name"       : "이름 변경",
 
   // about
   "label_about"                   : "앱 정보",

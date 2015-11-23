@@ -2,9 +2,6 @@
 const { Link } = ReactRouter;
 
 Accounts.ui.ForgotPassword = React.createClass({
-  moveToSignIn() {
-    this.props.moveTo('sign-in');
-  },
 
   handleSubmit(e) {
     e.preventDefault();
@@ -24,33 +21,36 @@ Accounts.ui.ForgotPassword = React.createClass({
   },
 
   componentDidMount() {
-    $('#username').focus();
+    $('form input:first').focus();
   },
 
   render() {
     return (
-      <div className="accounts-ui-page">
-        <div className="accounts-ui-frame">
-          <Form.Form id="form-forgot-password" onSubmit={this.handleSubmit}>
+      <App.Page>
+        <App.Header title={L('accounts-ui:label_forgot_password')} />
 
-            {this.errors()}
+        <article className="page">
+          <div className="accounts-ui-frame">
+            <Form.Form id="form-forgot-password" onSubmit={this.handleSubmit}>
 
-            <Form.InputText id="email"
-                            name="email"
-                            placeholder={L('accounts-ui:text_input_email')} />
+              {this.errors()}
 
-            <Form.Button type="submit"
-                         className="btn btn-primary btn-block">
-              {L('accounts-ui:label_reset_password')}
-            </Form.Button>
-          </Form.Form>
+              <Form.InputText id="email"
+                              name="email"
+                              placeholder={L('accounts-ui:text_input_email')} />
 
-          <Form.Button className="btn btn-link"
-                       onClick={this.moveToSignIn}>
-            {L('accounts-ui:label_sign_in')}
-          </Form.Button>
-        </div>
-      </div>
+              <Form.Button type="submit"
+                           className="btn btn-primary btn-block">
+                {L('accounts-ui:label_reset_password')}
+              </Form.Button>
+            </Form.Form>
+
+            <Link to="/sign-in" className="btn btn-link">
+              {L('accounts-ui:label_sign_in')}
+            </Link>
+          </div>
+        </article>
+      </App.Page>
     )
   }
 });

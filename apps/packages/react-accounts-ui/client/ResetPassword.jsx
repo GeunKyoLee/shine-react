@@ -16,7 +16,7 @@ Accounts.ui.ResetPassword = React.createClass({
   },
 
   componentDidMount() {
-    $('#password').focus();
+    $('form input:first').focus();
   },
 
   render() {

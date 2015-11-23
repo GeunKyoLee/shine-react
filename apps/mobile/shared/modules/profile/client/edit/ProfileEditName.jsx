@@ -19,11 +19,11 @@ App.ProfileEditName = React.createClass({
         <Form.Form id="form-change-email" onSubmit={this.handleSubmit}>
           <Form.InputText id="profile-name"
                           name="profile-name"
-                          placeholder={L('accounts-ui:label_name')} />
+                          placeholder={L('label_name')} />
 
           <Form.Button type="submit"
                        className="btn btn-primary btn-block">
-            {L('accounts-ui:label_save')}
+            {L('command_save')}
           </Form.Button>
         </Form.Form>
       </div>

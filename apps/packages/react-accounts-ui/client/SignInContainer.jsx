@@ -25,7 +25,6 @@ Accounts.ui.SignInContainer = React.createClass({
 
   render() {
     return <Accounts.ui.SignIn errors={this.state.errors}
-                               handleSubmit={this.handleSubmit}
-                               moveTo={this.props.moveTo} />
+                               handleSubmit={this.handleSubmit} />
   }
 });

@@ -80,12 +80,8 @@ Accounts.ui.SignUp = React.createClass({
     this.props.onSubmit(username, email, password);
   },
 
-  moveToSignIn() {
-    this.props.moveTo('sign-in');
-  },
-
   componentDidMount() {
-    $('#username').focus();
+    $('form input:first').focus();
   },
 
   renderInputs() {
@@ -96,26 +92,29 @@ Accounts.ui.SignUp = React.createClass({
 
   render() {
     return (
-      <div className="accounts-ui-page">
-        <div className="accounts-ui-frame">
-          <Form.Form id="form-sign-up" onSubmit={this.handleSubmit}>
+      <App.Page>
+        <App.Header title={L('accounts-ui:label_sign_up')} />
 
-            {this.errors()}
+        <article className="page">
+          <div className="accounts-ui-frame">
+            <Form.Form id="form-sign-up" onSubmit={this.handleSubmit}>
 
-            {this.renderInputs()}
+              {this.errors()}
 
-            <Form.Button type="submit"
-                         className="btn btn-primary btn-block">
-              {L('command_sign_up')}
-            </Form.Button>
-          </Form.Form>
+              {this.renderInputs()}
 
-          <Form.Button className="btn btn-link"
-                       onClick={this.moveToSignIn}>
-            {L('accounts-ui:label_sign_in')}
-          </Form.Button>
-        </div>
-      </div>
+              <Form.Button type="submit"
+                           className="btn btn-primary btn-block">
+                {L('command_sign_up')}
+              </Form.Button>
+            </Form.Form>
+
+            <Link to="/sign-in" className="btn btn-link" >
+              {L('accounts-ui:label_sign_in')}
+            </Link>
+          </div>
+        </article>
+      </App.Page>
     )
   }
 });

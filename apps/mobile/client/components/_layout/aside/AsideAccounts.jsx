@@ -1,5 +1,5 @@
 const { Link } = ReactRouter;
-/*
+
 const SignInButton = React.createClass({
   render() {
     return (
@@ -11,8 +11,7 @@ const SignInButton = React.createClass({
     )
   }
 });
-*/
-
+/*
 const SignInButton = React.createClass({
   handleClick() {
     Accounts.ui.page(<Accounts.ui.Popup />).then((value) => {
@@ -28,7 +27,7 @@ const SignInButton = React.createClass({
     )
   }
 });
-
+*/
 const AccountInfo = React.createClass({
   render() {
     return (

@@ -8,7 +8,11 @@ I18n_accounts_ui_en = {
   "label_email_optional"          : "Email(optional)",
   "label_password"                : "Password",
   "label_password_again"          : "Password again",
+  "label_old_password"            : "Old password",
+  "label_new_password"            : "New password",
   "label_reset_password"          : "Reset password",
+
+  "command_save"                  : "Save",
 
   "text_input_username_or_email"  : "Input username or email address",
   "text_input_username"           : "Input username.",

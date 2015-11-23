@@ -24,21 +24,24 @@ Accounts.ui.ChangePassword = React.createClass({
     return (
       <div className="accounts-ui-frame">
         <Form.Form id="form-change-password" onSubmit={this.handleSubmit}>
-          <Form.InputText id="old-password"
+          <Form.InputText type="password"
+                          id="old-password"
                           name="old-password"
                           placeholder={L('accounts-ui:label_old_password')} />
 
-          <Form.InputText id="new-password"
+          <Form.InputText type="password"
+                          id="new-password"
                           name="new-password"
                           placeholder={L('accounts-ui:label_new_password')} />
 
-          <Form.InputText id="password-again"
+          <Form.InputText type="password"
+                          id="password-again"
                           name="password-again"
                           placeholder={L('accounts-ui:label_password_again')} />
 
           <Form.Button type="submit"
                        className="btn btn-primary btn-block">
-            {L('accounts-ui:label_change_password')}
+            {L('accounts-ui:command_save')}
           </Form.Button>
         </Form.Form>
       </div>

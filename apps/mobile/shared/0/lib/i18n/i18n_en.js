@@ -110,6 +110,9 @@ I18n_data_en = {
 
   // profile
   "label_profile"                 : "Profile",
+  "label_profile_edit_email"      : "Edit email address",
+  "label_profile_edit_password"   : "Change password",
+  "label_profile_edit_name"       : "Edit name",
 
   // about
   "label_about"                   : "About",
