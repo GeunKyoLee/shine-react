@@ -23,7 +23,7 @@ const Notification = React.createClass({
                 onClick={this.handleClose} >
           <span aria-hidden="true">&times;</span>
         </button>
-        {message} - {this.props.item._id}
+        {message}
       </div>
     )
   }

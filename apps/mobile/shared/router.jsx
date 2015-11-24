@@ -58,6 +58,7 @@ if (Meteor.isClient) {
 
 } else {
   // server-side routes
+  /*
   const routes = (
     <Route path="/" component={App.Layout}>
       <IndexRoute component={App.HomeContainer}/>
@@ -67,4 +68,5 @@ if (Meteor.isClient) {
   );
 
   ReactRouterSSR.Run(routes);
+  */
 }

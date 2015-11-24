@@ -3,10 +3,15 @@ const { Link } = ReactRouter;
 
 const PostItem = React.createClass({
   render() {
+    const post = this.props.post;
+
+    if (! post) return null;
+
     return (
       <div className="post-item">
-        <Link to={`/post/view/${this.props.post._id}`} >
-          {this.props.post.title}
+        <Link to={`/post/view/${post._id}`} >
+          <p className="title">{post.title}</p>
+          <p className="datetime">{post.author.name}</p>
         </Link>
       </div>
     )
@@ -24,7 +29,13 @@ App.Posts = React.createClass({
     ));
   },
 
-  handleNewPost() {
+  handleNewPost(e) {
+    e.preventDefault();
+
+    if (! Meteor.user()) {
+      return Overlay.notify(L('text_sign_in_first'));
+    }
+
     Overlay.page(<App.PostFormContainer />, { className: 'slide-up' })
       .then((value) => {
         console.log('value = ' + value);

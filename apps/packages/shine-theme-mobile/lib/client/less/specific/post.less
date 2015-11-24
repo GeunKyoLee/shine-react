@@ -10,7 +10,7 @@
     .title {
       margin: 0;
       color: @list-item-main-color;
-      font-size: 1.5em;
+      font-size: 1.2em;
     }
 
     .datetime {
@@ -43,6 +43,33 @@
 
   .datetime {
     text-align: right;
+  }
+}
+
+.post-info {
+  position: relative;
+  margin-bottom: 20px;
+  padding-left: 50px;
+
+  > img {
+    position: absolute;
+    width: 40px;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+  }
+
+  p {
+    margin: 0;
+    line-height: 20px;
+
+    &.name {
+      color: #797979;
+    }
+
+    &.time {
+      color: lighten(#888, 20%);
+    }
   }
 }
 

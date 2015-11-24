@@ -22,7 +22,7 @@ npm-container
 
 react
 reactrouter:react-router
-reactrouter:react-router-ssr
+#reactrouter:react-router-ssr
 
 check
 

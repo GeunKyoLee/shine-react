@@ -13,8 +13,10 @@ App.PostViewContainer = React.createClass({
   },
 
   render() {
+    if (this.data.loading) return <App.Spinner />;
+
     return (
-      <App.PostView {...this.data} />
+      <App.PostView post={this.data.post} />
     )
   }
 });

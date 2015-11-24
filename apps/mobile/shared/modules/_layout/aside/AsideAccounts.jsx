@@ -11,23 +11,7 @@ const SignInButton = React.createClass({
     )
   }
 });
-/*
-const SignInButton = React.createClass({
-  handleClick() {
-    Accounts.ui.page(<Accounts.ui.Popup />).then((value) => {
-      console.log('sign-in result: ' + value);
-    });
-  },
 
-  render() {
-    return (
-      <div className="account-info" onClick={this.handleClick} >
-        <p>{L('accounts-ui:label_sign_in')}</p>
-      </div>
-    )
-  }
-});
-*/
 const AccountInfo = React.createClass({
   render() {
     const username = userDisplayName(this.props.user);

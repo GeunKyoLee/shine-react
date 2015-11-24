@@ -1,14 +1,19 @@
 
 Meteor.methods({
-  accountUpdate(userId, profile) {
-    check(userId, String);
+  accountUpdate(profile) {
 
     const data = {
       'profile.name': profile.name,
       'profile.updatedAt': new Date(),
     };
 
-    return Meteor.users.update({ _id: userId }, { $set: data });
+    const result = Meteor.users.update({ _id: this.userId }, { $set: data });
+
+    if (result > 0) {
+      Posts.update({ 'author._id': this.userId }, { $set: {
+        'author.name': profile.name
+      }});
+    }
   },
 
   accountAddEmail(userId, email) {

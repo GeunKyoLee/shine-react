@@ -49,18 +49,14 @@ App.ProfileEditContainer = React.createClass({
       name: profileName
     };
 
-    Meteor.call('accountUpdate', this.data.user._id, profile,
+    Meteor.call('accountUpdate', profile,
       (error) => {
         if (error) {
           Overlay.notify(error.reason);
         } else {
           RouteTransition.goBack(this.history);
-          console.log('accountUpdate done');
-//          $('#back').trigger('click');
         }
     });
-
-    return false;
   },
 
   render() {

@@ -26,11 +26,15 @@ Meteor.methods({
         $set: {
           "profile.picture": {
             _id: pictureId,
-            repoId: attributes.repoId,
-            url: attributes.url
+            repoId: picture.repoId,
+            url: picture.url
           }
         }
       });
+
+      Posts.update({ 'author._id': user._id }, { $set: {
+        'author.url': picture.url
+      }});
 
       if (oldPicture) {
         ProfilePictures.remove(oldPicture._id);

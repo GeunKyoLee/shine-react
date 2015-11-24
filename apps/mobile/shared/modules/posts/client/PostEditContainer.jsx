@@ -26,7 +26,10 @@ App.PostEditContainer = React.createClass({
 
     const self = this;
     Meteor.call('postUpdate', this.props.post._id, post, (error) => {
-      if (error) return self.props.reject(-1);
+      if (error) {
+        Overlay.notify(error.reason);
+        return self.props.reject(-1);
+      }
 
       return self.props.fulfill(1);
     });

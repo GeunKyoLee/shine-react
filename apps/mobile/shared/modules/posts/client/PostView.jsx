@@ -23,7 +23,13 @@ const contentView = function(content) {
 const { Link } = ReactRouter;
 
 App.PostView = React.createClass({
-  handleEditPost() {
+  handleEditPost(e) {
+    e.preventDefault();
+
+    if (! Meteor.user()) {
+      return Overlay.notify(L('text_sign_in_first'));
+    }
+
     Overlay.page(<App.PostEditContainer post={this.props.post} />,
       { className: 'slide-up' }).then((value) => {
         console.log('value = ' + value);
@@ -31,10 +37,11 @@ App.PostView = React.createClass({
   },
 
   render() {
-    const post = this.props.post;
+    if (! this.props.post) return null;
 
-    const title = post && post.title;
-    const content = post && post.content;
+    console.log(this.props.post);
+
+    const post = this.props.post;
 
     return (
       <App.Page className="footer-on">
@@ -42,11 +49,17 @@ App.PostView = React.createClass({
 
         <article className="page">
           <header>
-            <h3>{title}</h3>
+            <div className="post-info">
+              <img src={post.author.url} />
+              <p className="name">{post.author.name}</p>
+              <p className="time">{post.createdAt.toString()}</p>
+            </div>
+
+            <h3>{post.title}</h3>
           </header>
 
           <div className="post-view"
-               dangerouslySetInnerHTML={{__html: contentView(content)}} />
+               dangerouslySetInnerHTML={{__html: contentView(post.content)}} />
         </article>
 
         <App.Footer>
