@@ -27,7 +27,6 @@ reactrouter:react-router
 check
 
 less
-shinejs:bootstrap-less
 shinejs:shine-theme-mobile
 fortawesome:fontawesome
 

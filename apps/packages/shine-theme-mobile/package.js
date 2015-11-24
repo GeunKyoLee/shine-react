@@ -8,52 +8,40 @@ Package.describe({
 });
 
 Package.onUse(function (api) {
-
-  // ---------------------------------- 1. Core dependency -----------------------------------
   api.versionsFrom('1.2');
+
   api.use([
     'less',
     'shinejs:bootstrap-less'
   ]);
 
-  // ---------------------------------- 2. Files to include ----------------------------------
-
-  // client
   api.addFiles([
-    // LESS
-    'lib/client/less/main.less',
+    'lib/client/style.less',
   ], 'client');
 
   api.addFiles([
     // includes
-    'lib/client/less/includes/variables.less',
-    //'lib/client/less/includes/mixins.less',
-    //'lib/client/less/includes/breakpoints.less',
-    //'lib/client/less/includes/grid.less',
+    'lib/client/import/includes/variables.less',
 
     // global
-    'lib/client/less/global/buttons.less',
-    'lib/client/less/global/form.less',
-    'lib/client/less/global/markdown.less',
+    'lib/client/import/global/form.less',
+    'lib/client/import/global/markdown.less',
 
     // layout
-    'lib/client/less/layout/layout.less',
-    'lib/client/less/layout/header.less',
-    'lib/client/less/layout/aside.less',
-    'lib/client/less/layout/content.less',
-    'lib/client/less/layout/page.less',
-    'lib/client/less/layout/overlay.less',
+    'lib/client/import/layout/layout.less',
+    'lib/client/import/layout/header.less',
+    'lib/client/import/layout/aside.less',
+    'lib/client/import/layout/content.less',
+    'lib/client/import/layout/page.less',
+    'lib/client/import/layout/overlay.less',
 
-    // specific
-    'lib/client/less/specific/animations.less',
-    'lib/client/less/specific/list.less',
-    //'lib/client/less/specific/balloon.less',
-    'lib/client/less/specific/chat.less',
-    'lib/client/less/specific/modules.less',
-    'lib/client/less/specific/post.less',
-    'lib/client/less/specific/user-modal.less',
-    'lib/client/less/specific/accounts.less',
-    'lib/client/less/specific/connection.less',
+    // components
+    'lib/client/import/specific/animations.less',
+    'lib/client/import/specific/list.less',
+    'lib/client/import/specific/post.less',
+    'lib/client/import/specific/accounts.less',
+    'lib/client/import/specific/connection.less',
+    'lib/client/import/specific/spinner.less',
 
   ],'client', { isImport: true });
 

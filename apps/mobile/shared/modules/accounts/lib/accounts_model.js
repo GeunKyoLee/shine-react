@@ -10,9 +10,11 @@ Meteor.methods({
     const result = Meteor.users.update({ _id: this.userId }, { $set: data });
 
     if (result > 0) {
-      Posts.update({ 'author._id': this.userId }, { $set: {
-        'author.name': profile.name
-      }});
+      Posts.update(
+        { 'author._id': this.userId },
+        { $set: { 'author.name': profile.name}},
+        { multi: true }
+      );
     }
   },
 

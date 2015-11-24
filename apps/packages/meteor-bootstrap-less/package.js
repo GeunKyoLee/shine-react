@@ -30,7 +30,7 @@ Package.onUse(function(api) {
     '3.3.5/js/affix.js'
   ], 'client');
 
-  api.addFiles('bootstrap.less', 'client');
+  api.addFiles('bootstrap.less', 'client', { isImport: true });
 
   api.addFiles([
     '3.3.5/imports/variables.less',
@@ -102,7 +102,7 @@ Package.onUse(function(api) {
     '3.3.5/imports/carousel.less',
     '3.3.5/imports/utilities.less',
     '3.3.5/imports/responsive-utilities.less'
-  ], 'client', { isImport: true });
+  ], 'client');
 
   api.addAssets([
     '3.3.5/fonts/glyphicons-halflings-regular.eot',

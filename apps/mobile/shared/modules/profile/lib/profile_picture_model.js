@@ -32,9 +32,11 @@ Meteor.methods({
         }
       });
 
-      Posts.update({ 'author._id': user._id }, { $set: {
-        'author.url': picture.url
-      }});
+      Posts.update(
+        { 'author._id': user._id },
+        { $set: { 'author.url': picture.url }},
+        { multi: true }
+      );
 
       if (oldPicture) {
         ProfilePictures.remove(oldPicture._id);
