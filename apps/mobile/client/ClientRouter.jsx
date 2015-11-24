@@ -1,4 +1,4 @@
-
+/*
 const { Router, Route, IndexRoute } = ReactRouter;
 
 const createHistory = ReactRouter.history.createHistory;
@@ -64,3 +64,4 @@ ClientRouter = React.createClass({
     )
   }
 });
+*/

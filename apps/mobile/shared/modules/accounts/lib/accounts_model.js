@@ -9,5 +9,13 @@ Meteor.methods({
     };
 
     return Meteor.users.update({ _id: userId }, { $set: data });
+  },
+
+  accountAddEmail(userId, email) {
+    check(userId, String);
+
+    if (this.isSimulation) return;
+
+    return Accounts.addEmail(userId, email);
   }
 });

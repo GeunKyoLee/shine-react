@@ -4,9 +4,7 @@ Cloudinary.DirectUploader = React.createClass({
   componentDidMount() {
     this._autorun = Tracker.autorun((e) => {
 //      if (e.firstRun) {
-
         const reactId = $(this.refs.fileInput).attr('data-reactid');
-
         const options = _.extend({ reactId }, this.props.options);
 
         Cloudinary.uploadImage(options, this.props.onUpload);

@@ -1,6 +1,8 @@
 
+const { History } = ReactRouter;
+
 App.ProfileEditContainer = React.createClass({
-  mixins: [ReactMeteorData],
+  mixins: [History, ReactMeteorData],
 
   getMeteorData() {
     return {
@@ -10,6 +12,10 @@ App.ProfileEditContainer = React.createClass({
 
   getComponent(key) {
     switch (key) {
+      case 'name':
+        const profileName = this.data.user.profile && this.data.user.profile.name;
+        return <App.ProfileEditName profileName={profileName}
+                                    onSubmit={this.handleEditName} />;
       case 'email':
         const emails = this.data.user.emails;
         return <App.ProfileEditEmail emails={emails}
@@ -17,37 +23,44 @@ App.ProfileEditContainer = React.createClass({
       case 'password':
         return <Accounts.ui.ChangePasswordContainer
           onChanged={this.handleChangePassword} />;
-
-      case 'name':
-        const name = this.data.user.profile && this.data.user.profile.name;
-        return <App.ProfileEditName name={name}
-          onSubmit={this.handleEditName} />;
     }
 
     return null;
   },
 
   handleEditEmail(email) {
-    Accounts.addEmail(this.data.user._id, email);
+    Meteor.call('accountAddEmail', this.data.user._id, email,
+      (error) => {
+        if (error) {
+          Overlay.notify(error.reason);
+        } else {
+          RouteTransition.goBack(this.history);
+        }
+      });
   },
 
   handleChangePassword() {
     Overlay.notify('password changed successfully.');
+    RouteTransition.goBack(this.history);
   },
 
-  handleEditName(name) {
+  handleEditName(profileName) {
     const profile = {
-      name: name
+      name: profileName
     };
 
-    Meteor.call('accountUpdate',
-      this.data.user._id,
-      profile,
-      (error, result) => {
+    Meteor.call('accountUpdate', this.data.user._id, profile,
+      (error) => {
         if (error) {
           Overlay.notify(error.reason);
+        } else {
+          RouteTransition.goBack(this.history);
+          console.log('accountUpdate done');
+//          $('#back').trigger('click');
         }
     });
+
+    return false;
   },
 
   render() {

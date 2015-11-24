@@ -11,17 +11,24 @@ const RouteStack = {
 
   push(path) {
     this._stack.push(path);
+    console.log('routeStack push: ' + path);
   },
 
   pop(depth = 1) {
     if (depth > 1) {
-      for (let i = 0; i < depth; i++) this._stack.pop();
+      for (let i = 0; i < depth; i++) {
+        const path = this._stack.pop();
+        console.log('routeStack pop: ' + path);
+      }
     } else {
-      return this._stack.pop();
+      const path = this._stack.pop();
+      console.log('routeStack pop: ' + path);
+      return path;
     }
   },
 
   replace(path) {
+    console.log('routeStack replace: ' + path);
     this._stack.pop();
     this._stack.push(path);
   },
@@ -41,8 +48,9 @@ RouteTransition = React.createClass({
   statics: {
     stack: RouteStack,
     goBack: (history) => {
-      RouteStack.pop(2);
+      RouteStack.pop();
       history.goBack();
+      RouteStack.pop();
     },
     canGoBack: () => {
       return (RouteStack.count() > 1);
@@ -56,16 +64,9 @@ RouteTransition = React.createClass({
     };
   },
 
-  componentWillMount() {
-    RouteStack.init(this.props.path);
-    this.setState({ transitionName: 'page' });
-  },
-
   componentWillReceiveProps(props) {
     const { path, name } = props;
-
     RouteStack.push(path);
-
     const depth = RouteStack.count();
     const transitionName = (depth > this.state.currentDepth) ?
       `${name}-left` : `${name}-right`;

@@ -5,7 +5,7 @@ App.Spinner = React.createClass({
   render() {
     return (
       <div className="spinner-wrapper">
-        <SpinnerView />
+        <Meteor.Spinner />
       </div>
     )
   }
@@ -18,7 +18,7 @@ App.TableSpinner = React.createClass({
   render() {
     return (
       <tr className="spinner-wrapper">
-        <SpinnerView />
+        <Meteor.Spinner />
       </tr>
     )
   }
@@ -31,7 +31,7 @@ App.LoadMoreSpinner = React.createClass({
   render() {
     return (
       <div className="list-spinner-wrapper">
-        <SpinnerView />
+        <Meteor.Spinner />
       </div>
     )
   }

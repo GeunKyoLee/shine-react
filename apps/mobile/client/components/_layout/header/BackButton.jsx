@@ -9,7 +9,7 @@ BackButton = React.createClass({
 
   render() {
     return (
-      <button className="btn btn-default" onClick={this.onBack}>
+      <button id="back" className="btn btn-default" onClick={this.onBack}>
         <i className="fa fa-chevron-left"></i>
       </button>
     )

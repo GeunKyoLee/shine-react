@@ -3,10 +3,11 @@ App.ProfileEditName = React.createClass({
 
   handleSubmit(e) {
     e.preventDefault();
+    e.stopPropagation();
 
     const profileName = e.target['profile-name'].value;
 
-    this.props.onSubmit(profileName);
+    return this.props.onSubmit(profileName);
   },
 
   componentDidMount() {
@@ -16,10 +17,10 @@ App.ProfileEditName = React.createClass({
   render() {
     return (
       <div className="accounts-ui-frame">
-        <Form.Form id="form-change-email" onSubmit={this.handleSubmit}>
+        <Form.Form id="form-change-name" onSubmit={this.handleSubmit}>
           <Form.InputText id="profile-name"
                           name="profile-name"
-                          value={this.props.name}
+                          value={this.props.profileName}
                           placeholder={L('label_name')} />
 
           <Form.Button type="submit"
