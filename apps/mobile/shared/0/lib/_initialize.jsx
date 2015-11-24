@@ -17,7 +17,6 @@ Meteor.startup(function () {
   // I18n alias for JSX
   L = (key, args, lang) => I18n.get(key, args, lang);
 
-
 });
 
 

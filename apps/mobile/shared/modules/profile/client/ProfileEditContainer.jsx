@@ -11,18 +11,17 @@ App.ProfileEditContainer = React.createClass({
   getComponent(key) {
     switch (key) {
       case 'email':
-        const emails = this.data.user && this.data.user.emails;
+        const emails = this.data.user.emails;
         return <App.ProfileEditEmail emails={emails}
-                                     onSubmit={this.handleEditEmail} />
+                                     onSubmit={this.handleEditEmail} />;
       case 'password':
         return <Accounts.ui.ChangePasswordContainer
-          onChanged={this.handleChangePassword} />
+          onChanged={this.handleChangePassword} />;
 
       case 'name':
-        const name = this.data.user &&
-          this.data.user.profile && this.data.user.profile.name;
+        const name = this.data.user.profile && this.data.user.profile.name;
         return <App.ProfileEditName name={name}
-          onSubmit={this.handleEditName} />
+          onSubmit={this.handleEditName} />;
     }
 
     return null;
@@ -37,10 +36,23 @@ App.ProfileEditContainer = React.createClass({
   },
 
   handleEditName(name) {
+    const profile = {
+      name: name
+    };
 
+    Meteor.call('accountUpdate',
+      this.data.user._id,
+      profile,
+      (error, result) => {
+        if (error) {
+          Overlay.notify(error.reason);
+        }
+    });
   },
 
   render() {
+    if (! this.data.user) return <App.Spinner />;
+
     const value = this.props.params.name;
     const title = L(`label_profile_edit_${value}`);
     const component = this.getComponent(value);

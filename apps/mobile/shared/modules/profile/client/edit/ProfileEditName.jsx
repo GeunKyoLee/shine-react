@@ -19,6 +19,7 @@ App.ProfileEditName = React.createClass({
         <Form.Form id="form-change-email" onSubmit={this.handleSubmit}>
           <Form.InputText id="profile-name"
                           name="profile-name"
+                          value={this.props.name}
                           placeholder={L('label_name')} />
 
           <Form.Button type="submit"

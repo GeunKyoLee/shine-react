@@ -9,6 +9,7 @@ const requireAuth = function(nextState, replaceState) {
 };
 
 if (Meteor.isClient) {
+  /*
   const createHistory = ReactRouter.history.createHistory;
   const onRouterUpdate = App.AsideLeft.hide;
 
@@ -50,8 +51,7 @@ if (Meteor.isClient) {
     </Router>
   );
 
-  Accounts.onResetPasswordLink(function (token, done) {
-    console.log('token: ' + token);
+  Accounts.onResetPasswordLink((token) => {
     createHistory().pushState(null, `/reset-password/${token}`);
   });
 
@@ -59,6 +59,7 @@ if (Meteor.isClient) {
   Meteor.startup(function() {
     ReactDOM.render(router, document.getElementById('app-container'));
   });
+  */
 } else {
   // server-side routes
   const routes = (

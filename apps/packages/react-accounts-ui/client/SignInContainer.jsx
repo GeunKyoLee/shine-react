@@ -30,6 +30,7 @@ Accounts.ui.SignInContainer = React.createClass({
         } else {
           this.history.replaceState(null, '/')
         }
+        console.log('history state replace');
       }
     });
   },

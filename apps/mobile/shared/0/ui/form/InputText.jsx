@@ -1,11 +1,25 @@
 
 Form.InputText = React.createClass({
+  getInitialState() {
+    return {
+      value: ''
+    }
+  },
+
   getDefaultProps() {
     return {
       type: 'text',
       error: "",
       onChange: () => {}
     }
+  },
+
+  handleChange(e) {
+    this.setState({ value: e.target.value });
+  },
+
+  componentWillMount() {
+    this.setState({ value: this.props.value })
   },
 
   render() {
@@ -22,10 +36,10 @@ Form.InputText = React.createClass({
                id={this.props.id}
                className="form-control"
                name={this.props.name}
-               value={this.props.value}
+               value={this.state.value}
                placeholder={this.props.placeholder}
                ref={this.props.ref}
-               onChange={this.props.onChange} />
+               onChange={this.handleChange} />
         <p className="help-block">{this.props.error}</p>
       </div>
     )

@@ -5,6 +5,8 @@ App.Profile = React.createClass({
 
   render() {
     const user = this.props.user;
+    if (! user) return null;
+
     const profileName = (user.profile && user.profile.name) || L('text_no_name');
 
     return (
