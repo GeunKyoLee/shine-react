@@ -14,11 +14,13 @@ App.About = React.createClass({
         <App.Header title={L('label_about')} />
 
         <article className="page">
-          <div className="page-body">
-            <div className="list bordered">
-              <div className="list-item">
-                <div className="key">{L('label_about_version')}</div>
-                <div className="value">{this.props.version}</div>
+          <div className="about-frame-wrapper">
+            <div className="about-frame">
+              <img className="about-logo" src="/images/logo.svg" />
+              <div className="about-info">
+                <p className="version">Version {this.props.version}</p>
+                <p className="license">Shine is licensed under the MIT License.</p>
+                <p className="copyright">&copy; 2015 Bookpal Co., Ltd. All rights reserved.</p>
               </div>
             </div>
           </div>

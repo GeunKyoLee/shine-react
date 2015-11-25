@@ -30,6 +30,7 @@ Package.onUse(function (api) {
     'client/import/overlay.less',
 
     // components
+    'client/import/components/about.less',
     'client/import/components/form.less',
     'client/import/components/markdown.less',
     'client/import/components/animations.less',
