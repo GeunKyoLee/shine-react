@@ -16,32 +16,28 @@ Package.onUse(function (api) {
   ]);
 
   api.addFiles([
-    'lib/client/style.less',
+    'client/style.less',
   ], 'client');
 
   api.addFiles([
     // includes
-    'lib/client/import/includes/variables.less',
-
-    // global
-    'lib/client/import/global/form.less',
-    'lib/client/import/global/markdown.less',
-
-    // layout
-    'lib/client/import/layout/layout.less',
-    'lib/client/import/layout/header.less',
-    'lib/client/import/layout/aside.less',
-    'lib/client/import/layout/content.less',
-    'lib/client/import/layout/page.less',
-    'lib/client/import/layout/overlay.less',
+    'client/import/variables.less',
+    'client/import/layout.less',
+    'client/import/header.less',
+    'client/import/aside.less',
+    'client/import/content.less',
+    'client/import/page.less',
+    'client/import/overlay.less',
 
     // components
-    'lib/client/import/specific/animations.less',
-    'lib/client/import/specific/list.less',
-    'lib/client/import/specific/post.less',
-    'lib/client/import/specific/accounts.less',
-    'lib/client/import/specific/connection.less',
-    'lib/client/import/specific/spinner.less',
+    'client/import/components/form.less',
+    'client/import/components/markdown.less',
+    'client/import/components/animations.less',
+    'client/import/components/list.less',
+    'client/import/components/post.less',
+    'client/import/components/accounts.less',
+    'client/import/components/connection.less',
+    'client/import/components/spinner.less',
 
   ],'client', { isImport: true });
 
