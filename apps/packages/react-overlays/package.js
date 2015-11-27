@@ -23,6 +23,7 @@ Package.onUse(function(api) {
     'less',
     'shinejs:bootstrap-less'
   ]);
+
   api.addFiles([
     'react-overlays.js',
     'lib/0.jsx',

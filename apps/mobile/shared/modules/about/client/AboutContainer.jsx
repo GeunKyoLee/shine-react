@@ -2,7 +2,7 @@
 App.AboutContainer = React.createClass({
   getInitialState() {
     return {
-      version: '0.1.1'
+      version: APP_VERSION
     }
   },
 
