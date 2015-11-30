@@ -63,31 +63,25 @@ Accounts.ui.SignIn = React.createClass({
 
   render() {
     return (
-      <App.Page>
-        <App.Header title={L('accounts-ui:label_sign_in')} />
+      <div className="accounts-ui-frame">
+        <Form.Form id="form-sign-in" onSubmit={this.handleSubmit}>
 
-        <article className="page">
-          <div className="accounts-ui-frame">
-            <Form.Form id="form-sign-in" onSubmit={this.handleSubmit}>
+          {this.errors()}
 
-              {this.errors()}
+          {this.renderInputs()}
 
-              {this.renderInputs()}
+          <Accounts.ui.InputPassword />
 
-              <Accounts.ui.InputPassword />
+          <Form.Button type="submit"
+                       className="btn btn-primary btn-block">
+            {L('accounts-ui:label_sign_in')}
+          </Form.Button>
+        </Form.Form>
 
-              <Form.Button type="submit"
-                           className="btn btn-primary btn-block">
-                {L('accounts-ui:label_sign_in')}
-              </Form.Button>
-            </Form.Form>
-
-            <Link to="/sign-up" className="btn btn-link" >
-              {L('accounts-ui:label_sign_up')}
-            </Link>
-          </div>
-        </article>
-      </App.Page>
+        <Link to="/sign-up" className="btn btn-link" >
+          {L('accounts-ui:label_sign_up')}
+        </Link>
+      </div>
     )
   }
 });

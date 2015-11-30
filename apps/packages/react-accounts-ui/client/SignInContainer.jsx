@@ -17,18 +17,19 @@ Accounts.ui.SignInContainer = React.createClass({
     this.setState({ errors });
     if (errors.length > 0) return;
 
+    const self = this;
     Meteor.loginWithPassword(user, password, (error) => {
       if (error) {
-        this.setState({ errors: [error] });
+        self.setState({ errors: [error] });
       } else {
         console.log('sign-in success');
 
-        const { location } = this.props
+        const { location } = self.props
 
-        if (location.state && location.state.nextPathname) {
-          this.history.replaceState(null, location.state.nextPathname)
+        if (location && location.state && location.state.nextPathname) {
+          self.history.replaceState(null, location.state.nextPathname)
         } else {
-          this.history.replaceState(null, '/')
+          self.history.replaceState(null, '/')
         }
         console.log('history state replace');
       }

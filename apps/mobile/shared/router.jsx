@@ -15,12 +15,12 @@ if (Meteor.isClient) {
     <Route path="/" component={App.Layout} >
       <Route path="home" component={Home.ViewContainer} />
 
-      <Route path="sign-in" component={Accounts.ui.SignInContainer} />
-      <Route path="sign-up" component={Accounts.ui.SignUpContainer} />
+      <Route path="sign-in" component={Account.SignInContainer} />
+      <Route path="sign-up" component={Account.SignUpContainer} />
       <Route path="forgot-password"
-             component={Accounts.ui.ForgotPasswordContainer} />
+             component={Account.ForgotPasswordContainer} />
       <Route path="reset-password/:token"
-             component={Accounts.ui.ResetPasswordContainer} />
+             component={Account.ResetPasswordContainer} />
 
       <Route path="profile"
              component={Profile.ViewContainer}
