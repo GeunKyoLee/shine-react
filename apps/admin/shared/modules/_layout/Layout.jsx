@@ -18,7 +18,7 @@ App.Layout = React.createClass({
       <Overlay.NotificationsContainer /> : null;
 
     return (
-      <div id="container">
+      <div id="container" className="aside-left-fixed">
         <App.Header />
 
         <RouteTransition location={this.props.location}

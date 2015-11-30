@@ -9,9 +9,9 @@ App.Header = React.createClass({
   render() {
     return (
       <header>
-        <div className="logo"><img src="/images/logo-inversed.svg" /></div>
-        <div className="header-left">
-          <NavButton />
+        <div className="logo">
+          <img src="/images/logo-inversed.svg" />
+          <span className="title">Administration</span>
         </div>
         <div className="header-right">
           <App.AccountInfo />
