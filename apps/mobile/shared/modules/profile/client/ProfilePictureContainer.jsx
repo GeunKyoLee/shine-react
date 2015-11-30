@@ -1,5 +1,5 @@
 
-App.ProfilePictureContainer = React.createClass({
+Profile.PictureContainer = React.createClass({
   handleUpload(error, data) {
     if (error) {
       console.log('Cloudinary.uploadImage error: ');
@@ -30,7 +30,7 @@ App.ProfilePictureContainer = React.createClass({
 
   render() {
     return (
-      <App.ProfilePicture user={this.props.user}
+      <Profile.Picture user={this.props.user}
                           cloudinary={this.props.cloudinary}
                           onUpload={this.handleUpload} />
     )

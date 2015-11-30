@@ -18,7 +18,7 @@ const PostItem = React.createClass({
   }
 });
 
-App.Posts = React.createClass({
+Home.View = React.createClass({
   posts() {
     if (this.props.posts.length === 0) {
       return  (<div key={'_'}className="post-item">{L('text_no_posts')}</div>);
@@ -36,7 +36,7 @@ App.Posts = React.createClass({
       return Overlay.notify(L('text_sign_in_first'));
     }
 
-    Overlay.page(<App.PostFormContainer />, { className: 'slide-up' })
+    Overlay.page(<Post.NewContainer />, { className: 'slide-up' })
       .then((value) => {
         console.log('value = ' + value);
       });
@@ -47,7 +47,7 @@ App.Posts = React.createClass({
 
     return (
       <App.Page className="footer-on">
-        <App.Header title={L('label_posts_list')} />
+        <Home.Header />
 
         <article className="page">
           <div className="post-list">

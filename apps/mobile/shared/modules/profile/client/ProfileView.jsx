@@ -1,7 +1,7 @@
 
 const { Link } = ReactRouter;
 
-App.Profile = React.createClass({
+Profile.View = React.createClass({
 
   render() {
     const user = this.props.user;
@@ -16,7 +16,7 @@ App.Profile = React.createClass({
         <article className="page">
 
           <div className="picture">
-            <App.ProfilePictureContainer user={user}
+            <Profile.PictureContainer user={user}
                                          cloudinary={this.props.cloudinary} />
           </div>
 

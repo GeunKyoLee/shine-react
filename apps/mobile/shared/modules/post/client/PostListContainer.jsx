@@ -1,5 +1,5 @@
 
-App.PostsContainer = React.createClass({
+Post.ListContainer = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData() {
@@ -7,13 +7,13 @@ App.PostsContainer = React.createClass({
 
     return {
       loading: (! handle.ready()),
-      posts: Posts.find({}, { sort: { createdAt: -1 }}).fetch(),
+      posts: Post.collection.find({}, { sort: { createdAt: -1 }}).fetch(),
     }
   },
 
   render() {
     return (
-      <App.Posts {...this.data} />
+      <Post.List {...this.data} />
     )
   }
 });

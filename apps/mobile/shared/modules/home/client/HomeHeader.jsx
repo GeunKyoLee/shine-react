@@ -1,5 +1,7 @@
 
-App.HomeHeader = React.createClass({
+if (typeof Home === 'undefined') Home = {};
+
+Home.Header = React.createClass({
   getDefaultProps() {
     return {
       title: 'Page-Title'

@@ -1,9 +1,11 @@
 
-Posts = new Mongo.Collection('posts');
+if (typeof Post === 'undefined') Post = {};
+
+Post.collection = new Mongo.Collection('posts');
 
 Meteor.methods({
   postInsert(object) {
-    check(object, Match.Where(matchPostInsert));
+    check(object, Match.Where(Post.Match.insert));
 
     // check permission
     if (! this.userId) throw Meteor.Error('error_access_denied');
@@ -22,14 +24,14 @@ Meteor.methods({
       updatedAt: now
     };
 
-    const postId = Posts.insert(post);
+    const postId = Post.collection.insert(post);
 
     return postId;
   },
 
   postUpdate(postId, object) {
     check(postId, String);
-    check(object, Match.Where(matchPostUpdate));
+    check(object, Match.Where(Post.Match.update));
 
     // check permission
     if (! this.userId) throw new Meteor.Error(ERROR_SECURITY, 'error_access_denied');
@@ -46,7 +48,7 @@ Meteor.methods({
       updatedAt: new Date()
     };
 
-    const result = Posts.update({ _id: postId, 'author._id': this.userId },
+    const result = Post.collection.update({ _id: postId, 'author._id': this.userId },
       { $set: post });
 
     if (result < 1) {
@@ -62,7 +64,7 @@ Meteor.methods({
     // check permission
     if (! this.userId) throw new Meteor.Error(ERROR_SECURITY, 'error_access_denied');
 
-    const result = Posts.remove({ _id: postId, 'author._id': this.userId });
+    const result = Post.collection.remove({ _id: postId, 'author._id': this.userId });
 
     if (result < 1) {
       throw new Meteor.Error(ERROR_SECURITY, 'error_access_denied');

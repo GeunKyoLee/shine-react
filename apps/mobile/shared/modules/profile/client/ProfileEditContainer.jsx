@@ -1,7 +1,7 @@
 
 const { History } = ReactRouter;
 
-App.ProfileEditContainer = React.createClass({
+Profile.EditContainer = React.createClass({
   mixins: [History, ReactMeteorData],
 
   getMeteorData() {
@@ -14,11 +14,11 @@ App.ProfileEditContainer = React.createClass({
     switch (key) {
       case 'name':
         const profileName = this.data.user.profile && this.data.user.profile.name;
-        return <App.ProfileEditName profileName={profileName}
+        return <Profile.EditName profileName={profileName}
                                     onSubmit={this.handleEditName} />;
       case 'email':
         const emails = this.data.user.emails;
-        return <App.ProfileEditEmail emails={emails}
+        return <Profile.EditEmail emails={emails}
                                      onSubmit={this.handleEditEmail} />;
       case 'password':
         return <Accounts.ui.ChangePasswordContainer

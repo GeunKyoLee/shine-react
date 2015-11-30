@@ -51,10 +51,6 @@ Accounts.ui.SignIn = React.createClass({
     return this.props.handleSubmit(user, e.target.password.value);
   },
 
-  moveToForgotPassword() {
-    this.props.moveTo('forgot-password');
-  },
-
   componentDidMount() {
     $('form input:first').focus();
   },
@@ -78,7 +74,7 @@ Accounts.ui.SignIn = React.createClass({
 
               {this.renderInputs()}
 
-              <Accounts.ui.InputPassword moveTo={this.moveToForgotPassword} />
+              <Accounts.ui.InputPassword />
 
               <Form.Button type="submit"
                            className="btn btn-primary btn-block">

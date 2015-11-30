@@ -2,4 +2,6 @@
  *  System Information
  */
 
-System = new Mongo.Collection('system');
+if (typeof System === 'undefined') System = {};
+
+System.collection = new Mongo.Collection('system');

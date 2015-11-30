@@ -3,7 +3,7 @@ userDisplayName = function(user) {
   if (typeof user === 'undefined') return '';
 
   if (user) {
-    if (user.name) return user.name;
+    if (user.profile && user.profile.name) return user.profile.name;
 
     if (user.username) return user.username;
 

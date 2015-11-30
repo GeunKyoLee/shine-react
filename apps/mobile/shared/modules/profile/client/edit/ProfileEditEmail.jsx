@@ -1,5 +1,5 @@
 
-App.ProfileEditEmail = React.createClass({
+Profile.EditEmail = React.createClass({
 
   handleSubmit(e) {
     e.preventDefault();

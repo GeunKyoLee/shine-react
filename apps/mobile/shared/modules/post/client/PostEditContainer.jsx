@@ -1,5 +1,5 @@
 
-App.PostEditContainer = React.createClass({
+Post.EditContainer = React.createClass({
   getInitialState() {
     return {
       errors: []
@@ -18,7 +18,7 @@ App.PostEditContainer = React.createClass({
       }
     };
 
-    const validation = PostValidator.validateUpdate(post);
+    const validation = Post.Validator.validateUpdate(post);
     if (validation.hasError()) {
       this.setState({ errors: validation.errors() });
       return;
@@ -43,10 +43,10 @@ App.PostEditContainer = React.createClass({
     const post = this.props.post;
 
     return (
-      <App.PostForm post={post}
-                    errors={this.state.errors}
-                    onSubmit={this.handleSubmit}
-                    onCancel={this.handleCancel} />
+      <Post.Form post={post}
+                 errors={this.state.errors}
+                 onSubmit={this.handleSubmit}
+                 onCancel={this.handleCancel} />
     )
   }
 });

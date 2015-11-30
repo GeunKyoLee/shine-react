@@ -1,5 +1,7 @@
 
-ProfilePictures = new Mongo.Collection('profilePictures');
+if (typeof Profile === 'undefined') Profile = {};
+
+Profile.picturesCollection = new Mongo.Collection('profilePictures');
 
 const prepareData = function(user, attributes) {
   return _.extend(_.pick(attributes, 'url', 'surl', 'size', 'width', 'height',
@@ -18,7 +20,7 @@ Meteor.methods({
     const user = Meteor.user();
     const picture = prepareData(user, attributes);
 
-    const pictureId = ProfilePictures.insert(picture);
+    const pictureId = Profile.picturesCollection.insert(picture);
     if (pictureId) {
       const oldPicture = user.profile && user.profile.picture;
 
@@ -32,15 +34,17 @@ Meteor.methods({
         }
       });
 
-      Posts.update(
+      Post.collection.update(
         { 'author._id': user._id },
         { $set: { 'author.url': picture.url }},
         { multi: true }
       );
 
       if (oldPicture) {
-        ProfilePictures.remove(oldPicture._id);
-        CloudinaryServer.removeImages(oldPicture.repoId);
+        Profile.picturesCollection.remove(oldPicture._id);
+        if (! this.isSimulation) {
+          CloudinaryServer.removeImages(oldPicture.repoId);
+        }
       }
     }
   }

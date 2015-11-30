@@ -1,5 +1,5 @@
 
-App.ProfileEditName = React.createClass({
+Profile.EditName = React.createClass({
 
   handleSubmit(e) {
     e.preventDefault();

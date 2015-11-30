@@ -15,7 +15,7 @@ insertInitData = function() {
       Accounts.createUser(user);
     });
 
-    System.insert({
+    System.collection.insert({
       _id: 'cloudinary',
 
       cloudName: 'meteor-shine',

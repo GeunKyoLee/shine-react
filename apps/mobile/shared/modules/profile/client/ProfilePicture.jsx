@@ -1,5 +1,5 @@
 
-App.ProfilePicture = React.createClass({
+Profile.Picture = React.createClass({
   triggerUpload() {
     $('input[type=file]').trigger('click');
   },

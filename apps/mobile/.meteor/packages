@@ -24,20 +24,18 @@ react
 reactrouter:react-router
 #reactrouter:react-router-ssr
 
-check
-
 less
 shinejs:shine-theme-mobile
 fortawesome:fontawesome
 
 shinejs:i18n
 shinejs:react-overlays
-
 shinejs:react-spin
-#dpraburaj:react-spin
+shinejs:react-cloudinary
+momentjs:moment
+check
 
 shinejs:react-accounts-ui
 accounts-password
 
-shinejs:react-cloudinary
 

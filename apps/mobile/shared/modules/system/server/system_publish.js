@@ -1,4 +1,6 @@
 
 Meteor.publish('system', (id) => {
-  return System.find({ _id: id }, { fields: { apiSecret: 0 }});
+  check(id, String);
+
+  return System.collection.find({ _id: id }, { fields: { apiSecret: 0 }});
 });

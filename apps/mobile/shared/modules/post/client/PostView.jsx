@@ -20,9 +20,7 @@ const contentView = function(content) {
   return value;
 };
 
-const { Link } = ReactRouter;
-
-App.PostView = React.createClass({
+Post.View = React.createClass({
   handleEditPost(e) {
     e.preventDefault();
 
@@ -30,7 +28,7 @@ App.PostView = React.createClass({
       return Overlay.notify(L('text_sign_in_first'));
     }
 
-    Overlay.page(<App.PostEditContainer post={this.props.post} />,
+    Overlay.page(<Post.EditContainer post={this.props.post} />,
       { className: 'slide-up' }).then((value) => {
         console.log('value = ' + value);
       });
@@ -39,9 +37,8 @@ App.PostView = React.createClass({
   render() {
     if (! this.props.post) return null;
 
-    console.log(this.props.post);
-
     const post = this.props.post;
+    const createdAt = moment(post.createdAt).format('YYYY-MM-DD HH:mm');
 
     return (
       <App.Page className="footer-on">
@@ -52,7 +49,7 @@ App.PostView = React.createClass({
             <div className="post-info">
               <img src={post.author.url} />
               <p className="name">{post.author.name}</p>
-              <p className="time">{post.createdAt.toString()}</p>
+              <p className="time">{createdAt}</p>
             </div>
 
             <h3>{post.title}</h3>

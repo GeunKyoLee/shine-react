@@ -1,5 +1,5 @@
 
-App.PostForm = React.createClass({
+Post.Form = React.createClass({
   getDefaultProps() {
     return {
       errors: []
@@ -33,6 +33,10 @@ App.PostForm = React.createClass({
     e.preventDefault();
 
     this.props.onCancel();
+  },
+
+  componentDidMount() {
+    Meteor.setTimeout(() => $('form input:first').focus(), 400);
   },
 
   render() {

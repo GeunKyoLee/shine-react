@@ -1,7 +1,7 @@
 
 const { History } = ReactRouter;
 
-App.ProfileContainer = React.createClass({
+Profile.ViewContainer = React.createClass({
   mixins: [History, ReactMeteorData],
 
   getMeteorData() {
@@ -10,7 +10,7 @@ App.ProfileContainer = React.createClass({
     return {
       loading: (! handle.ready()),
       user: Meteor.user(),
-      cloudinary: System.findOne({ _id: 'cloudinary' }),
+      cloudinary: System.collection.findOne({ _id: 'cloudinary' }),
     }
   },
 
@@ -23,7 +23,7 @@ App.ProfileContainer = React.createClass({
     if (this.data.loading) return <App.Spinner />;
 
     return (
-      <App.Profile {...this.data} onSignOut={this.handleSignOut} />
+      <Profile.View {...this.data} onSignOut={this.handleSignOut} />
     )
   }
 });

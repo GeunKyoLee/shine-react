@@ -1,5 +1,5 @@
 
-PostValidator = {
+Post.Validator = {
   schema: {
     title: {
       type: 'string',
@@ -64,18 +64,14 @@ PostValidator = {
   }
 };
 
+Post.Match = {
+  insert: (object) => {
+    var validation = Post.Validator.validateInsert(object);
+    return _.isEmpty(validation.errors());
+  },
 
-matchPostInsert = function(object) {
-  var validation = PostValidator.validateInsert(object);
-  return _.isEmpty(validation.errors());
-};
-
-matchPostUpdate = function(object) {
-  var validation = PostValidator.validateUpdate(object);
-  return _.isEmpty(validation.errors());
-};
-
-matchPostPublish = function() {
-  var validation = PostValidator.validatePublish(object);
-  return _.isEmpty(validation.errors());
+  update: (object) => {
+    var validation = Post.Validator.validateUpdate(object);
+    return _.isEmpty(validation.errors());
+  }
 };

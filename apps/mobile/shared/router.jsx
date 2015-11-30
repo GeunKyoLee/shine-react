@@ -13,7 +13,7 @@ if (Meteor.isClient) {
 
   const routes = (
     <Route path="/" component={App.Layout} >
-      <Route path="home" component={App.HomeContainer} />
+      <Route path="home" component={Home.ViewContainer} />
 
       <Route path="sign-in" component={Accounts.ui.SignInContainer} />
       <Route path="sign-up" component={Accounts.ui.SignUpContainer} />
@@ -23,20 +23,20 @@ if (Meteor.isClient) {
              component={Accounts.ui.ResetPasswordContainer} />
 
       <Route path="profile"
-             component={App.ProfileContainer}
+             component={Profile.ViewContainer}
              onEnter={requireAuth} />
       <Route path="profile/edit/:name"
-             component={App.ProfileEditContainer}
+             component={Profile.EditContainer}
              onEnter={requireAuth} />
 
-      <Route path="about" component={App.AboutContainer} />
+      <Route path="about" component={About.ViewContainer} />
 
-      <Route path="posts" component={App.PostsContainer} />
-      <Route path="post/view/:id" component={App.PostViewContainer} />
-      <Route path="post/edit/:id" component={App.PostEditContainer} />
-      <Route path="post/new" component={App.PostNewContainer} />
+      <Route path="posts" component={Post.ListContainer} />
+      <Route path="post/view/:id" component={Post.ViewContainer} />
+      <Route path="post/edit/:id" component={Post.EditContainer} />
+      <Route path="post/new" component={Post.NewContainer} />
 
-      <IndexRoute component={App.HomeContainer} />
+      <IndexRoute component={Home.ViewContainer} />
 
       <Route path="*" component={App.NotFound} />
     </Route>

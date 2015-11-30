@@ -27,7 +27,7 @@ var checkEmail = function(value) {
   }
 };
 
-AccountValidator = {
+Account.Validator = {
   schema: {
     username: {
       type: 'string',
@@ -77,8 +77,10 @@ AccountValidator = {
   }
 };
 
-matchAccountUpdate = function(object) {
-  var validation = AccountValidator.validateUpdate(object);
-  return _.isEmpty(validation.errors());
+Account.Match = {
+  update: (object) => {
+    var validation = Account.Validator.validateUpdate(object);
+    return _.isEmpty(validation.errors());
+  }
 };
 

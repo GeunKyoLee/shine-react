@@ -1,5 +1,5 @@
 
-App.HomeContainer = React.createClass({
+Home.ViewContainer = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData() {
@@ -7,11 +7,11 @@ App.HomeContainer = React.createClass({
 
     return {
       loading: (! handle.ready()),
-      posts: Posts.find({}, { sort: { createdAt: -1 }}).fetch(),
+      posts: Post.collection.find({}, { sort: { createdAt: -1 }}).fetch(),
     }
   },
 
   render() {
-    return <App.Home {...this.data} />;
+    return <Post.List {...this.data} />;
   }
 });

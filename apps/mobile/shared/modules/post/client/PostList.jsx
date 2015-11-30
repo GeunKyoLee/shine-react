@@ -1,31 +1,34 @@
 
 const { Link } = ReactRouter;
 
-const PostItem = React.createClass({
+const PostListItem = React.createClass({
   render() {
     const post = this.props.post;
-
     if (! post) return null;
+    const createdAt = moment(post.createdAt).fromNow(); //.format('YYYY-MM-DD HH:mm');
 
     return (
       <div className="post-item">
         <Link to={`/post/view/${post._id}`} >
           <p className="title">{post.title}</p>
-          <p className="datetime">{post.author.name}</p>
+          <p className="info">
+            <span className="author">{post.author.name}</span>
+            <span className="datetime">{createdAt}</span>
+          </p>
         </Link>
       </div>
     )
   }
 });
 
-App.Home = React.createClass({
+Post.List = React.createClass({
   posts() {
     if (this.props.posts.length === 0) {
-      return  (<div key={'_'}className="post-item">{L('text_no_posts')}</div>);
+      return (<div key={'_'} className="post-item">{L('text_no_posts')}</div>);
     }
 
     return this.props.posts.map((post) => (
-      <PostItem key={post._id} post={post} />
+      <PostListItem key={post._id} post={post} />
     ));
   },
 
@@ -36,7 +39,7 @@ App.Home = React.createClass({
       return Overlay.notify(L('text_sign_in_first'));
     }
 
-    Overlay.page(<App.PostFormContainer />, { className: 'slide-up' })
+    Overlay.page(<Post.NewContainer />, { className: 'slide-up' })
       .then((value) => {
         console.log('value = ' + value);
       });
@@ -47,7 +50,7 @@ App.Home = React.createClass({
 
     return (
       <App.Page className="footer-on">
-        <App.HomeHeader />
+        <App.Header title={L('label_posts_list')} />
 
         <article className="page">
           <div className="post-list">

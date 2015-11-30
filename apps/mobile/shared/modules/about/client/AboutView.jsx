@@ -1,7 +1,6 @@
+if (typeof About === 'undefined') About = {};
 
-const { Link } = ReactRouter;
-
-App.About = React.createClass({
+About.View = React.createClass({
   getDefaultProps() {
     return {
       version: ''

@@ -1,5 +1,5 @@
 
-App.PostViewContainer = React.createClass({
+Post.ViewContainer = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData() {
@@ -8,7 +8,7 @@ App.PostViewContainer = React.createClass({
 
     return {
       loading: (! handle.ready()),
-      post: Posts.findOne({ _id: postId }),
+      post: Post.collection.findOne({ _id: postId }),
     }
   },
 
@@ -16,7 +16,7 @@ App.PostViewContainer = React.createClass({
     if (this.data.loading) return <App.Spinner />;
 
     return (
-      <App.PostView post={this.data.post} />
+      <Post.View post={this.data.post} />
     )
   }
 });
