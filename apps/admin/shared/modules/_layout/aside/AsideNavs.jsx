@@ -1,6 +1,7 @@
 
 const navs = [
   { path: '/home', name: 'title_home' },
+  { path: '/accounts', name: 'label_account' },
   { path: '/posts', name: 'label_posts_list' },
   { path: '/about', name: 'label_about' },
 ];

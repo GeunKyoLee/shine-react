@@ -49,7 +49,6 @@ I18n_data_en = {
   "label_updated_at"              : "Updated time",
   "label_connected_at"            : "Connected time",
   "label_last_login_at"           : "Last login time",
-  "label_account"                 : "Account",
   "label_oauth_account"           : "OAuth account",
   "label_ip_address"              : "IP address",
   "label_username"                : "Username",
@@ -91,7 +90,10 @@ I18n_data_en = {
   "label_cloudinary_key"          : "API key",
   "label_cloudinary_secret"       : "API secret",
   "label_categories"              : "Categories",
-
+  "label_list"                    : "List",
+  "label_view"                    : "View",
+  "label_edit"                    : "Edit",
+  "label_new"                     : "New",
 
   "text_sign_in"                  : "Sign in",
   "text_input_email"              : "Input Email address",
@@ -107,6 +109,9 @@ I18n_data_en = {
   "error_invalid_type"            : "Input data type is invalid",
   "error_input_required"          : "Input value is required",
   "error_input_out_of_range"      : "Input value is out of range",
+
+  // account
+  "label_account"                 : "Account",
 
   // profile
   "label_profile"                 : "Profile",

@@ -50,7 +50,6 @@ I18n_data_ko = {
   "label_updated_at"              : "수정 일시",
   "label_connected_at"            : "접속 일시",
   "label_last_login_at"           : "최근 로그인 일시",
-  "label_account"                 : "계정",
   "label_oauth_account"           : "외부 로그인 계정",
   "label_ip_address"              : "IP 주소",
   "label_username"                : "아이디",
@@ -92,6 +91,10 @@ I18n_data_ko = {
   "label_cloudinary_key"          : "API key",
   "label_cloudinary_secret"       : "API secret",
   "label_categories"              : "카테고리",
+  "label_list"                    : "목록",
+  "label_view"                    : "열람",
+  "label_edit"                    : "편집",
+  "label_new"                     : "신규",
 
 
   "text_sign_in"                  : "로그인하세요",
@@ -109,6 +112,9 @@ I18n_data_ko = {
   "error_invalid_type"            : "입력값이 유효한 자료형이 아닙니다.",
   "error_input_required"          : "값을 입력하여야 합니다.",
   "error_input_out_of_range"      : "입력값이 유효한 범위 밖에 있습니다.",
+
+  // account
+  "label_account"                 : "계정",
 
   // profile
   "label_profile"                 : "프로필",

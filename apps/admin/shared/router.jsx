@@ -29,6 +29,8 @@ if (Meteor.isClient) {
 
       <Route path="about" component={About.ViewContainer} />
 
+      <Route path="accounts" component={Account.ListContainer} />
+
       <Route path="posts" component={Post.ListContainer} />
       <Route path="post/view/:id" component={Post.ViewContainer} />
       <Route path="post/edit/:id" component={Post.EditContainer} />
