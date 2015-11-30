@@ -1,10 +1,13 @@
 I18n_data_ko = {
-  "brand"                         : "SHINE ADMIN",
+  "brand"                         : "차선수",
 
 
   "title_dashboard"               : "대시보드",
   "title_system"                  : "시스템",
   "title_home"                    : "홈",
+  "title_login"                   : "로그인",
+  "title_notice"                  : "공지사항",
+  "title_qna"                     : "문의하기",
   "title_connection"              : "접속",
   "title_account"                 : "계정",
   "title_category"                : "카테고리",
@@ -34,11 +37,14 @@ I18n_data_ko = {
   "command_save"                  : "저장",
   "command_ok"                    : "확인",
   "command_cancel"                : "취소",
+  "command_yes"                   : "예",
+  "command_no"                    : "아니오",
   "command_back"                  : "뒤로",
   "command_close"                 : "닫기",
   "command_search"                : "검색",
+  "command_load_more"             : "더 보기",
 
-
+  "label_no"                      : "번호",
   "label_total_count"             : "전체 갯수",
   "label_created_at"              : "등록 일시",
   "label_updated_at"              : "수정 일시",
@@ -54,6 +60,11 @@ I18n_data_ko = {
   "label_title"                   : "제목",
   "label_content"                 : "본문",
   "label_state"                   : "상태",
+  "label_price"                   : "가격 (만원)",
+  "label_brand"                   : "브랜드",
+  "label_carname"                 : "차종",
+  "label_model"                   : "모델",
+  "label_detail"                  : "세부모델",
   "label_author"                  : "저자",
   "label_like"                    : "좋아요",
   "label_comment"                 : "댓글",
@@ -83,12 +94,15 @@ I18n_data_ko = {
   "label_categories"              : "카테고리",
 
 
+  "text_sign_in"                  : "로그인하세요",
+  "text_input_email"              : "이메일주소를 입력해 주세요",
+  "text_input_password"           : "비밀번호를 입력해 주세요",
   "text_notification_new_comment" : "{0}님의 블로그에 새로운 댓글이 등록되었습니다.",
-  "text_no_blogs"                 : "등록된 블로그 글이 없습니다.",
   "text_company_phone"            : "회사 전화번호",
   "text_company_address"          : "회사 주소",
   "text_reset_password"           : "비밀번호 초기화",
   "text_verify_email"             : "에 회원가입하신 것을 환영합니다. 입력하신 메일주소가 유효한지 확인하기 위해 이 링크를 클릭해 주세요 : ",
+  "text_connection_alarm"         : "접속이 끊어졌습니다. 연결중입니다...",
 
 
   "error_access_denied"           : "접근 권한이 없습니다.",
@@ -96,26 +110,22 @@ I18n_data_ko = {
   "error_input_required"          : "값을 입력하여야 합니다.",
   "error_input_out_of_range"      : "입력값이 유효한 범위 밖에 있습니다.",
 
+  // profile
+  "label_profile"                 : "프로필",
+  "label_profile_edit_email"      : "이메일주소 변경",
+  "label_profile_edit_password"   : "비밀번호 변경",
+  "label_profile_edit_name"       : "이름 변경",
 
-  "theme"                         : {
-    "default"                       : "Default",
-    "cerulean"                      : "Cerulean",
-    "cosmo"                         : "Cosmo",
-    "cyborg"                        : "Cyborg",
-    "darkly"                        : "Darkly",
-    "flatly"                        : "Flatly",
-    "journal"                       : "Journal",
-    "lumen"                         : "Lumen",
-    "paper"                         : "Paper",
-    "readable"                      : "Readable",
-    "sandstone"                     : "Sandstone",
-    "simplex"                       : "Simplex",
-    "slate"                         : "Slate",
-    "spacelab"                      : "Spacelab",
-    "superhero"                     : "Superhero",
-    "united"                        : "United",
-    "yeti"                          : "Yeti"
-  }
+  // about
+  "label_about"                   : "앱 정보",
+  "label_about_version"           : "버전",
+
+  // post
+  "label_posts_list"              : "글 목록",
+  "label_post_view"               : "글 열람",
+  "label_new_post"                : "글쓰기",
+
+  "text_no_posts"                 : "등록된 글이 없습니다.",
 
 };
 

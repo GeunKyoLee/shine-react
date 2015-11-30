@@ -1,10 +1,13 @@
 I18n_data_en = {
-  "brand"                         : "SHINE ADMIN",
+  "brand"                         : "Cha Sunsoo",
 
 
   "title_dashboard"               : "Dashboard",
   "title_system"                  : "System",
   "title_home"                    : "Home",
+  "title_login"                   : "Login",
+  "title_notice"                  : "Notice",
+  "title_qna"                     : "QnA",
   "title_connection"              : "Connection",
   "title_account"                 : "Account",
   "title_category"                : "Category",
@@ -33,11 +36,14 @@ I18n_data_en = {
   "command_save"                  : "Save",
   "command_ok"                    : "OK",
   "command_cancel"                : "Cancel",
+  "command_yes"                   : "Yes",
+  "command_no"                    : "No",
   "command_back"                  : "Back",
   "command_close"                 : "Close",
   "command_search"                : "Search",
+  "command_load_more"             : "Load More",
 
-
+  "label_no"                      : "No",
   "label_total_count"             : "Total count",
   "label_created_at"              : "Created time",
   "label_updated_at"              : "Updated time",
@@ -52,6 +58,11 @@ I18n_data_en = {
   "label_title"                   : "Title",
   "label_content"                 : "Content",
   "label_state"                   : "State",
+  "label_price"                   : "Price",
+  "label_brand"                   : "Brand",
+  "label_carname"                 : "Car Name",
+  "label_model"                   : "Model",
+  "label_detail"                  : "Detail Model",
   "label_author"                  : "Author",
   "label_like"                    : "Like",
   "label_comment"                 : "Comment",
@@ -82,36 +93,35 @@ I18n_data_en = {
   "label_categories"              : "Categories",
 
 
+  "text_sign_in"                  : "Sign in",
+  "text_input_email"              : "Input Email address",
+  "text_input_password"           : "Input password",
   "text_notification_new_comment" : "A new comment registered for {0}'s blog",
-  "text_no_blogs"                 : "There is no blog registered.",
   "text_company_phone"            : "Company Phone Number",
   "text_company_address"          : "Company Address",
   "text_reset_password"           : "Password Reset",
   "text_verify_email"             : "You just signed up. Click this link to validate your email address : ",
-
+  "text_connection_alarm"         : "Disconnected. Waiting connection...",
 
   "error_access_denied"           : "Access denied",
   "error_invalid_type"            : "Input data type is invalid",
   "error_input_required"          : "Input value is required",
   "error_input_out_of_range"      : "Input value is out of range",
 
-  "theme"                         : {
-    "default"                       : "Default",
-    "cerulean"                      : "Cerulean",
-    "cosmo"                         : "Cosmo",
-    "cyborg"                        : "Cyborg",
-    "darkly"                        : "Darkly",
-    "flatly"                        : "Flatly",
-    "journal"                       : "Journal",
-    "lumen"                         : "Lumen",
-    "paper"                         : "Paper",
-    "readable"                      : "Readable",
-    "sandstone"                     : "Sandstone",
-    "simplex"                       : "Simplex",
-    "slate"                         : "Slate",
-    "spacelab"                      : "Spacelab",
-    "superhero"                     : "Superhero",
-    "united"                        : "United",
-    "yeti"                          : "Yeti"
-  }
+  // profile
+  "label_profile"                 : "Profile",
+  "label_profile_edit_email"      : "Edit email address",
+  "label_profile_edit_password"   : "Change password",
+  "label_profile_edit_name"       : "Edit name",
+
+  // about
+  "label_about"                   : "About",
+  "label_about_version"           : "Version",
+
+  // post
+  "label_posts_list"              : "Posts",
+  "label_post_view"               : "Post view",
+  "label_new_post"                : "New Post",
+
+  "text_no_posts"                 : "There is no post registered.",
 };
