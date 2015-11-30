@@ -49,15 +49,16 @@ Post.List = React.createClass({
     if (this.props.loading) return <App.Spinner />;
 
     return (
-      <App.Page className="footer-on">
-        <section>
-          <div className="btn-toolbar">
-            <button className="btn btn-primary pull-right"
-                    onClick={this.handleNewPost}>{L('label_new_post')}</button>
-          </div>
-        </section>
-
+      <App.Page>
         <article className="page">
+          <header>
+            <h3>{L('label_posts_list')}</h3>
+            <div className="actions">
+              <button className="btn btn-primary pull-right"
+                      onClick={this.handleNewPost}>{L('label_new_post')}</button>
+            </div>
+          </header>
+
           <div className="post-list">
             {this.posts()}
           </div>
