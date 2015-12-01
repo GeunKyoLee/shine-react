@@ -34,6 +34,8 @@ Account.List = React.createClass({
 
   handleNewAccount(e) {
     e.preventDefault();
+
+    Overlay.alert(L('text_under_construction'));
 /*
     if (! Meteor.user()) {
       return Overlay.notify(L('text_sign_in_first'));

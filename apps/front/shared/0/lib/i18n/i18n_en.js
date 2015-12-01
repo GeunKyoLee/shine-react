@@ -94,6 +94,7 @@ I18n_data_en = {
 
 
   "text_sign_in"                  : "Sign in",
+  "text_sign_in_first"            : "Sign in first",
   "text_input_email"              : "Input Email address",
   "text_input_password"           : "Input password",
   "text_notification_new_comment" : "A new comment registered for {0}'s blog",

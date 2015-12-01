@@ -95,6 +95,7 @@ I18n_data_ko = {
 
 
   "text_sign_in"                  : "로그인하세요",
+  "text_sign_in_first"            : "로그인하신 후 이용하세요",
   "text_input_email"              : "이메일주소를 입력해 주세요",
   "text_input_password"           : "비밀번호를 입력해 주세요",
   "text_notification_new_comment" : "{0}님의 블로그에 새로운 댓글이 등록되었습니다.",
