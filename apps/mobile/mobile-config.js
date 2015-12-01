@@ -4,7 +4,7 @@ App.info({
   author: 'SHINE team',
   email: 'leesn@bookp.al',
   website: 'http://shinejs.io',
-  version: '0.0.1'
+  version: '0.1.0'
 });
 
 App.icons({
