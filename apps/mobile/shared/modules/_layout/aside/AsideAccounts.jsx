@@ -20,12 +20,8 @@ const AccountInfo = React.createClass({
     return (
       <div className="account-info">
         <Link to="/profile">
-          <div className="ctn-profile">
-            <div className="ctn-profile-image">
-              <img className="img-circle" src={pictureURL} />
-            </div>
-            <p className="profile-username"> {username}</p>
-          </div>
+          <img className="picture" src={pictureURL} />
+          <p className="name"> {username}</p>
         </Link>
       </div>
     )

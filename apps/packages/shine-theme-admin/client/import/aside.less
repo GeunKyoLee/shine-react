@@ -28,6 +28,8 @@
 
   .links {
     margin-bottom: 5px;
+    border-top: solid 1px #999;
+    border-bottom: solid 1px #999;
 
     a {
       display: block;
@@ -54,12 +56,9 @@
         background: lighten(@nav-link-bg, 10%);
       }
     }
-    a::after{
-      content:"";
-      display:block;
-      height:1px;
-      background : #fff;
-      opacity: 0.3;
+
+    a + a {
+      border-top: solid 1px #999;
     }
   }
 }
