@@ -9,10 +9,9 @@ const requireAuth = function(nextState, replaceState) {
 
 if (Meteor.isClient) {
   const createHistory = ReactRouter.history.createHistory;
-  const onRouterUpdate = App.AsideLeft.hide;
 
   const routes = (
-    <Route path="/" component={App.Layout} onEnter={requireAuth} >
+    <Route path="/" component={App.Layout}>
       <IndexRoute component={Home.ViewContainer} onEnter={requireAuth} />
 
       <Route path="home" component={Home.ViewContainer} onEnter={requireAuth} />
@@ -35,7 +34,7 @@ if (Meteor.isClient) {
   );
 
   const router = (
-    <Router history={createHistory()} onUpdate={onRouterUpdate}>
+    <Router history={createHistory()}>
       <Route path="/sign-in" component={Account.SignInContainer} />
       <Route path="sign-up" component={Account.SignUpContainer} />
       <Route path="forgot-password"

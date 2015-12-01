@@ -74,7 +74,7 @@ Overlay = {
    *
    * @returns {*|Promise}
    */
-  alert(message, options = { className: 'slide-up' }) {
+  alert(message, options) {
     return this.page((
       <Overlay.Alert message={message} />
     ), options);
@@ -89,7 +89,7 @@ Overlay = {
    *
    * @returns {*|Promise}
    */
-  confirm(message, options = { className: 'slide-up' }) {
+  confirm(message, options) {
     return this.page((
       <Overlay.Confirm message={message} />
     ), options);

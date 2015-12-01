@@ -27,7 +27,7 @@ Overlay.Page = React.createClass({
 
   getDefaultProps() {
     return {
-      className: 'page'
+      transitionName: 'overlay-transition'
     }
   },
 
@@ -44,7 +44,7 @@ Overlay.Page = React.createClass({
 
   render() {
     const props = {
-      transitionName: this.props.className,
+      transitionName: this.props.transitionName,
       transitionEnterTimeout: 300,
       transitionLeaveTimeout: 300,
     };

@@ -11,9 +11,9 @@
 const { CSSTransitionGroup } = React.addons;
 
 const Transition = {
-  DEFAULT: 'fade',
-  BACKWARD: 'slide-right',
-  FORWARD: 'slide-left',
+  DEFAULT: 'route-transition-default',
+  BACKWARD: 'route-transition-backward',
+  FORWARD: 'route-transition-forward',
 };
 
 const Path = {
