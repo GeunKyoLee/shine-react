@@ -28,8 +28,9 @@ Post.View = React.createClass({
       return Overlay.notify(L('text_sign_in_first'));
     }
 
-    Overlay.page(<Post.EditContainer post={this.props.post} />,
-      { className: 'slide-up' }).then((value) => {
+    Overlay.page(
+        <Post.EditContainer post={this.props.post} />
+      ).then((value) => {
         console.log('value = ' + value);
       });
   },

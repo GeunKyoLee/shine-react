@@ -34,6 +34,7 @@ Package.onUse(function (api) {
     'client/import/components/form.less',
     'client/import/components/markdown.less',
     'client/import/components/animations.less',
+    'client/import/components/route_transition.less',
     'client/import/components/list.less',
     'client/import/components/post.less',
     'client/import/components/accounts.less',

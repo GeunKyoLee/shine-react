@@ -39,7 +39,7 @@ Post.List = React.createClass({
       return Overlay.notify(L('text_sign_in_first'));
     }
 
-    Overlay.page(<Post.NewContainer />, { className: 'slide-up' })
+    Overlay.page(<Post.NewContainer />)
       .then((value) => {
         console.log('value = ' + value);
       });

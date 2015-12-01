@@ -64,6 +64,9 @@ Profile.EditContainer = React.createClass({
 
     const value = this.props.params.name;
     const title = L(`label_profile_edit_${value}`);
+
+    return this.getComponent(value);
+    /*
     const component = this.getComponent(value);
 
     return (
@@ -75,5 +78,6 @@ Profile.EditContainer = React.createClass({
         </article>
       </App.Page>
     )
+    */
   }
 });
