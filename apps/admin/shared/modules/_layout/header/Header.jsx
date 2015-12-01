@@ -2,11 +2,15 @@
 App.Header = React.createClass({
   getDefaultProps() {
     return {
-      title: 'Page-Title'
+      title: 'Page-Title',
+      hideAccount: false,
     }
   },
 
   render() {
+    const accountButton = (! this.props.hideAccount) ?
+      <App.AccountInfo /> : null;
+
     return (
       <header>
         <div className="logo">
@@ -14,7 +18,7 @@ App.Header = React.createClass({
           <span className="title">Administration</span>
         </div>
         <div className="header-right">
-          <App.AccountInfo />
+          {accountButton}
         </div>
       </header>
     )

@@ -52,6 +52,7 @@ I18n_data_ko = {
   "label_last_login_at"           : "최근 로그인 일시",
   "label_oauth_account"           : "외부 로그인 계정",
   "label_ip_address"              : "IP 주소",
+  "label_id"                      : "PK",
   "label_username"                : "아이디",
   "label_email"                   : "이메일 주소",
   "label_password"                : "비밀번호",
@@ -106,6 +107,7 @@ I18n_data_ko = {
   "text_reset_password"           : "비밀번호 초기화",
   "text_verify_email"             : "에 회원가입하신 것을 환영합니다. 입력하신 메일주소가 유효한지 확인하기 위해 이 링크를 클릭해 주세요 : ",
   "text_connection_alarm"         : "접속이 끊어졌습니다. 연결중입니다...",
+  "text_under_construction"       : "준비중입니다...",
 
 
   "error_access_denied"           : "접근 권한이 없습니다.",
@@ -115,6 +117,7 @@ I18n_data_ko = {
 
   // account
   "label_account"                 : "계정",
+  "label_new_account"             : "신규 계정 등록",
 
   // profile
   "label_profile"                 : "프로필",
@@ -127,9 +130,8 @@ I18n_data_ko = {
   "label_about_version"           : "버전",
 
   // post
-  "label_posts_list"              : "글 목록",
-  "label_post_view"               : "글 열람",
-  "label_new_post"                : "글쓰기",
+  "label_post"                    : "글",
+  "label_new_post"                : "새 글쓰기",
 
   "text_no_posts"                 : "등록된 글이 없습니다.",
 

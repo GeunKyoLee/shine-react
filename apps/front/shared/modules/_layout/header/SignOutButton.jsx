@@ -10,8 +10,13 @@ SignOutButton = React.createClass({
 
   render() {
     return (
-      <button className="btn btn-default" onClick={this.handleSignOut}>
-        {L('command_sign_out')}
-      </button>    )
+      <button className="btn btn-default btn-header"
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title={L('command_sign_out')}
+              onClick={this.handleSignOut} >
+        <i className="fa fa-sign-out fa-2x fa-fw"></i>
+      </button>
+    )
   }
 });

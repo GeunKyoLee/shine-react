@@ -19,7 +19,7 @@ const AccountInfo = React.createClass({
 
     return (
       <div className="account-info">
-        <Link to="/profile" className="info btn btn-info">
+        <Link to="/profile" className="info btn btn-link">
           <img className="picture" src={pictureURL} />
           <span className="name">{username}</span>
         </Link>

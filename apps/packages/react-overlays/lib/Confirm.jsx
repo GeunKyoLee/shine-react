@@ -6,7 +6,7 @@ Overlay.Confirm = React.createClass({
 
   render() {
     return (
-      <div className="overlay-page">
+      <section>
         <div className="overlay-message">{this.props.message}</div>
         <button type="button"
                 className="btn btn-primary btn-block overlay-btn"
@@ -18,7 +18,7 @@ Overlay.Confirm = React.createClass({
                 onClick={this.handleClick.bind(this, false)} >
           {L('command_no')}
         </button>
-      </div>
+      </section>
     )
   }
 });

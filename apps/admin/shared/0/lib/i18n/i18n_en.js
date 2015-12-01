@@ -51,6 +51,7 @@ I18n_data_en = {
   "label_last_login_at"           : "Last login time",
   "label_oauth_account"           : "OAuth account",
   "label_ip_address"              : "IP address",
+  "label_id"                      : "PK",
   "label_username"                : "Username",
   "label_email"                   : "Email address",
   "label_password"                : "Password",
@@ -104,6 +105,7 @@ I18n_data_en = {
   "text_reset_password"           : "Password Reset",
   "text_verify_email"             : "You just signed up. Click this link to validate your email address : ",
   "text_connection_alarm"         : "Disconnected. Waiting connection...",
+  "text_under_construction"       : "Under construction...",
 
   "error_access_denied"           : "Access denied",
   "error_invalid_type"            : "Input data type is invalid",
@@ -112,6 +114,7 @@ I18n_data_en = {
 
   // account
   "label_account"                 : "Account",
+  "label_new_account"             : "New Account",
 
   // profile
   "label_profile"                 : "Profile",
@@ -124,8 +127,7 @@ I18n_data_en = {
   "label_about_version"           : "Version",
 
   // post
-  "label_posts_list"              : "Posts",
-  "label_post_view"               : "Post view",
+  "label_post"                    : "Post",
   "label_new_post"                : "New Post",
 
   "text_no_posts"                 : "There is no post registered.",

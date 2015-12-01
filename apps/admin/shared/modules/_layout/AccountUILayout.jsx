@@ -2,11 +2,13 @@
 Account.UILayout = React.createClass({
   render() {
     return (
-      <App.Page>
-        <App.Header title={this.props.title} />
+      <div id="container">
+        <App.Header title={this.props.title} hideAccount={true} />
 
-        <article className="page">{this.props.children}</article>
-      </App.Page>
+        <App.Page>
+          <article className="page">{this.props.children}</article>
+        </App.Page>
+      </div>
     )
   }
 });

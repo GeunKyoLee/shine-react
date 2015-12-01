@@ -41,12 +41,7 @@ Post.View = React.createClass({
     const createdAt = moment(post.createdAt).format('YYYY-MM-DD HH:mm');
 
     return (
-      <App.Page className="footer-on">
-
-        <div className="btn-toolbar">
-          <button className="btn btn-warning pull-right"
-                  onClick={this.handleEditPost}>{L('command_edit')}</button>
-        </div>
+      <App.Page>
 
         <article className="page">
           <header>
@@ -57,6 +52,11 @@ Post.View = React.createClass({
             </div>
 
             <h3>{post.title}</h3>
+
+            <div className="actions">
+              <button className="btn btn-warning pull-right"
+                      onClick={this.handleEditPost}>{L('command_edit')}</button>
+            </div>
           </header>
 
           <div className="post-view"

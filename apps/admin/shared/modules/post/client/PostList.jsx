@@ -58,6 +58,7 @@ Post.List = React.createClass({
                       onClick={this.handleNewPost}>{L('label_new_post')}</button>
             </div>
           </header>
+
           <div className="post-list">
             {this.posts()}
           </div>
