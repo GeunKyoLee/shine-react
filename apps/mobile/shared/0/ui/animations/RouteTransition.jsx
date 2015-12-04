@@ -23,28 +23,28 @@ const Path = {
 };
 
 const RouteStack = {
-  _stack: [Path.ROOT],
+  _stack: [{ path: Path.ROOT }],
 
   clear() {
     this._stack = [];
   },
 
   init(path = Path.ROOT) {
-    this._stack = [Path.ROOT];
-    if (path !== Path.ROOT && path != Path.HOME) this._stack.push(path);
+    this._stack = [{ path: Path.ROOT }];
+    if (path !== Path.ROOT && path != Path.HOME) this._stack.push({ path });
   },
 
   push(path) {
-    this._stack.push(path);
+    this._stack.push({ path });
   },
 
   pop(depth = 1) {
     if (this.count() > depth) {
-      let path;
+      let history;
       for (let i = 0; i < depth; i++) {
-        path = this._stack.pop();
+        history = this._stack.pop();
       }
-      return path;
+      return history.path;
     }
 
     this.clear();
@@ -53,15 +53,16 @@ const RouteStack = {
 
   replace(path) {
     this._stack.pop();
-    this._stack.push(path);
+    this._stack.push({ path });
   },
 
   count() {
     return this._stack.length;
   },
 
-  top() {
-    return this._stack.length ? this._stack[this._stack.length - 1] : null;
+  top(depth = 1) {
+    return (this._stack.length >= depth) ?
+      this._stack[this._stack.length - depth] : null;
   }
 };
 
@@ -74,14 +75,22 @@ RouteTransition = React.createClass({
       history.pushState({ transitionName }, Path.HOME);
     },
 
-    goBack: (history, transitionName = Transition.BACKWARD) => {
-      const path = RouteStack.pop(2);
-      history.pushState({ transitionName }, path);
+    goBack: (history) => {
+      RouteStack.pop(2);
+      history.goBack();
     },
 
     canGoBack: () => {
       return (RouteStack.count() > 1);
     },
+
+    current() {
+      return RouteStack.top();
+    },
+
+    prev() {
+      return RouteStack.top(2);
+    }
   },
 
   getInitialState() {
@@ -96,7 +105,7 @@ RouteTransition = React.createClass({
     const path = location.pathname;
 
     if (location.state && location.state.transitionName) {
-      RouteStack.push(path);
+      RouteStack.push({ path });
 
       this.setState({
         transitionName: location.state.transitionName,
@@ -106,7 +115,7 @@ RouteTransition = React.createClass({
       if (path === Path.ROOT || path === Path.HOME) {
         RouteStack.init();
       } else {
-        RouteStack.push(path);
+        RouteStack.push({ path });
       }
 
       const depth = RouteStack.count();

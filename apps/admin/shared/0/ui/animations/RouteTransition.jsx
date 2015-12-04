@@ -74,9 +74,9 @@ RouteTransition = React.createClass({
       history.pushState({ transitionName }, Path.HOME);
     },
 
-    goBack: (history, transitionName = Transition.BACKWARD) => {
-      const path = RouteStack.pop(2);
-      history.pushState({ transitionName }, path);
+    goBack: (history) => {
+      RouteStack.pop(2);
+      history.goBack();
     },
 
     canGoBack: () => {
