@@ -34,8 +34,11 @@ shinejs:react-spin
 shinejs:react-cloudinary
 momentjs:moment
 check
+reactive-var
 
 shinejs:react-accounts-ui
 accounts-password
+
+tmeasday:publish-counts
 
 

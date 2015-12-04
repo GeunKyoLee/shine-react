@@ -13,10 +13,8 @@ Post.ViewContainer = React.createClass({
   },
 
   render() {
-    if (this.data.loading) return <App.Spinner />;
-
     return (
-      <Post.View post={this.data.post} />
+      <Post.View {...this.data} />
     )
   }
 });

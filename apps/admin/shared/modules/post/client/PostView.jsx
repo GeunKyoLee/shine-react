@@ -35,7 +35,7 @@ Post.View = React.createClass({
   },
 
   render() {
-    if (! this.props.post) return null;
+    if (this.props.loading) return <App.Spinner />;
 
     const post = this.props.post;
     const createdAt = moment(post.createdAt).format('YYYY-MM-DD HH:mm');
