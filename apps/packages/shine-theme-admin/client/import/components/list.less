@@ -49,3 +49,29 @@
   }
 }
 
+.list-bar {
+  padding: 5px 10px;
+
+  .clearfix();
+
+  p {
+    margin: 0;
+  }
+}
+
+.table-list {
+  th.sort {
+    position: relative;
+    cursor: pointer;
+
+    i {
+      position: absolute;
+      right: 10px;
+      top: 50%; transform: translateY(-50%); // vertical center
+    }
+
+    i.fa-sort {
+      color: #999;
+    }
+  }
+}

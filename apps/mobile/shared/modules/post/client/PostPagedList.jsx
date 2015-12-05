@@ -26,29 +26,13 @@ Post.PagedList = React.createClass({
 
   componentDidMount() {
     Meteor.setTimeout(() => {
-      /*
-      const route = RouteTransition.current();
-      console.log('componentDidMount');
-      console.log(route);
-      if (route && route.scroll) {
-        $(this.refs.list).parent().scrollTop(route.scroll);
-      }
-      */
       $(this.refs.list).parent().scrollTop(this.scrollPos.get());
     }, 300);
   },
 
   componentWillUnmount() {
-
     const scrollTop = $(this.refs.list).parent().scrollTop();
     this.scrollPos.set(scrollTop);
-    console.log('scrollPos: ' + this.scrollPos.get());
-/*
-    const route = RouteTransition.prev();
-    if (route) route.scroll = scrollTop;
-    console.log('componentWillUnmount');
-    console.log(route);
-*/
   },
 
   posts() {
