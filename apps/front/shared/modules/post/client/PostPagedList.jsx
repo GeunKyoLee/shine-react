@@ -22,6 +22,19 @@ const PostListItem = React.createClass({
 });
 
 Post.PagedList = React.createClass({
+  scrollPos: new ReactiveVar(0),
+
+  componentDidMount() {
+    Meteor.setTimeout(() => {
+      $(this.refs.list).parent().scrollTop(this.scrollPos.get());
+    }, 300);
+  },
+
+  componentWillUnmount() {
+    const scrollTop = $(this.refs.list).parent().scrollTop();
+    this.scrollPos.set(scrollTop);
+  },
+
   posts() {
     if (this.props.posts.length === 0) {
       return (<div key={'_'} className="post-item">{L('text_no_posts')}</div>);

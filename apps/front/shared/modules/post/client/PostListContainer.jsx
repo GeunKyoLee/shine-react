@@ -11,11 +11,8 @@ Post.ListContainer = React.createClass({
 
     const handle = Meteor.subscribe('postsList', { limit, sort });
 
-    let posts, postsCount;
-    Tracker.autorun(() => {
-      postsCount = Counts.get('postsListCount');
-      posts = Post.collection.find({}, { limit, sort }).fetch();
-    });
+    const postsCount = Counts.get('postsListCount');
+    const posts = Post.collection.find({}, { limit, sort }).fetch();
 
     return {
       loading: (! handle.ready()),

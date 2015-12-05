@@ -4,6 +4,19 @@ const { History } = ReactRouter;
 Home.ViewContainer = React.createClass({
   mixins: [ReactMeteorData, History],
 
+  handleNewPost(e) {
+    e.preventDefault();
+
+    if (! Meteor.user()) {
+      return Overlay.notify(L('text_sign_in_first'));
+    }
+
+    Overlay.page(<Post.NewContainer />, { className: 'slide-up' })
+      .then((value) => {
+        console.log('value = ' + value);
+      });
+  },
+
   getMeteorData() {
     const limit = 10;
     const sort = { createdAt: -1 };
@@ -25,7 +38,7 @@ Home.ViewContainer = React.createClass({
 
   render() {
     return (
-      <Home.View {...this.data} />
+      <Home.View {...this.data} onNewPost={this.handleNewPost} />
     )
   }
 });

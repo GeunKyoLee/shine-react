@@ -115,9 +115,15 @@ I18n_data_ko = {
   "error_input_required"          : "값을 입력하여야 합니다.",
   "error_input_out_of_range"      : "입력값이 유효한 범위 밖에 있습니다.",
 
+  // dashboard
+  "label_dashboard"               : "대시보드",
+
   // account
   "label_account"                 : "계정",
   "label_new_account"             : "신규 계정 등록",
+
+  "text_no_accounts"              : "등록된 계정이 없습니다.",
+  "text_account_total"            : "검색된 계정수: {0}",
 
   // profile
   "label_profile"                 : "프로필",
@@ -134,6 +140,7 @@ I18n_data_ko = {
   "label_new_post"                : "새 글쓰기",
 
   "text_no_posts"                 : "등록된 글이 없습니다.",
+  "text_post_total"               : "검색된 글 수: {0}",
 
 };
 

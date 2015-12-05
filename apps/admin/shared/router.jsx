@@ -12,9 +12,9 @@ if (Meteor.isClient) {
 
   const routes = (
     <Route path="/" component={App.Layout}>
-      <IndexRoute component={Home.ViewContainer} onEnter={requireAuth} />
+      <IndexRoute component={Dashboard.ViewContainer} onEnter={requireAuth} />
 
-      <Route path="home" component={Home.ViewContainer} onEnter={requireAuth} />
+      <Route path="dashboard" component={Dashboard.ViewContainer} onEnter={requireAuth} />
 
       <Route path="profile"
              component={Profile.ViewContainer} onEnter={requireAuth} />
@@ -24,6 +24,7 @@ if (Meteor.isClient) {
       <Route path="about" component={About.ViewContainer} onEnter={requireAuth} />
 
       <Route path="accounts" component={Account.ListContainer} onEnter={requireAuth} />
+      <Route path="account/edit/:id" component={Account.EditContainer} onEnter={requireAuth} />
 
       <Route path="posts" component={Post.ListContainer} onEnter={requireAuth} />
       <Route path="post/view/:id" component={Post.ViewContainer} onEnter={requireAuth} />

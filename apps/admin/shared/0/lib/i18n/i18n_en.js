@@ -112,9 +112,15 @@ I18n_data_en = {
   "error_input_required"          : "Input value is required",
   "error_input_out_of_range"      : "Input value is out of range",
 
+  // dashboard
+  "label_dashboard"               : "Dashboard",
+
   // account
   "label_account"                 : "Account",
   "label_new_account"             : "New Account",
+
+  "text_no_accounts"              : "There is no account registered.",
+  "text_account_total"            : "Account total: {0}",
 
   // profile
   "label_profile"                 : "Profile",
@@ -131,4 +137,6 @@ I18n_data_en = {
   "label_new_post"                : "New Post",
 
   "text_no_posts"                 : "There is no post registered.",
+  "text_post_total"               : "Post total: {0}",
+
 };

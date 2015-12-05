@@ -20,17 +20,23 @@ Home.View = React.createClass({
     if (this.props.onLoading) return <App.Spinner />;
 
     return (
-      <App.Page className="footer-on">
-        <Home.Header />
+      <App.Page>
 
         <article className="page" ref="page">
+          <header>
+            <h3>{L('label_post')} <small>{L('label_list')}</small></h3>
+
+            <div className="actions">
+              <button className="btn btn-primary pull-right"
+                      onClick={this.props.onNewPost}>
+                {L('label_new_post')}
+              </button>
+            </div>
+          </header>
+
           <Post.PagedList {...this.props} />
         </article>
 
-        <App.Footer>
-          <button className="btn btn-primary btn-block"
-                  onClick={this.handleNewPost}>{L('label_new_post')}</button>
-        </App.Footer>
       </App.Page>
     )
   }

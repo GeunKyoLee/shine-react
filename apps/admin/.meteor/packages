@@ -18,6 +18,7 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 meteorhacks:npm
 cosmos:browserify
+npm-container
 
 react
 reactrouter:react-router
@@ -33,7 +34,9 @@ shinejs:react-spin
 shinejs:react-cloudinary
 momentjs:moment
 check
+reactive-var
 
 shinejs:react-accounts-ui
 accounts-password
-npm-container
+
+tmeasday:publish-counts

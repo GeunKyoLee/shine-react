@@ -22,7 +22,7 @@ const Path = {
   DEFAULTS: ['/', '/home', '/sign-in', '/sign-up'],
 };
 
-const RouteStack = {
+RouteStack = {
   _stack: [{ path: Path.ROOT }],
 
   clear() {
