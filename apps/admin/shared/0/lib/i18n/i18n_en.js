@@ -91,10 +91,14 @@ I18n_data_en = {
   "label_cloudinary_key"          : "API key",
   "label_cloudinary_secret"       : "API secret",
   "label_categories"              : "Categories",
+
   "label_list"                    : "List",
   "label_view"                    : "View",
   "label_edit"                    : "Edit",
   "label_new"                     : "New",
+
+  "label_active"                  : "Active",
+  "label_seq"                     : "Sequence",
 
   "text_sign_in"                  : "Sign in",
   "text_input_email"              : "Input Email address",
@@ -131,6 +135,13 @@ I18n_data_en = {
   // about
   "label_about"                   : "About",
   "label_about_version"           : "Version",
+
+  // category
+  "label_category"                : "Category",
+  "label_new_category"            : "New Category",
+
+  "text_no_categories"            : "There is no category registered.",
+  "text_category_total"           : "Category total: {0}",
 
   // post
   "label_post"                    : "Post",

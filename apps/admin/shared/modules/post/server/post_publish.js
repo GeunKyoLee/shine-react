@@ -16,6 +16,15 @@ Meteor.publish('postsList', function(options) {
   return Post.collection.find(query, options);
 });
 
+/**
+ * used for Post.Edit
+ */
 Meteor.publish('postView', (postId) => {
-  return Post.collection.find({ _id: postId });
+  check(postId, String);
+
+  const categories = Category.collection.find({ active: true }, { sort: { seq: 1 }});
+
+  const posts = Post.collection.find({ _id: postId });
+
+  return [categories, posts];
 });

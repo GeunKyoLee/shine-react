@@ -1,5 +1,5 @@
 
-Post.Form = React.createClass({
+Category.Form = React.createClass({
   getDefaultProps() {
     return {
       errors: []
@@ -22,11 +22,10 @@ Post.Form = React.createClass({
   handleSubmit(e) {
     e.preventDefault();
 
-    const categoryId = e.target.categoryId.value;
     const title = e.target.title.value;
-    const content = e.target.content.value;
+    const seq = parseInt(e.target.seq.value);
 
-    this.props.onSubmit(categoryId, title, content);
+    this.props.onSubmit(title, seq);
   },
 
   handleCancel(e) {
@@ -41,35 +40,22 @@ Post.Form = React.createClass({
   },
 
   render() {
-    const categoryId = this.props.post && this.props.post.categoryId;
-    const title = this.props.post && this.props.post.title;
-    const content = this.props.post && this.props.post.content;
-    const contentText = content && content.data;
-    const selectOptions = this.props.categories.map((category) => {
-      return { value: category._id, title: category.title };
-    });
+    const title = this.props.category && this.props.category.title;
+    const seq = this.props.category && this.props.category.seq;
 
     return (
       <Form.Form onSubmit={this.handleSubmit}>
-        <Form.Select id="categoryId"
-                     name="categoryId"
-                     value={categoryId}
-                     options={selectOptions}
-                     label={L('label_category')}
-                     error={this.errorMessage('categoryId')} />
-
         <Form.InputText id="title"
                         name="title"
                         value={title}
                         label={L('label_title')}
                         error={this.errorMessage('title')} />
 
-        <Form.TextArea id="content"
-                       name="content"
-                       value={contentText}
-                       label={L('label_content')}
-                       error={this.errorMessage('content')}
-                       rows="10" />
+        <Form.InputText id="seq"
+                        name="seq"
+                        value={seq}
+                        label={L('label_seq')}
+                        error={this.errorMessage('seq')} />
 
         <Form.Actions>
           <Form.Button type="submit" className="btn btn-primary">

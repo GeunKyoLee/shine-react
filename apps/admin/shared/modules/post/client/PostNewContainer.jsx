@@ -1,15 +1,31 @@
 
 Post.NewContainer = React.createClass({
+  mixins: [ReactMeteorData],
+
+  getMeteorData() {
+    const limit = 100;
+    const sort = { seq: 1 };
+    const handle = Meteor.subscribe('categoriesList', { active: true }, { limit, sort });
+
+    const categories = Category.collection.find({ active: true }, { limit, sort }).fetch();
+
+    return {
+      loading: (! handle.ready()),
+      categories,
+    }
+  },
+
   getInitialState() {
     return {
       errors: []
     }
   },
 
-  handleSubmit(title, content) {
-    console.log(title, content);
+  handleSubmit(categoryId, title, content) {
+    console.log(categoryId, title, content);
 
     const post = {
+      categoryId,
       title,
       content: {
         version: '0.0.1',
@@ -38,9 +54,9 @@ Post.NewContainer = React.createClass({
 
   render() {
     return (
-      <Post.Form errors={this.state.errors}
-                 onSubmit={this.handleSubmit}
-                 onCancel={this.handleCancel} />
+      <Post.Form {...this.data} errors={this.state.errors}
+                                onSubmit={this.handleSubmit}
+                                onCancel={this.handleCancel} />
     )
   }
 });
