@@ -1,16 +1,16 @@
-# Shine React
+# SHINE-REACT
 
 *Open Source Meteor-React boilerplate Project*
 
 [공식 홈페이지](http://shinejs.io)
 
-Shine-React 프로젝트는 Meteor 플랫폼과 React 프레임워크를 이용하여 product 수준의 앱을 개발하기 위한 기반 소스를 제공하는 데에 목표를 두고 있습니다.  
+SHINE-REACT 프로젝트는 Meteor 플랫폼과 React 프레임워크를 이용하여 product 수준의 앱을 개발하기 위한 기반 소스를 제공하는 데에 목표를 두고 있습니다.  
 
 일반적인 앱의 제작에 필요한 회원 로그인, 파일 업로드, 로그, 다국어 지원, 스타일 처리, 각종 대화창 등의 공통적인 기능을 미리 구현하여 두고
 서비스에 필요한 본연의 기능에 집중하여 개발할 수 있도록 하고자 합니다.
 
 더 자세한 내용은 위키를 참조하시기 바랍니다:  
-[Meteor Shine Wiki](https://github.com/shine-js/shine-blaze/wiki)
+[SHINE-REACT Wiki](https://github.com/shine-js/shine-react/wiki)
 
 ## Features
 
