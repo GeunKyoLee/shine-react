@@ -25,7 +25,7 @@ reactrouter:react-router
 #reactrouter:react-router-ssr
 
 less
-shinejs:shine-theme-mobile
+shinejs:shine-theme-mobile-xmas
 fortawesome:fontawesome
 
 shinejs:i18n
