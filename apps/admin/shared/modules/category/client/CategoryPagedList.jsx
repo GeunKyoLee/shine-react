@@ -1,6 +1,4 @@
 
-const { Link } = ReactRouter;
-
 const CategoryListItem = React.createClass({
   render() {
     const category = this.props.category;

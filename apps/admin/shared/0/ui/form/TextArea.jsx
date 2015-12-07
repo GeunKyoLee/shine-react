@@ -7,6 +7,10 @@ Form.TextArea = React.createClass({
     }
   },
 
+  handleChange(e) {
+    e.preventDefault();
+  },
+
   render() {
     const label = (this.props.label) ?
       (<label>{this.props.label}</label>) : null;
