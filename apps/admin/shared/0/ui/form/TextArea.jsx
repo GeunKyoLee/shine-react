@@ -1,11 +1,5 @@
 
 Form.TextArea = React.createClass({
-  getInitialState() {
-    return {
-      value: ''
-    }
-  },
-
   getDefaultProps() {
     return {
       error: "",
@@ -14,11 +8,7 @@ Form.TextArea = React.createClass({
   },
 
   handleChange(e) {
-    this.setState({ value: e.target.value });
-  },
-
-  componentWillMount() {
-    this.setState({ value: this.props.value })
+    e.preventDefault();
   },
 
   render() {
@@ -35,7 +25,7 @@ Form.TextArea = React.createClass({
                   className="form-control"
                   rows={this.props.rows}
                   name={this.props.name}
-                  value={this.state.value}
+                  value={this.props.value}
                   placeholder={this.props.placeholder}
                   onChange={this.handleChange} />
         <p className="help-block">{this.props.error}</p>

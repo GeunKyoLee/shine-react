@@ -97,6 +97,8 @@ I18n_data_ko = {
   "label_edit"                    : "편집",
   "label_new"                     : "신규",
 
+  "label_active"                  : "활성화",
+  "label_seq"                     : "순서",
 
   "text_sign_in"                  : "로그인하세요",
   "text_input_email"              : "이메일주소를 입력해 주세요",
@@ -134,6 +136,13 @@ I18n_data_ko = {
   // about
   "label_about"                   : "앱 정보",
   "label_about_version"           : "버전",
+
+  // category
+  "label_category"                : "카테고리",
+  "label_new_category"            : "새 카테고리 등록",
+
+  "text_no_categories"            : "등록된 카테고리가 없습니다.",
+  "text_category_total"           : "검색된 카테고리 수: {0}",
 
   // post
   "label_post"                    : "글",

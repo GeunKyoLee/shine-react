@@ -1,3 +1,19 @@
+/**
+ * Post
+ *  _id                       PK
+ *  categoryId                String
+ *  title                     String
+ *  content                   Object
+ *    type                      String
+ *    version                   String
+ *    data                      String
+ *  author                    Object
+ *    _id                       String
+ *    name                      String
+ *    url                       String
+ *  createdAt                 Date
+ *  updatedAt                 Date
+ */
 
 if (typeof Post === 'undefined') Post = {};
 
@@ -13,6 +29,7 @@ Meteor.methods({
     const now = new Date();
     const author = Meteor.user();
     const post = {
+      categoryId: object.categoryId,
       title: object.title,
       content: object.content,
       author: {
@@ -37,7 +54,8 @@ Meteor.methods({
     if (! this.userId) throw new Meteor.Error(ERROR_SECURITY, 'error_access_denied');
 
     const author = Meteor.user();
-    const post = {
+    const update = {
+      categoryId: object.categoryId,
       title: object.title,
       content: object.content,
       author: {
@@ -48,12 +66,8 @@ Meteor.methods({
       updatedAt: new Date()
     };
 
-    const result = Post.collection.update({ _id: postId, 'author._id': this.userId },
-      { $set: post });
-
-    if (result < 1) {
-      throw new Meteor.Error(ERROR_SECURITY, 'error_access_denied');
-    }
+    const result = Post.collection.update({ _id: postId },
+      { $set: update });
 
     return result;
   },
@@ -64,11 +78,7 @@ Meteor.methods({
     // check permission
     if (! this.userId) throw new Meteor.Error(ERROR_SECURITY, 'error_access_denied');
 
-    const result = Post.collection.remove({ _id: postId, 'author._id': this.userId });
-
-    if (result < 1) {
-      throw new Meteor.Error(ERROR_SECURITY, 'error_access_denied');
-    }
+    const result = Post.collection.remove({ _id: postId });
 
     return result;
   }

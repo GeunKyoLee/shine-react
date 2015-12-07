@@ -26,6 +26,8 @@ if (Meteor.isClient) {
       <Route path="accounts" component={Account.ListContainer} onEnter={requireAuth} />
       <Route path="account/edit/:id" component={Account.EditContainer} onEnter={requireAuth} />
 
+      <Route path="categories" component={Category.ListContainer} onEnter={requireAuth} />
+
       <Route path="posts" component={Post.ListContainer} onEnter={requireAuth} />
       <Route path="post/view/:id" component={Post.ViewContainer} onEnter={requireAuth} />
       <Route path="post/edit/:id" component={Post.EditContainer} onEnter={requireAuth} />

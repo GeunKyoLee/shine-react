@@ -1,9 +1,12 @@
 
 Form.InputText = React.createClass({
-  getInitialState() {
-    return {
-      value: ''
-    }
+
+  getInitialState: function() {
+    return { value: '' };
+  },
+
+  handleChange: function(e) {
+    this.setState({ value: e.target.value });
   },
 
   getDefaultProps() {
@@ -14,12 +17,8 @@ Form.InputText = React.createClass({
     }
   },
 
-  handleChange(e) {
-    this.setState({ value: e.target.value });
-  },
-
   componentWillMount() {
-    this.setState({ value: this.props.value })
+    this.setState({ value: this.props.value });
   },
 
   render() {

@@ -40,3 +40,4 @@ shinejs:react-accounts-ui
 accounts-password
 
 tmeasday:publish-counts
+shinejs:meteor-mongo-counter

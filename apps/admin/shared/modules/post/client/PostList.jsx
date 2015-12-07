@@ -1,4 +1,6 @@
 
+const { Link } = ReactRouter;
+
 Post.List = React.createClass({
   render() {
     const postsCount = this.props.postsCount;
@@ -12,8 +14,10 @@ Post.List = React.createClass({
           <header>
             <h3>{L('label_post')} <small>{L('label_list')}</small></h3>
             <div className="actions">
-              <button className="btn btn-primary pull-right"
-                      onClick={this.props.onNewPost}>{L('label_new_post')}</button>
+              <Link to="/post/new"
+                    className="btn btn-primary pull-right">
+                {L('label_new_post')}
+              </Link>
             </div>
           </header>
 

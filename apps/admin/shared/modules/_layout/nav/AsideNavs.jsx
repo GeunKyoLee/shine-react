@@ -2,6 +2,7 @@
 const navs = [
   { path: '/dashboard', name: 'label_dashboard' },
   { path: '/accounts', name: 'label_account' },
+  { path: '/categories', name: 'label_category' },
   { path: '/posts', name: 'label_post' },
   { path: '/about', name: 'label_about' },
 ];
