@@ -13,7 +13,11 @@ Meteor.publish('postsList', function(options) {
 
   Counts.publish(this, 'postsListCount', Post.collection.find(query), { noReady: true });
 
-  return Post.collection.find(query, options);
+  const posts = Post.collection.find(query, options);
+
+  const categories = Category.collection.find();
+
+  return [posts, categories];
 });
 
 /**

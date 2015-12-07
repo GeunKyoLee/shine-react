@@ -53,16 +53,10 @@ Meteor.methods({
     // check permission
     if (! this.userId) throw new Meteor.Error(ERROR_SECURITY, 'error_access_denied');
 
-    const author = Meteor.user();
     const update = {
       categoryId: object.categoryId,
       title: object.title,
       content: object.content,
-      author: {
-        _id: author._id,
-        name: userDisplayName(author),
-        url: userPictureURL(author)
-      },
       updatedAt: new Date()
     };
 

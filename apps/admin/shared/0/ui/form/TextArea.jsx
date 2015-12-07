@@ -1,31 +1,36 @@
 
 Form.TextArea = React.createClass({
+  getInitialState: function() {
+    return { value: '' };
+  },
+
+  handleChange: function(e) {
+    this.setState({ value: e.target.value });
+  },
+
   getDefaultProps() {
     return {
+      type: 'text',
       error: "",
-      onChange: () => {}
     }
   },
 
-  handleChange(e) {
-    e.preventDefault();
+  componentDidMount() {
+    this.setState({ value: this.props.value });
   },
 
   render() {
-    const label = (this.props.label) ?
-      (<label>{this.props.label}</label>) : null;
-
     const className = (_.isEmpty(this.props.error)) ?
       "form-group" : "form-group has-error";
 
     return (
       <div className={className}>
-        {label}
+        {this.props.label ? <label>{this.props.label}</label> : null}
         <textarea id={this.props.id}
                   className="form-control"
                   rows={this.props.rows}
                   name={this.props.name}
-                  value={this.props.value}
+                  value={this.state.value}
                   placeholder={this.props.placeholder}
                   onChange={this.handleChange} />
         <p className="help-block">{this.props.error}</p>

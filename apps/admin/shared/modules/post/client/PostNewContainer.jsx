@@ -1,6 +1,8 @@
 
+const { History } = ReactRouter;
+
 Post.NewContainer = React.createClass({
-  mixins: [ReactMeteorData],
+  mixins: [ReactMeteorData, History],
 
   getMeteorData() {
     const limit = 100;
@@ -12,6 +14,7 @@ Post.NewContainer = React.createClass({
     return {
       loading: (! handle.ready()),
       categories,
+      mode: 'new',
     }
   },
 
@@ -40,16 +43,16 @@ Post.NewContainer = React.createClass({
       return;
     }
 
-    const self = this;
     Meteor.call('postInsert', post, (error) => {
-      if (error) return self.props.reject(-1);
+      if (error) return Overlay.notify(error.reason);
 
-      return self.props.fulfill(1);
+      Overlay.notify(L('text_post_insert_done'));
+      RouteTransition.goBack(this.history);
     });
   },
 
   handleCancel() {
-    this.props.reject(-1);
+    RouteTransition.goBack(this.history);
   },
 
   render() {

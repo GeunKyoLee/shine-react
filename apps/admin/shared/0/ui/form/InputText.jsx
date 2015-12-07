@@ -13,11 +13,10 @@ Form.InputText = React.createClass({
     return {
       type: 'text',
       error: "",
-      onChange: () => {}
     }
   },
 
-  componentWillMount() {
+  componentDidMount() {
     this.setState({ value: this.props.value });
   },
 

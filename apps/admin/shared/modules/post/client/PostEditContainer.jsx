@@ -1,6 +1,8 @@
 
+const { History } = ReactRouter;
+
 Post.EditContainer = React.createClass({
-  mixins: [ReactMeteorData],
+  mixins: [ReactMeteorData, History],
 
   getMeteorData() {
     const postId = this.props.params.id;
@@ -10,6 +12,7 @@ Post.EditContainer = React.createClass({
       loading: (! handle.ready()),
       categories: Category.collection.find({ active: true }, { sort: { seq: 1 }}).fetch(),
       post: Post.collection.findOne(postId),
+      mode: 'edit',
     }
   },
 
@@ -20,8 +23,8 @@ Post.EditContainer = React.createClass({
   },
 
   handleSubmit(categoryId, title, content) {
-    console.log(categoryId, title, content);
 
+    const postId = this.data.post._id;
     const post = {
       categoryId,
       title,
@@ -38,19 +41,16 @@ Post.EditContainer = React.createClass({
       return;
     }
 
-    const self = this;
-    Meteor.call('postUpdate', this.props.post._id, post, (error) => {
-      if (error) {
-        Overlay.notify(error.reason);
-        return self.props.reject(-1);
-      }
+    Meteor.call('postUpdate', postId, post, (error) => {
+      if (error) return Overlay.notify(error.reason);
 
-      return self.props.fulfill(1);
+      Overlay.notify(L('text_post_update_done'));
+      RouteTransition.goBack(this.history);
     });
   },
 
   handleCancel() {
-    this.props.reject(-1);
+    RouteTransition.goBack(this.history);
   },
 
   render() {
