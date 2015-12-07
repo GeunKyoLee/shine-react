@@ -12,7 +12,13 @@ Post.ListContainer = React.createClass({
     const handle = Meteor.subscribe('postsList', { limit, sort });
 
     const postsCount = Counts.get('postsListCount');
-    const posts = Post.collection.find({}, { limit, sort }).fetch();
+//    const posts = Post.collection.find({}, { limit, sort }).fetch();
+    const posts = Post.collection.find({}, { limit, sort }).map((post) => {
+      if (post.categoryId) {
+        post.category = Category.collection.findOne(post.categoryId);
+      }
+      return post;
+    });
 
     return {
       loading: (! handle.ready()),

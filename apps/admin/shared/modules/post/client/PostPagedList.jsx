@@ -10,6 +10,7 @@ const PostListItem = React.createClass({
     return (
       <tr className="post-item">
         <td>{post._id}</td>
+        <td>{post.category && post.category.title}</td>
         <td><Link to={`/post/edit/${post._id}`} >{post.title}</Link></td>
         <td>{post.author.name}</td>
         <td>{createdAt}</td>
@@ -49,6 +50,7 @@ Post.PagedList = React.createClass({
   render() {
     const columns = [
       { title: L('label_id'), field: '_id' },
+      { title: L('label_category'), field: 'categoryId' },
       { title: L('label_title'), field: 'title' },
       { title: L('label_author'), field: 'author.name' },
       { title: L('label_created_at'), field: 'createdAt' },

@@ -3,6 +3,7 @@ Meteor.publish('postsList', function(options) {
     limit: Number,
     sort: {
       _id: Match.Optional(Number),
+      'categoryId': Match.Optional(Number),
       'title': Match.Optional(Number),
       'author.name': Match.Optional(Number),
       createdAt: Match.Optional(Number),
@@ -14,6 +15,7 @@ Meteor.publish('postsList', function(options) {
   Counts.publish(this, 'postsListCount', Post.collection.find(query), { noReady: true });
 
   const posts = Post.collection.find(query, options);
+
 
   const categories = Category.collection.find();
 
