@@ -50,7 +50,7 @@ Post.PagedList = React.createClass({
   render() {
     const columns = [
       { title: L('label_id'), field: '_id' },
-      { title: L('label_category'), field: 'categoryId' },
+      { title: L('label_category'), field: 'category.title' },
       { title: L('label_title'), field: 'title' },
       { title: L('label_author'), field: 'author.name' },
       { title: L('label_created_at'), field: 'createdAt' },
