@@ -6,7 +6,7 @@ const CategoryListItem = React.createClass({
     const category = this.props.category;
 
     return (
-      <Link to={`/category/view/${category._id}`}
+      <Link to={`/category/${category._id}`}
             className="category-item">{category.title}</Link>
     )
   }
@@ -32,7 +32,7 @@ Category.List = React.createClass({
     if (this.props.loading) return <App.Spinner />;
 
     return (
-      <div>
+      <div className="nav-list">
         {this.categories()}
       </div>
     )

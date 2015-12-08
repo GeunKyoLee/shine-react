@@ -15,13 +15,15 @@ Category.View = React.createClass({
   },
 
   render() {
+    if (this.props.loading) return <App.Spinner />;
+
     const loadMore = this.props.postsCount > this.props.posts.length ?
       <App.LoadMore loading={this.props.onLoading}
                     onClick={this.props.onLoadMore} /> : null;
 
     return (
       <App.Page className="footer-on">
-        <App.Header title={L('label_post')} />
+        <App.Header title={this.props.category.title} />
 
         <article className="page" ref="page">
           <Post.PagedList {...this.props} />

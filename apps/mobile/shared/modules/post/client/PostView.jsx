@@ -33,20 +33,32 @@ Post.View = React.createClass({
       });
   },
 
+  renderFooter() {
+    return (
+      <App.Footer>
+        <button className="btn btn-warning btn-lg btn-block"
+                onClick={this.handleEditPost}>{L('command_edit')}</button>
+      </App.Footer>
+    )
+  },
+
   render() {
     if (this.props.loading) return <App.Spinner />;
 
     const post = this.props.post;
     const createdAt = moment(post.createdAt).format('YYYY-MM-DD HH:mm');
+    const authorPictureURL = userPictureURL(post.author.url);
+    const isEditable = !! (post.author._id === Meteor.userId());
+    const footer = isEditable ? this.renderFooter() : null;
 
     return (
-      <App.Page className="footer-on">
-        <App.Header title={L('label_post_view')} />
+      <App.Page className={isEditable ? 'footer-on' : null}>
+        <App.Header title={`${L('label_post')} ${L('label_view')}`} />
 
         <article className="page">
           <header>
             <div className="post-info">
-              <img src={post.author.url} />
+              <img src={authorPictureURL} />
               <p className="name">{post.author.name}</p>
               <p className="time">{createdAt}</p>
             </div>
@@ -58,10 +70,7 @@ Post.View = React.createClass({
                dangerouslySetInnerHTML={{__html: contentView(post.content)}} />
         </article>
 
-        <App.Footer>
-          <button className="btn btn-warning btn-lg btn-block"
-                  onClick={this.handleEditPost}>{L('command_edit')}</button>
-        </App.Footer>
+        {footer}
       </App.Page>
     )
   }

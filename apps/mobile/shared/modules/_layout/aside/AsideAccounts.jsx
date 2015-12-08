@@ -32,6 +32,8 @@ App.AsideAccounts = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData() {
+    Meteor.subscribe('userData');
+
     return {
       user: Meteor.user()
     }

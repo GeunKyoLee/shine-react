@@ -18,15 +18,15 @@ Accounts.ui.SignInOtherServices = React.createClass({
   },
 
   render() {
-    const configureClass = (this.configured()) ? "configure-button" : "";
-    const className = `btn btn-default btn-block ${this.props.name} ${configureClass}`;
-
-    const btnText = (this.configured()) ?
-      L('accounts-ui:label_sign_in_with', [this.capitalizedName()]) :
-      L('accounts-ui:label_configure_sign_in', [this.capitalizedName()]);
-    return (
-      <button data-action="sign-in" className={className} >
-        {btnText}
+    return (this.configured()) ? (
+      <button className={`btn btn-default btn-block ${this.props.name}`}
+              onClick={this.props.onSignInWith.bind(null, this.props.name)}>
+        {L('accounts-ui:label_sign_in_with', [this.capitalizedName()])}
+      </button>
+    ) : (
+      <button className={`btn btn-default btn-block btn-configure`}
+              onClick={this.props.onConfigure.bind(null, this.props.name)}>
+        {L('accounts-ui:label_configure_sign_in', [this.capitalizedName()])}
       </button>
     )
   }

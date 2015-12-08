@@ -114,6 +114,9 @@ I18n_data_ko = {
   "error_input_required"          : "값을 입력하여야 합니다.",
   "error_input_out_of_range"      : "입력값이 유효한 범위 밖에 있습니다.",
 
+  // home
+  "label_home"                    : "홈",
+
   // profile
   "label_profile"                 : "프로필",
   "label_profile_edit_email"      : "이메일주소 변경",

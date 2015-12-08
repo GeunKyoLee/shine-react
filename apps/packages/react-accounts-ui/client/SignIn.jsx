@@ -3,6 +3,15 @@ const { Link } = ReactRouter;
 
 Accounts.ui.SignIn = React.createClass({
 
+  errors() {
+    const errors = this.props.errors.map((item, i) => {
+      const message = (typeof item === 'string') ? item : item.reason;
+      return <p key={i}>{L(`accounts-ui:${message}`)}</p>;
+    });
+
+    return (! _.isEmpty(errors)) ? <Form.Alert>{errors}</Form.Alert> : null;
+  },
+
   hasOtherServices() {
     return Accounts.ui.getSignInServices().length > 1;
   },
@@ -10,7 +19,10 @@ Accounts.ui.SignIn = React.createClass({
   render() {
     const oauthServices = Accounts.ui.getOAuthServices().map((service, i) => {
       return (
-        <Accounts.ui.SignInOtherServices key={i} name={service} />
+        <Accounts.ui.SignInOtherServices key={i}
+                                         name={service}
+                                         onSignInWith={this.props.handleOAuth}
+                                         onConfigure={this.props.handleConfigure} />
       );
     });
 
@@ -25,6 +37,7 @@ Accounts.ui.SignIn = React.createClass({
 
     return (
       <div className="accounts-ui-frame">
+        {this.errors()}
 
         {oauthServices}
 

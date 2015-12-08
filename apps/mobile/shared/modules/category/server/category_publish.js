@@ -6,3 +6,8 @@ Meteor.publish('categoriesList', function() {
   return Category.collection.find(query, options);
 });
 
+Meteor.publish('categoryView', function(categoryId) {
+  check(categoryId, String);
+
+  return Category.collection.find({ _id: categoryId, active: true });
+});

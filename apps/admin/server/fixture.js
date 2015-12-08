@@ -1,10 +1,10 @@
 insertInitData = function () {
   if (Meteor.users.find().count() === 0) {
     const user = {
-      email: 'leesn@bookp.al',
+      email: 'admin@shinejs.io',
       password: '74123',
       profile: {
-        name: '관리자'
+        name: '운영자'
       }
     };
 
@@ -13,7 +13,7 @@ insertInitData = function () {
 
     for (let j = 0; j < 100; j++) {
       Accounts.createUser({
-        email: `leesn-${j}@bookp.al`,
+        email: `test-${j}@shinejs.io`,
         password: '74123',
         profile: {
           name: `회원-${j}`

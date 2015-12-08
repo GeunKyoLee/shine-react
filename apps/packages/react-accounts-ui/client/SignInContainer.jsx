@@ -36,8 +36,34 @@ Accounts.ui.SignInContainer = React.createClass({
     });
   },
 
+  handleOAuth(name) {
+    const self = this;
+    Accounts.ui.signInOtherService(name, (error) => {
+      if (error) {
+        self.setState({ errors: [error] });
+      } else {
+        console.log('sign-in success');
+
+        const { location } = self.props
+
+        if (location && location.state && location.state.nextPathname) {
+          self.history.replaceState(null, location.state.nextPathname)
+        } else {
+          self.history.replaceState(null, '/')
+        }
+        console.log('history state replace');
+      }
+    });
+  },
+
+  handleConfigure(name) {
+    console.log('configure: ' + name);
+  },
+
   render() {
     return <Accounts.ui.SignIn errors={this.state.errors}
-                               handleSubmit={this.handleSubmit} />
+                               handleSubmit={this.handleSubmit}
+                               handleOAuth={this.handleOAuth}
+                               handleConfigure={this.handleConfigure} />
   }
 });

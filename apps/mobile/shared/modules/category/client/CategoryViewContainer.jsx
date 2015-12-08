@@ -5,17 +5,21 @@ Category.ViewContainer = React.createClass({
   mixins: [ReactMeteorData, History],
 
   getMeteorData() {
+    const query = { 'category._id': this.props.params.id };
+
     const limit = this.pagination.get().limit;
     const sort = {};
     sort[this.pagination.get().sort.field] = this.pagination.get().sort.value;
 
-    const handle = Meteor.subscribe('postsList', { limit, sort });
+    const handle = Meteor.subscribe('postsList', query, { limit, sort });
 
+    const category = Category.collection.findOne(this.props.params.id);
     const postsCount = Counts.get('postsListCount');
-    const posts = Post.collection.find({}, { limit, sort }).fetch();
+    const posts = Post.collection.find(query, { limit, sort }).fetch();
 
     return {
       loading: (! handle.ready()),
+      category,
       postsCount,
       posts,
       pagination: this.pagination.get(),

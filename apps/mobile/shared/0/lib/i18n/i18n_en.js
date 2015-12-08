@@ -111,6 +111,9 @@ I18n_data_en = {
   "error_input_required"          : "Input value is required",
   "error_input_out_of_range"      : "Input value is out of range",
 
+  // home
+  "label_home"                    : "Home",
+
   // profile
   "label_profile"                 : "Profile",
   "label_profile_edit_email"      : "Edit email address",

@@ -107,7 +107,7 @@ Accounts.ui = {
     return !! Package['accounts-password'];
   },
 
-  loginOtherServices(serviceName) {
+  signInOtherService(serviceName, callback) {
     if (! serviceName) return;
 
     // XXX from http://epeli.github.com/underscore.string/lib/underscore.string.js
@@ -136,29 +136,31 @@ Accounts.ui = {
       $loadingIcon.addClass('hidden');
       $serviceIcon.removeClass('hidden');
 
+      console.log('loginWithService error:');
+      console.log(error);
+
       if (! error) {
-        console.log('loginWithService error: ');
-        console.log(error);
+        console.log('sign-in success');
+        if (typeof callback === 'function') callback();
       } else if (error instanceof Accounts.LoginCancelledError) {
         // do nothing
+        callback(error);
       } else if (error instanceof ServiceConfiguration.ConfigError) {
-        //Alerts.notifyModal('error', '')
+        callback(error);
       } else {
         const msg = error.reason || "error_unknown";
 
         if (error.details && error.details.email) {
-          /*
-          Alerts.dialog('confirm', email + msg + '해당 Email 주소로 로그인하시겠습니까?', function(result) {
+
+          Overlay.confirm(email + msg + '해당 Email 주소로 로그인하시겠습니까?').then((result) => {
             if (result) {
               $('#login-username-or-email').val(email);
               $('#login-password').focus();
               return;
             }
-            Accounts.ui.dialog.hide();
           });
-          */
         } else {
-          //Alerts.notifyModal('error', "accounts-ui:" + msg);
+          callback("accounts-ui:" + msg);
         }
       }
     });

@@ -28,15 +28,6 @@ Accounts.ui.SignInPasswordService = React.createClass({
     ];
   },
 
-  errors() {
-    const errors = this.props.errors.map((item, i) => {
-      const message = (typeof item === 'string') ? item : item.reason;
-      return <p key={i}>{L(`accounts-ui:${message}`)}</p>;
-    });
-
-    return (! _.isEmpty(errors)) ? <Form.Alert>{errors}</Form.Alert> : null;
-  },
-
   handleSubmit(e) {
     e.preventDefault();
 
@@ -61,8 +52,6 @@ Accounts.ui.SignInPasswordService = React.createClass({
   render() {
     return (
       <Form.Form id="form-sign-in" onSubmit={this.handleSubmit}>
-
-        {this.errors()}
 
         {this.renderInputs()}
 

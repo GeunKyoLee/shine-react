@@ -3,7 +3,7 @@ Meteor.publish('postsList', function(options) {
     limit: Number,
     sort: {
       _id: Match.Optional(Number),
-      'categoryId': Match.Optional(Number),
+      'category.title': Match.Optional(Number),
       'title': Match.Optional(Number),
       'author.name': Match.Optional(Number),
       createdAt: Match.Optional(Number),
