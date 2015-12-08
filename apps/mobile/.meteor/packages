@@ -37,8 +37,10 @@ momentjs:moment
 check
 reactive-var
 
+service-configuration
 shinejs:react-accounts-ui
 accounts-password
+accounts-facebook
 
 tmeasday:publish-counts
 

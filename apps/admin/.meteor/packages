@@ -37,6 +37,7 @@ momentjs:moment
 check
 reactive-var
 
+service-configuration
 shinejs:react-accounts-ui
 accounts-password
 

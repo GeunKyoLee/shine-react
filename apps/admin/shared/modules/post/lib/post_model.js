@@ -1,7 +1,9 @@
 /**
  * Post
  *  _id                       PK
- *  categoryId                String
+ *  category                String
+ *    _id
+ *    title
  *  title                     String
  *  content                   Object
  *    type                      String

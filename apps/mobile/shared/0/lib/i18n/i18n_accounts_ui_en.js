@@ -1,5 +1,7 @@
 I18n_accounts_ui_en = {
   "label_sign_in"                 : "Sign in",
+  "label_sign_in_with"            : "Sign in with {0}",
+  "label_configure_sign_in"       : "Configure sign in {0}",
   "label_sign_up"                 : "Sign up",
   "label_forgot_password"         : "Forgot password?",
   "label_username_or_email"       : "Username or email",

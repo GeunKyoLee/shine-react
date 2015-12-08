@@ -28,6 +28,8 @@ Package.onUse(function(api) {
     'client/Input.jsx',
     'client/InputPassword.jsx',
     'client/SignIn.jsx',
+    'client/SignInPasswordService.jsx',
+    'client/SignInOtherServices.jsx',
     'client/SignInContainer.jsx',
     'client/SignUp.jsx',
     'client/SignUpContainer.jsx',

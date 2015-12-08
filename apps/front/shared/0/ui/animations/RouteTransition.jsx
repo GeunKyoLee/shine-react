@@ -22,8 +22,8 @@ const Path = {
   DEFAULTS: ['/', '/home', '/sign-in', '/sign-up'],
 };
 
-const RouteStack = {
-  _stack: [Path.ROOT],
+RouteStack = {
+  _stack: [],
 
   clear() {
     this._stack = [];
@@ -31,7 +31,7 @@ const RouteStack = {
 
   init(path = Path.ROOT) {
     this._stack = [Path.ROOT];
-    if (path !== Path.ROOT && path != Path.HOME) this._stack.push(path);
+    this._stack.push(path);
   },
 
   push(path) {
@@ -60,8 +60,9 @@ const RouteStack = {
     return this._stack.length;
   },
 
-  top() {
-    return this._stack.length ? this._stack[this._stack.length - 1] : null;
+  top(depth = 1) {
+    return (this._stack.length > depth) ?
+      this._stack[this._stack.length - depth] : null;
   }
 };
 
@@ -69,19 +70,36 @@ const RouteStack = {
 RouteTransition = React.createClass({
 
   statics: {
-    goHome: (history, transitionName = Transition.DEFAULT) => {
+    goHome(history, transitionName = Transition.DEFAULT) {
       RouteStack.clear();
       history.pushState({ transitionName }, Path.HOME);
     },
 
-    goBack: (history) => {
-      RouteStack.pop(2);
-      history.goBack();
+    goBack(history) {
+      const path = RouteStack.pop(2);
+      history.pushState({ transitionName: Transition.BACKWARD }, path); //history.goBack();
     },
 
-    canGoBack: () => {
+    canGoBack() {
       return (RouteStack.count() > 1);
     },
+
+    go(history, depth) {
+      const path = RouteStack.pop(depth + 1);
+      history.pushState(null, path);
+    },
+
+    current() {
+      return RouteStack.top();
+    },
+
+    prev() {
+      return RouteStack.top(2);
+    },
+
+    popStack(depth) {
+      RouteStack.pop(depth);
+    }
   },
 
   getInitialState() {
@@ -95,6 +113,7 @@ RouteTransition = React.createClass({
     const { location } = props;
     const path = location.pathname;
 
+    // if transitionName is set, then force the transition method.
     if (location.state && location.state.transitionName) {
       RouteStack.push(path);
 
@@ -103,11 +122,11 @@ RouteTransition = React.createClass({
         currentDepth: RouteStack.count()
       });
     } else {
-      if (path === Path.ROOT || path === Path.HOME) {
-        RouteStack.init();
-      } else {
-        RouteStack.push(path);
+      // componentWillReceiveProps is not called at initial render. so, ...
+      if (RouteStack.count() === 0) {
+        RouteStack.init(this.props.location.pathname);
       }
+      RouteStack.push(path);
 
       const depth = RouteStack.count();
       let transitionName = Transition.DEFAULT;
