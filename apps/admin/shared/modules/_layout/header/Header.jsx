@@ -1,3 +1,4 @@
+const { Link } = ReactRouter;
 
 App.Header = React.createClass({
   getDefaultProps() {
@@ -8,13 +9,26 @@ App.Header = React.createClass({
   },
 
   render() {
-    const accountButton = (! this.props.hideAccount) ?
+    if (this.props.type === 'emailEdit') {
+      return (
+        <header>
+          <div>
+
+          </div>
+        </header>
+      )
+    }
+
+
+    const accountButton = (!this.props.hideAccount) ?
       <App.AccountInfo /> : null;
 
     return (
       <header>
         <div className="logo">
-          <img src="/images/logo-inversed.svg" />
+          <Link to="/">
+            <img src="/images/logo-inversed.svg"/>
+          </Link>
           <span className="title">Administration</span>
         </div>
         <div className="header-right">

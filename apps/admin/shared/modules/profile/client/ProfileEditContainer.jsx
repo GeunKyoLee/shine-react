@@ -66,10 +66,11 @@ Profile.EditContainer = React.createClass({
     const title = L(`label_profile_edit_${value}`);
     const component = this.getComponent(value);
 
+    const type = 'emailEdit';
+
     return (
       <App.Page>
-        <App.Header title={title} />
-
+        <App.Header title={title} type={type}/>
         <article className="page">
           {component}
         </article>
