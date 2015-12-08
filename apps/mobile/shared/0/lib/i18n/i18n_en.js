@@ -91,7 +91,10 @@ I18n_data_en = {
   "label_cloudinary_key"          : "API key",
   "label_cloudinary_secret"       : "API secret",
   "label_categories"              : "Categories",
-
+  "label_list"                    : "List",
+  "label_view"                    : "View",
+  "label_new"                     : "New",
+  "label_edit"                    : "Edit",
 
   "text_sign_in"                  : "Sign in",
   "text_input_email"              : "Input Email address",
@@ -119,8 +122,7 @@ I18n_data_en = {
   "label_about_version"           : "Version",
 
   // post
-  "label_posts_list"              : "Posts",
-  "label_post_view"               : "Post view",
+  "label_post"                    : "Post",
   "label_new_post"                : "New Post",
 
   "text_no_posts"                 : "There is no post registered.",

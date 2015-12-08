@@ -80,6 +80,7 @@ shinejs:bootstrap-less@1.2.1
 shinejs:i18n@0.9.1
 shinejs:react-accounts-ui@0.0.1
 shinejs:react-cloudinary@0.0.1
+shinejs:react-form@0.0.1
 shinejs:react-overlays@0.0.1
 shinejs:react-spin@2.3.2
 shinejs:shine-theme-mobile-xmas@0.0.1

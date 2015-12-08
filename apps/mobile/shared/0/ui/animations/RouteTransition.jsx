@@ -23,23 +23,23 @@ const Path = {
 };
 
 RouteStack = {
-  _stack: [{ path: Path.ROOT }],
+  _stack: [],
 
   clear() {
     this._stack = [];
   },
 
   init(path = Path.ROOT) {
-    this._stack = [{ path: Path.ROOT }];
-    if (path !== Path.ROOT && path != Path.HOME) this._stack.push({ path });
+    this._stack = [];
+    this._stack.push(path);
   },
 
   push(path) {
-    this._stack.push({ path });
+    this._stack.push(path);
   },
 
   pop(depth = 1) {
-    if (this.count() > depth) {
+    if (this.count() >= depth) {
       let history;
       for (let i = 0; i < depth; i++) {
         history = this._stack.pop();
@@ -53,7 +53,7 @@ RouteStack = {
 
   replace(path) {
     this._stack.pop();
-    this._stack.push({ path });
+    this._stack.push(path);
   },
 
   count() {
@@ -105,18 +105,18 @@ RouteTransition = React.createClass({
     const path = location.pathname;
 
     if (location.state && location.state.transitionName) {
-      RouteStack.push({ path });
+      RouteStack.push(path);
 
       this.setState({
         transitionName: location.state.transitionName,
         currentDepth: RouteStack.count()
       });
     } else {
-      if (path === Path.ROOT || path === Path.HOME) {
-        RouteStack.init();
-      } else {
-        RouteStack.push({ path });
+      // componentWillReceiveProps is not called at initial render. so, ...
+      if (RouteStack.count() === 0) {
+        RouteStack.init(this.props.location.pathname);
       }
+      RouteStack.push(path);
 
       const depth = RouteStack.count();
       let transitionName = Transition.DEFAULT;

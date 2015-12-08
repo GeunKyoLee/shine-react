@@ -92,6 +92,10 @@ I18n_data_ko = {
   "label_cloudinary_key"          : "API key",
   "label_cloudinary_secret"       : "API secret",
   "label_categories"              : "카테고리",
+  "label_list"                    : "목록",
+  "label_view"                    : "열람",
+  "label_new"                     : "신규",
+  "label_edit"                    : "수정",
 
 
   "text_sign_in"                  : "로그인하세요",
@@ -121,8 +125,7 @@ I18n_data_ko = {
   "label_about_version"           : "버전",
 
   // post
-  "label_posts_list"              : "글 목록",
-  "label_post_view"               : "글 열람",
+  "label_post"                    : "글",
   "label_new_post"                : "글쓰기",
 
   "text_no_posts"                 : "등록된 글이 없습니다.",
