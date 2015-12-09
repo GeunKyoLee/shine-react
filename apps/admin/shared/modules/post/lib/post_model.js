@@ -31,7 +31,7 @@ Meteor.methods({
     const now = new Date();
     const author = Meteor.user();
     const post = {
-      categoryId: object.categoryId,
+      category: object.category,
       title: object.title,
       content: object.content,
       author: {
@@ -56,7 +56,7 @@ Meteor.methods({
     if (! this.userId) throw new Meteor.Error(ERROR_SECURITY, 'error_access_denied');
 
     const update = {
-      categoryId: object.categoryId,
+      category: object.category,
       title: object.title,
       content: object.content,
       updatedAt: new Date()

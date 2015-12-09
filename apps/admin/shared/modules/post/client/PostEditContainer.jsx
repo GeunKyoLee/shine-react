@@ -23,10 +23,14 @@ Post.EditContainer = React.createClass({
   },
 
   handleSubmit(categoryId, title, content) {
+    const category = Category.collection.findOne(categoryId);
 
     const postId = this.data.post._id;
     const post = {
-      categoryId,
+      category: {
+        _id: categoryId,
+        title: category.title
+      },
       title,
       content: {
         version: '0.0.1',

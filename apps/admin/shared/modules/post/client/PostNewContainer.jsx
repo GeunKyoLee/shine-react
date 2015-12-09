@@ -25,10 +25,13 @@ Post.NewContainer = React.createClass({
   },
 
   handleSubmit(categoryId, title, content) {
-    console.log(categoryId, title, content);
+    const category = Category.collection.findOne(categoryId);
 
     const post = {
-      categoryId,
+      category: {
+        _id: categoryId,
+        title: category.title,
+      },
       title,
       content: {
         version: '0.0.1',

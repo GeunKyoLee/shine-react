@@ -22,10 +22,11 @@ Post.Form = React.createClass({
   handleSubmit(e) {
     e.preventDefault();
 
+    const categoryId = e.target.categoryId.value;
     const title = e.target.title.value;
     const content = e.target.content.value;
 
-    this.props.onSubmit(title, content);
+    this.props.onSubmit(categoryId, title, content);
   },
 
   handleCancel(e) {
@@ -40,12 +41,23 @@ Post.Form = React.createClass({
   },
 
   render() {
+    const categoryId = this.props.post && this.props.post.category._id;
     const title = this.props.post && this.props.post.title;
     const content = this.props.post && this.props.post.content;
     const contentText = content && content.data;
+    const selectOptions = this.props.categories.map((category) => {
+      return { value: category._id, title: category.title };
+    });
 
     return (
       <Form.Form onSubmit={this.handleSubmit}>
+        <Form.Select id="categoryId"
+                     name="categoryId"
+                     value={categoryId}
+                     options={selectOptions}
+                     label={L('label_category')}
+                     error={this.errorMessage('categoryId')} />
+
         <Form.InputText id="title"
                         name="title"
                         value={title}

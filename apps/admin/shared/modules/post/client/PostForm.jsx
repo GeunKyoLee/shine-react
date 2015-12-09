@@ -55,7 +55,7 @@ Post.Form = React.createClass({
   render() {
     if (this.props.loading) return <App.Spinner />;
 
-    const categoryId = this.props.post && this.props.post.categoryId;
+    const categoryId = this.props.post && this.props.post.category._id;
     const title = this.props.post && this.props.post.title;
     const content = this.props.post && this.props.post.content;
     const contentText = content && content.data;

@@ -1,15 +1,33 @@
 
 Post.EditContainer = React.createClass({
+  mixins: [ReactMeteorData],
+
+  getMeteorData() {
+    const postId = this.props.post._id;
+    const handle = Meteor.subscribe('postView', postId);
+
+    return {
+      loading: (! handle.ready()),
+      categories: Category.collection.find({ active: true }, { sort: { seq: 1 }}).fetch(),
+      post: Post.collection.findOne(postId),
+    }
+  },
+
   getInitialState() {
     return {
       errors: []
     }
   },
 
-  handleSubmit(title, content) {
-    console.log(title, content);
+  handleSubmit(categoryId, title, content) {
+    const category = Category.collection.findOne(categoryId);
 
+    const postId = this.data.post._id;
     const post = {
+      category: {
+        _id: categoryId,
+        title: category.title
+      },
       title,
       content: {
         version: '0.0.1',
@@ -25,7 +43,7 @@ Post.EditContainer = React.createClass({
     }
 
     const self = this;
-    Meteor.call('postUpdate', this.props.post._id, post, (error) => {
+    Meteor.call('postUpdate', postId, post, (error) => {
       if (error) {
         Overlay.notify(error.reason);
         return self.props.reject(-1);
@@ -40,13 +58,10 @@ Post.EditContainer = React.createClass({
   },
 
   render() {
-    const post = this.props.post;
-
     return (
-      <Post.Form post={post}
-                 errors={this.state.errors}
-                 onSubmit={this.handleSubmit}
-                 onCancel={this.handleCancel} />
+      <Post.Form {...this.data} errors={this.state.errors}
+                                onSubmit={this.handleSubmit}
+                                onCancel={this.handleCancel} />
     )
   }
 });

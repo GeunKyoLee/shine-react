@@ -1,6 +1,25 @@
 
 Post.Validator = {
   schema: {
+    category: {
+      type: 'object',
+      required: true,
+      object: {
+        _id: {
+          type: 'string',
+          required: true,
+          minLength: 1,
+          maxLength: 30
+        },
+        title: {
+          type: 'string',
+          required: true,
+          minLength: 1,
+          maxLength: 100
+        }
+      }
+    },
+
     title: {
       type: 'string',
       required: true,
@@ -29,20 +48,13 @@ Post.Validator = {
           maxLength: 65536
         }
       }
-    },
-
-    categoryId: {
-      type: 'string',
-      required: true,
-      minLength: 1,
-      maxLength: 100
     }
   },
 
   validateInsert: function(object) {
     var validator = new Validator(this.schema);
 
-    validator.validate(object, ['title', 'content']);
+    validator.validate(object, ['category', 'title', 'content']);
 
     return validator;
   },
@@ -50,18 +62,11 @@ Post.Validator = {
   validateUpdate: function(object) {
     var validator = new Validator(this.schema);
 
-    validator.validate(object, ['title', 'content']);
+    validator.validate(object, ['category', 'title', 'content']);
 
     return validator;
   },
 
-  validatePublish: function() {
-    var validator = new Validator(this.schema);
-
-    validator.validate(object, ['title', 'content', 'categoryId']);
-
-    return validator;
-  }
 };
 
 Post.Match = {

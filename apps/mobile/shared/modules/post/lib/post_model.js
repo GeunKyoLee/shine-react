@@ -13,6 +13,7 @@ Meteor.methods({
     const now = new Date();
     const author = Meteor.user();
     const post = {
+      category: object.category,
       title: object.title,
       content: object.content,
       author: {
@@ -38,6 +39,7 @@ Meteor.methods({
 
     const author = Meteor.user();
     const post = {
+      category: object.category,
       title: object.title,
       content: object.content,
       author: {
