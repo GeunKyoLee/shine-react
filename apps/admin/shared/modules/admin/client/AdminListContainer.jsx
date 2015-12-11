@@ -1,5 +1,5 @@
 
-Account.ListContainer = React.createClass({
+Admin.ListContainer = React.createClass({
   mixins: [ReactMeteorData],
 
   getMeteorData() {
@@ -7,16 +7,16 @@ Account.ListContainer = React.createClass({
     const sort = {};
     sort[this.pagination.get().sort.field] = this.pagination.get().sort.value;
 
-    const handle = Meteor.subscribe('accountsList', { limit, sort });
+    const handle = Meteor.subscribe('adminsList', { limit, sort });
 
-    const accountsCount = Counts.get('accountsListCount');
-    const accounts = Meteor.users.find(
-      { 'profile.isAdmin': { $ne: true }}, { limit, sort }).fetch();
+    const adminsCount = Counts.get('adminsListCount');
+    const admins = Meteor.users.find(
+      { 'profile.isAdmin': true }, { limit, sort }).fetch();
 
     return {
       loading: (! handle.ready()),
-      accountsCount,
-      accounts,
+      adminsCount,
+      admins,
       pagination: this.pagination.get(),
     }
   },
@@ -53,8 +53,8 @@ Account.ListContainer = React.createClass({
 
   render() {
     return (
-      <Account.List {...this.data} onLoadMore={this.handleLoadMore}
-                                   onSort={this.handleSort} />
+      <Admin.List {...this.data} onLoadMore={this.handleLoadMore}
+                                 onSort={this.handleSort} />
     )
   }
 });

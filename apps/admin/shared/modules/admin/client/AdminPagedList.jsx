@@ -1,7 +1,7 @@
 
 const { Link } = ReactRouter;
 
-const AccountListHead = React.createClass({
+const AdminListHead = React.createClass({
   handleSort(field) {
     this.props.onSort(field);
   },
@@ -31,27 +31,27 @@ const AccountListHead = React.createClass({
   }
 });
 
-const AccountListItem = React.createClass({
+const AdminListItem = React.createClass({
   render() {
-    const account = this.props.account;
-    if (! account) return null;
+    const admin = this.props.admin;
+    if (! admin) return null;
 
-    const name = account.profile && account.profile.name;
-    const email = account.emails[0].address;
-    const createdAt = moment(account.createdAt).format('YYYY-MM-DD HH:mm');
+    const username = admin.username;
+    const name = admin.profile && admin.profile.name;
+    const createdAt = moment(admin.createdAt).format('YYYY-MM-DD HH:mm');
 
     return (
       <tr>
-        <td>{account._id}</td>
-        <td><Link to={`/account/edit/${account._id}`} >{name}</Link></td>
-        <td>{email}</td>
+        <td>{admin._id}</td>
+        <td><Link to={`/admin/view/${admin._id}`} >{username}</Link></td>
+        <td>{name}</td>
         <td>{createdAt}</td>
       </tr>
     )
   }
 });
 
-Account.PagedList = React.createClass({
+Admin.PagedList = React.createClass({
   scrollPos: new ReactiveVar(0),
 
   componentDidMount() {
@@ -65,25 +65,25 @@ Account.PagedList = React.createClass({
     this.scrollPos.set(scrollTop);
   },
 
-  accounts() {
-    if (this.props.accounts.length === 0) {
+  admins() {
+    if (this.props.admins.length === 0) {
       return (
         <tr>
-          <td key={'_'} colSpan="4">{L('text_no_accounts')}</td>
+          <td key={'_'} colSpan="4">{L('text_no_admins')}</td>
         </tr>
       );
     }
 
-    return this.props.accounts.map((account) => (
-      <AccountListItem key={account._id} account={account} />
+    return this.props.admins.map((admin) => (
+      <AdminListItem key={admin._id} admin={admin} />
     ));
   },
 
   render() {
     const columns = [
       { title: L('label_id'), field: '_id' },
+      { title: L('label_username'), field: 'username' },
       { title: L('label_name'), field: 'profile.name' },
-      { title: L('label_email'), field: 'emails.address' },
       { title: L('label_created_at'), field: 'createdAt' },
     ];
 
@@ -96,7 +96,7 @@ Account.PagedList = React.createClass({
                                onSort={this.props.onSort} />
           </thead>
           <tbody>
-            {this.accounts()}
+            {this.admins()}
           </tbody>
         </table>
       </div>

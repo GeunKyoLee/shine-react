@@ -13,7 +13,7 @@ const contentView = function(content) {
       break;
 
     case 'markdown':
-      value = content.data;
+      value = marked(content.data);
       break;
   }
 

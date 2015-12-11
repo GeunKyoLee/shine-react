@@ -37,7 +37,9 @@ Post.PagedList = React.createClass({
     if (this.props.posts.length === 0) {
       return (
         <tr>
-          <td key={'_'} className="post-item">{L('text_no_posts')}</td>
+          <td key={'_'}
+              colSpan="5"
+              className="post-item">{L('text_no_posts')}</td>
         </tr>
       );
     }

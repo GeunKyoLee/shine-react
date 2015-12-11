@@ -15,7 +15,6 @@ KEYSTORE_PASSWORD="150423"
 
 OPTION_MOBILE_SETTINGS=""
 #OPTION_SERVER="--server http://localhost:3000"
-OPTION_SERVER="--server http://app-test.chasunsoo.com"
 #OPTION_SERVER="--server http:/192.168.0.9:3000"
 
 # the argument $1 is passed into the env.sh

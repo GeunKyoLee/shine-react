@@ -119,6 +119,19 @@ I18n_data_en = {
   // dashboard
   "label_dashboard"               : "Dashboard",
 
+  // admin
+  "label_admin"                   : "Administrator",
+  "label_new_admin"               : "New Administrator",
+
+  "text_no_admins"                : "There is no administrator registered.",
+  "text_admin_total"              : "Admin total: {0}",
+
+  // roles
+  "label_role_super_admin"        : "Super Administrator",
+  "label_role_manage_accounts"    : "Manage accounts",
+  "label_role_manage_categories"  : "Manage categories",
+  "label_role_manage_posts"       : "Manage posts",
+
   // account
   "label_account"                 : "Account",
   "label_new_account"             : "New Account",

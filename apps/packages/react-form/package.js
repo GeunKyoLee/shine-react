@@ -13,7 +13,8 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2.1');
   api.use([
     'ecmascript',
-    'react'
+    'react',
+    'chuangbo:marked',
   ]);
 
   api.addFiles([
@@ -27,6 +28,8 @@ Package.onUse(function(api) {
     'lib/Select.jsx',
     'lib/Switch.jsx',
     'lib/TextArea.jsx',
+    'lib/Editable.jsx',
+    'lib/MarkdownEditor.jsx',
   ]);
 
   api.export('Form');

@@ -1,16 +1,29 @@
 insertInitData = function () {
   if (Meteor.users.find().count() === 0) {
+
+    // insert 'admin' user
     const user = {
-      email: 'admin@shinejs.io',
+      username: 'admin',
       password: '74123',
       profile: {
+        isAdmin: true,
         name: '운영자'
       }
     };
+    user._id = Accounts.createUser(user);
+    Roles.addUsersToRoles(user._id, ['ROLE_ADMIN']);
 
-    user._id = Accounts.createUser(user)
+    // insert test user
+    const testUser = {
+      email: `test@shinejs.io`,
+      password: '74123',
+      profile: {
+        name: `테스트`
+      }
+    };
+    testUser._id = Accounts.createUser(testUser);
 
-
+    // insert dummy users
     for (let j = 0; j < 100; j++) {
       Accounts.createUser({
         email: `test-${j}@shinejs.io`,
@@ -20,7 +33,6 @@ insertInitData = function () {
         }
       });
     }
-
 
     let category = {
       title: `공지사항`,
@@ -42,10 +54,10 @@ insertInitData = function () {
         },
 
         author: {
-          _id: user._id,
-          name: user.profile.name
+          _id: testUser._id,
+          name: testUser.profile.name
         },
-        createdAt: new Date()
+        createdAt: moment().subtract(i, 'days').toDate()
       });
     }
 
@@ -70,10 +82,10 @@ insertInitData = function () {
         },
 
         author: {
-          _id: user._id,
-          name: user.profile.name
+          _id: testUser._id,
+          name: testUser.profile.name
         },
-        createdAt: new Date()
+        createdAt: moment().subtract(i, 'days').toDate()
       });
     }
 
@@ -98,13 +110,14 @@ insertInitData = function () {
         },
 
         author: {
-          _id: user._id,
-          name: user.profile.name
+          _id: testUser._id,
+          name: testUser.profile.name
         },
-        createdAt: new Date()
+        createdAt: moment().subtract(i, 'days').toDate()
       });
     }
 
+    /*
     System.collection.insert({
       _id: 'cloudinary',
 
@@ -119,5 +132,6 @@ insertInitData = function () {
         apiSecret: '0000'
       }
     });
+    */
   }
 };

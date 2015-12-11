@@ -12,9 +12,12 @@ Accounts.onCreateUser(function(options, user) {
   console.log(options);
   console.log(user);
 
-  const validator = Account.Validator.validateInsertServer(options);
+  const validator = (options.profile && options.profile.isAdmin) ?
+    Account.Validator.validateInsertAdmin(options) :
+    Account.Validator.validateInsert(options);
+
   if (validator.hasError()) {
-    console.log(validator.errors);
+    console.log(validator.errors());
     throw new Meteor.Error('validation error: new user');
   }
   console.log('new user validation success');

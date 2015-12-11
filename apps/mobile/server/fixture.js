@@ -1,16 +1,17 @@
 insertInitData = function () {
-  if (Meteor.users.find().count() === 0) {
-    const user = {
-      email: 'admin@shinejs.io',
+  if (Category.collection.find().count() === 0) {
+
+    // insert test user
+    const testUser = {
+      email: `test@shinejs.io`,
       password: '74123',
       profile: {
-        name: '운영자'
+        name: `테스트`
       }
     };
+    testUser._id = Accounts.createUser(testUser);
 
-    user._id = Accounts.createUser(user)
-
-
+    // insert dummy users
     for (let j = 0; j < 100; j++) {
       Accounts.createUser({
         email: `test-${j}@shinejs.io`,
@@ -20,7 +21,6 @@ insertInitData = function () {
         }
       });
     }
-
 
     let category = {
       title: `공지사항`,
@@ -42,10 +42,10 @@ insertInitData = function () {
         },
 
         author: {
-          _id: user._id,
-          name: user.profile.name
+          _id: testUser._id,
+          name: testUser.profile.name
         },
-        createdAt: new Date()
+        createdAt: moment().subtract(i, 'days').toDate()
       });
     }
 
@@ -70,10 +70,10 @@ insertInitData = function () {
         },
 
         author: {
-          _id: user._id,
-          name: user.profile.name
+          _id: testUser._id,
+          name: testUser.profile.name
         },
-        createdAt: new Date()
+        createdAt: moment().subtract(i, 'days').toDate()
       });
     }
 
@@ -98,26 +98,11 @@ insertInitData = function () {
         },
 
         author: {
-          _id: user._id,
-          name: user.profile.name
+          _id: testUser._id,
+          name: testUser.profile.name
         },
-        createdAt: new Date()
+        createdAt: moment().subtract(i, 'days').toDate()
       });
     }
-
-    System.collection.insert({
-      _id: 'cloudinary',
-
-      cloudName: 'meteor-shine',
-      apiKey: '993774671589961',
-      presets: {
-        accounts: 'ps_accounts',
-        posts: 'ps_posts'
-      },
-
-      private: {
-        apiSecret: '0000'
-      }
-    });
   }
 };
