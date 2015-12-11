@@ -57,7 +57,7 @@ Accounts.ui.SignInContainer = React.createClass({
   },
 
   handleConfigure(name) {
-    console.log('configure: ' + name);
+    alert('configure OAuth Service: ' + name);
   },
 
   render() {

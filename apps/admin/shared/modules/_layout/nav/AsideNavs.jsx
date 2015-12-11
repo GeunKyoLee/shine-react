@@ -4,6 +4,7 @@ const navs = [
   { path: '/accounts', name: 'label_account' },
   { path: '/categories', name: 'label_category' },
   { path: '/posts', name: 'label_post' },
+  { path: '/admins', name: 'label_admin' },
   { path: '/about', name: 'label_about' },
 ];
 
@@ -13,7 +14,7 @@ App.AsideNavs = React.createClass({
   navList() {
     return navs.map((item, i) => {
       return (
-        <Link key={item.path} to={item.path}>{L(item.name)}</Link>
+        <Link key={i} to={item.path}>{L(item.name)}</Link>
       )
     });
   },

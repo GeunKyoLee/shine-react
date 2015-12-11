@@ -27,7 +27,7 @@ var checkEmail = function(value) {
   }
 };
 
-Account.Validator = {
+Admin.Validator = {
   schema: {
     username: {
       type: 'string',
@@ -71,14 +71,6 @@ Account.Validator = {
   },
 
   validateInsert: function(object) {
-    var validator = new Validator(this.schema);
-
-    validator.validate(object, ['email', 'password']);
-
-    return validator;
-  },
-
-  validateInsertAdmin: function(object) {
     var validator = new Validator(this.schema);
 
     validator.validate(object, ['username', 'password']);

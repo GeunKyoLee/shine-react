@@ -85,12 +85,12 @@ Post.Form = React.createClass({
                               label={L('label_title')}
                               error={this.errorMessage('title')} />
 
-              <Form.TextArea id="content"
-                             name="content"
-                             value={contentText}
-                             label={L('label_content')}
-                             error={this.errorMessage('content')}
-                             rows="10" />
+              <Form.MarkdownEditor id="content"
+                                   name="content"
+                                   value={contentText}
+                                   label={L('label_content')}
+                                   error={this.errorMessage('content')}
+                                   rows="10" />
 
               <Form.Actions>
                 <Form.Button type="submit" className="btn btn-primary">

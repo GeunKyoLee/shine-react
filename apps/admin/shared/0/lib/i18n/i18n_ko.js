@@ -120,6 +120,19 @@ I18n_data_ko = {
   // dashboard
   "label_dashboard"               : "대시보드",
 
+  // admin
+  "label_admin"                   : "운영자",
+  "label_new_admin"               : "새 운영자 등록",
+
+  "text_no_admins"                : "등록된 운영자가 없습니다.",
+  "text_admin_total"              : "검색된 운영자 수: {0}",
+
+  // roles
+  "label_role_super_admin"        : "최고 운영자 권한",
+  "label_role_manage_accounts"    : "계정 관리 권한",
+  "label_role_manage_categories"  : "카테고리 관리 권한",
+  "label_role_manage_posts"       : "글 관리 권한",
+
   // account
   "label_account"                 : "계정",
   "label_new_account"             : "신규 계정 등록",

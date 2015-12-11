@@ -35,7 +35,7 @@ Post.NewContainer = React.createClass({
       title,
       content: {
         version: '0.0.1',
-        type: 'text',
+        type: 'markdown',
         data: content
       }
     };

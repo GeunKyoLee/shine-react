@@ -7,6 +7,7 @@ Accounts.config({
 });
 
 // OAuth configuration
+/*
 ServiceConfiguration.configurations.upsert(
   { service: "facebook" },
   {
@@ -16,6 +17,7 @@ ServiceConfiguration.configurations.upsert(
     }
   }
 );
+*/
 /*
 if (! ServiceConfiguration.configurations.findOne({ service: "facebook" })) {
   ServiceConfiguration.configurations.insert({
@@ -45,7 +47,7 @@ Accounts.onCreateUser(function(options, user) {
   } else {
     console.log('else onCreateUser facebook: ');
 
-    const validator = Account.Validator.validateInsertServer(options);
+    const validator = Account.Validator.validateInsert(options);
     if (validator.hasError()) {
       console.log(validator.errors);
       throw new Meteor.Error('validation error: new user');
