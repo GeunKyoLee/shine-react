@@ -9,7 +9,9 @@ App.Page = React.createClass({
   render() {
     return (
       <main id="content" className={this.props.className}>
-        {this.props.children}
+        <article className="page">
+          {this.props.children}
+        </article>
       </main>
     )
   }

@@ -12,46 +12,44 @@ Profile.View = React.createClass({
     return (
       <App.Page>
 
-        <article className="page">
+        <div className="picture">
+          <Profile.PictureContainer user={user}
+                                       cloudinary={this.props.cloudinary} />
+        </div>
 
-          <div className="picture">
-            <Profile.PictureContainer user={user}
-                                         cloudinary={this.props.cloudinary} />
-          </div>
+        <div className="list bordered">
+          <Link to="/profile/edit/email" className="list-item">
+            <div className="key">
+              {L('label_email')}
+            </div>
+            <div className="value">
+              <p>{user.emails[0].address}</p>
+              <i className="fa fa-angle-right"></i>
+            </div>
+          </Link>
 
-          <div className="list bordered">
-            <Link to="/profile/edit/email" className="list-item">
-              <div className="key">
-                {L('label_email')}
-              </div>
-              <div className="value">
-                <p>{user.emails[0].address}</p>
-                <i className="fa fa-angle-right"></i>
-              </div>
-            </Link>
+          <Link to="/profile/edit/password" className="list-item">
+            <div className="key">
+              {L('label_password')}
+            </div>
+            <div className="value">
+              <p>&nbsp;</p>
+              <i className="fa fa-angle-right"></i>
+            </div>
+          </Link>
 
-            <Link to="/profile/edit/password" className="list-item">
-              <div className="key">
-                {L('label_password')}
-              </div>
-              <div className="value">
-                <p>&nbsp;</p>
-                <i className="fa fa-angle-right"></i>
-              </div>
-            </Link>
+          <Link to="/profile/edit/name" className="list-item">
+            <div className="key">
+              {L('label_name')}
+            </div>
+            <div className="value">
+              <p>{profileName}</p>
+              <i className="fa fa-angle-right"></i>
+            </div>
+          </Link>
 
-            <Link to="/profile/edit/name" className="list-item">
-              <div className="key">
-                {L('label_name')}
-              </div>
-              <div className="value">
-                <p>{profileName}</p>
-                <i className="fa fa-angle-right"></i>
-              </div>
-            </Link>
+        </div>
 
-          </div>
-        </article>
       </App.Page>
     )
   }

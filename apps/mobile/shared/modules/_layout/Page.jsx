@@ -1,15 +1,25 @@
+/**
+ * Page Layout
+ */
 
 App.Page = React.createClass({
-  getDefaultProps() {
-    return {
-      className: ''
-    }
-  },
-
   render() {
+    const header = this.props.header ?
+      this.props.header : <App.Header title={this.props.title} />;
+
+    const footer = this.props.footer ? this.props.footer : null;
+
+    const className = this.props.footer ? "footer-on" : null;
+
     return (
-      <main id="content" className={this.props.className}>
-        {this.props.children}
+      <main id="content" className={className}>
+        {header}
+
+        <article className="page" ref="page">
+          {this.props.children}
+        </article>
+
+        {footer}
       </main>
     )
   }

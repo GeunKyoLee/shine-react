@@ -9,7 +9,7 @@ Post.ListContainer = React.createClass({
     const sort = {};
     sort[this.pagination.get().sort.field] = this.pagination.get().sort.value;
 
-    const handle = Meteor.subscribe('postsList', { limit, sort });
+    const handle = Meteor.subscribe('postsList', {}, { limit, sort });
 
     const postsCount = Counts.get('postsListCount');
     const posts = Post.collection.find({}, { limit, sort }).fetch();

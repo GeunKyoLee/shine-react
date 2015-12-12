@@ -67,6 +67,17 @@ const FacebookProfile = React.createClass({
 
 Profile.View = React.createClass({
 
+  renderFooter() {
+    return (
+      <App.Footer >
+        <button className="btn btn-primary btn-lg btn-block"
+                onClick={this.props.onSignOut}>
+          {L('command_sign_out')}
+        </button>
+      </App.Footer>
+    )
+  },
+
   render() {
     if (this.props.loading) return <App.Spinner />;
 
@@ -79,10 +90,7 @@ Profile.View = React.createClass({
     );
 
     return (
-      <App.Page className="footer-on">
-        <App.Header title={L('label_profile')} />
-
-        <article className="page">
+      <App.Page title={L('label_profile')} >
 
           <div className="picture">
             <Profile.PictureContainer user={user}
@@ -90,15 +98,9 @@ Profile.View = React.createClass({
           </div>
 
           {profile}
-        </article>
 
-        <App.Footer >
-          <button className="btn btn-primary btn-lg btn-block"
-                  onClick={this.props.onSignOut}>
-            {L('command_sign_out')}
-          </button>
-        </App.Footer>
       </App.Page>
     )
   }
+
 });

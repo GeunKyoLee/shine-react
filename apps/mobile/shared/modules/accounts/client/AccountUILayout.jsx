@@ -2,10 +2,8 @@
 Account.UILayout = React.createClass({
   render() {
     return (
-      <App.Page>
-        <App.Header title={this.props.title} />
-
-        <article className="page">{this.props.children}</article>
+      <App.Page title={this.props.title}>
+        {this.props.children}
       </App.Page>
     )
   }

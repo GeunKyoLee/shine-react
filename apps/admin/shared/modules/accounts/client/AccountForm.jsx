@@ -42,43 +42,40 @@ Account.Form = React.createClass({
 
     return (
       <App.Page>
-        <article className="page">
-          <header>
-            <h3>{L('label_account')} <small>{L('label_edit')}</small></h3>
-          </header>
+        <header>
+          <h3>{L('label_account')} <small>{L('label_edit')}</small></h3>
+        </header>
 
-          <section className="form-frame">
-            <Form.Form onSubmit={this.handleSubmit}>
-              <Form.InputText id="email"
-                              name="email"
-                              value={account.emails[0].address}
-                              label={L('label_email')}
-                              error={this.errorMessage('email')} />
+        <section className="form-frame">
+          <Form.Form onSubmit={this.handleSubmit}>
+            <Form.InputText id="email"
+                            name="email"
+                            value={account.emails[0].address}
+                            label={L('label_email')}
+                            error={this.errorMessage('email')} />
 
-              <Form.InputText id="password"
-                              name="password"
-                              label={L('label_password')}
-                              error={this.errorMessage('password')} />
+            <Form.InputText id="password"
+                            name="password"
+                            label={L('label_password')}
+                            error={this.errorMessage('password')} />
 
-              <Form.InputText id="name"
-                              name="name"
-                              value={account.profile.name}
-                              label={L('label_name')}
-                              error={this.errorMessage('name')} />
+            <Form.InputText id="name"
+                            name="name"
+                            value={account.profile.name}
+                            label={L('label_name')}
+                            error={this.errorMessage('name')} />
 
-              <Form.Actions>
-                <Form.Button type="submit" className="btn btn-primary">
-                  {L('command_ok')}
-                </Form.Button>
-                <Form.Button className="btn btn-default"
-                             onClick={this.handleCancel} >
-                  {L('command_cancel')}
-                </Form.Button>
-              </Form.Actions>
-            </Form.Form>
-          </section>
-
-        </article>
+            <Form.Actions>
+              <Form.Button type="submit" className="btn btn-primary">
+                {L('command_ok')}
+              </Form.Button>
+              <Form.Button className="btn btn-default"
+                           onClick={this.handleCancel} >
+                {L('command_cancel')}
+              </Form.Button>
+            </Form.Actions>
+          </Form.Form>
+        </section>
       </App.Page>
     )
   }

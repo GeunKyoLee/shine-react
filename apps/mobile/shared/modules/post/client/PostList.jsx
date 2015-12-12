@@ -14,25 +14,27 @@ Post.List = React.createClass({
       });
   },
 
+  renderFooter() {
+    return (
+      <App.Footer>
+        <button className="btn btn-primary btn-block"
+                onClick={this.handleNewPost}>{L('label_new_post')}</button>
+      </App.Footer>
+    )
+  },
+
   render() {
     const loadMore = this.props.postsCount > this.props.posts.length ?
       <App.LoadMore loading={this.props.onLoading}
                     onClick={this.props.onLoadMore} /> : null;
 
     return (
-      <App.Page className="footer-on">
-        <App.Header title={L('label_post')} />
+      <App.Page title={L('label_post')}
+                footer={this.renderFooter()} >
 
-        <article className="page" ref="page">
           <Post.PagedList {...this.props} />
-
           {loadMore}
-        </article>
 
-        <App.Footer>
-          <button className="btn btn-primary btn-block"
-                  onClick={this.handleNewPost}>{L('label_new_post')}</button>
-        </App.Footer>
       </App.Page>
     )
   }

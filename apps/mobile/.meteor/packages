@@ -32,6 +32,7 @@ shinejs:i18n
 shinejs:react-overlays
 shinejs:react-spin
 shinejs:react-form
+chuangbo:marked
 shinejs:react-cloudinary
 momentjs:moment
 check

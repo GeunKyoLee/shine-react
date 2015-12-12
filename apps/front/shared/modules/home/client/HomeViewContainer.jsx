@@ -21,7 +21,7 @@ Home.ViewContainer = React.createClass({
     const limit = 10;
     const sort = { createdAt: -1 };
 
-    const handle = Meteor.subscribe('postsList', { limit, sort });
+    const handle = Meteor.subscribe('postsList', {}, { limit, sort });
 
     let posts, postsCount;
     Tracker.autorun(() => {
