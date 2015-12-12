@@ -29,21 +29,27 @@ Home.View = React.createClass({
     console.log('scrollPos: ' + this.scrollPos.get());
   },
 
+  renderHeader() {
+    return <Home.Header />
+  },
+
+  renderFooter() {
+    return (
+      <App.Footer>
+        <button className="btn btn-primary btn-block"
+                onClick={this.handleNewPost}>{L('label_new_post')}</button>
+      </App.Footer>
+    )
+  },
+
   render() {
     if (this.props.onLoading) return <App.Spinner />;
 
     return (
-      <App.Page className="footer-on">
-        <Home.Header />
+      <App.Page header={this.renderHeader()} footer={this.renderFooter()}>
 
-        <article className="page" ref="page">
-          <Post.PagedList {...this.props} />
-        </article>
+        <Post.PagedList {...this.props} />
 
-        <App.Footer>
-          <button className="btn btn-primary btn-block"
-                  onClick={this.handleNewPost}>{L('label_new_post')}</button>
-        </App.Footer>
       </App.Page>
     )
   }

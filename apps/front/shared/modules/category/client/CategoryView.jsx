@@ -22,19 +22,23 @@ Category.View = React.createClass({
                     onClick={this.props.onLoadMore} /> : null;
 
     return (
-      <App.Page className="footer-on">
-        <App.Header title={this.props.category.title} />
+      <App.Page title={this.props.category.title} >
 
-        <article className="page" ref="page">
-          <Post.PagedList {...this.props} />
+        <header>
+          <h3>{L('label_post')} <small>{L('label_list')}</small></h3>
 
-          {loadMore}
-        </article>
+          <div className="actions">
+            <button className="btn btn-primary pull-right"
+                    onClick={this.handleNewPost}>
+              {L('label_new_post')}
+            </button>
+          </div>
+        </header>
 
-        <App.Footer>
-          <button className="btn btn-primary btn-block"
-                  onClick={this.handleNewPost}>{L('label_new_post')}</button>
-        </App.Footer>
+        <Post.PagedList {...this.props} />
+
+        {loadMore}
+
       </App.Page>
     )
   }

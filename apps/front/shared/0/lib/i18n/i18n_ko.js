@@ -92,10 +92,13 @@ I18n_data_ko = {
   "label_cloudinary_key"          : "API key",
   "label_cloudinary_secret"       : "API secret",
   "label_categories"              : "카테고리",
+  "label_list"                    : "목록",
+  "label_view"                    : "열람",
+  "label_new"                     : "신규",
+  "label_edit"                    : "수정",
 
 
   "text_sign_in"                  : "로그인하세요",
-  "text_sign_in_first"            : "로그인하신 후 이용하세요",
   "text_input_email"              : "이메일주소를 입력해 주세요",
   "text_input_password"           : "비밀번호를 입력해 주세요",
   "text_notification_new_comment" : "{0}님의 블로그에 새로운 댓글이 등록되었습니다.",
@@ -111,6 +114,9 @@ I18n_data_ko = {
   "error_input_required"          : "값을 입력하여야 합니다.",
   "error_input_out_of_range"      : "입력값이 유효한 범위 밖에 있습니다.",
 
+  // home
+  "label_home"                    : "홈",
+
   // profile
   "label_profile"                 : "프로필",
   "label_profile_edit_email"      : "이메일주소 변경",
@@ -122,8 +128,7 @@ I18n_data_ko = {
   "label_about_version"           : "버전",
 
   // post
-  "label_posts_list"              : "글 목록",
-  "label_post_view"               : "글 열람",
+  "label_post"                    : "글",
   "label_new_post"                : "글쓰기",
 
   "text_no_posts"                 : "등록된 글이 없습니다.",

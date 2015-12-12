@@ -52,10 +52,10 @@ Post.View = React.createClass({
     const footer = isEditable ? this.renderFooter() : null;
 
     return (
-      <App.Page className={isEditable ? 'footer-on' : null}>
-        <App.Header title={`${L('label_post')} ${L('label_view')}`} />
+      <App.Page className={isEditable ? 'footer-on' : null}
+                title={L('label_post')}
+                footer={footer} >
 
-        <article className="page">
           <header>
             <div className="post-info">
               <img src={authorPictureURL} />
@@ -68,9 +68,7 @@ Post.View = React.createClass({
 
           <div className="post-view"
                dangerouslySetInnerHTML={{__html: contentView(post.content)}} />
-        </article>
 
-        {footer}
       </App.Page>
     )
   }

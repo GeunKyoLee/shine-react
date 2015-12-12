@@ -43,25 +43,23 @@ Post.View = React.createClass({
     return (
       <App.Page>
 
-        <article className="page">
-          <header>
-            <div className="post-info">
-              <img src={post.author.url} />
-              <p className="name">{post.author.name}</p>
-              <p className="time">{createdAt}</p>
-            </div>
+        <header>
+          <div className="post-info">
+            <img src={post.author.url} />
+            <p className="name">{post.author.name}</p>
+            <p className="time">{createdAt}</p>
+          </div>
 
-            <h3>{post.title}</h3>
+          <h3>{post.title}</h3>
 
-            <div className="actions">
-              <button className="btn btn-warning"
-                      onClick={this.handleEditPost}>{L('command_edit')}</button>
-            </div>
-          </header>
+          <div className="actions">
+            <button className="btn btn-warning"
+                    onClick={this.handleEditPost}>{L('command_edit')}</button>
+          </div>
+        </header>
 
-          <div className="post-view"
-               dangerouslySetInnerHTML={{__html: contentView(post.content)}} />
-        </article>
+        <div className="post-view"
+             dangerouslySetInnerHTML={{__html: contentView(post.content)}} />
 
       </App.Page>
     )

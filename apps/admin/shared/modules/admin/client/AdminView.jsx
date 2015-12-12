@@ -7,10 +7,8 @@ Admin.View = React.createClass({
 
     return (
       <App.Page>
-        <article className="page">
-          <p>{L('label_username')}</p>
-          <p>{admin.username}</p>
-        </article>
+        <p>{L('label_username')}</p>
+        <p>{admin.username}</p>
       </App.Page>
     )
   }

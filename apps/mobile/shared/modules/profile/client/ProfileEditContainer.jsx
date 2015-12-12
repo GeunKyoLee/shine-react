@@ -63,16 +63,13 @@ Profile.EditContainer = React.createClass({
     if (! this.data.user) return <App.Spinner />;
 
     const value = this.props.params.name;
-    const title = L(`label_profile_edit_${value}`);
     const component = this.getComponent(value);
 
     return (
-      <App.Page>
-        <App.Header title={title} />
+      <App.Page title={L(`label_profile_edit_${value}`)} >
 
-        <article className="page">
-          {component}
-        </article>
+        {component}
+
       </App.Page>
     )
   }

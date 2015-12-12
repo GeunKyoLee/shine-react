@@ -14,6 +14,15 @@ Category.View = React.createClass({
       });
   },
 
+  renderFooter() {
+    return (
+      <App.Footer>
+        <button className="btn btn-primary btn-block"
+                onClick={this.handleNewPost}>{L('label_new_post')}</button>
+      </App.Footer>
+    )
+  },
+
   render() {
     if (this.props.loading) return <App.Spinner />;
 
@@ -22,19 +31,12 @@ Category.View = React.createClass({
                     onClick={this.props.onLoadMore} /> : null;
 
     return (
-      <App.Page className="footer-on">
-        <App.Header title={this.props.category.title} />
+      <App.Page title={this.props.category.title}
+                footer={this.renderFooter()}>
 
-        <article className="page" ref="page">
           <Post.PagedList {...this.props} />
-
           {loadMore}
-        </article>
 
-        <App.Footer>
-          <button className="btn btn-primary btn-block"
-                  onClick={this.handleNewPost}>{L('label_new_post')}</button>
-        </App.Footer>
       </App.Page>
     )
   }

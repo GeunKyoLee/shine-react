@@ -91,10 +91,12 @@ I18n_data_en = {
   "label_cloudinary_key"          : "API key",
   "label_cloudinary_secret"       : "API secret",
   "label_categories"              : "Categories",
-
+  "label_list"                    : "List",
+  "label_view"                    : "View",
+  "label_new"                     : "New",
+  "label_edit"                    : "Edit",
 
   "text_sign_in"                  : "Sign in",
-  "text_sign_in_first"            : "Sign in first",
   "text_input_email"              : "Input Email address",
   "text_input_password"           : "Input password",
   "text_notification_new_comment" : "A new comment registered for {0}'s blog",
@@ -109,6 +111,9 @@ I18n_data_en = {
   "error_input_required"          : "Input value is required",
   "error_input_out_of_range"      : "Input value is out of range",
 
+  // home
+  "label_home"                    : "Home",
+
   // profile
   "label_profile"                 : "Profile",
   "label_profile_edit_email"      : "Edit email address",
@@ -120,8 +125,7 @@ I18n_data_en = {
   "label_about_version"           : "Version",
 
   // post
-  "label_posts_list"              : "Posts",
-  "label_post_view"               : "Post view",
+  "label_post"                    : "Post",
   "label_new_post"                : "New Post",
 
   "text_no_posts"                 : "There is no post registered.",
