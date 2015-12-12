@@ -4,9 +4,9 @@ const { Link } = ReactRouter;
 Profile.View = React.createClass({
 
   render() {
-    const user = this.props.user;
-    if (! user) return null;
+    if (this.props.loading) return <App.Spinner />;
 
+    const user = this.props.user;
     const profileName = (user.profile && user.profile.name) || L('text_no_name');
 
     return (
@@ -14,19 +14,19 @@ Profile.View = React.createClass({
 
         <div className="picture">
           <Profile.PictureContainer user={user}
-                                       cloudinary={this.props.cloudinary} />
+                                    cloudinary={this.props.cloudinary} />
         </div>
 
         <div className="list bordered">
-          <Link to="/profile/edit/email" className="list-item">
+          <div className="list-item">
             <div className="key">
-              {L('label_email')}
+              {L('label_username')}
             </div>
             <div className="value">
-              <p>{user.emails[0].address}</p>
+              <p>{user.username}</p>
               <i className="fa fa-angle-right"></i>
             </div>
-          </Link>
+          </div>
 
           <Link to="/profile/edit/password" className="list-item">
             <div className="key">

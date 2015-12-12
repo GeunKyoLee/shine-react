@@ -2,16 +2,13 @@
 #container > aside.left {
   border-right: solid 1px @aside-left-border-color;
   background: @aside-left-bg-color;
-
-  .box-shadow(1px 0 1px rgba(0, 0, 0, .25));
 }
 
 #container > aside.right {
   border-left: solid 1px @aside-right-border-color;
   background: @aside-right-bg-color;
-
-  .box-shadow(1px 0 1px rgba(0, 0, 0, .25));
 }
+
 
 //
 //  Navigation module
@@ -36,11 +33,12 @@
       padding: 10px;
       background: @nav-link-bg;
       color: @nav-link-color;
-
       text-decoration: none;
+      overflow: hidden;
+      white-space: nowrap;
 
       i {
-        padding: 0 15px;
+        padding: 0 15px 0 5px;
         color: @nav-link-color;
       }
 
@@ -63,3 +61,22 @@
   }
 }
 
+
+.icon-view-handle {
+
+  .clearfix();
+
+  i {
+    float: right;
+    padding: 5px 10px 5px 5px;
+    .border-left-radius(@border-radius-large);
+
+    background: rgba(128, 128, 128, .25);
+    color: #666;
+    cursor: pointer;
+
+    &:hover {
+      color: lighten(#666, 20%);
+    }
+  }
+}
