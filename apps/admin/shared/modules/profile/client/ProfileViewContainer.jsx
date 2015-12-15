@@ -20,8 +20,6 @@ Profile.ViewContainer = React.createClass({
   },
 
   render() {
-    if (this.data.loading) return <App.Spinner />;
-
     return (
       <Profile.View {...this.data} onSignOut={this.handleSignOut} />
     )

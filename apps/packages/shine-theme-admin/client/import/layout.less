@@ -34,7 +34,7 @@ body {
   top: @header-height;
   right: 0;
   bottom: 0;
-  left: 0;
+  left: @aside-left-width;
 }
 
 #container > aside {
@@ -48,7 +48,7 @@ body {
 }
 
 #container > aside.left {
-  left: -@aside-left-width;
+  left: 0; //-@aside-left-width;
   width: @aside-left-width;
 }
 
@@ -64,7 +64,7 @@ body {
 
 #container > main, #container > aside {
   transform: translate3d(0, 0, 0);
-  transition: transform 250ms linear;
+  transition: all 250ms ease-in-out;
 }
 
 #container.aside-left-on {
@@ -74,6 +74,16 @@ body {
 
   > aside.left {
     transform: translate3d(@aside-left-width, 0, 0);
+  }
+}
+
+#container.aside-icon-view {
+  > main {
+    left: @aside-icon-view-width;
+  }
+
+  > aside.left {
+    width: @aside-icon-view-width;
   }
 }
 
