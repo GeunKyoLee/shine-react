@@ -22,8 +22,8 @@ Account.ListContainer = React.createClass({
   },
 
   pagination: new ReactiveVar({
-    increment: 30,
-    limit: 30,
+    increment: 20,
+    limit: 20,
     sort: {
       field: 'createdAt',
       value: -1

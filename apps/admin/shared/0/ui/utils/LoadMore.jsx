@@ -15,6 +15,24 @@ const LoadMoreButton = React.createClass({
  *    onClick
  */
 App.LoadMore = React.createClass({
+  scrollHandle: null,
+  onProcess: false,
+
+  componentDidMount() {
+    this.scrollHandle = InfiniteScrollTrigger.bind(() => {
+      if (! this.onProcess) {
+        this.onProcess = true;
+        console.log('scroll...');
+        this.props.onClick();
+        this.onProcess = false;
+      }
+    });
+  },
+
+  componentWillUnmount() {
+    if (this.scrollHandle) InfiniteScrollTrigger.unbind(this.scrollHandle);
+  },
+
   render() {
     const element = this.props.loading ? <App.LoadMoreSpinner /> :
       <LoadMoreButton onClick={this.props.onClick} />;
