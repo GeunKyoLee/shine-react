@@ -18,7 +18,7 @@ Category.ListContainer = React.createClass({
       loading: (! handle.ready()),
       categoriesCount,
       categories,
-      pagination: this.pagination.get(),
+      pagination: this.pagination,
     }
   },
 
@@ -30,27 +30,6 @@ Category.ListContainer = React.createClass({
       value: 1
     }
   }),
-
-  handleLoadMore() {
-    const object = this.pagination.get();
-
-    object.limit += object.increment;
-    this.pagination.set(object);
-  },
-
-  handleSort(field) {
-    const object = this.pagination.get();
-
-    if (field === object.sort.field) {
-      object.sort.value *= -1;
-    } else {
-      object.sort = {
-        field, value: -1
-      }
-    }
-
-    this.pagination.set(object);
-  },
 
   handleNewCategory(e) {
     e.preventDefault();
@@ -88,9 +67,7 @@ Category.ListContainer = React.createClass({
 
   render() {
     return (
-      <Category.List {...this.data} onLoadMore={this.handleLoadMore}
-                                    onSort={this.handleSort}
-                                    onNewCategory={this.handleNewCategory}
+      <Category.List {...this.data} onNewCategory={this.handleNewCategory}
                                     onEdit={this.handleEdit}
                                     onActive={this.handleActive} />
     )

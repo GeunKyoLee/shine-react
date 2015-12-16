@@ -3,7 +3,7 @@ const LoadMoreButton = React.createClass({
   render() {
     return (
       <button className="btn btn-default btn-block" onClick={this.props.onClick}>
-        {L('label_load_more')}
+        {this.props.children}
       </button>
     )
   }
@@ -14,16 +14,18 @@ const LoadMoreButton = React.createClass({
  *    loading
  *    onClick
  */
-App.LoadMore = React.createClass({
+Pagination.LoadMore = React.createClass({
+
   scrollHandle: null,
-  onProcess: false,
+
+  onScroll: false,
 
   componentDidMount() {
     this.scrollHandle = InfiniteScrollTrigger.bind(() => {
-      if (! this.onProcess) {
-        this.onProcess = true;
+      if (! this.onScroll) {
+        this.onScroll = true;
         this.props.onClick();
-        this.onProcess = false;
+        this.onScroll = false;
       }
     });
   },
@@ -33,8 +35,12 @@ App.LoadMore = React.createClass({
   },
 
   render() {
-    const element = this.props.loading ? <App.LoadMoreSpinner /> :
-      <LoadMoreButton onClick={this.props.onClick} />;
+    if (! this.props.show) return null;
+
+    const element = this.props.loading ? <Pagination.Spinner /> : (
+      <LoadMoreButton onClick={this.props.onClick}>
+        {this.props.children}</LoadMoreButton>
+    );
 
     return (
       <div className="load-more">

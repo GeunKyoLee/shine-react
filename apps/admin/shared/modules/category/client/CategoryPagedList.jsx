@@ -20,17 +20,19 @@ const CategoryListItem = React.createClass({
 });
 
 Category.PagedList = React.createClass({
-  scrollPos: new ReactiveVar(0),
 
-  componentDidMount() {
-    Meteor.setTimeout(() => {
-      $(this.refs.list).parent().scrollTop(this.scrollPos.get());
-    }, 300);
-  },
+  handleSort(field) {
+    const object = this.props.pagination.get();
 
-  componentWillUnmount() {
-    const scrollTop = $(this.refs.list).parent().scrollTop();
-    this.scrollPos.set(scrollTop);
+    if (field === object.sort.field) {
+      object.sort.value *= -1;
+    } else {
+      object.sort = {
+        field, value: -1
+      }
+    }
+
+    this.props.pagination.set(object);
   },
 
   categories() {
@@ -61,19 +63,26 @@ Category.PagedList = React.createClass({
       { title: L('label_created_at'), field: 'createdAt' },
     ];
 
+    const sort = this.props.pagination.get().sort;
+
     return (
-      <div className="table-list" ref="list">
+      <Pagination.List className="table-list"
+                       listTotal={this.props.categoriesCount}
+                       listLength={this.props.categories.length}
+                       pagination={this.props.pagination}
+                       loading={this.props.loading}
+                       loadMore={L('label_load_more')} >
         <table className="table table-bordered table-striped">
           <thead>
           <App.TableHeadSort columns={columns}
-                             sort={this.props.pagination.sort}
-                             onSort={this.props.onSort} />
+                             sort={sort}
+                             onSort={this.handleSort} />
           </thead>
           <tbody>
             {this.categories()}
           </tbody>
         </table>
-      </div>
+      </Pagination.List>
     )
   }
 });

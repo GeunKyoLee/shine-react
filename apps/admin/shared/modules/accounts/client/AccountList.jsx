@@ -1,12 +1,6 @@
 
 Account.List = React.createClass({
   render() {
-    const accountsCount = this.props.accountsCount;
-
-    const loadMore = accountsCount > this.props.accounts.length ?
-      <App.LoadMore loading={this.props.onLoading}
-                    onClick={this.props.onLoadMore} /> : null;
-
     return (
       <App.Page>
         <header>
@@ -14,18 +8,11 @@ Account.List = React.createClass({
             {L('label_account')}
             <small>{L('label_list')}</small>
           </h3>
-
-          <div className="actions">
-            <button className="btn btn-primary pull-right"
-                    onClick={this.handleNewAccount}>
-              {L('label_new_account')}
-            </button>
-          </div>
         </header>
 
         <section className="list-bar">
           <div className="pull-left">
-            <p>{L('text_account_total', [accountsCount])}</p>
+            <p>{L('text_account_total', [this.props.accountsCount])}</p>
           </div>
           <div className="pull-right">
 
@@ -34,7 +21,6 @@ Account.List = React.createClass({
 
         <Account.PagedList {...this.props} />
 
-        {loadMore}
       </App.Page>
     )
   }

@@ -17,7 +17,7 @@ Admin.ListContainer = React.createClass({
       loading: (! handle.ready()),
       adminsCount,
       admins,
-      pagination: this.pagination.get(),
+      pagination: this.pagination,
     }
   },
 
@@ -30,31 +30,9 @@ Admin.ListContainer = React.createClass({
     }
   }),
 
-  handleLoadMore() {
-    const object = this.pagination.get();
-
-    object.limit += object.increment;
-    this.pagination.set(object);
-  },
-
-  handleSort(field) {
-    const object = this.pagination.get();
-
-    if (field === object.sort.field) {
-      object.sort.value *= -1;
-    } else {
-      object.sort = {
-        field, value: -1
-      }
-    }
-
-    this.pagination.set(object);
-  },
-
   render() {
     return (
-      <Admin.List {...this.data} onLoadMore={this.handleLoadMore}
-                                 onSort={this.handleSort} />
+      <Admin.List {...this.data} />
     )
   }
 });
