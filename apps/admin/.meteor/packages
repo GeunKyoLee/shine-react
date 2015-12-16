@@ -37,6 +37,7 @@ shinejs:react-cloudinary
 momentjs:moment
 check
 reactive-var
+shinejs:react-pagination
 
 service-configuration
 shinejs:react-accounts-ui

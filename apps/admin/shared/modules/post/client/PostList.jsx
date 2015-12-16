@@ -3,11 +3,6 @@ const { Link } = ReactRouter;
 
 Post.List = React.createClass({
   render() {
-    const postsCount = this.props.postsCount;
-    const loadMore = postsCount > this.props.posts.length ?
-      <App.LoadMore loading={this.props.onLoading}
-                    onClick={this.props.onLoadMore} /> : null;
-
     return (
       <App.Page>
 
@@ -17,13 +12,11 @@ Post.List = React.createClass({
 
         <section className="list-bar">
           <div className="pull-left">
-            <p>{L('text_post_total', [postsCount])}</p>
+            <p>{L('text_post_total', [this.props.postsCount])}</p>
           </div>
         </section>
 
         <Post.PagedList {...this.props} />
-
-        {loadMore}
 
       </App.Page>
     )

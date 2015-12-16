@@ -1,11 +1,6 @@
 
 Category.List = React.createClass({
   render() {
-    const categoriesCount = this.props.categoriesCount;
-    const loadMore = categoriesCount > this.props.categories.length ?
-      <App.LoadMore loading={this.props.onLoading}
-                    onClick={this.props.onLoadMore} /> : null;
-
     return (
       <App.Page>
         <header>
@@ -18,7 +13,7 @@ Category.List = React.createClass({
 
         <section className="list-bar">
           <div className="pull-left">
-            <p>{L('text_category_total', [categoriesCount])}</p>
+            <p>{L('text_category_total', [this.props.categoriesCount])}</p>
           </div>
           <div className="pull-right">
 
@@ -27,8 +22,6 @@ Category.List = React.createClass({
 
         <Category.PagedList {...this.props} onEdit={this.props.onEdit}
                                             onActive={this.props.onActive} />
-
-        {loadMore}
       </App.Page>
     )
   }

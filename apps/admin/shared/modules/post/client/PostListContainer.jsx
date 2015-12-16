@@ -12,7 +12,6 @@ Post.ListContainer = React.createClass({
     const handle = Meteor.subscribe('postsList', { limit, sort });
 
     const postsCount = Counts.get('postsListCount');
-//    const posts = Post.collection.find({}, { limit, sort }).fetch();
     const posts = Post.collection.find({}, { limit, sort }).map((post) => {
       if (post.categoryId) {
         post.category = Category.collection.findOne(post.categoryId);
@@ -24,7 +23,7 @@ Post.ListContainer = React.createClass({
       loading: (! handle.ready()),
       postsCount,
       posts,
-      pagination: this.pagination.get(),
+      pagination: this.pagination,
     }
   },
 
@@ -36,27 +35,6 @@ Post.ListContainer = React.createClass({
       value: -1
     }
   }),
-
-  handleLoadMore() {
-    const object = this.pagination.get();
-
-    object.limit += object.increment;
-    this.pagination.set(object);
-  },
-
-  handleSort(field) {
-    const object = this.pagination.get();
-
-    if (field === object.sort.field) {
-      object.sort.value *= -1;
-    } else {
-      object.sort = {
-        field, value: -1
-      }
-    }
-
-    this.pagination.set(object);
-  },
 
   handleNewPost(e) {
     e.preventDefault();
@@ -73,8 +51,7 @@ Post.ListContainer = React.createClass({
 
   render() {
     return (
-      <Post.List {...this.data} onLoadMore={this.handleLoadMore}
-                                onSort={this.handleSort} />
+      <Post.List {...this.data} />
     )
   }
 });

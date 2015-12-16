@@ -1,36 +1,6 @@
 
 const { Link } = ReactRouter;
 
-const AdminListHead = React.createClass({
-  handleSort(field) {
-    this.props.onSort(field);
-  },
-
-  icon(field, sort) {
-    if (field === sort.field) {
-      return (sort.value === 1) ? "fa fa-sort-asc" : "fa fa-sort-desc";
-    } else {
-      return "fa fa-sort";
-    }
-  },
-
-  render() {
-    const columns = this.props.columns.map((column, i) => {
-
-      return (
-        <th key={i}
-            className="sort"
-            onClick={this.handleSort.bind(null, column.field)}>
-          {column.title}
-          <i className={this.icon(column.field, this.props.sort)}></i>
-        </th>
-      )
-    });
-
-    return <tr>{columns}</tr>;
-  }
-});
-
 const AdminListItem = React.createClass({
   render() {
     const admin = this.props.admin;
@@ -52,17 +22,19 @@ const AdminListItem = React.createClass({
 });
 
 Admin.PagedList = React.createClass({
-  scrollPos: new ReactiveVar(0),
 
-  componentDidMount() {
-    Meteor.setTimeout(() => {
-      $(this.refs.list).parent().scrollTop(this.scrollPos.get());
-    }, 300);
-  },
+  handleSort(field) {
+    const object = this.props.pagination.get();
 
-  componentWillUnmount() {
-    const scrollTop = $(this.refs.list).parent().scrollTop();
-    this.scrollPos.set(scrollTop);
+    if (field === object.sort.field) {
+      object.sort.value *= -1;
+    } else {
+      object.sort = {
+        field, value: -1
+      }
+    }
+
+    this.props.pagination.set(object);
   },
 
   admins() {
@@ -87,19 +59,26 @@ Admin.PagedList = React.createClass({
       { title: L('label_created_at'), field: 'createdAt' },
     ];
 
+    const sort = this.props.pagination.get().sort;
+
     return (
-      <div className="table-list" ref="list">
+      <Pagination.List className="table-list"
+                       listTotal={this.props.adminsCount}
+                       listLength={this.props.admins.length}
+                       pagination={this.props.pagination}
+                       loading={this.props.loading}
+                       loadMore={L('label_load_more')} >
         <table className="table table-bordered table-striped">
           <thead>
             <App.TableHeadSort columns={columns}
-                               sort={this.props.pagination.sort}
-                               onSort={this.props.onSort} />
+                               sort={sort}
+                               onSort={this.handleSort} />
           </thead>
           <tbody>
             {this.admins()}
           </tbody>
         </table>
-      </div>
+      </Pagination.List>
     )
   }
 });

@@ -86,6 +86,7 @@ shinejs:react-accounts-ui@0.0.1
 shinejs:react-cloudinary@0.0.1
 shinejs:react-form@0.0.1
 shinejs:react-overlays@0.0.1
+shinejs:react-pagination@0.0.1
 shinejs:react-spin@2.3.2
 shinejs:shine-theme-admin@0.0.1
 spacebars@1.0.7
