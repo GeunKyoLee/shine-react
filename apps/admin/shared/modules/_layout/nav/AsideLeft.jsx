@@ -2,13 +2,13 @@
 App.AsideLeft = React.createClass({
   statics: {
     toggle() {
-      $('#container').toggleClass('aside-left-on');
+      $('.layout').toggleClass('aside-left-on');
       //const container = document.getElementById('container');
       //container.className = (container.className) ? '' : 'aside-left-on';
     },
 
     hide() {
-      $('#container').removeClass('aside-left-on');
+      $('.layout').removeClass('aside-left-on');
       //document.getElementById('container').className = '';
     }
   },
@@ -20,7 +20,7 @@ App.AsideLeft = React.createClass({
   },
 
   handleView() {
-    $('#container').toggleClass('aside-icon-view');
+    $('.layout').toggleClass('aside-icon-view');
     this.setState({ iconView: ! this.state.iconView });
   },
 

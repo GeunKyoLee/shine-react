@@ -3,7 +3,6 @@ const { Link } = ReactRouter;
 App.Header = React.createClass({
   getDefaultProps() {
     return {
-      title: 'Page-Title',
       hideAccount: false,
     }
   },
