@@ -1,5 +1,8 @@
 
+const { PureRenderMixin } = React.addons;
+
 Pagination.List = React.createClass({
+  mixins: [PureRenderMixin],
 
   scrollPos: new ReactiveVar(0),
 

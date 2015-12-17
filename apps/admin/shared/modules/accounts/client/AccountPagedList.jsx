@@ -52,6 +52,7 @@ Account.PagedList = React.createClass({
   },
 
   render() {
+    console.log('render...');
     const columns = [
       { title: L('label_id'), field: '_id' },
       { title: L('label_name'), field: 'profile.name' },
