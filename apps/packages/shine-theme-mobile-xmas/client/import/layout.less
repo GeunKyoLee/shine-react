@@ -9,7 +9,7 @@ body {
   padding: 0;
 }
 
-#container {
+.layout {
   position: absolute;
   top: 0;
   right: 0;
@@ -18,7 +18,7 @@ body {
   overflow: hidden;
 }
 
-#container > main {
+.layout > main {
   position: absolute;
   overflow: hidden;
   top: 0;
@@ -27,7 +27,7 @@ body {
   left: 0;
 }
 
-#container > aside {
+.layout#layout-main > aside {
   position: absolute;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -37,12 +37,12 @@ body {
   //  z-index: @zindex-navbar-fixed + 1;
 }
 
-#container > aside.left {
+.layout#layout-main > aside.left {
   left: -@aside-left-width;
   width: @aside-left-width;
 }
 
-#container > aside.right {
+.layout#layout-main > aside.right {
   right: -@aside-right-width;
   width: @aside-right-width;
 }
@@ -52,12 +52,12 @@ body {
 // Layout Animations
 //------------------------------------------------------------------------------
 
-#container > main, #container > aside {
+.layout#layout-main > main, .layout#layout-main > aside {
   transform: translate3d(0, 0, 0);
   transition: transform 250ms linear;
 }
 
-#container.aside-left-on {
+.layout#layout-main.aside-left-on {
   > main {
     transform: translate3d(@aside-left-width, 0, 0);
   }
@@ -67,7 +67,7 @@ body {
   }
 }
 
-#container.aside-left-fixed {
+.layout#layout-main.aside-left-fixed {
   > main {
     left: @aside-left-width;
     right: 0;
@@ -78,7 +78,7 @@ body {
   }
 }
 
-#container.aside-right-on {
+.layout#layout-main.aside-right-on {
   > main {
     left: -@aside-right-width;
     right: @aside-right-width;
@@ -89,7 +89,7 @@ body {
   }
 }
 
-#container.aside-right-fixed {
+.layout#layout-main.aside-right-fixed {
   > main {
     left: 0;
     right: @aside-right-width;

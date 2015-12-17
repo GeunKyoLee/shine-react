@@ -1,5 +1,5 @@
 I18n_data_ko = {
-  "brand"                         : "차선수",
+  "brand"                         : "샤인",
 
 
   "title_dashboard"               : "대시보드",
@@ -96,6 +96,8 @@ I18n_data_ko = {
   "label_view"                    : "열람",
   "label_new"                     : "신규",
   "label_edit"                    : "수정",
+  "label_page_not_found"          : "페이지 오류",
+  "label_go_home"                 : "홈으로 이동",
 
 
   "text_sign_in"                  : "로그인하세요",
@@ -107,6 +109,7 @@ I18n_data_ko = {
   "text_reset_password"           : "비밀번호 초기화",
   "text_verify_email"             : "에 회원가입하신 것을 환영합니다. 입력하신 메일주소가 유효한지 확인하기 위해 이 링크를 클릭해 주세요 : ",
   "text_connection_alarm"         : "접속이 끊어졌습니다. 연결중입니다...",
+  "text_page_not_found"           : "잘못된 주소이거나 존재하지 않는 페이지입니다.",
 
 
   "error_access_denied"           : "접근 권한이 없습니다.",

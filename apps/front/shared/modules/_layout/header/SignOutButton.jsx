@@ -5,7 +5,7 @@ SignOutButton = React.createClass({
 
   handleSignOut() {
     Meteor.logout();
-    this.history.pushState(null, '/');
+    window.location.href = '/';
   },
 
   render() {

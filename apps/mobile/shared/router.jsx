@@ -11,42 +11,40 @@ if (Meteor.isClient) {
   const createHistory = ReactRouter.history.createHistory;
   const onRouterUpdate = App.AsideLeft.hide;
 
-  const routes = (
-    <Route path="/" component={App.Layout} >
-      <Route path="home" component={Home.ViewContainer} />
-
-      <Route path="sign-in" component={Account.SignInContainer} />
-      <Route path="sign-up" component={Account.SignUpContainer} />
-      <Route path="forgot-password"
-             component={Account.ForgotPasswordContainer} />
-      <Route path="reset-password/:token"
-             component={Account.ResetPasswordContainer} />
-
-      <Route path="profile"
-             component={Profile.ViewContainer}
-             onEnter={requireAuth} />
-      <Route path="profile/edit/:name"
-             component={Profile.EditContainer}
-             onEnter={requireAuth} />
-
-      <Route path="about" component={About.ViewContainer} />
-
-      <Route path="category/:id" component={Category.ViewContainer} />
-
-      <Route path="posts" component={Post.ListContainer} />
-      <Route path="post/view/:id" component={Post.ViewContainer} />
-      <Route path="post/edit/:id" component={Post.EditContainer} />
-      <Route path="post/new" component={Post.NewContainer} />
-
-      <IndexRoute component={Home.ViewContainer} />
-
-      <Route path="*" component={App.NotFound} />
-    </Route>
-  );
-
   const router = (
     <Router history={createHistory()} onUpdate={onRouterUpdate}>
-      {routes}
+      <Route path="/" component={App.Container} >
+        <Route component={App.LayoutMain}>
+          <IndexRoute component={Home.ViewContainer} />
+
+          <Route path="home" component={Home.ViewContainer} />
+
+          <Route path="sign-in" component={Account.SignInContainer} />
+          <Route path="sign-up" component={Account.SignUpContainer} />
+          <Route path="forgot-password"
+                 component={Account.ForgotPasswordContainer} />
+          <Route path="reset-password/:token"
+                 component={Account.ResetPasswordContainer} />
+
+          <Route path="profile"
+                 component={Profile.ViewContainer}
+                 onEnter={requireAuth} />
+          <Route path="profile/edit/:name"
+                 component={Profile.EditContainer}
+                 onEnter={requireAuth} />
+
+          <Route path="about" component={About.ViewContainer} />
+
+          <Route path="category/:id" component={Category.ViewContainer} />
+
+          <Route path="posts" component={Post.ListContainer} />
+          <Route path="post/view/:id" component={Post.ViewContainer} />
+          <Route path="post/edit/:id" component={Post.EditContainer} />
+          <Route path="post/new" component={Post.NewContainer} />
+
+          <Route path="*" component={App.NotFound} />
+        </Route>
+      </Route>
     </Router>
   );
 

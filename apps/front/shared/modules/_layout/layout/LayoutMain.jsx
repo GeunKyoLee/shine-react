@@ -1,24 +1,11 @@
 
-const ConnectionAlert = React.createClass({
-  render() {
-    return (
-      <div className="emergency-alert">
-        disconnected
-      </div>
-    )
-  }
-});
-
-App.Layout = React.createClass({
+App.LayoutMain = React.createClass({
 
   render() {
     const path = this.props.location.pathname;
 
-    const notificationsContainer = Meteor.isClient ?
-      <Overlay.NotificationsContainer /> : null;
-
     return (
-      <div id="container">
+      <div id="layout-main" className="layout">
         <App.Header />
 
         <RouteTransition location={this.props.location}
@@ -28,8 +15,6 @@ App.Layout = React.createClass({
         </RouteTransition>
 
         <App.AsideLeft />
-        {notificationsContainer}
-        <ConnectionAlarm />
       </div>
     )
   }
