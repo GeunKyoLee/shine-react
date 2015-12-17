@@ -1,5 +1,5 @@
 I18n_data_en = {
-  "brand"                         : "Cha Sunsoo",
+  "brand"                         : "SHINE",
 
 
   "title_dashboard"               : "Dashboard",
@@ -100,6 +100,9 @@ I18n_data_en = {
   "label_active"                  : "Active",
   "label_seq"                     : "Sequence",
 
+  "label_page_not_found"          : "Page Not Found",
+  "label_go_home"                 : "Move to Home",
+
   "text_sign_in"                  : "Sign in",
   "text_input_email"              : "Input Email address",
   "text_input_password"           : "Input password",
@@ -110,6 +113,7 @@ I18n_data_en = {
   "text_verify_email"             : "You just signed up. Click this link to validate your email address : ",
   "text_connection_alarm"         : "Disconnected. Waiting connection...",
   "text_under_construction"       : "Under construction...",
+  "text_page_not_found"           : "Page Not Found.",
 
   "error_access_denied"           : "Access denied",
   "error_invalid_type"            : "Input data type is invalid",
