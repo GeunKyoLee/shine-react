@@ -55,6 +55,7 @@ I18n_data_ko = {
   "label_username"                : "아이디",
   "label_email"                   : "이메일 주소",
   "label_password"                : "비밀번호",
+  "label_password_again"          : "비밀번호 재입력",
   "label_theme"                   : "테마",
   "label_title"                   : "제목",
   "label_content"                 : "본문",
@@ -94,6 +95,7 @@ I18n_data_ko = {
   "label_list"                    : "목록",
   "label_view"                    : "열람",
   "label_edit"                    : "편집",
+  "label_modify"                  : "수정",
   "label_new"                     : "신규",
 
   "label_active"                  : "활성화",
@@ -119,6 +121,7 @@ I18n_data_ko = {
   "error_invalid_type"            : "입력값이 유효한 자료형이 아닙니다.",
   "error_input_required"          : "값을 입력하여야 합니다.",
   "error_input_out_of_range"      : "입력값이 유효한 범위 밖에 있습니다.",
+  "error_password_again_fail"     : "비밀번호 입력값이 서로 일치하지 않습니다",
 
   // dashboard
   "label_dashboard"               : "대시보드",
@@ -126,6 +129,7 @@ I18n_data_ko = {
   // admin
   "label_admin"                   : "운영자",
   "label_new_admin"               : "새 운영자 등록",
+  "label_role"                    : "권한",
 
   "text_no_admins"                : "등록된 운영자가 없습니다.",
   "text_admin_total"              : "검색된 운영자 수: {0}",

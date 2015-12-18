@@ -25,9 +25,9 @@ Account.EditContainer = React.createClass({
 
   goBack() {
     if (RouteTransition.canGoBack()) {
-      RouteTransition.goBack(this.history);
+      RouteTransition.goBack(this.history, { restoreState: true });
     } else {
-      this.history.pushState(null, '/accounts');
+      this.history.pushState({ restoreState: true }, '/accounts');
     }
   },
 

@@ -1,11 +1,27 @@
 
+const { RouteContext } = ReactRouter;
+
 Account.ListContainer = React.createClass({
-  mixins: [ReactMeteorData],
+  mixins: [ReactMeteorData, RouteContext],
+
+  getDefaultProps() {
+    return {
+      pagination: new ReactiveVar({
+        increment: 20,
+        limit: 20,
+        sort: {
+          field: 'createdAt',
+          value: -1
+        }
+      }),
+    }
+  },
 
   getMeteorData() {
-    const limit = this.pagination.get().limit;
+    const pagination = this.props.pagination;
+    const limit = pagination.get().limit;
     const sort = {};
-    sort[this.pagination.get().sort.field] = this.pagination.get().sort.value;
+    sort[pagination.get().sort.field] = pagination.get().sort.value;
 
     const handle = Meteor.subscribe('accountsList', { limit, sort });
 
@@ -17,22 +33,13 @@ Account.ListContainer = React.createClass({
       loading: (! handle.ready()),
       accountsCount,
       accounts,
-      pagination: this.pagination,
+      pagination,
     }
   },
 
-  pagination: new ReactiveVar({
-    increment: 20,
-    limit: 20,
-    sort: {
-      field: 'createdAt',
-      value: -1
-    }
-  }),
-
   render() {
     return (
-      <Account.List {...this.data} />
+      <Account.List {...this.data} location={this.props.location} />
     )
   }
 });

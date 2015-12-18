@@ -29,6 +29,13 @@ var checkEmail = function(value) {
 
 Admin.Validator = {
   schema: {
+    _id: {
+      type: 'string',
+      required: true,
+      minLength: 10,
+      maxLength: 30,
+    },
+
     username: {
       type: 'string',
       required: true,
@@ -82,6 +89,14 @@ Admin.Validator = {
     var validator = new Validator(this.schema);
 
     validator.validate(object, ['email']);
+
+    return validator;
+  },
+
+  validateUpdatePassword: function(object) {
+    var validator = new Validator(this.schema);
+
+    validator.validate(object, ['_id', 'password']);
 
     return validator;
   }

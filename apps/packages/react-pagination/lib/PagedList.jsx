@@ -4,8 +4,6 @@ const { PureRenderMixin } = React.addons;
 Pagination.List = React.createClass({
   mixins: [PureRenderMixin],
 
-  scrollPos: new ReactiveVar(0),
-
   getDefaultProps() {
     return {
       className: '',
@@ -14,7 +12,15 @@ Pagination.List = React.createClass({
       pagination: null,
       loading: true,
       loadMore: 'Load more...',
+      scrollPos: new ReactiveVar(0),
     }
+  },
+
+  resetState() {
+    this.props.scrollPos.set(0);
+    const pagination = this.props.pagination.get();
+    pagination.limit = pagination.increment;
+    this.props.pagination.set(pagination);
   },
 
   handleLoadMore() {
@@ -27,19 +33,24 @@ Pagination.List = React.createClass({
     }
   },
 
+  componentWillMount() {
+    if (! this.props.restoreState) {
+      this.resetState();
+    }
+  },
+
   componentDidMount() {
     Meteor.setTimeout(() => {
-      $(this.refs.list).parent().scrollTop(this.scrollPos.get());
+      $(this.refs.list).parent().scrollTop(this.props.scrollPos.get());
     }, 300);
   },
 
   componentWillUnmount() {
     const scrollTop = $(this.refs.list).parent().scrollTop();
-    this.scrollPos.set(scrollTop);
+    this.props.scrollPos.set(scrollTop);
   },
 
   render() {
-
     return (
       <div className={this.props.className} ref="list">
         {this.props.children}

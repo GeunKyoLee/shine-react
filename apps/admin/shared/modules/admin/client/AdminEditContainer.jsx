@@ -31,7 +31,7 @@ Admin.EditContainer = React.createClass({
     }
   },
 
-  handleSubmit(password, name) {
+  handleSubmitPassword(password, name) {
     const admin = {
       password,
       name,
