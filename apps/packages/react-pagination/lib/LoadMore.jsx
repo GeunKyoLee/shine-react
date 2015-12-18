@@ -2,7 +2,8 @@
 const LoadMoreButton = React.createClass({
   render() {
     return (
-      <button className="btn btn-default btn-block" onClick={this.props.onClick}>
+      <button className="btn btn-default btn-block"
+              onClick={this.props.onClick}>
         {this.props.children}
       </button>
     )

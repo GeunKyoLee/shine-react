@@ -18,7 +18,7 @@ Profile.View = React.createClass({
         </div>
 
         <div className="list bordered">
-          <div className="list-item">
+          <div className="item">
             <div className="key">
               {L('label_username')}
             </div>
@@ -28,7 +28,7 @@ Profile.View = React.createClass({
             </div>
           </div>
 
-          <Link to="/profile/edit/password" className="list-item">
+          <Link to="/profile/edit/password" className="item">
             <div className="key">
               {L('label_password')}
             </div>
@@ -38,7 +38,7 @@ Profile.View = React.createClass({
             </div>
           </Link>
 
-          <Link to="/profile/edit/name" className="list-item">
+          <Link to="/profile/edit/name" className="item">
             <div className="key">
               {L('label_name')}
             </div>

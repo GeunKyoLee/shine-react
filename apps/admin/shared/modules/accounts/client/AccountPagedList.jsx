@@ -22,7 +22,6 @@ const AccountListItem = React.createClass({
 });
 
 Account.PagedList = React.createClass({
-
   handleSort(field) {
     const object = this.props.pagination.get();
 
@@ -52,7 +51,6 @@ Account.PagedList = React.createClass({
   },
 
   render() {
-    console.log('render...');
     const columns = [
       { title: L('label_id'), field: '_id' },
       { title: L('label_name'), field: 'profile.name' },
@@ -61,6 +59,8 @@ Account.PagedList = React.createClass({
     ];
 
     const sort = this.props.pagination.get().sort;
+    const restoreState = !! (this.props.location && this.props.location.state &&
+      this.props.location.state.restoreState);
 
     return (
       <Pagination.List className="table-list"
@@ -68,7 +68,8 @@ Account.PagedList = React.createClass({
                        listLength={this.props.accounts.length}
                        pagination={this.props.pagination}
                        loading={this.props.loading}
-                       loadMore={L('label_load_more')} >
+                       loadMore={L('label_load_more')}
+                       restoreState={restoreState} >
         <table className="table table-bordered table-striped">
           <thead>
           <App.TableHeadSort columns={columns}

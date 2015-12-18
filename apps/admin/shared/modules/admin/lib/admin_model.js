@@ -18,5 +18,15 @@ Meteor.methods({
     if (this.isSimulation) return;
 
     return Accounts.addEmail(userId, email);
-  }
+  },
+
+  adminUpdatePassword(admin) {
+
+    const data = {
+      'password': profile.name,
+    };
+
+    return Meteor.users.update({ _id: this.userId }, { $set: data });
+  },
+
 });

@@ -55,6 +55,7 @@ I18n_data_en = {
   "label_username"                : "Username",
   "label_email"                   : "Email address",
   "label_password"                : "Password",
+  "label_password_again"          : "Password Again",
   "label_title"                   : "Title",
   "label_content"                 : "Content",
   "label_state"                   : "State",
@@ -95,6 +96,7 @@ I18n_data_en = {
   "label_list"                    : "List",
   "label_view"                    : "View",
   "label_edit"                    : "Edit",
+  "label_modify"                  : "Modify",
   "label_new"                     : "New",
 
   "label_active"                  : "Active",
@@ -119,6 +121,8 @@ I18n_data_en = {
   "error_invalid_type"            : "Input data type is invalid",
   "error_input_required"          : "Input value is required",
   "error_input_out_of_range"      : "Input value is out of range",
+  "error_password_again_fail"     : "Input passwords are not equal each other",
+
 
   // dashboard
   "label_dashboard"               : "Dashboard",
@@ -126,6 +130,7 @@ I18n_data_en = {
   // admin
   "label_admin"                   : "Administrator",
   "label_new_admin"               : "New Administrator",
+  "label_role"                    : "Roles",
 
   "text_no_admins"                : "There is no administrator registered.",
   "text_admin_total"              : "Admin total: {0}",

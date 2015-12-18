@@ -15,9 +15,33 @@ Admin.ViewContainer = React.createClass({
     }
   },
 
+  handleUpdatePassword(e) {
+    e.preventDefault();
+
+    if (! Meteor.user()) {
+      return Overlay.notify(L('text_sign_in_first'));
+    }
+
+    Overlay.page(
+      <Admin.EditPasswordContainer adminId={adminId} />
+    ).then((value) => {
+      console.log('value = ' + value);
+    });
+  },
+
+  handleUpdateName() {
+
+  },
+
+  handleUpdateRoles() {
+
+  },
+
   render() {
     return (
-      <Admin.View {...this.data} />
+      <Admin.View {...this.data} onUpdatePassword={this.handleUpdatePassword}
+                                 onUpdateName={this.handleUpdateName}
+                                 onUpdateRoles={this.handleUpdateRoles} />
     )
   }
 });

@@ -11,7 +11,7 @@ Admin.List = React.createClass({
       <App.Page>
         <header>
           <h3>
-            {L('label_account')}
+            {L('label_admin')}
             <small>{L('label_list')}</small>
           </h3>
 
