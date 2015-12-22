@@ -21,7 +21,6 @@ SHINE-REACT 프로젝트는 Meteor 플랫폼과 React 프레임워크를 이용�
 
 ## Packages
 
-    
     meteor-base             # Packages every Meteor app needs to have
     mobile-experience       # Packages for a great mobile UX
     mongo                   # The database Meteor supports right now
